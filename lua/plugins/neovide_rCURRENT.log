@@ -1,0 +1,31 @@
+TRACE [neovide] Neovide version: 0.10.3
+DEBUG [neovide::bridge::command] Running which command: "/bin/bash" "-lc" "which nvim"
+DEBUG [neovide::settings::window_geometry] Loaded window settings: Maximized
+TRACE [neovide::window] repositioned window: true
+DEBUG [neovide::renderer::fonts::caching_shaper] Original font_size: 28.00px
+TRACE [neovide::renderer::fonts::font_loader] Loading font FontKey { bold: false, italic: false, family_name: None, hinting: Full, edging: AntiAlias }
+DEBUG [neovide::renderer::fonts::caching_shaper] Original font_width: 17.23px
+DEBUG [neovide::renderer::fonts::caching_shaper] Font width: 17.23px (avg: 17.23px)
+DEBUG [neovide::renderer::fonts::caching_shaper] Fudge factor: 0.99
+DEBUG [neovide::renderer::fonts::caching_shaper] Fudged font size: 27.63px
+DEBUG [neovide::renderer::fonts::caching_shaper] Fudged font width: 17.00px
+TRACE [neovide::renderer::fonts::font_loader] Loading font FontKey { bold: false, italic: false, family_name: None, hinting: Full, edging: AntiAlias }
+TRACE [neovide::renderer::fonts::font_loader] Loading font FontKey { bold: false, italic: false, family_name: None, hinting: Full, edging: AntiAlias }
+INFO [neovide::window] window created (scale_factor: 2.0000, font_dimensions: Dimensions { width: 17, height: 35 })
+TRACE [neovide::redraw_scheduler] Next frame queued
+TRACE [neovide::redraw_scheduler] Next frame queued
+TRACE [neovide::renderer::fonts::caching_shaper] Shaping text:  
+TRACE [neovide::channel_utils] neovide::bridge::ui_commands::UiCommand Parallel(FocusGained)
+TRACE [neovide::redraw_scheduler] Next frame queued
+TRACE [neovide::redraw_scheduler] Next frame queued
+TRACE [neovide::redraw_scheduler] Next frame queued
+TRACE [neovide::redraw_scheduler] Next frame queued
+TRACE [neovide::redraw_scheduler] Next frame queued
+TRACE [neovide::redraw_scheduler] Next frame queued
+TRACE [neovide::redraw_scheduler] Next frame queued
+TRACE [neovide::redraw_scheduler] Next frame queued
+TRACE [neovide::redraw_scheduler] Next frame queued
+TRACE [neovide::redraw_scheduler] Next frame queued
+DEBUG [neovide::bridge::command] Starting neovim with: Command { std: "/bin/bash" "-lc" "/usr/local/bin/nvim --embed -p .", kill_on_drop: false }
+TRACE [neovide::redraw_scheduler] Next frame queued
+ERROR [neovide::bridge] Neovide requires nvim version 0.4 or higher. Download the latest version here https://github.com/neovim/neovim/wiki/Installing-Neovim

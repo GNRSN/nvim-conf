@@ -1,22 +1,32 @@
--- Import :plugins, should be at top
-require("gnrsn.plugins-setup")
+require("core/keymaps")
+require("core/options")
 
-require("gnrsn.core.options")
-require("gnrsn.core.keymaps")
-require("gnrsn.core.colorscheme")
+-- bootstrap lazy-loader
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
+end
+vim.opt.rtp:prepend(lazypath)
 
-require("gnrsn.plugins.comment")
-require("gnrsn.plugins.nvim-tree")
-require("gnrsn.plugins.telescope")
-require("gnrsn.plugins.nvim-cmp")
-require("gnrsn.plugins.lsp.mason")
-require("gnrsn.plugins.lsp.lspsaga")
-require("gnrsn.plugins.lsp.lspconfig")
-require("gnrsn.plugins.lsp.null-ls")
-require("gnrsn.plugins.autopairs")
+if vim.g.vscode then
+	-- VSCode extension
+	print("vim.g.vscode env present, avoids loading plugins")
+else
+	-- ordinary Neovim
+	-- use lazy-loader
+	require("lazy").setup("plugins")
+	require("after")
+end
 
--- Highlighting and formatting for different languages
-require("gnrsn.plugins.treesitter")
-
--- Git
-require("gnrsn.plugins.gitsigns")
+if vim.g.neovide then
+	vim.o.guifont = "Hack_Nerd_Font"
+	vim.g.neovide_cursor_animate_in_insert_mode = false
+	vim.g.neovide_cursor_vfx_mode = "pixiedust"
+end
