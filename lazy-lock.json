@@ -10,6 +10,8 @@
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
   "cmp_luasnip": { "branch": "master", "commit": "18095520391186d634a0045dacaa346291096566" },
   "codedark": { "branch": "master", "commit": "080b38a0fd14d14e21cf85fc26b18415303c3c5e" },
+  "colorbuddy.nvim": { "branch": "master", "commit": "cdb5b0654d3cafe61d2a845e15b2b4b0e78e752a" },
+  "complextras.nvim": { "branch": "master", "commit": "2530c83b2da70069994d52d524821870a40ab560" },
   "dashboard-nvim": { "branch": "master", "commit": "6e31bf683a1852399ace9914edfd3aa1be3e5e23" },
   "dracula": { "branch": "main", "commit": "798274ba3c454a9aa3cd71f95a86ea55cbbbb142" },
   "flit.nvim": { "branch": "main", "commit": "4c1739137acd3e7f03e2065a7be8a4dc41c7e461" },
@@ -54,6 +56,6 @@
   "vim-illuminate": { "branch": "master", "commit": "49062ab1dd8fec91833a69f0a1344223dd59d643" },
   "vim-repeat": { "branch": "master", "commit": "24afe922e6a05891756ecf331f39a1f6743d3d5a" },
   "vim-startuptime": { "branch": "master", "commit": "6580cf539c33a212f4f5542068a3b4dd2b3ad834" },
-  "visual_studio_code": { "branch": "master", "commit": "baf5295d12d59a7df62e36d1e8be827e7ecf2a12" },
+  "vscode": { "branch": "master", "commit": "baf5295d12d59a7df62e36d1e8be827e7ecf2a12" },
   "which-key.nvim": { "branch": "main", "commit": "fb027738340502b556c3f43051f113bcaa7e8e63" }
 }

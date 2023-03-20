@@ -122,6 +122,12 @@ return {
 
       require("mason-lspconfig").setup({ ensure_installed = ensure_installed })
       require("mason-lspconfig").setup_handlers({ setup })
+      
+      local updated_capabilities = vim.lsp.protocol.make_client_capabilities()
+
+      -- Completion configuration
+      vim.tbl_deep_extend("force", updated_capabilities, require("cmp_nvim_lsp").default_capabilities())
+      updated_capabilities.textDocument.completion.completionItem.insertReplaceSupport = false
     end,
   },
 

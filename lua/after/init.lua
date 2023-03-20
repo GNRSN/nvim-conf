@@ -1,4 +1,5 @@
-local colorscheme = "codedark"
+require("codex").setup()
+local colorscheme = "codex"
 
 local status_ok, _ = pcall(vim.cmd.colorscheme, colorscheme)
 

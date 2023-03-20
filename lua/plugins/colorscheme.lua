@@ -45,76 +45,74 @@ vim.icons = {
 	},
 }
 
+-- Syntax colors
+-- vscGray = '#808080',
+-- vscViolet = '#646695',
+-- vscBlue = '#569CD6',
+-- vscDarkBlue = '#223E55',
+-- vscMediumBlue = '#18a2fe',
+-- vscLightBlue = '#9CDCFE',
+-- vscGreen = '#6A9955',
+-- vscBlueGreen = '#4EC9B0',
+-- vscLightGreen = '#B5CEA8',
+-- vscRed = '#F44747',
+-- vscOrange = '#CE9178',
+-- vscLightRed = '#D16969',
+-- vscYellowOrange = '#D7BA7D',
+-- vscYellow = '#DCDCAA',
+-- vscPink = '#C586C0',
+
 return {
+	{
+		"tjdevries/colorbuddy.nvim",
+	},
 	{
 		"catppuccin/nvim",
 		lazy = true,
 		name = "catppuccin",
+		flavour = "macchiato",
+
 		opts = {
 			color_overrides = {
 				all = {
-					text = "#cccccc",
+					-- 			text = "#cccccc",
 					base = "#282a36", -- Default bg
 					mantle = "#282a36", -- Darker bg
 					crust = "#282a36", -- Darkest bg
-					surface0 = "#3d3244", -- Darkest comment
-					surface1 = "#3b4055", -- Darker comment
-					surface2 = "#3c6047", -- Default comment
-					rosewater = "#343647", --	Winbar
-					flamingo = "#6801c2", -- Target word
-					pink = "#ff79c6", --	Just pink
-					mauve = "#579cd6", --	Tag const, import, etc
-					red = "#d44c50", --	Error
-					maroon = "#fa6982", --	Lighter red
-					peach = "#9cdcfe", --	Number / variables names, etc
-					yellow = "#45aa96", --	Warning / Classes
-					green = "#e68567", --	Diff add / strings
-					teal = "#808080", --	Hint
-					sky = "#808080", --	Operator
-					sapphire = "#f1f98c", --	Constructor
-					blue = "#808080", --	Diff changed
-					lavender = "#808080", --	CursorLine Nr
-					subtext1 = "#808080", --	Indicator
-					subtext0 = "#808080", --	Float title
-					overlay2 = "#808080", --	Popup fg
-					overlay1 = "#808080", --	Conceal color
-					overlay0 = "#808080", --	Fold color
+					-- 			surface0 = "#3d3244", -- Darkest comment
+					-- 			surface1 = "#3b4055", -- Darker comment
+					-- 			surface2 = "#3c6047", -- Default comment
+					-- 			rosewater = "#343647", --	Winbar
+					-- 			flamingo = "#6801c2", -- Target word
+					-- 			pink = "#ff79c6", --	Just pink
+					-- 			mauve = "#579cd6", --	Tag const, import, etc
+					-- 			red = "#d44c50", --	Error
+					-- 			maroon = "#fa6982", --	Lighter red
+					-- 			peach = "#9cdcfe", --	Number / variables names, etc
+					-- 			yellow = "#45aa96", --	Warning / Classes
+					-- 			green = "#e68567", --	Diff add / strings
+					-- 			teal = "#aa0066", --	Hint
+					-- 			sky = "#ffffff", --	Operator
+					-- 			sapphire = "#f1f98c", --	Constructor
+					-- 			blue = "#DCDCAA", --	Diff changed & JS functions & flolder names in neotree
+					-- 			lavender = "#0451A5", --	CursorLine Nr & keys in lua map
+					-- 			subtext1 = "#ffffff", --	Indicator
+					-- 			subtext0 = "#12aa00", --	Float title
+					-- 			overlay2 = "#aaa0f1", --	Popup fg
+					-- 			overlay1 = "#0f6760", --	Conceal color
+					-- 			overlay0 = "#6A9955", --	Foldcolor & comments
 				},
-				latte = {},
-				frappe = {},
-				macchiato = {},
-				mocha = {},
+				-- 		latte = {},
+				-- 		frappe = {},
+				-- 		macchiato = {},
+				-- 		mocha = {},
 			},
 		},
-	},
-	{
-		"askfiy/visual_studio_code",
-		priority = 1000,
-		config = function()
-			require("visual_studio_code").setup({
-				mode = "dark",
-			})
-
-			require("visual_studio_code.utils").hl.bulk_set({
-				Normal = {
-					--fg = "#cccccc", -- Normal text color
-					bg = "#282a36", -- Background
-				},
-				NormalFloat = { link = "Normal" },
-				Cursor = { bg = "#0FE1EE", bold = true },
-			})
+		custom_highlights = function(colors)
+			return {
+				Comment = { fg = colors.teal },
+				["@comment"] = { fg = colors.sapphire, style = { "italic" } },
+			}
 		end,
 	},
-	{
-		'Yazeed1s/oh-lucy.nvim',
-		name = 'oh-lucy',
-	},
-	{
-		'tomasiser/vim-code-dark',
-		name = 'codedark',
-	},
-	{
-		'Mofiqul/dracula.nvim',
-		name = 'dracula'
-	}
 }

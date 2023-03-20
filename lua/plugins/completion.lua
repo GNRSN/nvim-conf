@@ -4,9 +4,11 @@ return {
 	{ "hrsh7th/cmp-nvim-lua" },
 	{ "hrsh7th/cmp-nvim-lsp" },
 	{ "onsails/lspkind-nvim" },
+  { 'tjdevries/complextras.nvim' },
 	{ "saadparwaiz1/cmp_luasnip", dependencies = { "L3MON4D3/LuaSnip" } },
 	{
 		"hrsh7th/nvim-cmp",
+    -- config from TJ
 		config = function()
 			vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
@@ -17,6 +19,10 @@ return {
 				[[<c-r>=luaeval("require('complextras').complete_matching_line()")<CR>]],
 				{ noremap = true }
 			)
+
+      -- REVIEW: What does this do?
+      -- Don't show the dumb matching stuff.
+      vim.opt.shortmess:append "c"
 
 			vim.api.nvim_set_keymap(
 				"i",
