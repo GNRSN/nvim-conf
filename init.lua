@@ -1,5 +1,3 @@
--- require("lua.config.keymaps")
--- require("lua.config.options")
 
 -- bootstrap lazy-loader
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
