@@ -48,6 +48,7 @@ return {
 			},
 			ensure_installed = {
 				"bash",
+				"css",
 				"help",
 				"html",
 				"gitignore",
@@ -58,6 +59,7 @@ return {
 				"lua",
 				"markdown",
 				"markdown_inline",
+				"prisma",
 				"python",
 				"query",
 				"regex",

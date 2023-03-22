@@ -200,6 +200,9 @@ local function setup(configs)
 		["@typeParameter"] = { fg = colors.cyan },
 		["@decorator"] = { fg = colors.cyan },
 
+		-- JS
+		-- ["@"]
+
 		-- HTML
 		htmlArg = { fg = colors.green },
 		htmlBold = { fg = colors.yellow, bold = true },

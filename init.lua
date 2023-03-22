@@ -1,5 +1,5 @@
-require("core/keymaps")
-require("core/options")
+-- require("lua.config.keymaps")
+-- require("lua.config.options")
 
 -- bootstrap lazy-loader
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -21,7 +21,8 @@ if vim.g.vscode then
 else
 	-- ordinary Neovim
 	-- use lazy-loader
-	require("lazy").setup("plugins")
+    require("lazy").setup("plugins")
+		require("config").setup()
 	require("after")
 end
 
