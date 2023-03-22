@@ -40,9 +40,9 @@ local function setup(configs)
 		Constant = { fg = colors.yellow },
 		String = { fg = colors.yellow },
 		Character = { fg = colors.green },
-		Number = { fg = colors.orange },
+		Number = { fg = colors.blue_light },
 		Boolean = { fg = colors.cyan },
-		Float = { fg = colors.orange },
+		Float = { fg = colors.blue_light },
 		FloatBorder = { fg = colors.white },
 		Operator = { fg = colors.purple },
 		Keyword = { fg = colors.cyan },
@@ -75,29 +75,29 @@ local function setup(configs)
 
 		SignColumn = { bg = colors.bg },
 
-		Conceal = { fg = colors.comment },
+		Conceal = { fg = colors.fade },
 		CursorColumn = { bg = colors.black },
 		CursorLine = { bg = colors.selection },
 		ColorColumn = { bg = colors.selection },
 
 		StatusLine = { fg = colors.white, bg = colors.black },
-		StatusLineNC = { fg = colors.comment },
+		StatusLineNC = { fg = colors.fade },
 		StatusLineTerm = { fg = colors.white, bg = colors.black },
-		StatusLineTermNC = { fg = colors.comment },
+		StatusLineTermNC = { fg = colors.fade },
 
 		Directory = { fg = colors.cyan },
 		DiffAdd = { fg = colors.bg, bg = colors.green },
 		DiffChange = { fg = colors.orange },
 		DiffDelete = { fg = colors.red },
-		DiffText = { fg = colors.comment },
+		DiffText = { fg = colors.fade },
 
 		ErrorMsg = { fg = colors.bright_red },
 		VertSplit = { fg = colors.black },
-		Folded = { fg = colors.comment },
+		Folded = { fg = colors.fade },
 		FoldColumn = {},
 		Search = { fg = colors.black, bg = colors.orange },
-		IncSearch = { fg = colors.orange, bg = colors.comment },
-		LineNr = { fg = colors.comment },
+		IncSearch = { fg = colors.orange, bg = colors.fade },
+		LineNr = { fg = colors.fade },
 		MatchParen = { fg = colors.fg, underline = true },
 		NonText = { fg = colors.nontext },
 		Pmenu = { fg = colors.white, bg = colors.menu },
@@ -114,7 +114,7 @@ local function setup(configs)
 		SpellLocal = { fg = colors.yellow },
 		SpellRare = { fg = colors.yellow },
 
-		TabLine = { fg = colors.comment },
+		TabLine = { fg = colors.fade },
 		TabLineSel = { fg = colors.white },
 		TabLineFill = { bg = colors.bg },
 		Terminal = { fg = colors.white, bg = colors.black },
@@ -123,7 +123,9 @@ local function setup(configs)
 		WarningMsg = { fg = colors.yellow },
 		WildMenu = { fg = colors.black, bg = colors.white },
 
-		EndOfBuffer = endOfBuffer,
+    EndOfBuffer = endOfBuffer,
+		
+		-- lua print(vim.inspect(vim.treesitter.get_captures_at_cursor()))
 
 		-- TreeSitter
 		["@error"] = { fg = colors.bright_red },
@@ -131,49 +133,50 @@ local function setup(configs)
 		["@punctuation.bracket"] = { fg = colors.fg },
 		["@punctuation.special"] = { fg = colors.cyan },
 
-		["@constant"] = { fg = colors.purple },
+		["@constant"] = { fg = colors.blue },
 		["@constant.builtin"] = { fg = colors.purple },
 		["@symbol"] = { fg = colors.purple },
 
 		["@constant.macro"] = { fg = colors.cyan },
 		["@string.regex"] = { fg = colors.red },
-		["@string"] = { fg = colors.yellow },
+		["@string"] = { fg = colors.orange },
 		["@string.escape"] = { fg = colors.cyan },
-		["@character"] = { fg = colors.green },
+		["@character"] = { fg = colors.yellow },
 		["@number"] = { fg = colors.purple },
 		["@boolean"] = { fg = colors.purple },
-		["@float"] = { fg = colors.green },
+		["@float"] = { fg = colors.yellow },
 		["@annotation"] = { fg = colors.yellow },
 		["@attribute"] = { fg = colors.cyan },
-		["@namespace"] = { fg = colors.orange },
+		["@namespace"] = { fg = colors.blue_green },
 
 		["@function.builtin"] = { fg = colors.cyan },
-		["@function"] = { fg = colors.green },
-		["@function.macro"] = { fg = colors.green },
-		["@parameter"] = { fg = colors.orange },
-		["@parameter.reference"] = { fg = colors.orange },
-		["@method"] = { fg = colors.green },
+		["@function"] = { fg = colors.yellow },
+		["@function.macro"] = { fg = colors.yellow },
+		["@parameter"] = { fg = colors.blue_light },
+		["@parameter.reference"] = { fg = colors.blue_light },
+		["@method"] = { fg = colors.yellow },
 		["@field"] = { fg = colors.orange },
-		["@property"] = { fg = colors.purple },
-		["@constructor"] = { fg = colors.cyan },
-
+		["@property"] = { fg = colors.blue_light },
+    ["@constructor"] = { fg = colors.blue_green },
+		
 		["@conditional"] = { fg = colors.pink },
 		["@repeat"] = { fg = colors.pink },
 		["@label"] = { fg = colors.cyan },
 
-		["@keyword"] = { fg = colors.pink },
-		["@keyword.function"] = { fg = colors.cyan },
+		["@keyword"] = { fg = colors.purple },
+		["@keyword.function"] = { fg = colors.blue },
 		["@keyword.operator"] = { fg = colors.pink },
-		["@operator"] = { fg = colors.pink },
-		["@exception"] = { fg = colors.purple },
+		["@kind"] = { fg = colors.blue },
+		["@operator"] = { fg = colors.bright_white },
+		["@exception"] = { fg = colors.red },
 		["@type"] = { fg = colors.bright_cyan },
 		["@type.builtin"] = { fg = colors.cyan, italic = true },
 		["@type.qualifier"] = { fg = colors.pink },
 		["@structure"] = { fg = colors.purple },
-		["@include"] = { fg = colors.pink },
+		["@include"] = { fg = colors.purple },
 
 		["@variable"] = { fg = colors.fg },
-		["@variable.builtin"] = { fg = colors.purple },
+		["@variable.builtin"] = { fg = colors.blue_light },
 
 		["@text"] = { fg = colors.orange },
 		["@text.strong"] = { fg = colors.orange, bold = true }, -- bold
@@ -184,8 +187,8 @@ local function setup(configs)
 		["@text.uri"] = { fg = colors.yellow, italic = true }, -- urls
 		["@text.reference"] = { fg = colors.orange, bold = true },
 
-		["@tag"] = { fg = colors.cyan },
-		["@tag.attribute"] = { fg = colors.green },
+		["@tag"] = { fg = colors.blue },
+		["@tag.attribute"] = { fg = colors.blue_light },
 		["@tag.delimiter"] = { fg = colors.cyan },
 
 		-- Semantic
@@ -196,7 +199,7 @@ local function setup(configs)
 		["@event"] = { fg = colors.cyan },
 		["@interface"] = { fg = colors.cyan },
 		["@modifier"] = { fg = colors.cyan },
-		["@regexp"] = { fg = colors.yellow },
+		["@regexp"] = { fg = colors.bright_red },
 		["@typeParameter"] = { fg = colors.cyan },
 		["@decorator"] = { fg = colors.cyan },
 
@@ -235,7 +238,7 @@ local function setup(configs)
 		markdownH5 = { fg = colors.pink, bold = true },
 		markdownH6 = { fg = colors.pink, bold = true },
 		markdownHeadingDelimiter = { fg = colors.red },
-		markdownHeadingRule = { fg = colors.comment },
+		markdownHeadingRule = { fg = colors.fade },
 		markdownId = { fg = colors.purple },
 		markdownIdDeclaration = { fg = colors.cyan },
 		markdownIdDelimiter = { fg = colors.purple },
@@ -244,7 +247,7 @@ local function setup(configs)
 		markdownLinkText = { fg = colors.pink },
 		markdownListMarker = { fg = colors.cyan },
 		markdownOrderedListMarker = { fg = colors.red },
-		markdownRule = { fg = colors.comment },
+		markdownRule = { fg = colors.fade },
 
 		--  Diff
 		diffAdded = { fg = colors.green },
@@ -267,9 +270,9 @@ local function setup(configs)
 		GitSignsCurrentLineBlame = { fg = colors.white },
 
 		-- Telescope
-		TelescopePromptBorder = { fg = colors.comment },
-		TelescopeResultsBorder = { fg = colors.comment },
-		TelescopePreviewBorder = { fg = colors.comment },
+		TelescopePromptBorder = { fg = colors.fade },
+		TelescopeResultsBorder = { fg = colors.fade },
+		TelescopePreviewBorder = { fg = colors.fade },
 		TelescopeSelection = { fg = colors.white, bg = colors.selection },
 		TelescopeMultiSelection = { fg = colors.purple, bg = colors.selection },
 		TelescopeNormal = { fg = colors.fg, bg = colors.bg },
@@ -285,7 +288,7 @@ local function setup(configs)
 		NvimTreeImageFile = { fg = colors.pink },
 		NvimTreeFolderIcon = { fg = colors.purple },
 		NvimTreeIndentMarker = { fg = colors.nontext },
-		NvimTreeEmptyFolderName = { fg = colors.comment },
+		NvimTreeEmptyFolderName = { fg = colors.fade },
 		NvimTreeFolderName = { fg = colors.fg },
 		NvimTreeSpecialFile = { fg = colors.pink, underline = true },
 		NvimTreeOpenedFolderName = { fg = colors.fg },
@@ -303,7 +306,7 @@ local function setup(configs)
 		NeoTreeGitUntracked = { fg = colors.bright_green },
 		NeoTreeDirectoryIcon = { fg = colors.purple },
 		NeoTreeIndentMarker = { fg = colors.nontext },
-		NeoTreeDotfile = { fg = colors.comment },
+		NeoTreeDotfile = { fg = colors.fade },
 
 		-- Bufferline
 		BufferLineIndicatorSelected = { fg = colors.purple },
@@ -347,19 +350,19 @@ local function setup(configs)
 
 		--LSP Saga
 		LspFloatWinNormal = { fg = colors.fg },
-		LspFloatWinBorder = { fg = colors.comment },
-		LspSagaHoverBorder = { fg = colors.comment },
-		LspSagaSignatureHelpBorder = { fg = colors.comment },
-		LspSagaCodeActionBorder = { fg = colors.comment },
-		LspSagaDefPreviewBorder = { fg = colors.comment },
-		LspLinesDiagBorder = { fg = colors.comment },
-		LspSagaRenameBorder = { fg = colors.comment },
+		LspFloatWinBorder = { fg = colors.fade },
+		LspSagaHoverBorder = { fg = colors.fade },
+		LspSagaSignatureHelpBorder = { fg = colors.fade },
+		LspSagaCodeActionBorder = { fg = colors.fade },
+		LspSagaDefPreviewBorder = { fg = colors.fade },
+		LspLinesDiagBorder = { fg = colors.fade },
+		LspSagaRenameBorder = { fg = colors.fade },
 		LspSagaBorderTitle = { fg = colors.menu },
-		LSPSagaDiagnosticTruncateLine = { fg = colors.comment },
-		LspSagaDiagnosticBorder = { fg = colors.comment },
-		LspSagaShTruncateLine = { fg = colors.comment },
-		LspSagaDocTruncateLine = { fg = colors.comment },
-		LspSagaLspFinderBorder = { fg = colors.comment },
+		LSPSagaDiagnosticTruncateLine = { fg = colors.fade },
+		LspSagaDiagnosticBorder = { fg = colors.fade },
+		LspSagaShTruncateLine = { fg = colors.fade },
+		LspSagaDocTruncateLine = { fg = colors.fade },
+		LspSagaLspFinderBorder = { fg = colors.fade },
 
 		-- IndentBlankLine
 		IndentBlanklineContextChar = { fg = colors.bright_red, nocombine = true },
@@ -438,13 +441,13 @@ local function setup(configs)
 		NavicSeparator = { fg = "gray" },
 
 		-- TS rainbow colors
-		rainbowcol1 = { fg = colors.red },
-		rainbowcol2 = { fg = colors.green },
+		rainbowcol1 = { fg = colors.purple },
+		rainbowcol2 = { fg = colors.blue },
 		rainbowcol3 = { fg = colors.yellow },
 		rainbowcol4 = { fg = colors.purple },
 		rainbowcol5 = { fg = colors.pink },
 		rainbowcol6 = { fg = colors.cyan },
-		rainbowcol7 = { fg = colors.white },
+        rainbowcol7 = { fg = colors.white },
 	}
 end
 
