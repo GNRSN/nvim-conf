@@ -1,5 +1,8 @@
 return {
-  -- lspconfig
+    -- lspconfig
+  {
+    'jose-elias-alvarez/typescript.nvim'
+  },
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
@@ -143,6 +146,7 @@ return {
           -- nls.builtins.formatting.prettierd,
           nls.builtins.formatting.stylua,
           nls.builtins.diagnostics.flake8,
+          require("typescript.extensions.null-ls.code-actions"),
         },
       }
     end,
