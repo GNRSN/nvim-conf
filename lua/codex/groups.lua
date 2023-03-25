@@ -446,10 +446,10 @@ local function setup(configs)
 		-- TS rainbow colors
 		TSRainbowRed = { fg = colors.yellow_sunflower },
 		TSRainbowYellow = { fg = colors.pink },
-		TSRainbowBlue = { fg = colors.blue_medium },
-		TSRainbowOrange = { fg = colors.yellow_sunflower },
+		TSRainbowBlue = { fg = colors.blue },
+		TSRainbowOrange = { fg = colors.pink },
 		TSRainbowGreen = { fg = colors.pink },
-		TSRainbowViolet = { fg = colors.blue_medium },
+		TSRainbowViolet = { fg = colors.pink },
 		TSRainbowCyan = { fg = colors.green },
 	}
 end

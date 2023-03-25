@@ -52,10 +52,20 @@ return {
 				-- colors = {}, -- table of hex strings
         -- termcolors = {} -- table of colour name strings
 				-- query = 'rainbow-parens',
-            },
-						autotag = {
-							enable = true,
-						},
+				hlgroups = {
+					'TSRainbowRed',
+          'TSRainbowYellow',
+					-- I only want two alternating colors I think
+					-- 'TSRainbowBlue',
+					-- 'TSRainbowOrange',
+					-- 'TSRainbowGreen',
+					-- 'TSRainbowViolet',
+					-- 'TSRainbowCyan'
+				},
+			},
+			autotag = {
+				enable = true,
+			},
 			playground = {
 				enable = true,
 				disable = {},
