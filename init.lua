@@ -19,8 +19,8 @@ if vim.g.vscode then
 else
 	-- ordinary Neovim
 	-- use lazy-loader
-    require("lazy").setup("plugins")
-		require("config").setup()
+  require("lazy").setup("plugins")
+	require("config").setup()
 	require("after")
 end
 

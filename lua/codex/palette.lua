@@ -6,7 +6,8 @@ return {
 	comment = "#6A9955",
 	red = "#F44747",
 	orange = "#FFB86C",
-  yellow = "#DCDCAA",
+  yellow = "#F1FA8C",
+  yellow_sunflower = "#FFEA00",
 	yellow_orange = "#D7BA7D",
 	green = "#50fa7b",
 	purple = "#C586C0",
@@ -26,10 +27,11 @@ return {
 	white = "#ABB2BF",
   black = "#191A21",
 	blue = '#569CD6',
-	blue_dark = '#223E55',
+  blue_dark = '#223E55',
+	blue_variable_name = '#33bbff',
 	blue_medium = '#18a2fe',
   blue_light = '#9CDCFE',
-  blue_green = '#4EC9B0',
+  blue_green = '#55DDBB',
 	fade = '#6272A4',
 }
 

@@ -45,22 +45,22 @@ local function setup(configs)
 		Float = { fg = colors.blue_light },
 		FloatBorder = { fg = colors.white },
 		Operator = { fg = colors.purple },
-		Keyword = { fg = colors.cyan },
-		Keywords = { fg = colors.cyan },
-		Identifier = { fg = colors.cyan },
+		--Keyword = { fg = colors.cyan },
+		--Keywords = { fg = colors.cyan },
+		--Identifier = { fg = colors.cyan },
 		Function = { fg = colors.yellow },
-		Statement = { fg = colors.purple },
-		Conditional = { fg = colors.pink },
+    Statement = { fg = colors.purple },
+		Conditional = { fg = colors.purple},
 		Repeat = { fg = colors.pink },
-		Label = { fg = colors.cyan },
+		--Label = { fg = colors.cyan },
 		Exception = { fg = colors.purple },
 		PreProc = { fg = colors.yellow },
 		Include = { fg = colors.purple },
 		Define = { fg = colors.purple },
-		Title = { fg = colors.cyan },
+		--Title = { fg = colors.cyan },
 		Macro = { fg = colors.purple },
-		PreCondit = { fg = colors.cyan },
-		Type = { fg = colors.cyan },
+		--PreCondit = { fg = colors.cyan },
+		--Type = { fg = colors.cyan },
 		StorageClass = { fg = colors.pink },
 		Structure = { fg = colors.yellow },
 		TypeDef = { fg = colors.yellow },
@@ -125,19 +125,17 @@ local function setup(configs)
 
     EndOfBuffer = endOfBuffer,
 		
-		-- lua print(vim.inspect(vim.treesitter.get_captures_at_cursor()))
-
-		-- TreeSitter
+    -- TreeSitter
+		-- The list of capture-groups can  be found at:
+		-- https://github.com/nvim-treesitter/nvim-treesitter/blob/master/CONTRIBUTING.md#parser-configurations
 		["@error"] = { fg = colors.bright_red },
 		["@punctuation.delimiter"] = { fg = colors.fg },
-		["@punctuation.bracket"] = { fg = colors.fg },
-		["@punctuation.special"] = { fg = colors.cyan },
+		["@punctuation.bracket"] = { fg = colors.blue_medium },
+		["@punctuation.special"] = { fg = colors.green },
 
-		["@constant"] = { fg = colors.blue },
-		["@constant.builtin"] = { fg = colors.purple },
 		["@symbol"] = { fg = colors.purple },
 
-		["@constant.macro"] = { fg = colors.cyan },
+		--["@constant.macro"] = { fg = colors.cyan },
 		["@string.regex"] = { fg = colors.red },
 		["@string"] = { fg = colors.orange },
 		["@string.escape"] = { fg = colors.cyan },
@@ -159,24 +157,29 @@ local function setup(configs)
 		["@property"] = { fg = colors.blue_light },
     ["@constructor"] = { fg = colors.blue_green },
 		
-		["@conditional"] = { fg = colors.pink },
+		["@conditional.ternary"] = { fg = colors.bright_yellow },
 		["@repeat"] = { fg = colors.pink },
-		["@label"] = { fg = colors.cyan },
+		--["@label"] = { fg = colors.cyan },
 
-		["@keyword"] = { fg = colors.purple },
+		["@keyword"] = { fg = colors.blue },
 		["@keyword.function"] = { fg = colors.blue },
-		["@keyword.operator"] = { fg = colors.pink },
-		["@kind"] = { fg = colors.blue },
+		["@keyword.return"] = { fg = colors.purple },
+		["@keyword.export"] = { fg = colors.purple },
+		["@keyword.coroutine"] = { fg = colors.purple },
+    ["@keyword.operator"] = { fg = colors.purple },
 		["@operator"] = { fg = colors.bright_white },
 		["@exception"] = { fg = colors.red },
-		["@type"] = { fg = colors.bright_cyan },
+		["@type"] = { fg = colors.blue_green },
 		["@type.builtin"] = { fg = colors.cyan, italic = true },
 		["@type.qualifier"] = { fg = colors.pink },
 		["@structure"] = { fg = colors.purple },
 		["@include"] = { fg = colors.purple },
 
-		["@variable"] = { fg = colors.fg },
-		["@variable.builtin"] = { fg = colors.blue_light },
+		["@variable"] = { fg = colors.blue_variable_name },
+		["@definition"] = { fg = colors.green },
+    ["@variable.builtin"] = { fg = colors.blue_light },
+		["@constant"] = { fg = colors.blue_variable_name },
+		["@constant.builtin"] = { fg = colors.purple },
 
 		["@text"] = { fg = colors.orange },
 		["@text.strong"] = { fg = colors.orange, bold = true }, -- bold
@@ -189,10 +192,10 @@ local function setup(configs)
 
 		["@tag"] = { fg = colors.blue },
 		["@tag.attribute"] = { fg = colors.blue_light },
-		["@tag.delimiter"] = { fg = colors.cyan },
+		["@tag.delimiter"] = { fg = colors.gutter_fg },
 
 		-- Semantic
-		["@class"] = { fg = colors.cyan },
+		["@class"] = { fg = colors.blue_green },
 		["@struct"] = { fg = colors.cyan },
 		["@enum"] = { fg = colors.cyan },
 		["@enumMember"] = { fg = colors.purple },
@@ -200,8 +203,8 @@ local function setup(configs)
 		["@interface"] = { fg = colors.cyan },
 		["@modifier"] = { fg = colors.cyan },
 		["@regexp"] = { fg = colors.bright_red },
-		["@typeParameter"] = { fg = colors.cyan },
-		["@decorator"] = { fg = colors.cyan },
+		["@typeParameter"] = { fg = colors.blue_green },
+		["@decorator"] = { fg = colors.green },
 
 		-- JS
 		-- ["@"]
@@ -441,13 +444,13 @@ local function setup(configs)
 		NavicSeparator = { fg = "gray" },
 
 		-- TS rainbow colors
-		rainbowcol1 = { fg = colors.purple },
-		rainbowcol2 = { fg = colors.blue },
-		rainbowcol3 = { fg = colors.yellow },
-		rainbowcol4 = { fg = colors.purple },
-		rainbowcol5 = { fg = colors.pink },
-		rainbowcol6 = { fg = colors.cyan },
-        rainbowcol7 = { fg = colors.white },
+		TSRainbowRed = { fg = colors.yellow_sunflower },
+		TSRainbowYellow = { fg = colors.pink },
+		TSRainbowBlue = { fg = colors.blue_medium },
+		TSRainbowOrange = { fg = colors.yellow_sunflower },
+		TSRainbowGreen = { fg = colors.pink },
+		TSRainbowViolet = { fg = colors.blue_medium },
+		TSRainbowCyan = { fg = colors.green },
 	}
 end
 

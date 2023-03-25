@@ -4,6 +4,9 @@ return {
 	},
 	{
 		'nvim-treesitter/playground'
+  },
+	{
+		"windwp/nvim-ts-autotag",
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -49,7 +52,10 @@ return {
 				-- colors = {}, -- table of hex strings
         -- termcolors = {} -- table of colour name strings
 				-- query = 'rainbow-parens',
-      },
+            },
+						autotag = {
+							enable = true,
+						},
 			playground = {
 				enable = true,
 				disable = {},
@@ -106,5 +112,13 @@ return {
 		config = function(_, opts)
 			require("nvim-treesitter.configs").setup(opts)
 		end,
+	},
+	{
+		'm-demare/hlargs.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    opts = {
+      highlight = {},
+			color = "#9CDCFE",
+		}
 	},
 }

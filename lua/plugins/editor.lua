@@ -346,7 +346,7 @@ return {
 		opts = {
 			disable_filetype = { "TelescopePrompt" , "vim" },
 		}
-	},
+  },
 
 	{
 		'norcalli/nvim-colorizer.lua',
