@@ -6,19 +6,19 @@ local colors = codex.colors()
 local bg = configs.lualine_bg_color or colors.black
 
 local normal = {
-   a = { fg = colors.black, bg = colors.purple, gui = 'bold' },
-   b = { fg = colors.purple, bg = bg },
-   c = { fg = colors.white, bg = bg },
+   a = { fg = colors.bg, bg = colors.white, gui = 'bold' },
+   b = { fg = colors.white, bg = bg },
+   c = { fg = colors.fg, bg = bg },
 }
 
 local command = {
-   a = { fg = colors.black, bg = colors.cyan, gui = 'bold' },
-   b = { fg = colors.cyan, bg = bg },
+   a = { fg = colors.black, bg = colors.yellow_sunflower, gui = 'bold' },
+   b = { fg = colors.yellow_sunflower, bg = bg },
 }
 
 local visual = {
-   a = { fg = colors.black, bg = colors.pink, gui = 'bold' },
-   b = { fg = colors.pink, bg = bg },
+   a = { fg = colors.black, bg = colors.green, gui = 'bold' },
+   b = { fg = colors.green, bg = bg },
 }
 
 local inactive = {
@@ -27,15 +27,15 @@ local inactive = {
 }
 
 local replace = {
-   a = { fg = colors.black, bg = colors.yellow, gui = 'bold' },
-   b = { fg = colors.yellow, bg = bg },
-   c = { fg = colors.white, bg = bg },
+   a = { fg = colors.black, bg = colors.orange, gui = 'bold' },
+   b = { fg = colors.orange, bg = bg },
+   c = { fg = colors.fg, bg = bg },
 }
 
 local insert = {
-   a = { fg = colors.black, bg = colors.green, gui = 'bold' },
-   b = { fg = colors.green, bg = bg },
-   c = { fg = colors.white, bg = bg },
+   a = { fg = colors.black, bg = colors.blue, gui = 'bold' },
+   b = { fg = colors.blue, bg = bg },
+   c = { fg = colors.fg, bg = bg },
 }
 
 return {
