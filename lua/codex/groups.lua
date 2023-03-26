@@ -450,7 +450,30 @@ local function setup(configs)
 		TSRainbowOrange = { fg = colors.pink },
 		TSRainbowGreen = { fg = colors.pink },
 		TSRainbowViolet = { fg = colors.pink },
-		TSRainbowCyan = { fg = colors.green },
+    TSRainbowCyan = { fg = colors.green },
+		
+		-- Nvim-Scrollbar
+		ScrollbarHandle = { fg = nil, bg = colors.bg },
+		ScrollbarCursorHandle = { fg = colors.gutter_fg, bg = colors.gutter_fg },
+		-- ScrollbarCursor
+		-- ScrollbarSearchHandle
+		-- ScrollbarSearch
+		-- ScrollbarErrorHandle
+		-- ScrollbarError
+		-- ScrollbarWarnHandle
+		-- ScrollbarWarn
+		-- ScrollbarInfoHandle
+		-- ScrollbarInfo
+		-- ScrollbarHintHandle
+		-- ScrollbarHint
+		-- ScrollbarMiscHandle
+		-- ScrollbarMisc
+		-- ScrollbarGitAdd
+		-- ScrollbarGitAddHandle
+		-- ScrollbarGitChange
+		-- ScrollbarGitChangeHandle
+		-- ScrollbarGitDelete
+		-- ScrollbarGitDeleteHandle
 	}
 end
 
