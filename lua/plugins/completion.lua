@@ -4,11 +4,11 @@ return {
 	{ "hrsh7th/cmp-nvim-lua" },
 	{ "hrsh7th/cmp-nvim-lsp" },
 	{ "onsails/lspkind-nvim" },
-  { 'tjdevries/complextras.nvim' },
+	{ "tjdevries/complextras.nvim" },
 	{ "saadparwaiz1/cmp_luasnip", dependencies = { "L3MON4D3/LuaSnip" } },
 	{
 		"hrsh7th/nvim-cmp",
-    -- config from TJ
+		-- config from TJ
 		config = function()
 			vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
@@ -20,9 +20,9 @@ return {
 				{ noremap = true }
 			)
 
-      -- REVIEW: What does this do?
-      -- Don't show the dumb matching stuff.
-      vim.opt.shortmess:append "c"
+			-- REVIEW: What does this do?
+			-- Don't show the dumb matching stuff.
+			vim.opt.shortmess:append("c")
 
 			vim.api.nvim_set_keymap(
 				"i",
@@ -98,20 +98,20 @@ return {
 					-- If you want tab completion :'(
 					--  First you have to just promise to read `:help ins-completion`.
 					--
-					-- ["<Tab>"] = function(fallback)
-					--   if cmp.visible() then
-					--     cmp.select_next_item()
-					--   else
-					--     fallback()
-					--   end
-					-- end,
-					-- ["<S-Tab>"] = function(fallback)
-					--   if cmp.visible() then
-					--     cmp.select_prev_item()
-					--   else
-					--     fallback()
-					--   end
-					-- end,
+					["<Tab>"] = function(fallback)
+						if cmp.visible() then
+							cmp.select_next_item()
+						else
+							fallback()
+						end
+					end,
+					["<S-Tab>"] = function(fallback)
+						if cmp.visible() then
+							cmp.select_prev_item()
+						else
+							fallback()
+						end
+					end,
 				},
 				-- Youtube:
 				--    the order of your sources matter (by default). That gives them priority

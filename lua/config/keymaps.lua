@@ -1,17 +1,14 @@
--- set leader key to space
-vim.g.mapleader = " "
-
 local Util = require("util")
 
 local function map(mode, lhs, rhs, opts)
-  local keys = require("lazy.core.handler").handlers.keys
-  ---@cast keys LazyKeysHandler
-  -- do not create the keymap if a lazy keys handler exists
-  if not keys.active[keys.parse({ lhs, mode = mode }).id] then
-    opts = opts or {}
-    opts.silent = opts.silent ~= false
-    vim.keymap.set(mode, lhs, rhs, opts)
-  end
+	local keys = require("lazy.core.handler").handlers.keys
+	---@cast keys LazyKeysHandler
+	-- do not create the keymap if a lazy keys handler exists
+	if not keys.active[keys.parse({ lhs, mode = mode }).id] then
+		opts = opts or {}
+		opts.silent = opts.silent ~= false
+		vim.keymap.set(mode, lhs, rhs, opts)
+	end
 end
 
 ---------------------
@@ -59,8 +56,8 @@ map("n", "<C-k>", "<C-w>k") --  navigate panes
 -- vim-maximizer
 map("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window maximization
 
--- nvim-tree
-map("n", "<leader>e", ":NvimTreeToggle<CR>") -- toggle file explorer
+-- neotree
+--map("n", "<leader>e", ":Neotree<CR>", { desc = "Toggle" }) -- toggle file explorer
 
 -- telescope
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
@@ -70,14 +67,23 @@ map("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers in cur
 map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
 
 -- telescope git commands
-map("n", "<leader>gc", "<cmd>Telescope git_commits<cr>", { desc = 'list all git commits (use <cr> to checkout) ["gc" for git commits]' })
-map("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>", { desc = 'list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]' })
+map(
+	"n",
+	"<leader>gc",
+	"<cmd>Telescope git_commits<cr>",
+	{ desc = 'list all git commits (use <cr> to checkout) ["gc" for git commits]' }
+)
+map(
+	"n",
+	"<leader>gfc",
+	"<cmd>Telescope git_bcommits<cr>",
+	{ desc = 'list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]' }
+)
 map("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
 map("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
 
 -- restart lsp server
 map("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
-
 
 ----------------------
 -- From Lazyvim
@@ -109,15 +115,15 @@ map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
 -- buffers
 if Util.has("bufferline.nvim") then
-  map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
-  map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
-  map("n", "[b", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
-  map("n", "]b", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
+	map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
+	map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
+	map("n", "[b", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
+	map("n", "]b", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
 else
-  map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
-  map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
-  map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
-  map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
+	map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+	map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
+	map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+	map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
 end
 map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
@@ -128,10 +134,10 @@ map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsea
 -- Clear search, diff update and redraw
 -- taken from runtime/lua/_editor.lua
 map(
-  "n",
-  "<leader>ur",
-  "<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
-  { desc = "Redraw / clear hlsearch / diff update" }
+	"n",
+	"<leader>ur",
+	"<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
+	{ desc = "Redraw / clear hlsearch / diff update" }
 )
 
 map({ "n", "x" }, "gw", "*N", { desc = "Search word under cursor" })
@@ -166,8 +172,8 @@ map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
 map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 
 if not Util.has("trouble.nvim") then
-  map("n", "[q", vim.cmd.cprev, { desc = "Previous quickfix" })
-  map("n", "]q", vim.cmd.cnext, { desc = "Next quickfix" })
+	map("n", "[q", vim.cmd.cprev, { desc = "Previous quickfix" })
+	map("n", "]q", vim.cmd.cnext, { desc = "Next quickfix" })
 end
 
 -- stylua: ignore start

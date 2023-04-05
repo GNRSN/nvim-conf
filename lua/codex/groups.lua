@@ -49,8 +49,8 @@ local function setup(configs)
 		--Keywords = { fg = colors.cyan },
 		--Identifier = { fg = colors.cyan },
 		Function = { fg = colors.yellow },
-    Statement = { fg = colors.purple },
-		Conditional = { fg = colors.purple},
+		Statement = { fg = colors.purple },
+		Conditional = { fg = colors.purple },
 		Repeat = { fg = colors.pink },
 		--Label = { fg = colors.cyan },
 		Exception = { fg = colors.purple },
@@ -123,15 +123,15 @@ local function setup(configs)
 		WarningMsg = { fg = colors.yellow },
 		WildMenu = { fg = colors.black, bg = colors.white },
 
-    EndOfBuffer = endOfBuffer,
-		
-    -- TreeSitter
+		EndOfBuffer = endOfBuffer,
+
+		-- TreeSitter
 		-- The list of capture-groups can  be found at:
 		-- https://github.com/nvim-treesitter/nvim-treesitter/blob/master/CONTRIBUTING.md#parser-configurations
 		["@error"] = { fg = colors.bright_red },
 		["@punctuation.delimiter"] = { fg = colors.fg },
 		["@punctuation.bracket"] = { fg = colors.blue_medium },
-		["@punctuation.special"] = { fg = colors.green },
+		["@punctuation.special"] = { fg = colors.blue },
 
 		["@symbol"] = { fg = colors.purple },
 
@@ -140,8 +140,8 @@ local function setup(configs)
 		["@string"] = { fg = colors.orange },
 		["@string.escape"] = { fg = colors.cyan },
 		["@character"] = { fg = colors.yellow },
-		["@number"] = { fg = colors.purple },
-		["@boolean"] = { fg = colors.purple },
+		["@number"] = { fg = colors.blue_light },
+		["@boolean"] = { fg = colors.blue_medium },
 		["@float"] = { fg = colors.yellow },
 		["@annotation"] = { fg = colors.yellow },
 		["@attribute"] = { fg = colors.cyan },
@@ -153,10 +153,10 @@ local function setup(configs)
 		["@parameter"] = { fg = colors.blue_light },
 		["@parameter.reference"] = { fg = colors.blue_light },
 		["@method"] = { fg = colors.yellow },
-		["@field"] = { fg = colors.orange },
+		["@field"] = { fg = colors.blue_light },
 		["@property"] = { fg = colors.blue_light },
-    ["@constructor"] = { fg = colors.blue_green },
-		
+		["@constructor"] = { fg = colors.blue_green },
+
 		["@conditional.ternary"] = { fg = colors.bright_yellow },
 		["@repeat"] = { fg = colors.pink },
 		--["@label"] = { fg = colors.cyan },
@@ -166,20 +166,17 @@ local function setup(configs)
 		["@keyword.return"] = { fg = colors.purple },
 		["@keyword.export"] = { fg = colors.purple },
 		["@keyword.coroutine"] = { fg = colors.purple },
-    ["@keyword.operator"] = { fg = colors.purple },
+		["@keyword.operator"] = { fg = colors.purple },
 		["@operator"] = { fg = colors.bright_white },
 		["@exception"] = { fg = colors.red },
-		["@type"] = { fg = colors.blue_green },
-		["@type.builtin"] = { fg = colors.cyan, italic = true },
-		["@type.qualifier"] = { fg = colors.pink },
 		["@structure"] = { fg = colors.purple },
 		["@include"] = { fg = colors.purple },
 
 		["@variable"] = { fg = colors.blue_variable_name },
 		["@definition"] = { fg = colors.green },
-    ["@variable.builtin"] = { fg = colors.blue_light },
+		["@variable.builtin"] = { fg = colors.blue_light },
 		["@constant"] = { fg = colors.blue_variable_name },
-		["@constant.builtin"] = { fg = colors.purple },
+		["@constant.builtin"] = { fg = colors.blue_medium },
 
 		["@text"] = { fg = colors.orange },
 		["@text.strong"] = { fg = colors.orange, bold = true }, -- bold
@@ -194,14 +191,18 @@ local function setup(configs)
 		["@tag.attribute"] = { fg = colors.blue_light },
 		["@tag.delimiter"] = { fg = colors.gutter_fg },
 
+		["@type"] = { fg = colors.blue_green },
+		["@type.builtin"] = { fg = colors.blue_green, italic = true },
+		["@type.qualifier"] = { fg = colors.pink },
+
 		-- Semantic
 		["@class"] = { fg = colors.blue_green },
-		["@struct"] = { fg = colors.cyan },
-		["@enum"] = { fg = colors.cyan },
+		["@struct"] = { fg = colors.blue },
+		["@enum"] = { fg = colors.blue },
 		["@enumMember"] = { fg = colors.purple },
-		["@event"] = { fg = colors.cyan },
-		["@interface"] = { fg = colors.cyan },
-		["@modifier"] = { fg = colors.cyan },
+		["@event"] = { fg = colors.blue },
+		["@interface"] = { fg = colors.blue_light },
+		["@modifier"] = { fg = colors.blue },
 		["@regexp"] = { fg = colors.bright_red },
 		["@typeParameter"] = { fg = colors.blue_green },
 		["@decorator"] = { fg = colors.green },
@@ -450,8 +451,8 @@ local function setup(configs)
 		TSRainbowOrange = { fg = colors.pink },
 		TSRainbowGreen = { fg = colors.pink },
 		TSRainbowViolet = { fg = colors.pink },
-    TSRainbowCyan = { fg = colors.green },
-		
+		TSRainbowCyan = { fg = colors.green },
+
 		-- Nvim-Scrollbar
 		ScrollbarHandle = { fg = nil, bg = colors.bg },
 		ScrollbarCursorHandle = { fg = colors.gutter_fg, bg = colors.gutter_fg },

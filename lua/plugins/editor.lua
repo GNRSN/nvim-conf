@@ -125,6 +125,9 @@ return {
 		event = "VeryLazy",
 		opts = {
 			plugins = { spelling = true },
+			triggers_blacklist = {
+				n = { "v" },
+			},
 		},
 		config = function(_, opts)
 			local wk = require("which-key")
@@ -285,8 +288,8 @@ return {
 	},
 
 	{
-		'numToStr/Comment.nvim',
-    opts = {
+		"numToStr/Comment.nvim",
+		opts = {
 			---Add a space b/w comment and the line
 			padding = true,
 			---Whether the cursor should stay at its position
@@ -295,67 +298,67 @@ return {
 			ignore = nil,
 			---LHS of toggle mappings in NORMAL mode
 			toggler = {
-					---Line-comment toggle keymap
-					line = 'gcc',
-					---Block-comment toggle keymap
-					block = 'gbc',
+				---Line-comment toggle keymap
+				line = "gcc",
+				---Block-comment toggle keymap
+				block = "gbc",
 			},
 			---LHS of operator-pending mappings in NORMAL and VISUAL mode
 			opleader = {
-					---Line-comment keymap
-					line = 'gc',
-					---Block-comment keymap
-					block = 'gb',
+				---Line-comment keymap
+				line = "gc",
+				---Block-comment keymap
+				block = "gb",
 			},
 			---LHS of extra mappings
 			extra = {
-					---Add comment on the line above
-					above = 'gcO',
-					---Add comment on the line below
-					below = 'gco',
-					---Add comment at the end of line
-					eol = 'gcA',
+				---Add comment on the line above
+				above = "gcO",
+				---Add comment on the line below
+				below = "gco",
+				---Add comment at the end of line
+				eol = "gcA",
 			},
 			---Enable keybindings
 			---NOTE: If given `false` then the plugin won't create any mappings
 			mappings = {
-					---Operator-pending mapping; `gcc` `gbc` `gc[count]{motion}` `gb[count]{motion}`
-					basic = true,
-					---Extra mapping; `gco`, `gcO`, `gcA`
-					extra = true,
+				---Operator-pending mapping; `gcc` `gbc` `gc[count]{motion}` `gb[count]{motion}`
+				basic = true,
+				---Extra mapping; `gco`, `gcO`, `gcA`
+				extra = true,
 			},
 			---Function to call before (un)comment
 			pre_hook = nil,
 			---Function to call after (un)comment
 			post_hook = nil,
-		}
+		},
 	},
 
-	{ 
-		"lukas-reineke/indent-blankline.nvim", 
+	{
+		"lukas-reineke/indent-blankline.nvim",
 		opts = {
 			show_current_context = true,
 			show_current_context_start = true,
 			use_treesitter = true,
 			use_treesitter_scope = true,
-		}
+		},
 	},
 
 	{
 		"windwp/nvim-autopairs",
 		opts = {
-			disable_filetype = { "TelescopePrompt" , "vim" },
-		}
-  },
-
-	{
-		'norcalli/nvim-colorizer.lua',
+			disable_filetype = { "TelescopePrompt", "vim" },
+		},
 	},
 
-  {
+	{
+		"norcalli/nvim-colorizer.lua",
+	},
+
+	{
 		-- https://github.com/norcalli/nvim-colorizer.lua
-    "norcalli/nvim-terminal.lua",
-    config = function()
+		"norcalli/nvim-terminal.lua",
+		config = function()
 			-- DEFAULT_OPTIONS = {
 			-- 	RGB      = true;         -- #RGB hex codes
 			-- 	RRGGBB   = true;         -- #RRGGBB hex codes
@@ -369,25 +372,25 @@ return {
 			-- 	mode     = 'background'; -- Set the display mode.
 			-- 	}
 
-			require('colorizer').setup {
-				'css';
-				'javascript';
-				'lua';
+			require("colorizer").setup({
+				"css",
+				"javascript",
+				"lua",
 				html = {
-					mode = 'foreground';
+					mode = "foreground",
 				},
-			}
+			})
 
-      require("terminal").setup()
-    end,
-  },
+			require("terminal").setup()
+		end,
+	},
 
 	{
-    "luukvbaal/statuscol.nvim",
-    config = function()
-      require("statuscol").setup {
-        setopt = true,
-      }
-    end,
-  },
+		"luukvbaal/statuscol.nvim",
+		config = function()
+			require("statuscol").setup({
+				setopt = true,
+			})
+		end,
+	},
 }
