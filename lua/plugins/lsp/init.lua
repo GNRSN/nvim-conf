@@ -48,7 +48,11 @@ return {
 						},
 					},
 				},
+				eslint = {},
 				prismals = {},
+				tailwindcss = {},
+				yamlls = {},
+				emmet_ls = { filetypes = { "javascriptreact", "typescriptreact", "html" } },
 			},
 			-- you can do any additional lsp server setup here
 			-- return true if you don't want this server to be setup with lspconfig
@@ -166,10 +170,11 @@ return {
 				"shellcheck",
 				"shfmt",
 				"flake8",
+				"eslint_d",
 			},
 		},
 		---@param opts MasonSettings | {ensure_installed: string[]}
-		config = function(plugin, opts)
+		config = function(_, opts)
 			require("mason").setup(opts)
 			local mr = require("mason-registry")
 			for _, tool in ipairs(opts.ensure_installed) do
