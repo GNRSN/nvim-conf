@@ -52,7 +52,18 @@ return {
 				prismals = {},
 				tailwindcss = {},
 				yamlls = {},
-				emmet_ls = { filetypes = { "javascriptreact", "typescriptreact", "html" } },
+				emmet_ls = {
+					filetypes = {
+						"javascriptreact",
+						"typescriptreact",
+						"html",
+						-- Unsure of what the effects are when using in scss?
+						"scss",
+						-- I dont see why not to add these two
+						"svelte",
+						"vue",
+					},
+				},
 			},
 			-- you can do any additional lsp server setup here
 			-- return true if you don't want this server to be setup with lspconfig
