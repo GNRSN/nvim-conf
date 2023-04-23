@@ -51,7 +51,7 @@ return {
 					["<C-d>"] = cmp.mapping.scroll_docs(-4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
 					["<C-e>"] = cmp.mapping.abort(),
-					["<c-y>"] = cmp.mapping(
+					["<c-i>"] = cmp.mapping(
 						cmp.mapping.confirm({
 							behavior = cmp.ConfirmBehavior.Insert,
 							select = true,
@@ -98,20 +98,20 @@ return {
 					-- If you want tab completion :'(
 					--  First you have to just promise to read `:help ins-completion`.
 					--
-					["<Tab>"] = function(fallback)
-						if cmp.visible() then
-							cmp.select_next_item()
-						else
-							fallback()
-						end
-					end,
-					["<S-Tab>"] = function(fallback)
-						if cmp.visible() then
-							cmp.select_prev_item()
-						else
-							fallback()
-						end
-					end,
+					-- ["<Tab>"] = function(fallback)
+					-- 	if cmp.visible() then
+					-- 		cmp.select_next_item()
+					-- 	else
+					-- 		fallback()
+					-- 	end
+					-- end,
+					-- ["<S-Tab>"] = function(fallback)
+					-- 	if cmp.visible() then
+					-- 		cmp.select_prev_item()
+					-- 	else
+					-- 		fallback()
+					-- 	end
+					-- end,
 				},
 				-- Youtube:
 				--    the order of your sources matter (by default). That gives them priority
