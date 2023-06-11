@@ -1,21 +1,22 @@
 local Util = require("util")
 
 return {
-  -- fuzzy finder
+	-- fuzzy finder
 	{
 		"nvim-telescope/telescope.nvim",
-    priority = 100,
+		priority = 100,
 		cmd = "Telescope",
 		version = false, -- telescope did only one release, so use HEAD for now
 		keys = {
 			{ "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
 			{ "<leader>/", Util.telescope("live_grep"), desc = "Find in Files (Grep)" },
 			{ "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
-			{ "<leader><space>", Util.telescope("files"), desc = "Find Files (root dir)" },
+			{ "<leader><space>", Util.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
 			-- find
 			{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
 			{ "<leader>ff", Util.telescope("files"), desc = "Find Files (root dir)" },
 			{ "<leader>fF", Util.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
+			{ "<leader>F", Util.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
 			{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
 			-- git
 			{ "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
@@ -43,7 +44,7 @@ return {
 				desc = "Colorscheme with preview",
 			},
 			{
-				"<leader>ss",
+				"<leader>fSs",
 				Util.telescope("lsp_document_symbols", {
 					symbols = {
 						"Class",
@@ -61,7 +62,7 @@ return {
 				desc = "Goto Symbol",
 			},
 			{
-				"<leader>sS",
+				"<leader>fSS",
 				Util.telescope("lsp_workspace_symbols", {
 					symbols = {
 						"Class",
@@ -117,62 +118,61 @@ return {
 					},
 				},
 			},
-      extensions = {
-        fzy_native = {
-          override_generic_sorter = true,
-          override_file_sorter = true,
-        },
-    
-        fzf_writer = {
-          use_highlighter = false,
-          minimum_grep_characters = 6,
-        },
-    
-        hop = {
-          -- keys define your hop keys in order; defaults to roughly lower- and uppercased home row
-          keys = { "a", "s", "d", "f", "g", "h", "j", "k", "l", ";" }, -- ... and more
-    
-          -- Highlight groups to link to signs and lines; the below configuration refers to demo
-          -- sign_hl typically only defines foreground to possibly be combined with line_hl
-          sign_hl = { "WarningMsg", "Title" },
-    
-          -- optional, typically a table of two highlight groups that are alternated between
-          line_hl = { "CursorLine", "Normal" },
-    
-          -- options specific to `hop_loop`
-          -- true temporarily disables Telescope selection highlighting
-          clear_selection_hl = false,
-          -- highlight hopped to entry with telescope selection highlight
-          -- note: mutually exclusive with `clear_selection_hl`
-          trace_entry = true,
-          -- jump to entry where hoop loop was started from
-          reset_selection = true,
-        },
-    
-        -- ["ui-select"] = {
-        --   require("telescope.themes").get_dropdown {
-        --     -- even more opts
-        --   },
-        -- },
-  
-      },
+			extensions = {
+				fzy_native = {
+					override_generic_sorter = true,
+					override_file_sorter = true,
+				},
+
+				fzf_writer = {
+					use_highlighter = false,
+					minimum_grep_characters = 6,
+				},
+
+				hop = {
+					-- keys define your hop keys in order; defaults to roughly lower- and uppercased home row
+					keys = { "a", "s", "d", "f", "g", "h", "j", "k", "l", ";" }, -- ... and more
+
+					-- Highlight groups to link to signs and lines; the below configuration refers to demo
+					-- sign_hl typically only defines foreground to possibly be combined with line_hl
+					sign_hl = { "WarningMsg", "Title" },
+
+					-- optional, typically a table of two highlight groups that are alternated between
+					line_hl = { "CursorLine", "Normal" },
+
+					-- options specific to `hop_loop`
+					-- true temporarily disables Telescope selection highlighting
+					clear_selection_hl = false,
+					-- highlight hopped to entry with telescope selection highlight
+					-- note: mutually exclusive with `clear_selection_hl`
+					trace_entry = true,
+					-- jump to entry where hoop loop was started from
+					reset_selection = true,
+				},
+
+				-- ["ui-select"] = {
+				--   require("telescope.themes").get_dropdown {
+				--     -- even more opts
+				--   },
+				-- },
+			},
 		},
 	},
-  "nvim-telescope/telescope-file-browser.nvim",
-  "nvim-telescope/telescope-hop.nvim",
-  "nvim-telescope/telescope-ui-select.nvim",
-  {
-    "ThePrimeagen/git-worktree.nvim",
-    config = function()
-      require("git-worktree").setup {}
-    end,
-  },
-  {
-    "AckslD/nvim-neoclip.lua",
-    config = function()
-      require("neoclip").setup()
-    end,
-  },
+	"nvim-telescope/telescope-file-browser.nvim",
+	"nvim-telescope/telescope-hop.nvim",
+	"nvim-telescope/telescope-ui-select.nvim",
+	{
+		"ThePrimeagen/git-worktree.nvim",
+		config = function()
+			require("git-worktree").setup({})
+		end,
+	},
+	{
+		"AckslD/nvim-neoclip.lua",
+		config = function()
+			require("neoclip").setup()
+		end,
+	},
 }
 
 -- _ = require("telescope").load_extension "dap"
