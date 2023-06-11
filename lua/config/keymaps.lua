@@ -29,10 +29,10 @@ map("n", "<leader>+", "<C-a>") -- increment
 map("n", "<leader>-", "<C-x>") -- decrement
 
 -- window management
-map("n", "<leader>sv", "<C-w>v") -- split window vertically
-map("n", "<leader>sh", "<C-w>s") -- split window horizontally
-map("n", "<leader>se", "<C-w>=") -- make split windows equal width & height
-map("n", "<leader>sx", ":close<CR>") -- close current split window
+map("n", "<leader>Sv", "<C-w>v", { desc = "split vertically" }) -- split window vertically
+map("n", "<leader>Sh", "<C-w>s", { desc = "split horizontally" }) -- split window horizontally
+map("n", "<leader>Se", "<C-w>=", { desc = "make split windows equal width & height" }) -- make split windows equal width & height
+map("n", "<leader>Sq", ":close<CR>", { desc = "close current split window" }) -- close current split window
 
 map("n", "<leader>to", ":tabnew<CR>") -- open new tab
 map("n", "<leader>tx", ":tabclose<CR>") -- close current tab
@@ -159,8 +159,8 @@ map("i", ";", ";<c-g>u")
 map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
 
 -- better indenting
-map("v", "<", "<gv")
-map("v", ">", ">gv")
+map("v", "<S-<tab>>", "<gv")
+map("v", "<tab>", ">gv")
 
 -- lazy
 map("n", "<leader>l", "<cmd>:Lazy<cr>", { desc = "Lazy" })
