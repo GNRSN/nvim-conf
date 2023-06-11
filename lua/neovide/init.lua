@@ -25,6 +25,9 @@ if config.transparency then
 	vim.g.neovide_background_color = "#282A36" .. get_alpha()
 	vim.g.neovide_floating_blur_amount_x = 4.0
 	vim.g.neovide_floating_blur_amount_y = 4.0
+else
+	vim.g.neovide_background_color = "#282A36"
+	vim.api.nvim_set_hl(0, "Normal", { bg = "#22232A" })
 end
 
 -- set scaling and add keymaps for updating
