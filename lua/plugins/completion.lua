@@ -7,6 +7,10 @@ return {
 	{ "tjdevries/complextras.nvim" },
 	{ "saadparwaiz1/cmp_luasnip", dependencies = { "L3MON4D3/LuaSnip" } },
 	{
+		"David-Kunz/cmp-npm",
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
+	{
 		"hrsh7th/nvim-cmp",
 		-- config from TJ
 		config = function()
@@ -124,6 +128,7 @@ return {
 					{ name = "nvim_lua" },
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
+					{ name = "npm", keyword_length = 3 },
 					-- { name = "copilot" },
 				}, {
 					{ name = "path" },
