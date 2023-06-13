@@ -2,9 +2,9 @@ return {
 	{
 		"HiPhish/nvim-ts-rainbow2",
 	},
-	-- {
-	-- 	"nvim-treesitter/playground",
-	-- },
+	{
+		"nvim-treesitter/playground",
+	},
 	{
 		"windwp/nvim-ts-autotag",
 	},

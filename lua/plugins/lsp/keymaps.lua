@@ -35,8 +35,8 @@ function M.get()
       { "<leader>cr", "<cmd>Lspsaga rename<CR>", desc = "Rename", has = "rename" },
       { "<leader>cR", "<cmd>Lspsaga rename ++project<CR>", desc = "Rename (project)", has = "rename" },
       { "<leader>o", vim.lsp.buf.code_action, desc = "Document outline" },
-      
-      { "<leader>cl", "vim.treesitter.inspect_tree()", desc = "Treesitter inspect_tree" },
+      { "<leader>cl", "<cmd>InspectTree<CR>", desc = "Treesitter inspect_tree" },
+      { "<leader>cp", "<cmd>TSPlayground<CR>", desc = "Treesitter toggle playground" },
     }
 	end
 	return M._keys
