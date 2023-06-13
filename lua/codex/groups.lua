@@ -125,7 +125,7 @@ local function setup(configs)
 
 		EndOfBuffer = endOfBuffer,
 
-		DiagnosticUnnecessary = { fg = colors.gutter_fg },
+		DiagnosticUnnecessary = { fg = colors.fade },
 
 		-- TreeSitter
 		-- The list of capture-groups can  be found at:
