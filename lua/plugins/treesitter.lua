@@ -2,9 +2,9 @@ return {
 	{
 		"HiPhish/nvim-ts-rainbow2",
 	},
-	{
-		'nvim-treesitter/playground'
-  },
+	-- {
+	-- 	"nvim-treesitter/playground",
+	-- },
 	{
 		"windwp/nvim-ts-autotag",
 	},
@@ -44,25 +44,25 @@ return {
 			highlight = { enable = true },
 			indent = { enable = true, disable = { "python" } },
 			context_commentstring = { enable = true, enable_autocmd = false },
-			rainbow = {
-				enable = true,
-				-- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
-				extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-				max_file_lines = nil, -- Do not enable for files with more than n lines, int
-				-- colors = {}, -- table of hex strings
-        -- termcolors = {} -- table of colour name strings
-				-- query = 'rainbow-parens',
-				hlgroups = {
-					'TSRainbowRed',
-          'TSRainbowYellow',
-					-- I only want two alternating colors I think
-					-- 'TSRainbowBlue',
-					-- 'TSRainbowOrange',
-					-- 'TSRainbowGreen',
-					-- 'TSRainbowViolet',
-					-- 'TSRainbowCyan'
-				},
-			},
+			-- rainbow = {
+			-- 	enable = false,
+			-- 	-- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+			-- 	extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+			-- 	max_file_lines = nil, -- Do not enable for files with more than n lines, int
+			-- 	-- colors = {}, -- table of hex strings
+			-- 	-- termcolors = {} -- table of colour name strings
+			-- 	-- query = 'rainbow-parens',
+			-- 	hlgroups = {
+			-- 		"TSRainbowRed",
+			-- 		"TSRainbowYellow",
+			-- 		-- I only want two alternating colors I think
+			-- 		-- 'TSRainbowBlue',
+			-- 		-- 'TSRainbowOrange',
+			-- 		-- 'TSRainbowGreen',
+			-- 		-- 'TSRainbowViolet',
+			-- 		-- 'TSRainbowCyan'
+			-- 	},
+			-- },
 			autotag = {
 				enable = true,
 			},
@@ -72,16 +72,16 @@ return {
 				updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
 				persist_queries = false, -- Whether the query persists across vim sessions
 				keybindings = {
-					toggle_query_editor = 'o',
-					toggle_hl_groups = 'i',
-					toggle_injected_languages = 't',
-					toggle_anonymous_nodes = 'a',
-					toggle_language_display = 'I',
-					focus_language = 'f',
-					unfocus_language = 'F',
-					update = 'R',
-					goto_node = '<cr>',
-					show_help = '?',
+					toggle_query_editor = "o",
+					toggle_hl_groups = "i",
+					toggle_injected_languages = "t",
+					toggle_anonymous_nodes = "a",
+					toggle_language_display = "I",
+					focus_language = "f",
+					unfocus_language = "F",
+					update = "R",
+					goto_node = "<cr>",
+					show_help = "?",
 				},
 			},
 			ensure_installed = {
@@ -124,11 +124,11 @@ return {
 		end,
 	},
 	{
-		'm-demare/hlargs.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    opts = {
-      highlight = {},
+		"m-demare/hlargs.nvim",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		opts = {
+			highlight = {},
 			color = "#9CDCFE",
-		}
+		},
 	},
 }
