@@ -201,7 +201,17 @@ return {
 		"glepnir/lspsaga.nvim",
 		event = "BufRead",
 		config = function()
-			require("lspsaga").setup({})
+			require("lspsaga").setup({
+				lightbulb = {
+					enable = false,
+				},
+				code_action = {
+					show_server_name = true,
+				},
+				rename = {
+					quit = "q",
+				},
+			})
 		end,
 		dependencies = {
 			{ "nvim-tree/nvim-web-devicons" },
