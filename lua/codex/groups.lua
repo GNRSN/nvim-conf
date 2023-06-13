@@ -125,6 +125,8 @@ local function setup(configs)
 
 		EndOfBuffer = endOfBuffer,
 
+		DiagnosticUnnecessary = { fg = colors.gutter_fg },
+
 		-- TreeSitter
 		-- The list of capture-groups can  be found at:
 		-- https://github.com/nvim-treesitter/nvim-treesitter/blob/master/CONTRIBUTING.md#parser-configurations
@@ -207,6 +209,26 @@ local function setup(configs)
 		["@typeParameter"] = { fg = colors.blue_green },
 		["@decorator"] = { fg = colors.green },
 
+		-- LSP Semantic tokens
+		-- @see https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_semanticTokens
+
+		["@lsp.type.class"] = {},
+		["@lsp.type.decorator"] = { fg = colors.red },
+		["@lsp.type.enum"] = { fg = colors.red },
+		["@lsp.type.enumMember"] = { fg = colors.red },
+		["@lsp.type.function"] = { fg = colors.yellow },
+		["@lsp.type.interface"] = { fg = colors.blue_green },
+		["@lsp.type.macro"] = { fg = colors.red },
+		["@lsp.type.method"] = { fg = colors.yellow },
+		["@lsp.type.namespace"] = { fg = colors.blue_green },
+		["@lsp.type.parameter"] = { fg = colors.red },
+		["@lsp.type.property"] = { fg = colors.blue_light },
+		["@lsp.type.struct"] = { fg = colors.red },
+		["@lsp.type.type"] = { fg = colors.blue_green },
+		["@lsp.type.typeParameter"] = { fg = colors.red },
+		["@lsp.type.variable"] = {},
+
+		["@lsp.mod.deprecated"] = { strikethrough = true },
 		-- JS
 		-- ["@"]
 
