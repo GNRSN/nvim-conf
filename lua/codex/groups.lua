@@ -167,6 +167,7 @@ local function setup(configs)
 		["@keyword.function"] = { fg = colors.blue },
 		["@keyword.return"] = { fg = colors.purple },
 		["@keyword.export"] = { fg = colors.purple },
+		["@export"] = { fg = colors.purple },
 		["@keyword.coroutine"] = { fg = colors.purple },
 		["@keyword.operator"] = { fg = colors.purple },
 		["@operator"] = { fg = colors.bright_white },
