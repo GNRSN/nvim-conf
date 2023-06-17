@@ -75,11 +75,11 @@ return {
 					return true
 				end,
 				-- Specify * to use this function as a fallback for any server
-				["*"] = function(server, opts) end,
+				["*"] = function(_, _) end,
 			},
 		},
 		---@param opts PluginLspOpts
-		config = function(plugin, opts)
+		config = function(_, opts)
 			-- setup autoformat
 			require("plugins.lsp.format").autoformat = opts.autoformat
 			-- setup formatting and keymaps
@@ -207,9 +207,13 @@ return {
 				},
 				code_action = {
 					show_server_name = true,
+					extend_gitsigns = true,
 				},
 				rename = {
 					quit = "q",
+				},
+				ui = {
+					title = false,
 				},
 			})
 		end,
