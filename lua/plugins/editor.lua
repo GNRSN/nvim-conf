@@ -88,6 +88,8 @@ return {
 		end,
 	},
 
+	-- vim fugitive git controller
+	{ "tpope/vim-fugitive" },
 	-- easily jump to any location and enhanced f/t motions for Leap
 	{
 		"ggandor/flit.nvim",
