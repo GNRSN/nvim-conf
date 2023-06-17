@@ -15,9 +15,6 @@ end
 -- General Keymaps
 ---------------------
 
--- use jk to exit insert mode
-map("i", "jk", "<ESC>")
-
 -- clear search highlights
 map("n", "<leader>nh", ":nohl<CR>")
 
@@ -69,17 +66,17 @@ map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help ta
 -- telescope git commands
 map(
 	"n",
-	"<leader>gc",
+	"<leader>gC",
 	"<cmd>Telescope git_commits<cr>",
 	{ desc = 'list all git commits (use <cr> to checkout) ["gc" for git commits]' }
 )
 map(
 	"n",
-	"<leader>gfc",
+	"<leader>gfC",
 	"<cmd>Telescope git_bcommits<cr>",
 	{ desc = 'list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]' }
 )
-map("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
+map("n", "<leader>gB", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
 map("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
 
 -- restart lsp server
