@@ -77,6 +77,7 @@ map(
 	{ desc = 'list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]' }
 )
 map("n", "<leader>gB", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
+map("n", "<leader>gb", "<cmd>Git blame<cr>") -- Open blame window
 map("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
 
 -- restart lsp server
