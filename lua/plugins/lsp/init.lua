@@ -215,6 +215,9 @@ return {
 				ui = {
 					title = false,
 				},
+				symbol_in_winbar = {
+					enable = false,
+				},
 			})
 		end,
 		dependencies = {
