@@ -152,6 +152,7 @@ return {
 				["<leader>u"] = { name = "+ui" },
 				["<leader>w"] = { name = "+windows" },
 				["<leader>x"] = { name = "+diagnostics/quickfix" },
+				["<leader>h"] = { name = "+Harpoon" },
 			}
 			if Util.has("noice.nvim") then
 				keymaps["<leader>sn"] = { name = "+noice" }
