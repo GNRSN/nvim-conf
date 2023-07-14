@@ -222,7 +222,7 @@ local function setup(configs)
 		["@lsp.type.macro"] = { fg = colors.red },
 		["@lsp.type.method"] = { fg = colors.yellow },
 		["@lsp.type.namespace"] = { fg = colors.blue_green },
-		["@lsp.type.parameter"] = { fg = colors.red },
+		["@lsp.type.parameter"] = { fg = colors.blue_light },
 		["@lsp.type.property"] = { fg = colors.blue_light },
 		["@lsp.type.struct"] = { fg = colors.red },
 		["@lsp.type.type"] = { fg = colors.blue_green },
