@@ -467,14 +467,10 @@ local function setup(configs)
 		NavicText = { fg = "gray" },
 		NavicSeparator = { fg = "gray" },
 
-		-- TS rainbow colors
-		TSRainbowRed = { fg = colors.yellow_sunflower },
-		TSRainbowYellow = { fg = colors.pink },
-		TSRainbowBlue = { fg = colors.blue },
-		TSRainbowOrange = { fg = colors.pink },
-		TSRainbowGreen = { fg = colors.pink },
-		TSRainbowViolet = { fg = colors.pink },
-		TSRainbowCyan = { fg = colors.green },
+		-- TS rainbow delimiter colors
+		RainbowDelimiterYellow = { fg = colors.yellow_sunflower },
+		RainbowDelimiterViolet = { fg = colors.pink },
+		RainbowDelimiterBlue = { fg = colors.blue },
 
 		-- Nvim-Scrollbar
 		ScrollbarHandle = { fg = nil, bg = colors.bg },
