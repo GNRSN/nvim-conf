@@ -329,16 +329,11 @@ local function setup(configs)
 		NeoTreeNormalNC = { fg = colors.fg, bg = colors.menu },
 		NeoTreeDirectoryName = { fg = colors.fg },
 		NeoTreeGitUnstaged = { fg = colors.bright_magenta },
-		NeoTreeGitModified = { fg = colors.bright_magenta },
+		NeoTreeGitModified = { fg = colors.yellow_sunflower },
 		NeoTreeGitUntracked = { fg = colors.bright_green },
-		NeoTreeDirectoryIcon = { fg = colors.purple },
-		NeoTreeIndentMarker = { fg = colors.nontext },
+		NeoTreeDirectoryIcon = { fg = colors.yellow_orange },
+		NeoTreeIndentMarker = { fg = colors.fade },
 		NeoTreeDotfile = { fg = colors.fade },
-
-		-- Bufferline
-		BufferLineIndicatorSelected = { fg = colors.purple },
-		BufferLineFill = { bg = colors.black },
-		BufferLineBufferSelected = { bg = colors.bg },
 
 		-- LSP
 		DiagnosticError = { fg = colors.red },
