@@ -112,56 +112,77 @@ remap(
 
 remap(
 	"n",
-	"<leader>ha",
+	"<leader>hm",
 	"<Cmd>call VSCodeNotify('vscode-harpoon.addEditor')<CR>",
 	{ noremap = true, desc = "Harpoon: Mark file" }
 )
 
 remap(
 	"n",
-	"<leader>he",
+	"<leader>hl",
 	"<Cmd>call VSCodeNotify('vscode-harpoon.editEditors')<CR>",
 	{ noremap = true, desc = "Harpoon: Edit" }
 )
 
 remap(
 	"n",
-	"<leader>hh",
+	"<leader>hq",
 	"<Cmd>call VSCodeNotify('vscode-harpoon.editorQuickPick')<CR>",
 	{ noremap = true, desc = "Harpoon: Quick pick" }
 )
 
 remap(
 	"n",
-	"<leader>h1",
+	"<leader>1",
 	"<Cmd>call VSCodeNotify('vscode-harpoon.gotoEditor1')<CR>",
 	{ noremap = true, desc = "Harpoon: Editor 1" }
 )
 
 remap(
 	"n",
-	"<leader>h2",
+	"<leader>2",
 	"<Cmd>call VSCodeNotify('vscode-harpoon.gotoEditor2')<CR>",
 	{ noremap = true, desc = "Harpoon: Editor 2" }
 )
 
 remap(
 	"n",
-	"<leader>h3",
+	"<leader>3",
 	"<Cmd>call VSCodeNotify('vscode-harpoon.gotoEditor3')<CR>",
 	{ noremap = true, desc = "Harpoon: Editor 3" }
 )
 
 remap(
 	"n",
-	"<leader>h4",
+	"<leader>4",
 	"<Cmd>call VSCodeNotify('vscode-harpoon.gotoEditor4')<CR>",
 	{ noremap = true, desc = "Harpoon: Editor 4" }
 )
 
 remap(
 	"n",
-	"<leader>h5",
+	"<leader>5",
 	"<Cmd>call VSCodeNotify('vscode-harpoon.gotoEditor5')<CR>",
 	{ noremap = true, desc = "Harpoon: Editor 5" }
+)
+
+remap(
+	"n",
+	"<leader>6",
+	"<Cmd>call VSCodeNotify('vscode-harpoon.gotoEditor6')<CR>",
+	{ noremap = true, desc = "Harpoon: Editor 6" }
+)
+
+remap(
+	"n",
+	"<leader>7",
+	"<Cmd>call VSCodeNotify('vscode-harpoon.gotoEditor7')<CR>",
+	{ noremap = true, desc = "Harpoon: Editor 7" }
+)
+
+remap(
+	"n",
+	"<leader>8",
+	"<Cmd>call VSCodeNotify('vscode-harpoon.gotoEditor8')<CR>",
+	{ noremap = true, desc = "Harpoon: Editor 8" }
 )
