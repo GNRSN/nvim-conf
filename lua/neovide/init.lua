@@ -1,5 +1,5 @@
 local config = {
-	transparency = false,
+	transparency = true,
 }
 
 local colors = require("codex.palette")
@@ -23,8 +23,8 @@ end
 -- DOCS: g:neovide_transparency should be 0 if you want to unify transparency of content and title bar.
 if config.transparency then
 	vim.g.neovide_transparency = 0.0
-	vim.g.transparency = 0.90
-	vim.g.neovide_background_color = colors.bg .. get_alpha()
+	vim.g.transparency = 0.8
+	vim.g.neovide_background_color = "#000000" .. get_alpha() -- colors.bg .. get_alpha()
 	vim.g.neovide_floating_blur_amount_x = 4.0
 	vim.g.neovide_floating_blur_amount_y = 4.0
 else
@@ -34,15 +34,15 @@ else
 end
 
 -- set scaling and add keymaps for updating
-vim.g.neovide_scale_factor = 1.0
+vim.g.neovide_scale_factor = 0.9
 local change_scale_factor = function(delta)
 	vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
 end
 vim.keymap.set("n", "<C-+>", function()
-	change_scale_factor(1.15)
+	change_scale_factor(1.05)
 end)
 vim.keymap.set("n", "<C-->", function()
-	change_scale_factor(1 / 1.15)
+	change_scale_factor(1 / 1.05)
 end)
 
 -- setup copy paste to clipboard with cmd+c
