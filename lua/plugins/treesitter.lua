@@ -13,6 +13,8 @@ return {
 				query = {
 					[""] = "rainbow-delimiters",
 					lua = "rainbow-blocks",
+					javascript = "rainbow-parens",
+					tsx = "rainbow-parens",
 				},
 				highlight = {
 					"RainbowDelimiterBlue",
@@ -64,25 +66,6 @@ return {
 			highlight = { enable = true },
 			indent = { enable = true, disable = { "python" } },
 			context_commentstring = { enable = true, enable_autocmd = false },
-			rainbow = {
-				enable = true,
-				-- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
-				extended_mode = false, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-				max_file_lines = 10000, -- Do not enable for files with more than n lines, int
-				-- colors = {}, -- table of hex strings
-				-- termcolors = {} -- table of colour name strings
-				query = "rainbow-parens",
-				hlgroups = {
-					"TSRainbowRed",
-					"TSRainbowYellow",
-					-- I only want two alternating colors I think
-					-- 'TSRainbowBlue',
-					-- 'TSRainbowOrange',
-					-- 'TSRainbowGreen',
-					-- 'TSRainbowViolet',
-					-- 'TSRainbowCyan'
-				},
-			},
 			autotag = {
 				enable = true,
 			},
