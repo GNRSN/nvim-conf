@@ -65,8 +65,6 @@ local DEFAULT_CONFIG = {
 local TRANSPARENTS = {
 	"Normal",
 	"SignColumn",
-	"NvimTreeNormal",
-  "NvimTreeVertSplit",
 	"NeoTreeNormal",
 	"NeoTreeNormalNC",
 }

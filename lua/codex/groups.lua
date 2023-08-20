@@ -171,7 +171,7 @@ local function setup(configs)
 		["@keyword.coroutine"] = { fg = colors.purple },
 		["@keyword.operator"] = { fg = colors.purple },
 		["@operator"] = { fg = colors.bright_white },
-		["@exception"] = { fg = colors.red },
+		["@exception"] = { fg = colors.yellow_orange },
 		["@structure"] = { fg = colors.purple },
 		["@include"] = { fg = colors.purple },
 
@@ -192,7 +192,7 @@ local function setup(configs)
 
 		["@tag"] = { fg = colors.blue },
 		["@tag.attribute"] = { fg = colors.blue_light },
-		["@tag.delimiter"] = { fg = colors.gutter_fg },
+		["@tag.delimiter"] = { fg = "#777777" },
 
 		["@type"] = { fg = colors.blue_green },
 		["@type.builtin"] = { fg = colors.blue_green, italic = true },
@@ -213,7 +213,7 @@ local function setup(configs)
 		-- LSP Semantic tokens
 		-- @see https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_semanticTokens
 
-		["@lsp.type.class"] = {},
+		["@lsp.type.class"] = { fg = colors.blue_green },
 		["@lsp.type.decorator"] = { fg = colors.red },
 		["@lsp.type.enum"] = { fg = colors.red },
 		["@lsp.type.enumMember"] = { fg = colors.red },
@@ -306,34 +306,17 @@ local function setup(configs)
 		TelescopeMatching = { fg = colors.green },
 		TelescopePromptPrefix = { fg = colors.purple },
 
-		-- NvimTree
-		NvimTreeNormal = { fg = colors.fg, bg = colors.menu },
-		NvimTreeVertSplit = { fg = colors.bg, bg = colors.bg },
-		NvimTreeRootFolder = { fg = colors.fg, bold = true },
-		NvimTreeGitDirty = { fg = colors.yellow },
-		NvimTreeGitNew = { fg = colors.bright_green },
-		NvimTreeImageFile = { fg = colors.pink },
-		NvimTreeFolderIcon = { fg = colors.fade },
-		NvimTreeIndentMarker = { fg = colors.nontext },
-		NvimTreeEmptyFolderName = { fg = colors.fade },
-		NvimTreeFolderName = { fg = colors.fg },
-		NvimTreeSpecialFile = { fg = colors.pink, underline = true },
-		NvimTreeOpenedFolderName = { fg = colors.fg },
-		NvimTreeCursorLine = { bg = colors.selection },
-		NvimTreeIn = { bg = colors.selection },
-
-		NvimTreeEndOfBuffer = endOfBuffer,
-
 		-- NeoTree
 		NeoTreeNormal = { fg = colors.fg, bg = colors.menu },
 		NeoTreeNormalNC = { fg = colors.fg, bg = colors.menu },
 		NeoTreeDirectoryName = { fg = colors.fg },
+		NeoTreeDirectoryIcon = { fg = colors.yellow_orange },
 		NeoTreeGitUnstaged = { fg = colors.bright_magenta },
 		NeoTreeGitModified = { fg = colors.yellow_sunflower },
 		NeoTreeGitUntracked = { fg = colors.bright_green },
-		NeoTreeDirectoryIcon = { fg = colors.yellow_orange },
 		NeoTreeIndentMarker = { fg = colors.fade },
 		NeoTreeDotfile = { fg = colors.fade },
+		-- NeoTreeCursorLine = { bg = colors.visual },
 
 		-- LSP
 		DiagnosticError = { fg = colors.red },
@@ -386,8 +369,8 @@ local function setup(configs)
 		LspSagaDocTruncateLine = { fg = colors.fade },
 		LspSagaLspFinderBorder = { fg = colors.fade },
 
-		-- IndentBlankLine
-		IndentBlanklineContextChar = { fg = colors.bright_red, nocombine = true },
+		-- Highlight current word
+		-- IlluminatedWordRead = { bg = colors.fade },
 
 		-- Nvim compe
 		CmpItemAbbrDeprecated = { fg = colors.white, bg = colors.menu },
@@ -430,37 +413,6 @@ local function setup(configs)
 		CmpItemKindConstant = { link = "@constant" },
 		CmpItemKindStruct = { link = "@structure" },
 		CmpItemKindTypeParameter = { link = "@parameter" },
-
-		-- navic
-		NavicIconsFile = { link = "CmpItemKindFile" },
-		NavicIconsModule = { link = "CmpItemKindModule" },
-		NavicIconsNamespace = { link = "CmpItemKindModule" },
-		NavicIconsPackage = { link = "CmpItemKindModule" },
-		NavicIconsClass = { link = "CmpItemKindClass" },
-		NavicIconsMethod = { link = "CmpItemKindMethod" },
-		NavicIconsProperty = { link = "CmpItemKindProperty" },
-		NavicIconsField = { link = "CmpItemKindField" },
-		NavicIconsConstructor = { link = "CmpItemKindConstructor" },
-		NavicIconsEnum = { link = "CmpItemKindEnum" },
-		NavicIconsInterface = { link = "CmpItemKindInterface" },
-		NavicIconsFunction = { link = "CmpItemKindFunction" },
-		NavicIconsVariable = { link = "CmpItemKindVariable" },
-		NavicIconsConstant = { link = "CmpItemKindConstant" },
-		NavicIconsString = { link = "String" },
-		NavicIconsNumber = { link = "Number" },
-		NavicIconsBoolean = { link = "Boolean" },
-		NavicIconsArray = { link = "CmpItemKindClass" },
-		NavicIconsObject = { link = "CmpItemKindClass" },
-		NavicIconsKey = { link = "CmpItemKindKeyword" },
-		NavicIconsKeyword = { link = "CmpItemKindKeyword" },
-		NavicIconsNull = { fg = "blue" },
-		NavicIconsEnumMember = { link = "CmpItemKindEnumMember" },
-		NavicIconsStruct = { link = "CmpItemKindStruct" },
-		NavicIconsEvent = { link = "CmpItemKindEvent" },
-		NavicIconsOperator = { link = "CmpItemKindOperator" },
-		NavicIconsTypeParameter = { link = "CmpItemKindTypeParameter" },
-		NavicText = { fg = "gray" },
-		NavicSeparator = { fg = "gray" },
 
 		-- TS rainbow delimiter colors
 		RainbowDelimiterYellow = { fg = colors.yellow_sunflower },
