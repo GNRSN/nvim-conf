@@ -84,40 +84,12 @@ return {
 							end
 						end,
 					}),
-
-					-- ["<tab>"] = false,
 					["<tab>"] = cmp.config.disable,
-
-					-- ["<tab>"] = cmp.mapping {
-					--   i = cmp.config.disable,
-					--   c = function(fallback)
-					--     fallback()
-					--   end,
-					-- },
-					-- Testing
 					["<c-q>"] = cmp.mapping.confirm({
 						behavior = cmp.ConfirmBehavior.Replace,
 						select = false,
 					}),
-					-- If you want tab completion :'(
-					--  First you have to just promise to read `:help ins-completion`.
-					--
-					-- ["<Tab>"] = function(fallback)
-					-- 	if cmp.visible() then
-					-- 		cmp.select_next_item()
-					-- 	else
-					-- 		fallback()
-					-- 	end
-					-- end,
-					-- ["<S-Tab>"] = function(fallback)
-					-- 	if cmp.visible() then
-					-- 		cmp.select_prev_item()
-					-- 	else
-					-- 		fallback()
-					-- 	end
-					-- end,
 				},
-				-- Youtube:
 				--    the order of your sources matter (by default). That gives them priority
 				--    you can configure:
 				--        keyword_length
@@ -129,13 +101,10 @@ return {
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "npm", keyword_length = 3 },
-					-- { name = "copilot" },
 				}, {
 					{ name = "path" },
 					{ name = "buffer", keyword_length = 5 },
-				}, {
-					-- { name = "gh_issues" },
-				}),
+				}, {}),
 
 				sorting = {
 					-- TODO: Would be cool to add stuff like "See variable names before method names" in rust, or something like that.
@@ -199,18 +168,4 @@ return {
 			})
 		end,
 	},
-	-- { "tamago324/cmp-zsh" },
-
-	-- {
-	--   "zbirenbaum/copilot.lua",
-	--   config = function()
-	--     require("copilot").setup()
-	--   end,
-	-- },
-	-- {
-	--   "zbirenbaum/copilot-cmp",
-	--   config = function()
-	--     require("copilot_cmp").setup()
-	--   end,
-	-- },
 }
