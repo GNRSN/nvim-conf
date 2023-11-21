@@ -4,9 +4,15 @@ return {
 	-- fuzzy finder
 	{
 		"nvim-telescope/telescope.nvim",
-		priority = 100,
-		cmd = "Telescope",
 		version = false, -- telescope did only one release, so use HEAD for now
+		priority = 100,
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			-- REVIEW: Added this but i'm not sure if I think it got better/worse?
+			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+			"nvim-tree/nvim-web-devicons",
+		},
+		cmd = "Telescope",
 		keys = {
 			{ "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
 			{ "<leader>/", Util.telescope("live_grep"), desc = "Find in Files (Grep)" },
@@ -156,24 +162,26 @@ return {
 				--   },
 				-- },
 			},
-		},
+    },
 	},
 	"nvim-telescope/telescope-file-browser.nvim",
 	"nvim-telescope/telescope-hop.nvim",
+	-- https://github.com/nvim-telescope/telescope-ui-select.nvim
+	-- not sure if I want to keep
 	"nvim-telescope/telescope-ui-select.nvim",
 	{
-		"ThePrimeagen/git-worktree.nvim",
-		config = function()
-			require("git-worktree").setup({})
-		end,
-	},
-	{
+		-- Clipboard manager, seems cool @see https://github.com/AckslD/nvim-neoclip.lua
 		"AckslD/nvim-neoclip.lua",
+		dependencies = {
+			{ "nvim-telescope/telescope.nvim" },
+		},
 		config = function()
 			require("neoclip").setup()
 		end,
 	},
 }
+
+-- REVIEW: Maybe fzf isn't running without being loaded?
 
 -- _ = require("telescope").load_extension "dap"
 -- _ = require("telescope").load_extension "notify"
