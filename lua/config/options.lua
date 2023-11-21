@@ -53,19 +53,3 @@ end
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
-
------------------
--- My previous
------------------
-
--- tabs & indentation
--- opt.autoindent = true
-
-
--- backspace
--- opt.backspace = 'indent,eol,start'
-
--- ???
---opt.iskeyword:append('-')
-
-

@@ -2,7 +2,7 @@ local config = {
 	transparency = true,
 }
 
-local colors = require("codex.palette")
+local palette = require("colorscheme.palette")
 
 if not vim.g.neovide then
 	error("Neovide customization initilized but neovide env is not present")
@@ -28,9 +28,9 @@ if config.transparency then
 	vim.g.neovide_floating_blur_amount_x = 4.0
 	vim.g.neovide_floating_blur_amount_y = 4.0
 else
-	vim.g.neovide_background_color = colors.bg
+	vim.g.neovide_background_color = palette.bg
 	-- set bg for "normal"
-	vim.api.nvim_set_hl(0, "Normal", { bg = colors.bg })
+	vim.api.nvim_set_hl(0, "Normal", { bg = palette.bg })
 end
 
 -- set scaling and add keymaps for updating

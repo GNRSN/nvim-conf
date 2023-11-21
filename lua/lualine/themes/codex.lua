@@ -1,6 +1,6 @@
-local codex = require("codex")
-local configs = codex.configs()
-local colors = codex.colors()
+local colorscheme = require("colorscheme")
+local configs = colorscheme.configs()
+local colors = colorscheme.colors()
 
 local bg = colors.bg or configs.lualine_bg_color or colors.black
 

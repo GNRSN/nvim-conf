@@ -147,8 +147,10 @@ function M.toggle_diagnostics()
 end
 
 function M.deprecate(old, new)
-  Util.warn(("`%s` is deprecated. Please use `%s` instead"):format(old, new), { title = "LazyVim" })
+    Util.warn(("`%s` is deprecated. Please use `%s` instead"):format(old, new), { title = "LazyVim" })
 end
+
+-- REVIEW: Wtf is all this for?
 
 -- delay notifications till vim.notify was replaced or after 500ms
 function M.lazy_notify()

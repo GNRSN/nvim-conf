@@ -5,19 +5,11 @@ local nvim_set_hl = vim.api.nvim_set_hl
 local tbl_deep_extend = vim.tbl_deep_extend
 
 ---@class DefaultConfig
----@field italic_comment boolean
 ---@field transparent_bg boolean
----@field show_end_of_buffer boolean
----@field lualine_bg_color string?
----@field colors Palette
----@field overrides table<string, Highlight>
+
 local DEFAULT_CONFIG = {
-	italic_comment = false,
 	transparent_bg = false,
-	show_end_of_buffer = false,
 	lualine_bg_color = nil,
-	colors = require("codex.palette"),
-	overrides = {},
 }
 
 -- NeoTreeBufferNumber       The buffer number shown in the buffers source.
@@ -93,19 +85,15 @@ end
 ---apply colorscheme
 ---@param configs DefaultConfig
 local function apply(configs)
-	local colors = configs.colors
+	local colors = require("colorscheme.palette")
 	apply_term_colors(colors)
-	local groups = require("codex.groups").setup(configs)
+	local groups = require("colorscheme.groups").setup(configs)
 
 	-- apply transparents
 	if configs.transparent_bg then
 		for _, group in ipairs(TRANSPARENTS) do
 			groups[group].bg = nil
 		end
-	end
-
-	for group, setting in pairs(configs.overrides) do
-		groups[group] = setting
 	end
 
 	-- set defined highlights
@@ -126,10 +114,6 @@ end
 
 ---load colorscheme
 local function load()
-	if vim.version().minor < 7 then
-		vim.notify_once("codex.nvim: you must use neovim 0.7 or higher")
-		return
-	end
 
 	-- reset colors
 	if g.colors_name then
@@ -142,7 +126,7 @@ local function load()
 
 	o.background = "dark"
 	o.termguicolors = true
-	g.colors_name = "codex"
+	g.colors_name = "colorscheme"
 
 	apply(local_configs)
 end

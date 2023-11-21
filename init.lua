@@ -17,13 +17,13 @@ else
 	end
 	vim.opt.rtp:prepend(lazypath)
 
-	require("codex").setup({
+	require("colorscheme.init").setup({
 		transparent_bg = true,
 	})
+	require("colorscheme.init").load()
 
-	local colorscheme = "codex"
-
-	local status_ok, _ = pcall(vim.cmd.colorscheme, colorscheme)
+	-- local colorscheme = "colorscheme"
+	-- local status_ok, _ = pcall(vim.cmd.colorscheme, colorscheme)
 
 	if not status_ok then
 		print("failed to load colorscheme")
@@ -32,7 +32,6 @@ else
 	-- use lazy-loader
 	require("lazy").setup("plugins")
 	require("config").setup()
-	require("after")
 
 	if vim.g.neovide then
 		require("neovide")

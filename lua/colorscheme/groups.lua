@@ -28,15 +28,15 @@
 ---@return table<string, Highlight>
 ---@nodiscard
 local function setup(configs)
-	local colors = configs.colors
+	local colors = require("colorscheme.palette")
 	local endOfBuffer = {
-		fg = configs.show_end_of_buffer and colors.visual or colors.bg,
+		fg = colors.bg,
 	}
 
 	return {
 		Normal = { fg = colors.fg, bg = colors.bg },
 		NormalFloat = { fg = colors.fg, bg = colors.bg },
-		Comment = { fg = colors.comment, italic = configs.italic_comment },
+		Comment = { fg = colors.comment },
 		Constant = { fg = colors.yellow },
 		String = { fg = colors.yellow },
 		Character = { fg = colors.green },
