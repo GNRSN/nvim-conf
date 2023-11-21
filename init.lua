@@ -1,22 +1,40 @@
--- Import :plugins, should be at top
-require("gnrsn.plugins-setup")
+if vim.g.vscode then
+	-- VSCode extension
+	require("vscode")
+else
+	-- ordinary Neovim
+	-- bootstrap lazy-loader
+	local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+	if not vim.loop.fs_stat(lazypath) then
+		vim.fn.system({
+			"git",
+			"clone",
+			"--filter=blob:none",
+			"https://github.com/folke/lazy.nvim.git",
+			"--branch=stable", -- latest stable release
+			lazypath,
+		})
+	end
+	vim.opt.rtp:prepend(lazypath)
 
-require("gnrsn.core.options")
-require("gnrsn.core.keymaps")
-require("gnrsn.core.colorscheme")
+	require("codex").setup({
+		transparent_bg = true,
+	})
 
-require("gnrsn.plugins.comment")
-require("gnrsn.plugins.nvim-tree")
-require("gnrsn.plugins.telescope")
-require("gnrsn.plugins.nvim-cmp")
-require("gnrsn.plugins.lsp.mason")
-require("gnrsn.plugins.lsp.lspsaga")
-require("gnrsn.plugins.lsp.lspconfig")
-require("gnrsn.plugins.lsp.null-ls")
-require("gnrsn.plugins.autopairs")
+	local colorscheme = "codex"
 
--- Highlighting and formatting for different languages
-require("gnrsn.plugins.treesitter")
+	local status_ok, _ = pcall(vim.cmd.colorscheme, colorscheme)
 
--- Git
-require("gnrsn.plugins.gitsigns")
+	if not status_ok then
+		print("failed to load colorscheme")
+	end
+
+	-- use lazy-loader
+	require("lazy").setup("plugins")
+	require("config").setup()
+	require("after")
+
+	if vim.g.neovide then
+		require("neovide")
+	end
+end
