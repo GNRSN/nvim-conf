@@ -24,7 +24,7 @@ return {
       { desc = "Go to previous harpoon mark" }
     )
 
-    keymap.set("n", "<leader>hl", require("harpoon.ui").toggle_quick_menu, "Harpoon toggle list")
+    keymap.set("n", "<leader>hl", require("harpoon.ui").toggle_quick_menu, { desc = "Harpoon toggle list" })
 
     for i = 1, 9 do
       keymap.set("n", string.format("<leader>%s", i), function()
