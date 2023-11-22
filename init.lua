@@ -22,15 +22,22 @@ else
 	})
 	require("colorscheme.init").load()
 
-	-- local colorscheme = "colorscheme"
-	-- local status_ok, _ = pcall(vim.cmd.colorscheme, colorscheme)
-
-	if not status_ok then
-		print("failed to load colorscheme")
-	end
 
 	-- use lazy-loader
-	require("lazy").setup("plugins")
+	require("lazy").setup({
+		{
+			import = "plugins",
+		},
+		{
+			import = "plugins.lsp",
+		},
+		{
+			import = "plugins.treesitter",
+		},
+        {
+	-- options for lazy can go here, check out what's available later		
+		}
+	})
 	require("config").setup()
 
 	if vim.g.neovide then
