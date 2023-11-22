@@ -40,6 +40,9 @@ else
       import = "plugins.navigation",
     },
     {
+      import = "plugins.editing",
+    },
+    {
       -- options for lazy can go here, check out what's available later
     },
   })

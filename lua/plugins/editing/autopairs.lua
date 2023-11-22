@@ -4,9 +4,9 @@ return {
   dependencies = {
     "hrsh7th/nvim-cmp",
   },
-		opts = {
-			disable_filetype = { "TelescopePrompt", "vim" },
-		},
+  opts = {
+    disable_filetype = { "TelescopePrompt", "vim" },
+  },
   config = function()
     -- import nvim-autopairs
     local autopairs = require("nvim-autopairs")
@@ -31,5 +31,3 @@ return {
     cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
   end,
 }
-
-
