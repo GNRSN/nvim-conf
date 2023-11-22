@@ -87,7 +87,7 @@ end
 local function apply(configs)
 	local colors = require("colorscheme.palette")
 	apply_term_colors(colors)
-	local groups = require("colorscheme.groups").setup(configs)
+	local groups = require("colorscheme.highlight-groups").setup(configs)
 
 	-- apply transparents
 	if configs.transparent_bg then
@@ -114,7 +114,6 @@ end
 
 ---load colorscheme
 local function load()
-
 	-- reset colors
 	if g.colors_name then
 		cmd("hi clear")
