@@ -34,6 +34,12 @@ else
       import = "plugins.treesitter",
     },
     {
+      import = "plugins.ui",
+    },
+    {
+      import = "plugins.navigation",
+    },
+    {
       -- options for lazy can go here, check out what's available later
     },
   })
