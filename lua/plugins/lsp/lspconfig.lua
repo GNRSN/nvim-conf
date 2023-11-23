@@ -4,6 +4,8 @@ return {
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     { "antosha417/nvim-lsp-file-operations", config = true },
+    -- Navbudy needs to be loaded before lspconfig
+    "SmiteshP/nvim-navbuddy",
   },
   config = function()
     -- import lspconfig plugin
