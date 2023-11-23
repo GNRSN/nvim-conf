@@ -6,7 +6,8 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     opts = {
       keywords = {
-        REVIEW = { icon = " ", color = "comment" },
+        -- TODO: Set colors
+        REVIEW = { icon = " " },
         PERF = { icon = " " },
         NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
         TODO = { icon = " ", color = "info" },
