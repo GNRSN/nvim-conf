@@ -1,3 +1,5 @@
+local palette = require("colorscheme.palette")
+
 return {
   -- todo comments as "bookmarks" + jump between them
   {
@@ -7,12 +9,18 @@ return {
     opts = {
       keywords = {
         -- TODO: Set colors
-        REVIEW = { icon = " " },
-        PERF = { icon = " " },
+        REVIEW = { icon = " ", color = "review" },
+        PERF = { icon = " ", color = "perf" },
         NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
         TODO = { icon = " ", color = "info" },
       },
       merge_keywords = false,
+      colors = {
+        review = { palette.comment },
+        perf = { palette.yellow },
+        hint = { palette.blue },
+        info = { palette.white },
+      },
     },
     -- stylua: ignore
     keys = {
