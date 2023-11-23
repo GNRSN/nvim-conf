@@ -20,7 +20,7 @@ local visual = {
 }
 
 local inactive = {
-  a = { fg = colors.white, bg = colors.visual, gui = "bold" },
+  a = { fg = colors.white, bg = colors.visual_bg, gui = "bold" },
   b = { fg = colors.black, bg = colors.white },
 }
 

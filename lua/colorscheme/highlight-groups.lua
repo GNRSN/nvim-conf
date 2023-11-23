@@ -121,8 +121,8 @@ local function setup(configs)
     TabLineSel = { fg = palette.white },
     TabLineFill = { bg = palette.bg },
     Terminal = { fg = palette.white, bg = palette.black },
-    Visual = { bg = palette.visual },
-    VisualNOS = { fg = palette.visual },
+    Visual = { bg = palette.visual_bg },
+    VisualNOS = { fg = palette.visual_bg },
     WarningMsg = { fg = palette.yellow },
     WildMenu = { fg = palette.black, bg = palette.white },
 
@@ -417,7 +417,7 @@ local function setup(configs)
     CmpItemKindStruct = { link = "@structure" },
     CmpItemKindTypeParameter = { link = "@parameter" },
 
-    -- TS rainbow delimiter colors
+    -- Treesitter rainbow delimiter colors
     RainbowDelimiterYellow = { fg = palette.yellow_sunflower },
     RainbowDelimiterViolet = { fg = palette.pink },
     RainbowDelimiterBlue = { fg = palette.blue },

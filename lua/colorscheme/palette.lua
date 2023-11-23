@@ -21,7 +21,7 @@ return {
   bright_cyan = "#A4FFFF",
   bright_white = "#FFFFFF",
   menu = "#0f0f0f",
-  visual = "#5e3155", -- Visual mode
+  visual_bg = "#5e3155", -- Visual mode
   gutter_fg = "#444444",
   nontext = "#3B4048",
   white = "#ABB2BF",
