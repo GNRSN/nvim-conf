@@ -11,7 +11,7 @@ return {
         REVIEW = { icon = " ", color = "review" },
         PERF = { icon = " ", color = "perf" },
         NOTE = { icon = " ", color = "note", alt = { "INFO" } },
-        TODO = { icon = " ", color = "todo" },
+        TODO = { icon = "  ", color = "todo" },
       },
       merge_keywords = false,
       colors = {
