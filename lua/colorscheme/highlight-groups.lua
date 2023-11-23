@@ -70,6 +70,9 @@ local function setup(configs)
     Todo = { fg = colors.purple, bold = true, italic = true },
     Underlined = { fg = colors.cyan, underline = true },
 
+    -- TODO: Make darker?
+    NotifyBackground = { bg = colors.bg },
+
     Cursor = { reverse = true },
     CursorLineNr = { fg = colors.fg, bold = true },
 
