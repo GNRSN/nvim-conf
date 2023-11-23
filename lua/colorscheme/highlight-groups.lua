@@ -70,8 +70,7 @@ local function setup(configs)
     Todo = { fg = palette.purple, bold = true, italic = true },
     Underlined = { fg = palette.cyan, underline = true },
 
-    -- TODO: Make darker?
-    NotifyBackground = { bg = palette.bg },
+    NotifyBackground = { bg = palette.black },
 
     Cursor = { reverse = true },
     CursorLineNr = { fg = palette.fg, bold = true },
@@ -423,8 +422,8 @@ local function setup(configs)
     RainbowDelimiterBlue = { fg = palette.blue },
 
     -- Nvim-Scrollbar
-    ScrollbarHandle = { fg = nil, bg = palette.bg },
-    ScrollbarCursorHandle = { fg = palette.gutter_fg, bg = palette.gutter_fg },
+    ScrollbarHandle = { fg = nil, bg = palette.selection },
+    ScrollbarCursorHandle = { fg = palette.white, bg = palette.white },
     -- ScrollbarCursor
     -- ScrollbarSearchHandle
     -- ScrollbarSearch
