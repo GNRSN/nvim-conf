@@ -15,14 +15,16 @@ return {
       ["g"] = { name = "+goto" },
       ["]"] = { name = "+next" },
       ["["] = { name = "+prev" },
-      ["<leader>b"] = { name = "+buffer" },
-      ["<leader>c"] = { name = "+code" },
-      ["<leader>f"] = { name = "+file/find" },
-      ["<leader>s"] = { name = "+search" },
-      ["<leader>u"] = { name = "+ui" },
-      ["<leader>w"] = { name = "+windows" },
-      ["<leader>x"] = { name = "+diagnostics/quickfix" },
+      ["<leader>"] = { name = "+Leader" },
+      ["<leader>b"] = { name = "+Buffer" },
+      ["<leader>c"] = { name = "+Code" },
+      ["<leader>f"] = { name = "+File/find" },
+      ["<leader>g"] = { name = "+Git" },
       ["<leader>h"] = { name = "+Harpoon" },
+      ["<leader>s"] = { name = "+Search" },
+      ["<leader>u"] = { name = "+Ui" },
+      ["<leader>w"] = { name = "+Windows" },
+      ["<leader>x"] = { name = "+Diagnostics/quickfix/todos" },
     }
 
     wk.register(keymaps)

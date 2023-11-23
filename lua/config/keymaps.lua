@@ -21,39 +21,18 @@ map("n", "<leader>nh", ":nohl<CR>", { desc = "remove highlights" })
 map("n", "x", "\"_x")
 
 -- increment/decrement numbers
-map("n", "<leader>+", "<C-a>") -- increment
-map("n", "<leader>-", "<C-x>") -- decrement
+map("n", "<leader>+", "<C-a>", { desc = "increment" })
+map("n", "<leader>-", "<C-x>", { desc = "decrement" })
 
--- window management
-map("n", "<leader>Sv", "<C-w>v", { desc = "split vertically" }) -- split window vertically
-map("n", "<leader>Sh", "<C-w>s", { desc = "split horizontally" }) -- split window horizontally
-map("n", "<leader>Se", "<C-w>=", { desc = "make split windows equal width & height" }) -- make split windows equal width & height
-map("n", "<leader>Sq", ":close<CR>", { desc = "close current split window" }) -- close current split window
-
-map("n", "<leader>to", ":tabnew<CR>") -- open new tab
-map("n", "<leader>tx", ":tabclose<CR>") -- close current tab
-map("n", "<leader>tn", ":tabn<CR>") --  go to next tab
-map("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
-
--- noremap <C-h> <C-w>h
--- noremap <C-j> <C-w>j
--- noremap <C-k> <C-w>k
--- noremap <C-l> <C-w>l
-
-map("n", "<C-l>", "<C-w>l") --  navigate panes
-map("n", "<C-j>", "<C-w>j") --  navigate panes
-map("n", "<C-h>", "<C-w>h") --  navigate panes
-map("n", "<C-k>", "<C-w>k") --  navigate panes
+-- window navigation
+map("n", "<C-l>", "<C-w>l")
+map("n", "<C-j>", "<C-w>j")
+map("n", "<C-h>", "<C-w>h")
+map("n", "<C-k>", "<C-w>k")
 
 ----------------------
 -- Plugin Keybinds
 ----------------------
-
--- vim-maximizer
-map("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window maximization
-
--- neotree
---map("n", "<leader>e", ":Neotree<CR>", { desc = "Toggle" }) -- toggle file explorer
 
 -- telescope
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
@@ -76,7 +55,6 @@ map(
   { desc = "list git commits for current file/buffer (use <cr> to checkout) [\"gfc\" for git file commits]" }
 )
 map("n", "<leader>gB", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
-map("n", "<leader>gb", "<cmd>Git blame<cr>") -- Open blame window
 map("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
 
 -- restart lsp server
@@ -160,10 +138,7 @@ map("v", "<S-tab>", "<gv")
 map("v", "<tab>", ">gv")
 
 -- lazy
-map("n", "<leader>l", "<cmd>:Lazy<cr>", { desc = "Lazy" })
-
--- new file
-map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
+map("n", "<leader>up", "<cmd>:Lazy<cr>", { desc = "Lazy" })
 
 map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
 map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
