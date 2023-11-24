@@ -169,17 +169,6 @@ return {
   -- https://github.com/nvim-telescope/telescope-ui-select.nvim
   -- not sure if I want to keep
   "nvim-telescope/telescope-ui-select.nvim",
-  -- TODO: Move to own file + consider if I even still need this?
-  {
-    -- Clipboard manager, seems cool @see https://github.com/AckslD/nvim-neoclip.lua
-    "AckslD/nvim-neoclip.lua",
-    dependencies = {
-      { "nvim-telescope/telescope.nvim" },
-    },
-    config = function()
-      require("neoclip").setup()
-    end,
-  },
 }
 
 -- REVIEW: Maybe fzf isn't running without being loaded?
