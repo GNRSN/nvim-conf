@@ -12,11 +12,11 @@ return {
     wk.setup(opts)
     local keymaps = {
       mode = { "n", "v" },
-      ["g"] = { name = "+goto" },
-      ["]"] = { name = "+next" },
-      ["["] = { name = "+prev" },
+      ["g"] = { name = "+Goto" },
+      ["]"] = { name = "+Next" },
+      ["["] = { name = "+Prev" },
       ["<leader>"] = { name = "+Leader" },
-      ["<leader>b"] = { name = "+Buffer" },
+      ["<leader>a"] = { name = "+Ai" },
       ["<leader>c"] = { name = "+Code" },
       ["<leader>f"] = { name = "+File/find" },
       ["<leader>g"] = { name = "+Git" },

@@ -43,6 +43,9 @@ else
       import = "plugins.editing",
     },
     {
+      import = "plugins.ai",
+    },
+    {
       -- options for lazy can go here, check out what's available later
     },
   })
