@@ -27,9 +27,15 @@ return {
     keymap.set("n", "<leader>hl", require("harpoon.ui").toggle_quick_menu, { desc = "Harpoon toggle list" })
 
     for i = 1, 9 do
-      keymap.set("n", string.format("<leader>%s", i), function()
-        require("harpoon.ui").nav_file(i)
-      end, { desc = string.format("Navigate to harpoon (%s)", i) })
+      keymap.set(
+        "n",
+        -- TODO: Figure out how to hide these from whichkey
+        string.format("<leader>%s", i),
+        function()
+          require("harpoon.ui").nav_file(i)
+        end,
+        { desc = string.format("Navigate to harpoon (%s)", i) }
+      )
     end
   end,
 }
