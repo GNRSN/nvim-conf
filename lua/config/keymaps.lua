@@ -14,8 +14,10 @@ end
 -- General Keymaps
 ---------------------
 
+map("i", "<C-i>", "")
+
 -- clear search highlights
-map("n", "<leader>nh", ":nohl<CR>", { desc = "remove highlights" })
+map("n", "<leader>uh", ":nohl<CR>", { desc = "clear highlights" })
 
 -- delete single character without copying into register
 map("n", "x", "\"_x")
