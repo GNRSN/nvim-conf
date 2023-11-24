@@ -1,4 +1,4 @@
-local Util = require("util")
+local util = require("util")
 
 return {
   -- fuzzy finder
@@ -15,14 +15,12 @@ return {
     cmd = "Telescope",
     keys = {
       { "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
-      { "<leader>/", Util.telescope("live_grep"), desc = "Find in Files (Grep)" },
+      { "<leader>/", util.telescope("live_grep"), desc = "Find in Files (Grep)" },
       { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
-      { "<leader><space>", Util.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
+      { "<leader><space>", util.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
       -- find
       { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-      { "<leader>ff", Util.telescope("files"), desc = "Find Files (root dir)" },
-      { "<leader>fF", Util.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
-      { "<leader>F", Util.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
+      { "<leader>ff", util.telescope("files"), desc = "Find Files (root dir)" },
       { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
       -- git
       { "<leader>fg", "<cmd>Telescope git_status<CR>", desc = "status" },
@@ -33,8 +31,8 @@ return {
       { "<leader>sc", "<cmd>Telescope command_history<cr>", desc = "Command History" },
       { "<leader>sC", "<cmd>Telescope commands<cr>", desc = "Commands" },
       { "<leader>sd", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
-      { "<leader>sg", Util.telescope("live_grep"), desc = "Grep (root dir)" },
-      { "<leader>sG", Util.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
+      { "<leader>sg", util.telescope("live_grep"), desc = "Grep (root dir)" },
+      { "<leader>sG", util.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
       { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
       { "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
       { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
@@ -42,16 +40,16 @@ return {
       { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
       { "<leader>so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
       { "<leader>sR", "<cmd>Telescope resume<cr>", desc = "Resume" },
-      { "<leader>sw", Util.telescope("grep_string"), desc = "Word (root dir)" },
-      { "<leader>sW", Util.telescope("grep_string", { cwd = false }), desc = "Word (cwd)" },
+      { "<leader>sw", util.telescope("grep_string"), desc = "Word (root dir)" },
+      { "<leader>sW", util.telescope("grep_string", { cwd = false }), desc = "Word (cwd)" },
       {
         "<leader>uC",
-        Util.telescope("colorscheme", { enable_preview = true }),
+        util.telescope("colorscheme", { enable_preview = true }),
         desc = "Colorscheme with preview",
       },
       {
         "<leader>fSs",
-        Util.telescope("lsp_document_symbols", {
+        util.telescope("lsp_document_symbols", {
           symbols = {
             "Class",
             "Function",
@@ -69,7 +67,7 @@ return {
       },
       {
         "<leader>fSS",
-        Util.telescope("lsp_workspace_symbols", {
+        util.telescope("lsp_workspace_symbols", {
           symbols = {
             "Class",
             "Function",
@@ -99,10 +97,10 @@ return {
               return require("trouble.providers.telescope").open_selected_with_trouble(...)
             end,
             ["<a-i>"] = function()
-              Util.telescope("find_files", { no_ignore = true })()
+              util.telescope("find_files", { no_ignore = true })()
             end,
             ["<a-h>"] = function()
-              Util.telescope("find_files", { hidden = true })()
+              util.telescope("find_files", { hidden = true })()
             end,
             ["<C-Down>"] = function(...)
               return require("telescope.actions").cycle_history_next(...)
@@ -116,6 +114,8 @@ return {
             ["<C-b>"] = function(...)
               return require("telescope.actions").preview_scrolling_up(...)
             end,
+            -- Shouldn't need normal mode in telescope so exit on first esc
+            ["<esc>"] = require("telescope.actions").close,
           },
           n = {
             ["q"] = function(...)
@@ -169,6 +169,7 @@ return {
   -- https://github.com/nvim-telescope/telescope-ui-select.nvim
   -- not sure if I want to keep
   "nvim-telescope/telescope-ui-select.nvim",
+  -- TODO: Move to own file + consider if I even still need this?
   {
     -- Clipboard manager, seems cool @see https://github.com/AckslD/nvim-neoclip.lua
     "AckslD/nvim-neoclip.lua",
