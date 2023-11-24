@@ -1,5 +1,4 @@
 return {
-
   -- measure startuptime
   {
     "dstein64/vim-startuptime",
@@ -8,8 +7,4 @@ return {
       vim.g.startuptime_tries = 10
     end,
   },
-
-  -- library used by other plugins
-  { "nvim-lua/plenary.nvim", lazy = true },
 }
-

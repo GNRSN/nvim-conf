@@ -2,11 +2,12 @@ return {
   {
     "rcarriga/nvim-notify",
     lazy = false,
-    opts = {
-      render = "wrapped-compact",
-      stages = "fade",
-    },
     config = function()
+      require("notify").setup({
+        render = "wrapped-compact",
+        stages = "fade",
+      })
+
       local log = require("plenary.log").new({
         plugin = "notify",
         level = "debug",
@@ -23,16 +24,9 @@ return {
         require("notify")(msg, level, opts)
       end
     end,
-    cond = function()
-      if not pcall(require, "plenary") then
-        return false
-      end
-
-      if pcall(require, "noice") then
-        return false
-      end
-      return true
-    end,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
     keys = {
       {
         "<leader>sn",
