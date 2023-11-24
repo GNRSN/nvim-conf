@@ -14,9 +14,11 @@ local DEFAULT_CONFIG = {
 
 local HL_GROUPS_EFFECTED_BY_TRANSPARENCY = {
   "Normal",
+  "NormalFloat",
   "SignColumn",
   "NeoTreeNormal",
   "NeoTreeNormalNC",
+  "TelescopeNormal",
 }
 
 local function apply_term_colors(colors)
