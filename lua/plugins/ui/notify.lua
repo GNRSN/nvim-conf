@@ -4,6 +4,7 @@ return {
     lazy = false,
     config = function()
       require("notify").setup({
+        -- TODO: Consider raising log level for display, currently all info is shown, e.g. toggle hidden file in filetree
         render = "wrapped-compact",
         stages = "fade",
       })
