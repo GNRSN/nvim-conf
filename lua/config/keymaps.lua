@@ -14,10 +14,6 @@ end
 -- General Keymaps
 ---------------------
 
--- Stop ctrl-i form also inserting a tab when confirming a complete option
--- TODO: This broke the tab-key completely as well :P
-map("i", "<C-i>", "")
-
 -- clear search highlights
 map("n", "<leader>uh", ":nohl<CR>", { desc = "clear highlights" })
 
