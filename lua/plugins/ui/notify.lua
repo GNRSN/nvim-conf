@@ -2,6 +2,10 @@ return {
   {
     "rcarriga/nvim-notify",
     lazy = false,
+    opts = {
+      render = "wrapped-compact",
+      stages = "fade",
+    },
     config = function()
       local log = require("plenary.log").new({
         plugin = "notify",
