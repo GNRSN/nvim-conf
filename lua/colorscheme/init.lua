@@ -12,7 +12,7 @@ local DEFAULT_CONFIG = {
   lualine_bg_color = nil,
 }
 
-local TRANSPARENTS = {
+local HL_GROUPS_EFFECTED_BY_TRANSPARENCY = {
   "Normal",
   "SignColumn",
   "NeoTreeNormal",
@@ -49,7 +49,7 @@ local function apply(configs)
 
   -- apply transparents
   if configs.transparent_bg then
-    for _, group in ipairs(TRANSPARENTS) do
+    for _, group in ipairs(HL_GROUPS_EFFECTED_BY_TRANSPARENCY) do
       groups[group].bg = nil
     end
   end
