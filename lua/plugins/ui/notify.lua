@@ -29,5 +29,15 @@ return {
       end
       return true
     end,
+    keys = {
+      {
+        "<leader>sn",
+        function()
+          -- REVIEW: Can we list notifications with some other layout?
+          require("telescope").extensions.notify.notify()
+        end,
+        desc = "List notifications",
+      },
+    },
   },
 }
