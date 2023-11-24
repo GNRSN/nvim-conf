@@ -9,7 +9,6 @@ local tbl_deep_extend = vim.tbl_deep_extend
 
 local DEFAULT_CONFIG = {
   transparent_bg = false,
-  lualine_bg_color = nil,
 }
 
 local HL_GROUPS_EFFECTED_BY_TRANSPARENCY = {
@@ -45,19 +44,21 @@ end
 ---apply colorscheme
 ---@param configs DefaultConfig
 local function apply(configs)
-  local colors = require("colorscheme.palette")
-  apply_term_colors(colors)
-  local groups = require("colorscheme.highlight-groups").setup(configs)
+  local palette = require("colorscheme.palette")
+  apply_term_colors(palette)
+  local hl_groups = require("colorscheme.highlight-groups").setup()
 
   -- apply transparents
   if configs.transparent_bg then
-    for _, group in ipairs(HL_GROUPS_EFFECTED_BY_TRANSPARENCY) do
-      groups[group].bg = nil
+    for _, group_name in ipairs(HL_GROUPS_EFFECTED_BY_TRANSPARENCY) do
+      -- Neovim only supports colored or fully transparent background, nil => fully transparent => same as terminal
+      -- TODO: Account for neovide which may support blends?
+      hl_groups[group_name].bg = nil
     end
   end
 
   -- set defined highlights
-  for group, setting in pairs(groups) do
+  for group, setting in pairs(hl_groups) do
     nvim_set_hl(0, group, setting)
   end
 end
@@ -95,8 +96,5 @@ return {
   setup = setup,
   configs = function()
     return local_configs
-  end,
-  colors = function()
-    return local_configs.colors
   end,
 }

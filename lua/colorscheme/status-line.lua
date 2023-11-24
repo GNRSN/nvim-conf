@@ -1,39 +1,47 @@
 local configs = require("colorscheme").configs()
-local colors = require("colorscheme.palette")
+local palette = require("colorscheme.palette")
 
-local bg = colors.bg or configs.lualine_bg_color or colors.black
+local function getBg()
+  if configs.transparent_bg then
+    return nil
+  end
+
+  return palette.bg or configs.lualine_bg_color or palette.black
+end
+
+local bg = getBg()
 
 local normal = {
-  a = { fg = colors.bg, bg = colors.white, gui = "bold" },
-  b = { fg = colors.white, bg = bg },
-  c = { fg = colors.fg, bg = bg },
+  a = { fg = palette.bg, bg = palette.white, gui = "bold" },
+  b = { fg = palette.white, bg = bg },
+  c = { fg = palette.fg, bg = bg },
 }
 
 local command = {
-  a = { fg = colors.bg, bg = colors.yellow_sunflower, gui = "bold" },
-  b = { fg = colors.yellow_sunflower, bg = bg },
+  a = { fg = palette.bg, bg = palette.yellow_sunflower, gui = "bold" },
+  b = { fg = palette.yellow_sunflower, bg = bg },
 }
 
 local visual = {
-  a = { fg = colors.black, bg = colors.green, gui = "bold" },
-  b = { fg = colors.green, bg = bg },
+  a = { fg = palette.black, bg = palette.green, gui = "bold" },
+  b = { fg = palette.green, bg = bg },
 }
 
 local inactive = {
-  a = { fg = colors.white, bg = colors.visual_bg, gui = "bold" },
-  b = { fg = colors.black, bg = colors.white },
+  a = { fg = palette.white, bg = palette.visual_bg, gui = "bold" },
+  b = { fg = palette.black, bg = palette.white },
 }
 
 local replace = {
-  a = { fg = colors.black, bg = colors.orange, gui = "bold" },
-  b = { fg = colors.orange, bg = bg },
-  c = { fg = colors.fg, bg = bg },
+  a = { fg = palette.black, bg = palette.orange, gui = "bold" },
+  b = { fg = palette.orange, bg = bg },
+  c = { fg = palette.fg, bg = bg },
 }
 
 local insert = {
-  a = { fg = colors.black, bg = colors.blue, gui = "bold" },
-  b = { fg = colors.blue, bg = bg },
-  c = { fg = colors.fg, bg = bg },
+  a = { fg = palette.black, bg = palette.blue, gui = "bold" },
+  b = { fg = palette.blue, bg = bg },
+  c = { fg = palette.fg, bg = bg },
 }
 
 return {

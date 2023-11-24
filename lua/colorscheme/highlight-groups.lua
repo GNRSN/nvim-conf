@@ -24,10 +24,9 @@
 ---@field cterm table cterm attribute map, like |highlight-args|.
 
 ---setup highlight groups
----@param configs DefaultConfig
 ---@return table<string, Highlight>
 ---@nodiscard
-local function setup(configs)
+local function setup()
   local palette = require("colorscheme.palette")
   local endOfBuffer = {
     fg = palette.bg,
