@@ -2,6 +2,8 @@ return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
+    -- Neodev needs to be setup before lspconfig, it will config lua for nvim development when required
+    "folke/neodev.nvim",
     "hrsh7th/cmp-nvim-lsp",
     { "antosha417/nvim-lsp-file-operations", config = true },
     -- Navbudy needs to be loaded before lspconfig
@@ -146,6 +148,7 @@ return {
       capabilities = capabilities,
       on_attach = on_attach,
       settings = { -- custom settings for lua
+        -- REVIEW: Is this still needed with neodev?
         Lua = {
           -- make the language server recognize "vim" global
           diagnostics = {
