@@ -15,9 +15,9 @@ return {
       },
       merge_keywords = false,
       colors = {
-        review = { palette.comment },
+        review = { palette.white },
         perf = { palette.purple },
-        note = { palette.white },
+        note = { palette.comment },
         todo = { palette.yellow_sunflower },
       },
     },
