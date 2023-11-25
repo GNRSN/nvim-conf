@@ -115,7 +115,9 @@ return {
               return require("telescope.actions").preview_scrolling_up(...)
             end,
             -- Shouldn't need normal mode in telescope so exit on first esc
-            ["<esc>"] = require("telescope.actions").close,
+            ["<esc>"] = function(...)
+              return require("telescope.actions").close(...)
+            end,
           },
           n = {
             ["q"] = function(...)
