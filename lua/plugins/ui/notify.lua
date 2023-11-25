@@ -3,10 +3,12 @@ return {
     "rcarriga/nvim-notify",
     lazy = false,
     config = function()
+      ---@diagnostic disable-next-line: missing-fields
       require("notify").setup({
         -- TODO: Consider raising log level for display, currently all info is shown, e.g. toggle hidden file in filetree
         render = "wrapped-compact",
         stages = "fade",
+        level = vim.log.levels.WARN,
       })
 
       local log = require("plenary.log").new({
