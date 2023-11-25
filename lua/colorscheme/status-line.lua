@@ -15,6 +15,7 @@ local normal = {
   a = { fg = palette.bg, bg = palette.white, gui = "bold" },
   b = { fg = palette.white, bg = bg },
   c = { fg = palette.fg, bg = bg },
+  x = { fg = palette.white, bg = bg },
 }
 
 local command = {

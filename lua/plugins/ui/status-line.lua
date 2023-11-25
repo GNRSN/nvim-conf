@@ -1,6 +1,11 @@
 return {
   "nvim-lualine/lualine.nvim",
-  requires = { "kyazdani42/nvim-web-devicons", lazy = true },
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+    "kyazdani42/nvim-web-devicons",
+    -- Add as dependency to integrate
+    "linrongbin16/lsp-progress.nvim",
+  },
   config = function()
     require("lualine").setup({
       options = {
@@ -25,7 +30,7 @@ return {
         lualine_a = { "mode" },
         lualine_b = { "branch", "diff" },
         lualine_c = { "filename" },
-        lualine_x = { "diagnostics" },
+        lualine_x = { require("lsp-progress").progress, "diagnostics" },
         lualine_y = { "filetype" },
         lualine_z = {},
       },
@@ -41,6 +46,14 @@ return {
       winbar = {},
       inactive_winbar = {},
       extensions = {},
+    })
+
+    -- listen lsp-progress event and refresh lualine
+    vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
+    vim.api.nvim_create_autocmd("User", {
+      group = "lualine_augroup",
+      pattern = "LspProgressStatusUpdated",
+      callback = require("lualine").refresh,
     })
   end,
 }
