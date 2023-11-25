@@ -1,5 +1,4 @@
 return {
-  -- TODO: Can we avoid adding to file explorer?
   {
     "nvim-lualine/lualine.nvim",
     dependencies = {
@@ -16,7 +15,9 @@ return {
           component_separators = "|",
           section_separators = "",
           disabled_filetypes = {
-            statusline = {},
+            statusline = {
+              "neo-tree",
+            },
             winbar = {},
           },
           ignore_focus = {},
