@@ -33,4 +33,5 @@ return {
   blue_green = "#55DDBB",
   fade = "#555555",
   number_green = "#B1E8A9",
+  border = "#444444",
 }
