@@ -6,6 +6,8 @@ return {
     "folke/neodev.nvim",
     "hrsh7th/cmp-nvim-lsp",
     { "antosha417/nvim-lsp-file-operations", config = true },
+    -- Adds $schema support to .json
+    "b0o/schemastore.nvim",
   },
   config = function()
     -- import lspconfig plugin
@@ -159,6 +161,36 @@ return {
               [vim.fn.stdpath("config") .. "/lua"] = true,
             },
           },
+        },
+      },
+    })
+
+    -- configure json server
+    lspconfig["jsonls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      settings = {
+        json = {
+          schemas = require("schemastore").json.schemas(),
+          validate = { enable = true },
+        },
+      },
+    })
+
+    -- configure json server
+    lspconfig["yamlls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      settings = {
+        yaml = {
+          schemaStore = {
+            -- You must disable built-in schemaStore support if you want to use
+            -- this plugin and its advanced options like `ignore`.
+            enable = false,
+            -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+            url = "",
+          },
+          schemas = require("schemastore").yaml.schemas(),
         },
       },
     })
