@@ -14,7 +14,7 @@ return {
     config = function()
       require("local-highlight").setup({
         hlgroup = "LocalHighlight",
-        cw_hlgroup = "LocalHighlight",
+        cw_hlgroup = "LocalHighlightCursorWord",
       })
     end,
   },

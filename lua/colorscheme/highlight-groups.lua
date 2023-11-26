@@ -126,7 +126,11 @@ local function setup()
 
     EndOfBuffer = endOfBuffer,
 
-    DiagnosticUnnecessary = { fg = palette.fade },
+    DiagnosticUnnecessary = { fg = "#777777" },
+
+    -- Cursor word highligthing
+    LocalHighlightCursorWord = { bg = "#4c470b" },
+    LocalHighlight = { bg = "#393400" },
 
     -- TreeSitter
     -- The list of capture-groups can  be found at:
@@ -462,7 +466,7 @@ local function setup()
     RainbowDelimiterViolet = { fg = palette.pink },
     RainbowDelimiterBlue = { fg = palette.blue },
     -- For intentation lines
-    RainbowDelimiterYellowMuted = { fg = palette.yellow_sunflower },
+    RainbowDelimiterYellowMuted = { fg = "#e3cf8b" },
     RainbowDelimiterVioletMuted = { fg = palette.pink },
     RainbowDelimiterBlueMuted = { fg = palette.blue },
 
