@@ -4,17 +4,23 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
     config = function()
-      -- TODO: I'm not super happy with the colors, they´re too much
-      local highlight = {
-        -- This order mimics vs-code
-        "RainbowDelimiterYellowMuted",
-        "RainbowDelimiterVioletMuted",
-        "RainbowDelimiterBlueMuted",
-      }
+      -- TODO: I wasn't happy with the default behavior where all lines are rainbow all the time,
+      -- as opposed to only higlighting the active scope with its corresponding rainbow color
+
+      -- local highlight = {
+      --   -- This order mimics vs-code
+      --   "RainbowDelimiterYellowMuted",
+      --   "RainbowDelimiterVioletMuted",
+      --   "RainbowDelimiterBlueMuted",
+      -- }
 
       require("ibl").setup({
         indent = {
-          highlight = highlight,
+          --   highlight = highlight,
+        },
+        scope = {
+          show_start = false,
+          show_end = false,
         },
       })
     end,

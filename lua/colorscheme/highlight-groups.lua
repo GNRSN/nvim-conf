@@ -467,8 +467,8 @@ local function setup()
     RainbowDelimiterBlue = { fg = palette.blue },
     -- For intentation lines
     RainbowDelimiterYellowMuted = { fg = "#e3cf8b" },
-    RainbowDelimiterVioletMuted = { fg = palette.pink },
-    RainbowDelimiterBlueMuted = { fg = palette.blue },
+    RainbowDelimiterVioletMuted = { fg = "#b74b89" },
+    RainbowDelimiterBlueMuted = { fg = "#4a7396" },
 
     -- Nvim-Scrollbar
     ScrollbarHandle = { fg = nil, bg = palette.selection },
