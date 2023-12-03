@@ -23,12 +23,15 @@ return {
         -- ensure these language parsers are installed
         ensure_installed = {
           "json",
+          "jsonc",
           "javascript",
+          "jsdoc",
           "typescript",
           "tsx",
           "yaml",
           "html",
           "css",
+          "scss",
           "prisma",
           "markdown",
           "markdown_inline",
@@ -36,6 +39,7 @@ return {
           "graphql",
           "bash",
           "lua",
+          "luadoc",
           "vim",
           "dockerfile",
           "gitignore",
