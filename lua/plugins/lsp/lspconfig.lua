@@ -82,11 +82,13 @@ return {
       on_attach = on_attach,
     })
 
+    -- REVIEW: Testing out replacing this with typescript-tools
+    --
     -- configure typescript server with plugin
-    lspconfig["tsserver"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
+    -- lspconfig["tsserver"].setup({
+    --   capabilities = capabilities,
+    --   on_attach = on_attach,
+    -- })
 
     -- configure css server
     lspconfig["cssls"].setup({
