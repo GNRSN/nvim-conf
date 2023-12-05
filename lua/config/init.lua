@@ -66,7 +66,7 @@ return {
     -- after installing missing plugins
     load("options")
   end,
-  setup = function(opts)
+  setup = function()
     load("autocmds")
     load("keymaps")
   end,

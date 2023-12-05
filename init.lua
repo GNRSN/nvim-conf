@@ -17,6 +17,11 @@ else
   end
   vim.opt.rtp:prepend(lazypath)
 
+  -- Hide virtual text
+  vim.diagnostic.config({
+    virtual_text = false,
+  })
+
   require("colorscheme").setup({
     transparent_bg = true,
   })
