@@ -1,6 +1,7 @@
 local get_cwd = function(bufNr)
   local active_buffer = vim.api.nvim_buf_get_name(bufNr)
-  local project_root = require("lspconfig.util").root_pattern("package.json")(active_buffer)
+  -- local project_root = require("lspconfig.util").root_pattern("package.json")(active_buffer)
+  local project_root = require("lspconfig.util").find_package_json_ancestor(active_buffer)
   return project_root
 end
 
