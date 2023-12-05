@@ -1,13 +1,16 @@
 return {
   -- Better yanking with history, ctrl p/n to replace with previous yank after putting
+  -- TODO: does cut work?
   {
     "gbprod/yanky.nvim",
     opts = {
-      -- TODO: Make yank/put colors a bit more subtle?
-      -- Also, does cut work?
+      preserve_cursor_position = {
+        enabled = true,
+      },
     },
     keys = {
       -- Basic usage
+      { "y", "<Plug>(YankyYank)", mode = { "n", "x" }, desc = "Yanky yank" },
       { "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" }, desc = "Yanky put (after)" },
       { "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "Yanky put (before)" },
       { "gp", "<Plug>(YankyGPutAfter)", mode = { "n", "x" }, desc = "Yanky G-put (after)" },
