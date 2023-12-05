@@ -1,4 +1,3 @@
--- This file is automatically loaded by plugins.init
 
 local function augroup(name)
   return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
@@ -8,14 +7,6 @@ end
 vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
   group = augroup("checktime"),
   command = "checktime",
-})
-
--- Highlight on yank
-vim.api.nvim_create_autocmd("TextYankPost", {
-  group = augroup("highlight_yank"),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
 })
 
 -- resize splits if window got resized
