@@ -1,8 +1,17 @@
 local get_cwd = function(bufNr)
-  local active_buffer = vim.api.nvim_buf_get_name(bufNr)
-  -- local project_root = require("lspconfig.util").root_pattern("package.json")(active_buffer)
-  local project_root = require("lspconfig.util").find_package_json_ancestor(active_buffer)
-  return project_root
+  local active_ft = vim.bo.filetype
+  local active_linters = require("lint").linters_by_ft[active_ft]
+
+  if active_linters and active_linters[1] then
+    local active_linter_1 = active_linters[1]
+
+    if active_linter_1 == "eslint_d" then
+      local active_buffer = vim.api.nvim_buf_get_name(bufNr)
+      local project_root = require("lspconfig.util").find_package_json_ancestor(active_buffer)
+      return project_root
+    end
+  end
+  return nil
 end
 
 return {
