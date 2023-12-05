@@ -1,3 +1,12 @@
+local get_cwd = function()
+  local active_buffer = vim.api.nvim_buf_get_name(0)
+  local project_root = require("lspconfig.util").root_pattern("package.json")(active_buffer)
+  if project_root then
+    print("project root: " .. project_root)
+  end
+  return project_root
+end
+
 return {
   -- Asyncrnoys lint runner
   {
@@ -8,7 +17,9 @@ return {
       {
         "<leader>cl",
         function()
-          require("lint").try_lint()
+          local lint = require("lint")
+          lint.linters.eslint_d.cwd = get_cwd()
+          lint.try_lint()
         end,
         desc = "Trigger linting for current file",
       },
@@ -33,7 +44,9 @@ return {
 
       vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
         group = lint_augroup,
-        callback = function()
+        callback = function(event)
+          -- print(vim.inspect(event))
+          lint.linters.eslint_d.cwd = get_cwd()
           lint.try_lint()
         end,
       })
