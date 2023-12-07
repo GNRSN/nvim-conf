@@ -42,6 +42,7 @@ return {
 
     mason_tool_installer.setup({
       ensure_installed = {
+        "cspell", -- spell check
         "eslint_d", -- js linter
         "prettier", -- js + more formatter
         "prettierd",

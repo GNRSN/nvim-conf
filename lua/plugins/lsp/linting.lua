@@ -33,12 +33,12 @@ return {
       local lint = require("lint")
 
       lint.linters_by_ft = {
-        javascript = { "eslint_d" },
-        typescript = { "eslint_d" },
-        javascriptreact = { "eslint_d" },
-        typescriptreact = { "eslint_d" },
-        svelte = { "eslint_d" },
-        python = { "pylint" },
+        javascript = { "eslint_d", "cspell" },
+        typescript = { "eslint_d", "cspell" },
+        javascriptreact = { "eslint_d", "cspell" },
+        typescriptreact = { "eslint_d", "cspell" },
+        svelte = { "eslint_d", "cspell" },
+        python = { "pylint", "cspell" },
       }
 
       -- lint.linters.eslint_d.env = {
