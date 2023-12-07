@@ -494,8 +494,8 @@ local function setup()
     -- ScrollbarGitDeleteHandle
 
     -- Yanky
-    YankyPut = { bg  = "#8ee592", fg = "#333333"},
-    YankyYanked = { bg  = "#a14f86", fg = "#eeeeee"},
+    YankyPut = { bg  = "#8ee592", fg = "#333333" },
+    YankyYanked = { bg  = "#8ee592", fg = "#333333" },
   }
 end
 
