@@ -53,6 +53,18 @@ return {
           lint.try_lint(nil, { cwd = get_cwd(ev.buf) })
         end,
       })
+
+
+      vim.api.nvim_create_user_command("EslintRestartFlat", function()
+        os.execute("ESLINT_USE_FLAT_CONFIG=true eslint_d restart")
+      end, {
+        desc = "Restart eslint_d with flat config enabled",
+      })
+      vim.api.nvim_create_user_command("EslintRestartLegacy", function()
+        os.execute("ESLINT_USE_FLAT_CONFIG= eslint_d restart")
+      end, {
+        desc = "Restart eslint_d without flat config, supporting the eslintrc format instead",
+      })
     end,
   },
 }
