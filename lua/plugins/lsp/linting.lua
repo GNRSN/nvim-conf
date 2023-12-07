@@ -2,6 +2,7 @@ local get_cwd = function(bufNr)
   local active_ft = vim.bo.filetype
   local active_linters = require("lint").linters_by_ft[active_ft]
 
+  -- REVIEW: Its a bit silly that we check the exact index here but I'm still a lua n00b
   if active_linters and active_linters[1] then
     local active_linter_1 = active_linters[1]
 
