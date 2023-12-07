@@ -105,6 +105,7 @@ map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result
 map("i", ",", ",<c-g>u")
 map("i", ".", ".<c-g>u")
 map("i", ";", ";<c-g>u")
+map("i", "<space>", "<space><c-g>u")
 
 -- better indenting
 map("v", "<S-tab>", "<gv")
