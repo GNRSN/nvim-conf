@@ -81,8 +81,8 @@ return {
       -- sources for autocompletion
       -- NOTE: order of sources effect order in UI
       sources = cmp.config.sources({
-        { name = "luasnip" }, -- snippets
         { name = "nvim_lsp" },
+        { name = "luasnip" }, -- snippets
         { name = "buffer" }, -- text within current buffer
         { name = "path" }, -- file system paths
         { name = "cmp_yanky" },
