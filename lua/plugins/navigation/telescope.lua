@@ -165,6 +165,20 @@ return {
         -- },
       },
     },
+    config = function(opts)
+      require("telescope").setup(opts)
+
+      -- _ = require("telescope").load_extension "dap"
+      -- _ = require("telescope").load_extension "notify"
+      -- _ = require("telescope").load_extension "file_browser"
+      -- _ = require("telescope").load_extension "ui-select"
+      _ = require("telescope").load_extension("fzf")
+      -- _ = require("telescope").load_extension "git_worktree"
+      -- _ = require("telescope").load_extension "neoclip"
+
+      -- pcall(require("telescope").load_extension, "smart_history")
+      -- pcall(require("telescope").load_extension, "frecency")
+    end,
   },
   "nvim-telescope/telescope-file-browser.nvim",
   "nvim-telescope/telescope-hop.nvim",
@@ -172,16 +186,3 @@ return {
   -- not sure if I want to keep
   "nvim-telescope/telescope-ui-select.nvim",
 }
-
--- REVIEW: Maybe fzf isn't running without being loaded?
-
--- _ = require("telescope").load_extension "dap"
--- _ = require("telescope").load_extension "notify"
--- _ = require("telescope").load_extension "file_browser"
--- _ = require("telescope").load_extension "ui-select"
--- _ = require("telescope").load_extension "fzf"
--- _ = require("telescope").load_extension "git_worktree"
--- _ = require("telescope").load_extension "neoclip"
-
--- pcall(require("telescope").load_extension, "smart_history")
--- pcall(require("telescope").load_extension, "frecency")
