@@ -1,4 +1,4 @@
-local Util = require("lazy.core.util")
+local LazyUtil = require("lazy.core.util")
 
 local M = {}
 
@@ -102,7 +102,6 @@ function M.telescope(builtin, opts)
   end
 end
 
--- FIXME: create a togglable terminal
 -- Opens a floating terminal (interactive by default)
 ---@param cmd? string[]|string
 ---@param opts? LazyCmdOptions|{interactive?:boolean}
@@ -122,69 +121,84 @@ function M.toggle(option, silent, values)
     else
       vim.opt_local[option] = values[1]
     end
-    return Util.info("Set " .. option .. " to " .. vim.opt_local[option]:get(), { title = "Option" })
+    return LazyUtil.info("Set " .. option .. " to " .. vim.opt_local[option]:get(), { title = "Option" })
   end
   vim.opt_local[option] = not vim.opt_local[option]:get()
   if not silent then
     if vim.opt_local[option]:get() then
-      Util.info("Enabled " .. option, { title = "Option" })
+      LazyUtil.info("Enabled " .. option, { title = "Option" })
     else
-      Util.warn("Disabled " .. option, { title = "Option" })
+      LazyUtil.warn("Disabled " .. option, { title = "Option" })
     end
   end
 end
 
-local enabled = true
+local diagnostics_visible = true
 function M.toggle_diagnostics()
-  enabled = not enabled
-  if enabled then
-    vim.diagnostic.enable()
-    Util.info("Enabled diagnostics", { title = "Diagnostics" })
+  diagnostics_visible = not diagnostics_visible
+  if diagnostics_visible then
+    vim.diagnostic.config({
+      virtual_text = true,
+    })
+    LazyUtil.info("Showing diagnostics", { title = "Diagnostics" })
   else
-    vim.diagnostic.disable()
-    Util.warn("Disabled diagnostics", { title = "Diagnostics" })
+    vim.diagnostic.config({
+      virtual_text = false,
+    })
+    LazyUtil.warn("Hiding diagnostics", { title = "Diagnostics" })
   end
 end
 
-function M.deprecate(old, new)
-  Util.warn(("`%s` is deprecated. Please use `%s` instead"):format(old, new), { title = "LazyVim" })
-end
+function M.open_float(str)
+  local buf = vim.api.nvim_create_buf(false, false)
+  local vpad = 6
+  local hpad = 20
 
--- delay notifications till vim.notify was replaced or after 500ms
-function M.lazy_notify()
-  local notifs = {}
-  local function temp(...)
-    table.insert(notifs, vim.F.pack_len(...))
+  local lines = {}
+  for s in str:gmatch("([^\n]*)\n?") do
+    table.insert(lines, s)
   end
 
-  local orig = vim.notify
-  vim.notify = temp
+  vim.api.nvim_buf_set_lines(buf, 0, -1, true, lines)
 
-  local timer = vim.loop.new_timer()
-  local check = vim.loop.new_check()
+  local opts = {
+    relative = "editor",
+    width = math.min(vim.o.columns - hpad * 2, 150),
+    height = math.min(vim.o.lines - vpad * 2, 50),
+    style = "minimal",
+    border = "single",
+  }
 
-  local replay = function()
-    timer:stop()
-    check:stop()
-    if vim.notify == temp then
-      vim.notify = orig -- put back the original notify if needed
+  opts.row = (vim.o.lines - opts.height) / 2
+  opts.col = (vim.o.columns - opts.width) / 2
+
+  local win = vim.api.nvim_open_win(buf, true, opts)
+
+  vim.api.nvim_buf_set_option(buf, "filetype", "markdown")
+  vim.api.nvim_buf_set_option(buf, "modifiable", false)
+  vim.api.nvim_buf_set_option(buf, "buftype", "nofile")
+  vim.api.nvim_buf_set_option(buf, "bufhidden", "wipe")
+
+  vim.api.nvim_win_set_option(win, "conceallevel", 3)
+  vim.api.nvim_win_set_option(win, "spell", false)
+  vim.api.nvim_win_set_option(win, "wrap", true)
+
+  local function close()
+    if vim.api.nvim_buf_is_valid(buf) then
+      vim.api.nvim_buf_delete(buf, { force = true })
     end
-    vim.schedule(function()
-      ---@diagnostic disable-next-line: no-unknown
-      for _, notif in ipairs(notifs) do
-        vim.notify(vim.F.unpack_len(notif))
-      end
-    end)
+    if vim.api.nvim_win_is_valid(win) then
+      vim.api.nvim_win_close(win, true)
+    end
   end
 
-  -- wait till vim.notify has been replaced
-  check:start(function()
-    if vim.notify ~= temp then
-      replay()
-    end
-  end)
-  -- or if it took more than 500ms, then something went wrong
-  timer:start(500, 0, replay)
+  vim.keymap.set("n", "<ESC>", close, { buffer = buf, nowait = true })
+  vim.keymap.set("n", "q", close, { buffer = buf, nowait = true })
+  vim.api.nvim_create_autocmd({ "BufDelete", "BufLeave", "BufHidden" }, {
+    once = true,
+    buffer = buf,
+    callback = close,
+  })
 end
 
 return M

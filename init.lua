@@ -1,40 +1,62 @@
 if vim.g.vscode then
-	-- VSCode extension
-	require("vscode")
+  -- VSCode extension
+  require("vscode")
 else
-	-- ordinary Neovim
-	-- bootstrap lazy-loader
-	local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-	if not vim.loop.fs_stat(lazypath) then
-		vim.fn.system({
-			"git",
-			"clone",
-			"--filter=blob:none",
-			"https://github.com/folke/lazy.nvim.git",
-			"--branch=stable", -- latest stable release
-			lazypath,
-		})
-	end
-	vim.opt.rtp:prepend(lazypath)
+  -- ordinary Neovim
+  -- bootstrap lazy-loader
+  local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+  if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+      "git",
+      "clone",
+      "--filter=blob:none",
+      "https://github.com/folke/lazy.nvim.git",
+      "--branch=stable", -- latest stable release
+      lazypath,
+    })
+  end
+  vim.opt.rtp:prepend(lazypath)
 
-	require("codex").setup({
-		transparent_bg = true,
-	})
+  -- Hide virtual text
+  vim.diagnostic.config({
+    virtual_text = false,
+  })
 
-	local colorscheme = "codex"
+  require("colorscheme").setup({
+    transparent_bg = true,
+  })
+  require("colorscheme").load()
 
-	local status_ok, _ = pcall(vim.cmd.colorscheme, colorscheme)
+  -- use lazy-loader
+  require("lazy").setup({
+    {
+      import = "plugins",
+    },
+    {
+      import = "plugins.lsp",
+    },
+    {
+      import = "plugins.treesitter",
+    },
+    {
+      import = "plugins.ui",
+    },
+    {
+      import = "plugins.navigation",
+    },
+    {
+      import = "plugins.editing",
+    },
+    {
+      import = "plugins.ai",
+    },
+    {
+      -- options for lazy can go here, check out what's available later
+    },
+  })
+  require("config").setup()
 
-	if not status_ok then
-		print("failed to load colorscheme")
-	end
-
-	-- use lazy-loader
-	require("lazy").setup("plugins")
-	require("config").setup()
-	require("after")
-
-	if vim.g.neovide then
-		require("neovide")
-	end
+  if vim.g.neovide then
+    require("neovide")
+  end
 end

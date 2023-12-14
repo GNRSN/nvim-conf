@@ -1,3 +1,5 @@
+; extends
+
 ( export_statement
   [
     "export"
