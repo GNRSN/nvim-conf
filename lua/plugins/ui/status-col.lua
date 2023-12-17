@@ -13,7 +13,7 @@ return {
             sign = {
               name = { "Diagnostic" },
               condition = { true },
-              maxwidth = 2,
+              maxwidth = 1,
               auto = true,
             },
             click = "v:lua.ScSa",
