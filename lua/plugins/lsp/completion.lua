@@ -12,7 +12,7 @@ return {
   },
   config = function()
     local cmp = require("cmp")
-
+    -- TODO: Register custom snippets, see TJs conf
     local luasnip = require("luasnip")
 
     local lspkind = require("lspkind")
