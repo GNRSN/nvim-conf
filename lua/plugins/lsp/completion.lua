@@ -12,6 +12,7 @@ return {
   },
   config = function()
     local cmp = require("cmp")
+    -- TODO: Get pack previous behavior with typeahead
     -- TODO: Register custom snippets, see TJs conf
     local luasnip = require("luasnip")
 
