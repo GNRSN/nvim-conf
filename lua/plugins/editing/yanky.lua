@@ -7,6 +7,9 @@ return {
       preserve_cursor_position = {
         enabled = true,
       },
+      highlight = {
+        timer = 200,
+      },
     },
     keys = {
       -- Basic usage
