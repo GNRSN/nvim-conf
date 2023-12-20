@@ -86,6 +86,7 @@ return {
     },
     opts = {
       defaults = {
+        -- TODO: Also, icon isn't propagating
         prompt_prefix = " ",
         selection_caret = " ",
         mappings = {
@@ -116,6 +117,7 @@ return {
             end,
             -- Shouldn't need normal mode in telescope so exit on first esc
             ["<esc>"] = function(...)
+              -- TODO: No longer working, needs fixing
               return require("telescope.actions").close(...)
             end,
           },
