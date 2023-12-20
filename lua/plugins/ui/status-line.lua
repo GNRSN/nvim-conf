@@ -62,7 +62,9 @@ return {
           lualine_b = { "branch", "diff" },
           lualine_c = { "filename" },
           lualine_x = {
-            lsp_segment,
+            -- TODO: Disable segment for now because it errors + maybe I don't want/need it
+            --
+            -- lsp_segment,
             "diagnostics",
           },
           lualine_y = { "filetype" },
@@ -73,7 +75,7 @@ return {
           lualine_b = {},
           lualine_c = { "filename" },
           lualine_x = {
-            lsp_segment,
+            -- lsp_segment,
             "diagnostics",
           },
           lualine_y = { "filetype" },
