@@ -1,13 +1,11 @@
 return {
-  -- None-ls is a null_ls replacement,
-  -- handles all language tooling that is not part of LSP, i.e. formatters and linters
-  -- Pros:
-  -- - Project recognition built in, supports monorepo for e.g. eslint, this required a "hack" with nvim-lint
-  -- Cons:
-  -- - All listed code actions are by "null_ls" instead of the correct tool ?
-  --
+
   -- NOTE: I was pretty happy with conform for formatting but not nvim-lint so null_ls only for linting for now,
   -- especially range formatting
+  -- Pros:
+  -- - Project recognition built in, supports monorepo for e.g. eslint, this required manual workaround for nvim-lint 
+  -- Cons:
+  -- - All listed code actions are by "null_ls" instead of the correct tool ?
   --
   ---@type LazyPluginSpec
   {
