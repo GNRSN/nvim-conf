@@ -7,14 +7,18 @@ return {
       local builtin = require("statuscol.builtin")
       require("statuscol").setup({
         setopt = true,
+        -- Prevent cursor line number being left adjusted (default behavior with relative line numbers)
         relculright = true,
+        ft_ignore = {
+          "neo-tree",
+        },
         segments = {
           {
             sign = {
               name = { "Diagnostic" },
               condition = { true },
-              maxwidth = 2,
-              auto = true,
+              maxwidth = 1,
+              auto = false,
             },
             click = "v:lua.ScSa",
           },
@@ -35,7 +39,7 @@ return {
             sign = {
               namespace = { "gitsign*" },
               condition = { true },
-              auto = true,
+              auto = false,
             },
             click = "v:lua.ScSa",
           },
