@@ -2,13 +2,22 @@ return {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
   dependencies = {
-    "hrsh7th/cmp-buffer", -- source for text in buffer
-    "hrsh7th/cmp-path", -- source for file system paths
-    "L3MON4D3/LuaSnip", -- snippet engine
-    "saadparwaiz1/cmp_luasnip", -- for autocompletion
+    -- Basics
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-cmdline",
+    "tjdevries/complextras.nvim", -- Matching lines in workspace
+    -- Lsp
+    "neovim/nvim-lspconfig",
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-nvim-lsp-signature-help",
+    "onsails/lspkind.nvim", -- pictograms
+    -- Snippets
+    "L3MON4D3/LuaSnip",
+    "saadparwaiz1/cmp_luasnip",
     "rafamadriz/friendly-snippets", -- useful snippets
-    "onsails/lspkind.nvim", -- vs-code like pictograms
-    "chrisgrieser/cmp_yanky", -- clipboard as source
+    -- Misc integrations
+    "chrisgrieser/cmp_yanky", -- from clipboard history
   },
   config = function()
     local cmp = require("cmp")
@@ -26,11 +35,31 @@ return {
         -- Vim config to define completion behavior
         completeopt = "menu,menuone,preview,noselect",
       },
-      snippet = { -- configure how nvim-cmp interacts with snippet engine
+      experimental = {
+        ghost_text = true,
+      },
+      window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+      },
+      snippet = {
+        -- Register luasnip as our snippet engine of choice
         expand = function(args)
           luasnip.lsp_expand(args.body)
         end,
       },
+      -- sources for autocompletion
+      -- NOTE: order of sources effect order in UI
+      sources = cmp.config.sources({
+        { name = "nvim_lsp_signature_help" },
+        { name = "nvim_lua" },
+        { name = "nvim_lsp" },
+        { name = "luasnip" }, -- snippets
+      }, {
+        { name = "buffer", keyword_length = 5 },
+        { name = "path" },
+        { name = "cmp_yanky" },
+      }),
       mapping = cmp.mapping.preset.insert({
         -- NOTE: TJs mappings
         ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
@@ -38,6 +67,7 @@ return {
         ["<C-d>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-e>"] = cmp.mapping.abort(),
+        ["<C-q>"] = cmp.mapping.abort(),
         ["<c-y>"] = cmp.mapping(
           cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Insert,
@@ -77,21 +107,48 @@ return {
           select = false,
         }),
       }),
-      -- sources for autocompletion
-      -- NOTE: order of sources effect order in UI
-      sources = cmp.config.sources({
-        { name = "nvim_lsp" },
-        { name = "luasnip" }, -- snippets
-        { name = "buffer" }, -- text within current buffer
-        { name = "path" }, -- file system paths
-        { name = "cmp_yanky" },
-      }),
+      -- NOTE: Copied from TJ
+      ---@diagnostic disable-next-line: missing-fields
+      sorting = {
+        comparators = {
+          cmp.config.compare.offset,
+          cmp.config.compare.exact,
+          cmp.config.compare.score,
+
+          -- copied from cmp-under, but I don't think I need the plugin for this.
+          -- I might add some more of my own.
+          function(entry1, entry2)
+            local _, entry1_under = entry1.completion_item.label:find("^_+")
+            local _, entry2_under = entry2.completion_item.label:find("^_+")
+            entry1_under = entry1_under or 0
+            entry2_under = entry2_under or 0
+            if entry1_under > entry2_under then
+              return false
+            elseif entry1_under < entry2_under then
+              return true
+            end
+          end,
+
+          cmp.config.compare.kind,
+          cmp.config.compare.sort_text,
+          cmp.config.compare.length,
+          cmp.config.compare.order,
+        },
+      },
       -- configure lspkind for vs-code like pictograms in completion menu
       ---@diagnostic disable-next-line: missing-fields
       formatting = {
         format = lspkind.cmp_format({
+          with_text = true,
           maxwidth = 50,
           ellipsis_char = "...",
+          menu = {
+            buffer = "[buf]",
+            nvim_lsp = "[LSP]",
+            nvim_lua = "[api]",
+            path = "[path]",
+            luasnip = "[snip]",
+          },
         }),
       },
     })
