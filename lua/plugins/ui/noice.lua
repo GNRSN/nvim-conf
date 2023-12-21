@@ -1,4 +1,5 @@
 return {
+  -- TODO: Having issues with noice interfering wtih vim/nvim prompts, e.g. when swapfile exists while opening buffer
   {
     "folke/noice.nvim",
     event = "VeryLazy",
@@ -10,7 +11,6 @@ return {
       "rcarriga/nvim-notify",
     },
     config = function()
-
       require("noice").setup({
         lsp = {
           -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -18,6 +18,9 @@ return {
             ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
             ["vim.lsp.util.stylize_markdown"] = true,
             ["cmp.entry.get_documentation"] = true,
+          },
+          signature = {
+            -- TODO: I don't think I've had this show? I added a similar feature to cmp now?
           },
         },
         -- you can enable a preset for easier configuration
@@ -32,8 +35,9 @@ return {
           -- REVIEW: I don't immediately see how to use it through noice and preserve my customizations
           -- I also don't understand the proclaimed benefit of doing so
           -- "Benefit of using Noice for this is the routing and consistent history view"
+          -- Ok maybe i'm also loosing some other messages now, one example was search match count
           enabled = false,
-        }
+        },
       })
     end,
   },
