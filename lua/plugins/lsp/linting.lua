@@ -3,7 +3,7 @@ return {
   -- NOTE: I was pretty happy with conform for formatting but not nvim-lint so null_ls only for linting for now,
   -- especially range formatting
   -- Pros:
-  -- - Project recognition built in, supports monorepo for e.g. eslint, this required manual workaround for nvim-lint 
+  -- - Project recognition built in, supports monorepo for e.g. eslint, this required manual workaround for nvim-lint
   -- Cons:
   -- - All listed code actions are by "null_ls" instead of the correct tool ?
   --
@@ -16,25 +16,16 @@ return {
       -- @see https://github.com/davidmh/cspell.nvim/issues/14
       -- TODO: See if possible to add dictionaries
       "davidmh/cspell.nvim",
+      "mason.nvim",
       "jay-babu/mason-null-ls.nvim",
     },
     lazy = true,
     event = { "BufReadPre", "BufNewFile" },
-    keys = {
-      {
-        "<leader>cf",
-        function()
-          vim.lsp.buf.format()
-        end,
-        mode = { "n", "v" },
-        desc = "Format file or range",
-      },
-    },
     config = function()
       local cspell = require("cspell")
       local mason_null_ls = require("mason-null-ls")
-      local null_ls = require("null-ls")
-      local null_ls_utils = require("null-ls.utils")
+      local nls = require("null-ls")
+      local nls_utils = require("null-ls.utils")
 
       mason_null_ls.setup({
         ensure_installed = {
@@ -46,12 +37,12 @@ return {
         automatic_installation = true,
       })
 
-      local diagnostics = null_ls.builtins.diagnostics -- to setup linters
+      local diagnostics = nls.builtins.diagnostics
 
       -- configure null_ls
-      null_ls.setup({
+      nls.setup({
         -- add package.json as identifier for root (for typescript monorepos)
-        root_dir = null_ls_utils.root_pattern(".null-ls-root", "Makefile", ".git", "package.json"),
+        root_dir = nls_utils.root_pattern(".null-ls-root", "Makefile", ".neoconf.json", ".git", "package.json"),
         sources = {
           diagnostics.pylint,
           diagnostics.eslint_d.with({ -- js/ts linter
