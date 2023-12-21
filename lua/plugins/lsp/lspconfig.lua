@@ -38,20 +38,18 @@ return {
       opts.desc = "Show LSP type definitions"
       keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
 
-      -- REVIEW: Commented out to use other UI for now
+      -- opts.desc = "See available code actions"
+      -- keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
       --
-      opts.desc = "See available code actions"
-      keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
-
-      opts.desc = "Lsp rename"
-      keymap.set("n", "<leader>cr", "<cmd>:IncRename ", opts) -- smart rename
+      -- opts.desc = "Lsp rename"
+      -- keymap.set("n", "<leader>cr", vim.lsp.buf.rename, opts) -- smart rename
 
       opts.desc = "Show buffer diagnostics"
       keymap.set("n", "<leader>cD", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
 
       opts.desc = "Show line diagnostics"
       keymap.set("n", "<leader>cd", vim.diagnostic.open_float, opts) -- show diagnostics for line
-      
+
       opts.desc = "Show documentation for what is under cursor"
       keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
 
@@ -61,7 +59,6 @@ return {
 
       opts.desc = "Go to next diagnostic"
       keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
-
     end
 
     -- used to enable autocompletion (assign to every lsp server config)
