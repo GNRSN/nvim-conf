@@ -171,7 +171,7 @@ return {
       require("telescope").setup(opts)
 
       -- _ = require("telescope").load_extension "dap"
-      require("telescope").load_extension "notify"
+      require("telescope").load_extension("notify")
       -- _ = require("telescope").load_extension "file_browser"
       -- _ = require("telescope").load_extension "ui-select"
       require("telescope").load_extension("fzf")
@@ -180,11 +180,12 @@ return {
 
       -- pcall(require("telescope").load_extension, "smart_history")
       -- pcall(require("telescope").load_extension, "frecency")
+      require("telescope").load_extension("noice")
     end,
   },
   "nvim-telescope/telescope-file-browser.nvim",
   "nvim-telescope/telescope-hop.nvim",
   -- https://github.com/nvim-telescope/telescope-ui-select.nvim
-  -- not sure if I want to keep
-  "nvim-telescope/telescope-ui-select.nvim",
+  -- TODO: not sure if I want to keep
+  -- "nvim-telescope/telescope-ui-select.nvim",
 }
