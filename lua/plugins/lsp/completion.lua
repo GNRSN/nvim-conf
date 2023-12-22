@@ -6,12 +6,13 @@ return {
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-cmdline",
-    "tjdevries/complextras.nvim", -- Matching lines in workspace
+    "tjdevries/complextras.nvim", -- Matching lines in workspace TODO: setup
     -- Lsp
     "neovim/nvim-lspconfig",
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-nvim-lsp-signature-help",
     "onsails/lspkind.nvim", -- pictograms
+    "js-everts/cmp-tailwind-colors",
     -- Snippets
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
@@ -138,18 +139,35 @@ return {
       -- configure lspkind for vs-code like pictograms in completion menu
       ---@diagnostic disable-next-line: missing-fields
       formatting = {
-        format = lspkind.cmp_format({
-          with_text = true,
-          maxwidth = 50,
-          ellipsis_char = "...",
-          menu = {
-            buffer = "[buf]",
-            nvim_lsp = "[LSP]",
-            nvim_lua = "[api]",
-            path = "[path]",
-            luasnip = "[snip]",
-          },
-        }),
+        format = function(entry, item)
+          if item.kind == "Color" then
+            item = require("cmp-tailwind-colors").format(entry, item)
+
+            if item.kind ~= "Color" then
+              -- Emulate other tw class-names
+              item.menu = "[LSP]"
+              -- NOTE: This doesn't actually write out color,
+              -- it makes the box as wide as the transparent though which is keyed icon + "color"
+              item.kind = item.kind .. "Color"
+              return item
+            end
+          end
+
+          item = lspkind.cmp_format({
+            with_text = true,
+            maxwidth = 50,
+            ellipsis_char = "...",
+            menu = {
+              buffer = "[buf]",
+              nvim_lsp = "[LSP]",
+              nvim_lua = "[api]",
+              path = "[path]",
+              luasnip = "[snip]",
+            },
+          })(entry, item)
+
+          return item
+        end,
       },
     })
   end,

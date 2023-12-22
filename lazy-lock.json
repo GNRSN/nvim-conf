@@ -7,6 +7,7 @@
   "cmp-nvim-lsp": { "branch": "main", "commit": "5af77f54de1b16c34b23cba810150689a3a90312" },
   "cmp-nvim-lsp-signature-help": { "branch": "main", "commit": "3d8912ebeb56e5ae08ef0906e3a54de1c66b92f1" },
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
+  "cmp-tailwind-colors": { "branch": "main", "commit": "1d8dbec8549871914b536473249b9524f778f799" },
   "cmp_luasnip": { "branch": "master", "commit": "05a9ab28b53f71d1aece421ef32fee2cb857a843" },
   "cmp_yanky": { "branch": "main", "commit": "c3d089186ccead26eba01023502f3eeadd7a92d2" },
   "complextras.nvim": { "branch": "master", "commit": "2530c83b2da70069994d52d524821870a40ab560" },
