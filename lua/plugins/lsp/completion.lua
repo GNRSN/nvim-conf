@@ -22,7 +22,6 @@ return {
   },
   config = function()
     local cmp = require("cmp")
-    -- TODO: Get pack previous behavior with typeahead
     -- TODO: Register custom snippets, see TJs conf
     local luasnip = require("luasnip")
 
@@ -40,7 +39,11 @@ return {
         ghost_text = true,
       },
       window = {
-        completion = cmp.config.window.bordered(),
+        completion = cmp.config.window.bordered({
+          -- account/offset for icon/kind as prefix
+          col_offset = -2,
+          side_padding = 0,
+        }),
         documentation = cmp.config.window.bordered(),
       },
       snippet = {
@@ -53,14 +56,13 @@ return {
       -- NOTE: order of sources effect order in UI
       sources = cmp.config.sources({
         { name = "nvim_lsp_signature_help" },
+        { name = "path" },
         { name = "nvim_lua" },
         { name = "nvim_lsp" },
         { name = "luasnip" }, -- snippets
-      }, {
         { name = "buffer", keyword_length = 5 },
-        { name = "path" },
         { name = "cmp_yanky" },
-      }),
+      }, {}),
       mapping = cmp.mapping.preset.insert({
         -- NOTE: TJs mappings
         ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
@@ -136,25 +138,37 @@ return {
           cmp.config.compare.order,
         },
       },
-      -- configure lspkind for vs-code like pictograms in completion menu
-      ---@diagnostic disable-next-line: missing-fields
       formatting = {
-        format = function(entry, item)
-          if item.kind == "Color" then
-            item = require("cmp-tailwind-colors").format(entry, item)
+        -- Set order of "columns" (icon | title | source)
+        fields = { "kind", "abbr", "menu" },
+        expandable_indicator = true,
+        format = function(entry, vim_item)
+          -- Tailwind colors
+          if vim_item.kind == "Color" then
+            vim_item = require("cmp-tailwind-colors").format(entry, vim_item)
 
-            if item.kind ~= "Color" then
+            if vim_item.kind ~= "Color" then
               -- Emulate other tw class-names
-              item.menu = "[LSP]"
+              vim_item.menu = "[LSP]"
               -- NOTE: This doesn't actually write out color,
-              -- it makes the box as wide as the transparent though which is keyed icon + "color"
-              item.kind = item.kind .. "Color"
-              return item
+              -- it makes the box as wide as the bg-transparent option though which is keyed icon + "color"
+              vim_item.kind = vim_item.kind .. "Color"
+              return vim_item
             end
           end
-
-          item = lspkind.cmp_format({
-            with_text = true,
+          -- Pathname with icon
+          if vim.tbl_contains({ "path" }, entry.source.name) then
+            local icon, hl_group = require("nvim-web-devicons").get_icon(entry:get_completion_item().label)
+            if icon then
+              vim_item.kind = icon
+              vim_item.kind_hl_group = hl_group
+              vim_item.menu = "[path]"
+              return vim_item
+            end
+          end
+          -- Lspkind (e.g. variable + icon) for remaining
+          return lspkind.cmp_format({
+            with_text = false,
             maxwidth = 50,
             ellipsis_char = "...",
             menu = {
@@ -163,10 +177,9 @@ return {
               nvim_lua = "[api]",
               path = "[path]",
               luasnip = "[snip]",
+              cmp_yanky = "[yanky]",
             },
-          })(entry, item)
-
-          return item
+          })(entry, vim_item)
         end,
       },
     })

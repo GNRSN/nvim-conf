@@ -1,3 +1,5 @@
+-- NOTE: Originally copy/paste from from vs-code theme
+--
 ---@class Highlight
 ---@field fg string color name or "#RRGGBB"
 ---@field foreground string same fg, color name or "#RRGGBB"
@@ -419,22 +421,15 @@ local function setup()
     -- Highlight current word
     -- IlluminatedWordRead = { bg = colors.fade },
 
-    -- Nvim compe
-    CmpItemAbbrDeprecated = { fg = palette.white, bg = palette.menu },
-    CmpItemAbbrMatch = { fg = palette.cyan, bg = palette.menu },
-
-    --barbar
-    BufferCurrentTarget = { fg = palette.red },
-    BufferVisibleTarget = { fg = palette.red },
-    BufferInactiveTarget = { fg = palette.red },
-
-    -- Compe
-    CompeDocumentation = { link = "Pmenu" },
-    CompeDocumentationBorder = { link = "Pmenu" },
-
     -- Cmp
+    -- NOTE: Pmenu controls background
+
     CmpItemKind = { link = "Pmenu" },
     CmpItemAbbr = { link = "Pmenu" },
+    -- REVIEW: Not sure where these are used
+    CmpItemAbbrMatch = { fg = "#569CD6" },
+    CmpItemAbbrMatchFuzzy = { link = "CmpItemAbbrMatch" },
+    CmpItemAbbrDeprecated = { strikethrough = true, fg = "#b36c6c" },
     CmpItemKindMethod = { link = "@method" },
     CmpItemKindText = { link = "@text" },
     CmpItemKindFunction = { link = "@function" },
@@ -453,8 +448,8 @@ local function setup()
     CmpItemKindKeyword = { link = "@keyword" },
     CmpItemKindSnippet = { link = "@text" },
     CmpItemKindColor = { link = "DevIconCss" },
-    CmpItemKindFile = { link = "TSURI" },
-    CmpItemKindFolder = { link = "TSURI" },
+    CmpItemKindFile = { link = "NeoTreeDirectoryName" },
+    CmpItemKindFolder = { link = "NeoTreeDirectoryIcon" },
     CmpItemKindEvent = { link = "@constant" },
     CmpItemKindEnumMember = { link = "@field" },
     CmpItemKindConstant = { link = "@constant" },
@@ -494,8 +489,8 @@ local function setup()
     -- ScrollbarGitDeleteHandle
 
     -- Yanky
-    YankyPut = { bg  = "#8ee592", fg = "#333333" },
-    YankyYanked = { bg  = "#8ee592", fg = "#333333" },
+    YankyPut = { bg = "#8ee592", fg = "#333333" },
+    YankyYanked = { bg = "#8ee592", fg = "#333333" },
   }
 end
 

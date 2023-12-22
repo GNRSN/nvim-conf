@@ -14,6 +14,7 @@ local DEFAULT_CONFIG = {
 local HL_GROUPS_EFFECTED_BY_TRANSPARENCY = {
   "Normal",
   "NormalFloat",
+  "Pmenu",
   "SignColumn",
   "NeoTreeNormal",
   "NeoTreeNormalNC",
