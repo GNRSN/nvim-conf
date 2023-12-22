@@ -43,12 +43,12 @@ return {
       --
       -- opts.desc = "Lsp rename"
       -- keymap.set("n", "<leader>cr", vim.lsp.buf.rename, opts) -- smart rename
+      --
+      -- opts.desc = "Show line diagnostics"
+      -- keymap.set("n", "<leader>cd", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
       opts.desc = "Show buffer diagnostics"
       keymap.set("n", "<leader>cD", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
-
-      opts.desc = "Show line diagnostics"
-      keymap.set("n", "<leader>cd", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
       opts.desc = "Show documentation for what is under cursor"
       keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
