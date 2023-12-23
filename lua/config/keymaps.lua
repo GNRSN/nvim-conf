@@ -29,6 +29,7 @@ map("n", "<C-l>", "<C-w>l")
 map("n", "<C-j>", "<C-w>j")
 map("n", "<C-h>", "<C-w>h")
 map("n", "<C-k>", "<C-w>k")
+-- TODO: Can't rebind window resizing to ctrl + arrow keys since that is macos workspace navigation
 
 ----------------------
 -- Plugin Keybinds
@@ -37,7 +38,12 @@ map("n", "<C-k>", "<C-w>k")
 -- telescope
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
 map("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- find string in current working directory as you type
-map("v", "<leader>fs", '"zy<cmd>exec "Telescope grep_string default_text=" . escape(@z, " ")<cr>', { desc = "Telescope grep for selection"}) -- find string in current working directory as you type
+map(
+  "v",
+  "<leader>fs",
+  "\"zy<cmd>exec \"Telescope grep_string default_text=\" . escape(@z, \" \")<cr>",
+  { desc = "Telescope grep for selection" }
+) -- find string in current working directory as you type
 map("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find string under cursor in current working directory
 map("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
 map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
