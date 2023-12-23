@@ -32,11 +32,18 @@ return {
 
     cmp.setup({
       completion = {
-        -- Vim config to define completion behavior
+        -- REVIEW: Do I want noselect? See :h completeopt
+        --
+        -- Define completion behavior
+        -- menu,menuone: show menu, even when there is only 1 option
+        -- preview: show additional information in preview window
+        -- noselect: force user to select
         completeopt = "menu,menuone,preview,noselect",
       },
       experimental = {
-        ghost_text = true,
+        ghost_text = {
+          hl_group = "CmpGhostText",
+        },
       },
       window = {
         completion = cmp.config.window.bordered({
@@ -46,6 +53,7 @@ return {
         }),
         documentation = cmp.config.window.bordered(),
       },
+
       snippet = {
         -- Register luasnip as our snippet engine of choice
         expand = function(args)
@@ -65,8 +73,14 @@ return {
       }, {}),
       mapping = cmp.mapping.preset.insert({
         -- NOTE: TJs mappings
-        ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-n>"] = cmp.mapping.select_next_item({
+          -- behavior = cmp.SelectBehavior.Insert
+          behavior = cmp.SelectBehavior.Select,
+        }),
+        ["<C-p>"] = cmp.mapping.select_prev_item({
+          -- behavior = cmp.SelectBehavior.Insert
+          behavior = cmp.SelectBehavior.Select,
+        }),
         ["<C-d>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-e>"] = cmp.mapping.abort(),

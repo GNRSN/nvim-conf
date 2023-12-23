@@ -423,12 +423,13 @@ local function setup()
 
     -- Cmp
     -- NOTE: Pmenu controls background
-
+    -- NOTE: CmpGhostText is a custom hlgroup
+    CmpGhostText = { fg = palette.white },
     CmpItemKind = { link = "Pmenu" },
-    CmpItemAbbr = { link = "Pmenu" },
-    -- REVIEW: Not sure where these are used
+    CmpItemAbbr = { link = palette.fade },
+    -- REVIEW: Not sure where "match" are used
     CmpItemAbbrMatch = { fg = "#569CD6" },
-    CmpItemAbbrMatchFuzzy = { link = "CmpItemAbbrMatch" },
+    CmpItemAbbrMatchFuzzy = { fg = palette.bright_green },
     CmpItemAbbrDeprecated = { strikethrough = true, fg = "#b36c6c" },
     CmpItemKindMethod = { link = "@method" },
     CmpItemKindText = { link = "@text" },
