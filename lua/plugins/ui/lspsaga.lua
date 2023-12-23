@@ -32,6 +32,7 @@ return {
       -- { "K", "<cmd>Lspsaga hover_doc<cr>", desc = "Hover documentation" },
       { "<leader>ca", "<cmd>Lspsaga code_action<cr>", desc = "Code actions", mode = { "n", "v" } },
       { "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<cr>", desc = "Line diagnostics" },
+      -- TODO: Rename still doesn't start in normal mode
       { "<leader>cr", "<cmd>Lspsaga rename<cr>", desc = "Rename variable" },
       -- { "<leader>ci", "<cmd>Lspsaga incomming_calls<cr>", desc = "Incomming calls" },
       -- { "<leader>co", "<cmd>Lspsaga outgoing_calls<cr>", desc = "Outgoing calls" },
