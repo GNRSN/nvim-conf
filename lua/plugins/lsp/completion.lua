@@ -79,22 +79,30 @@ return {
         if vim.api.nvim_get_mode().mode == "c" then
           is_allowed_context = true
         else
-          -- REVIEW: Does in_syntax_group (= hlgroup Comment) check cause issues?
-          is_allowed_context = not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
+          -- is_allowed_context = not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
+          local disabled = false
+          disabled = disabled or (vim.api.nvim_buf_get_option(0, "buftype") == "prompt")
+          disabled = disabled or (vim.fn.reg_recording() ~= "")
+          disabled = disabled or (vim.fn.reg_executing() ~= "")
+          disabled = disabled or context.in_treesitter_capture("comment")
+          disabled = disabled or context.in_syntax_group("Comment")
+          is_allowed_context = not disabled
         end
 
-        -- diable completion for certain features
+        -- disable completion for certain commands
         local is_allowed_command = true
         -- Set of commands where cmp will be disabled
         -- TODO: Set the list we actually want to use
-        local disabled = {
+        local disabled_commands = {
           IncRename = true,
         }
         -- Get first word of cmdline
         local cmd = vim.fn.getcmdline():match("%S+")
         -- Return true if cmd isn't disabled
         -- else call/return cmp.close(), which returns false
-        is_allowed_command = not disabled[cmd] or cmp.close()
+        is_allowed_command = not disabled_commands[cmd] or cmp.close()
+
+        -- disable completion for certain buffers
 
         return is_allowed_context and is_allowed_command
       end,
