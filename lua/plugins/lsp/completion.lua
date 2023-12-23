@@ -71,6 +71,33 @@ return {
         { name = "buffer", keyword_length = 5 },
         { name = "cmp_yanky" },
       }, {}),
+      enabled = function()
+        -- disable completion in comments
+        local is_allowed_context = true
+        local context = require("cmp.config.context")
+        -- keep command mode completion enabled when cursor is in a comment
+        if vim.api.nvim_get_mode().mode == "c" then
+          is_allowed_context = true
+        else
+          -- REVIEW: Does in_syntax_group (= hlgroup Comment) check cause issues?
+          is_allowed_context = not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
+        end
+
+        -- diable completion for certain features
+        local is_allowed_command = true
+        -- Set of commands where cmp will be disabled
+        -- TODO: Set the list we actually want to use
+        local disabled = {
+          IncRename = true,
+        }
+        -- Get first word of cmdline
+        local cmd = vim.fn.getcmdline():match("%S+")
+        -- Return true if cmd isn't disabled
+        -- else call/return cmp.close(), which returns false
+        is_allowed_command = not disabled[cmd] or cmp.close()
+
+        return is_allowed_context and is_allowed_command
+      end,
       mapping = cmp.mapping.preset.insert({
         -- NOTE: TJs mappings
         ["<C-n>"] = cmp.mapping.select_next_item({
