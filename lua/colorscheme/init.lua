@@ -49,12 +49,15 @@ local function apply(configs)
   apply_term_colors(palette)
   local hl_groups = require("colorscheme.highlight-groups").setup()
 
-  -- apply transparents
+  -- apply transparency
   if configs.transparent_bg then
     for _, group_name in ipairs(HL_GROUPS_EFFECTED_BY_TRANSPARENCY) do
-      -- Neovim only supports colored or fully transparent background, nil => fully transparent => same as terminal
-      -- TODO: Account for neovide which may support blends?
-      hl_groups[group_name].bg = nil
+      -- Guard against group being commented out
+      if hl_groups[group_name] then
+        -- Neovim only supports colored or fully transparent background, nil => fully transparent => same as terminal
+        -- TODO: Account for neovide which may support blends?
+        hl_groups[group_name].bg = nil
+      end
     end
   end
 

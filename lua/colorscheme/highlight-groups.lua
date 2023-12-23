@@ -421,12 +421,14 @@ local function setup()
     -- Highlight current word
     -- IlluminatedWordRead = { bg = colors.fade },
 
-    -- Cmp
-    -- NOTE: Pmenu controls background
-    -- NOTE: CmpGhostText is a custom hlgroup
+    -- -- Cmp
+    -- -- NOTE: Pmenu controls background
+    -- -- NOTE: CmpGhostText is a custom hlgroup
     CmpGhostText = { fg = palette.white },
-    CmpItemKind = { link = "Pmenu" },
-    CmpItemAbbr = { link = palette.fade },
+    -- Text
+    CmpItemAbbr = { fg = palette.fg },
+    -- Source
+    CmpItemKind = { fg = palette.white },
     -- REVIEW: Not sure where "match" are used
     CmpItemAbbrMatch = { fg = "#569CD6" },
     CmpItemAbbrMatchFuzzy = { fg = palette.bright_green },
