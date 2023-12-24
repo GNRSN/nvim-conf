@@ -23,6 +23,9 @@ return {
       opts.buffer = bufnr
 
       -- set keybinds
+      opts.desc = "Show documentation for what is under cursor"
+      keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+
       opts.desc = "Show LSP references"
       keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
 
@@ -49,9 +52,6 @@ return {
 
       opts.desc = "Show buffer diagnostics"
       keymap.set("n", "<leader>cD", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
-
-      opts.desc = "Show documentation for what is under cursor"
-      keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
 
       -- REVIEW: These overlap with trouble?
       opts.desc = "Go to previous diagnostic"
