@@ -12,8 +12,8 @@ return {
       },
     })
 
-    -- set keymaps
-    local keymap = vim.keymap -- for conciseness
+    local keymap = vim.keymap
+    local wk = require("which-key")
 
     keymap.set("n", "<leader>hm", require("harpoon.mark").add_file, { desc = "Harpoon mark" })
     keymap.set("n", "<leader>hn", "<cmd>lua require('harpoon.ui').nav_next()<cr>", { desc = "Go to next harpoon mark" })
@@ -27,15 +27,15 @@ return {
     keymap.set("n", "<leader>hl", require("harpoon.ui").toggle_quick_menu, { desc = "Harpoon toggle list" })
 
     for i = 1, 9 do
-      keymap.set(
-        "n",
-        -- TODO: Figure out how to hide these from whichkey
-        string.format("<leader>%s", i),
-        function()
-          require("harpoon.ui").nav_file(i)
-        end,
-        { desc = string.format("Navigate to harpoon (%s)", i) }
-      )
+      local key = string.format("<leader>%s", i)
+      keymap.set("n", key, function()
+        require("harpoon.ui").nav_file(i)
+      end, { desc = string.format("Navigate to harpoon (%s)", i) })
+
+      -- Hide from which-key
+      wk.register({
+        [key] = "which_key_ignore",
+      })
     end
   end,
 }
