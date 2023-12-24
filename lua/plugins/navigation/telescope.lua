@@ -10,6 +10,9 @@ return {
       "nvim-lua/plenary.nvim",
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       "nvim-tree/nvim-web-devicons",
+      -- TODO: Not activated, not sure if I want to keep
+      "nvim-telescope/telescope-file-browser.nvim",
+      "nvim-telescope/telescope-hop.nvim",
     },
     cmd = "Telescope",
     keys = {
@@ -175,7 +178,6 @@ return {
       -- _ = require("telescope").load_extension "ui-select"
       require("telescope").load_extension("fzf")
       -- _ = require("telescope").load_extension "git_worktree"
-      -- _ = require("telescope").load_extension "neoclip"
 
       -- pcall(require("telescope").load_extension, "smart_history")
       -- pcall(require("telescope").load_extension, "frecency")
@@ -184,9 +186,4 @@ return {
       require("telescope").load_extension("yank_history")
     end,
   },
-  "nvim-telescope/telescope-file-browser.nvim",
-  "nvim-telescope/telescope-hop.nvim",
-  -- https://github.com/nvim-telescope/telescope-ui-select.nvim
-  -- TODO: not sure if I want to keep
-  -- "nvim-telescope/telescope-ui-select.nvim",
 }
