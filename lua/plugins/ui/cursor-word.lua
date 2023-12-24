@@ -9,13 +9,13 @@ return {
   -- - https://github.com/xiyaowong/nvim-cursorword
   -- - https://github.com/sontungexpt/stcursorword
   -- -
-  -- TODO: After comparing to vscode, this isn't at all comparable
+  -- REVIEW: After comparing to vscode, this isn't at all comparable
   -- I cant find settings for whatever vscode is doing but I notice the folowing:
   -- - Different bg color for indicating differnt behavior
   -- - Some LSP integration, e.g. having the cursor on the word "function" i.e. ´fun*ction myFunc ()´
   --   highlights the word myFunc since lsp actions, e.g. rename, will trigger on that word
   -- - Cursor on a div tag in jsx highlights the matching tag, not all div tags
-  -- TODO: Disabled for now until a find a better option
+  -- LATER: Disabled for now until a find a better option
   -- {
   --   "tzachar/local-highlight.nvim",
   --   config = function()

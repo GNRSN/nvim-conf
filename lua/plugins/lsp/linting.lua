@@ -14,7 +14,7 @@ return {
       -- NOTE: even with cpell.nvim, spellchecking isn't as good as with the official vscode extension.
       -- It seems to be bundled with dictionaries or does some language based magic?
       -- @see https://github.com/davidmh/cspell.nvim/issues/14
-      -- TODO: See if possible to add dictionaries
+      -- LATER: See if possible to add dictionaries
       "davidmh/cspell.nvim",
       "mason.nvim",
       "jay-babu/mason-null-ls.nvim",

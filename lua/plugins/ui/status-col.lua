@@ -1,6 +1,6 @@
 return {
   -- Status column
-  -- TODO: Custom icon for spellcheck (cspell)
+  -- LATER: Custom icon for spellcheck (cspell)
   {
     "luukvbaal/statuscol.nvim",
     config = function()

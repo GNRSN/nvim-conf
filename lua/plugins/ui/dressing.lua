@@ -5,7 +5,7 @@ return {
   -- {
   --   "stevearc/dressing.nvim",
   --   opts = {
-  --     -- TODO: Has a lot of configuration options
+  --     -- NOTE: Has a lot of configuration options
   --
   --     input = {
   --       insert_only = false,
