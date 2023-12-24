@@ -6,7 +6,6 @@ return {
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-cmdline",
-    "tjdevries/complextras.nvim", -- Matching lines in workspace TODO: setup
     -- Lsp
     "neovim/nvim-lspconfig",
     "hrsh7th/cmp-nvim-lsp",
@@ -30,6 +29,7 @@ return {
     -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
     require("luasnip.loaders.from_vscode").lazy_load()
 
+    vim.opt.shortmess:append("c")
     cmp.setup({
       completion = {
         -- REVIEW: Do I want noselect? See :h completeopt
