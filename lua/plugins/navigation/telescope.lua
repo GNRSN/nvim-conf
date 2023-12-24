@@ -10,16 +10,17 @@ return {
       "nvim-lua/plenary.nvim",
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       "nvim-tree/nvim-web-devicons",
-      -- TODO: Not activated, not sure if I want to keep
       "nvim-telescope/telescope-file-browser.nvim",
-      "nvim-telescope/telescope-hop.nvim",
+      "nvim-telescope/telescope-frecency.nvim",
     },
     cmd = "Telescope",
     keys = {
       { "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
       { "<leader>/", util.telescope("live_grep"), desc = "Find in Files (Grep)" },
       { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
-      { "<leader><space>", util.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
+      -- { "<leader><space>", util.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
+      -- REVIEW: Trying out frecency plugin
+      { "<leader><space>", "<Cmd>Telescope frecency workspace=CWD<CR>", desc = "Find Files (cwd)" },
       -- find
       { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
       { "<leader>ff", util.telescope("files"), desc = "Find Files (root dir)" },
@@ -85,6 +86,11 @@ return {
         }),
         desc = "Goto Symbol (Workspace)",
       },
+      {
+        "<leader>fb",
+        "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>",
+        desc = "Telescope file browser",
+      },
     },
     opts = {
       defaults = {
@@ -135,38 +141,6 @@ return {
           override_generic_sorter = true,
           override_file_sorter = true,
         },
-
-        fzf_writer = {
-          use_highlighter = false,
-          minimum_grep_characters = 6,
-        },
-
-        hop = {
-          -- keys define your hop keys in order; defaults to roughly lower- and uppercased home row
-          keys = { "a", "s", "d", "f", "g", "h", "j", "k", "l", ";" }, -- ... and more
-
-          -- Highlight groups to link to signs and lines; the below configuration refers to demo
-          -- sign_hl typically only defines foreground to possibly be combined with line_hl
-          sign_hl = { "WarningMsg", "Title" },
-
-          -- optional, typically a table of two highlight groups that are alternated between
-          line_hl = { "CursorLine", "Normal" },
-
-          -- options specific to `hop_loop`
-          -- true temporarily disables Telescope selection highlighting
-          clear_selection_hl = false,
-          -- highlight hopped to entry with telescope selection highlight
-          -- note: mutually exclusive with `clear_selection_hl`
-          trace_entry = true,
-          -- jump to entry where hoop loop was started from
-          reset_selection = true,
-        },
-
-        -- ["ui-select"] = {
-        --   require("telescope.themes").get_dropdown {
-        --     -- even more opts
-        --   },
-        -- },
       },
     },
     config = function(opts)
@@ -174,7 +148,7 @@ return {
 
       -- _ = require("telescope").load_extension "dap"
       require("telescope").load_extension("notify")
-      -- _ = require("telescope").load_extension "file_browser"
+      require("telescope").load_extension("file_browser")
       -- _ = require("telescope").load_extension "ui-select"
       require("telescope").load_extension("fzf")
       -- _ = require("telescope").load_extension "git_worktree"
@@ -182,7 +156,7 @@ return {
       -- pcall(require("telescope").load_extension, "smart_history")
       -- pcall(require("telescope").load_extension, "frecency")
       require("telescope").load_extension("noice")
-
+      require("telescope").load_extension("frecency")
       require("telescope").load_extension("yank_history")
     end,
   },
