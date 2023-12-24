@@ -186,21 +186,27 @@ return {
           cmp.config.compare.order,
         },
       },
+      -- REVIEW: Should all alternatives still be returned though lspkind? It seems to me as if it doesn't overwrite values?
       formatting = {
         -- Set order of "columns" (icon | title | source)
         fields = { "kind", "abbr", "menu" },
         expandable_indicator = true,
         format = function(entry, vim_item)
+          local MENU_MAPPER = {
+            buffer = "[buf]",
+            nvim_lsp = "[LSP]",
+            nvim_lua = "[api]",
+            path = "[path]",
+            luasnip = "[snip]",
+            cmp_yanky = "[yanky]",
+          }
           -- Tailwind colors
           if vim_item.kind == "Color" then
             vim_item = require("cmp-tailwind-colors").format(entry, vim_item)
 
             if vim_item.kind ~= "Color" then
               -- Emulate other tw class-names
-              vim_item.menu = "[LSP]"
-              -- NOTE: This doesn't actually write out color,
-              -- it makes the box as wide as the bg-transparent option though which is keyed icon + "color"
-              vim_item.kind = vim_item.kind .. "Color"
+              vim_item.menu = MENU_MAPPER[entry.source.name] or entry.source.name or "??"
               return vim_item
             end
           end
@@ -210,7 +216,7 @@ return {
             if icon then
               vim_item.kind = icon
               vim_item.kind_hl_group = hl_group
-              vim_item.menu = "[path]"
+              vim_item.menu = MENU_MAPPER[entry.source.name] or entry.source.name or "??"
               return vim_item
             end
           end
@@ -219,14 +225,7 @@ return {
             with_text = false,
             maxwidth = 50,
             ellipsis_char = "...",
-            menu = {
-              buffer = "[buf]",
-              nvim_lsp = "[LSP]",
-              nvim_lua = "[api]",
-              path = "[path]",
-              luasnip = "[snip]",
-              cmp_yanky = "[yanky]",
-            },
+            menu = MENU_MAPPER,
           })(entry, vim_item)
         end,
       },
