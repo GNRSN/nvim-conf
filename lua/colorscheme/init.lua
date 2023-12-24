@@ -55,7 +55,7 @@ local function apply(configs)
       -- Guard against group being commented out
       if hl_groups[group_name] then
         -- Neovim only supports colored or fully transparent background, nil => fully transparent => same as terminal
-        -- TODO: Account for neovide which may support blends?
+        -- LATER: Account for neovide which may support blends?
         hl_groups[group_name].bg = nil
       end
     end

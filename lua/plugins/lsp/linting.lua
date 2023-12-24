@@ -80,7 +80,7 @@ return {
       end, {
         desc = "Restart eslint_d without flat config, supporting the eslintrc format instead",
       })
-      -- TODO: This doesn't work after restarting eslint_d, it gets rid of the message for mismatching config but new errors aren't visible
+      -- LATER: This doesn't work after restarting eslint_d, it gets rid of the message for mismatching config but new errors aren't visible
       -- NOTE: `:e aka :edit` reloads the file, works as replacement
       vim.api.nvim_create_user_command("EslintRefresh", function()
         require("null-ls").enable({

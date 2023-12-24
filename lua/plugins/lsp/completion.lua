@@ -21,7 +21,7 @@ return {
   },
   config = function()
     local cmp = require("cmp")
-    -- TODO: Register custom snippets, see TJs conf
+    -- LATER: Register custom snippets, see TJs conf
     local luasnip = require("luasnip")
 
     local lspkind = require("lspkind")
@@ -92,7 +92,6 @@ return {
         -- disable completion for certain commands
         local is_allowed_command = true
         -- Set of commands where cmp will be disabled
-        -- TODO: Set the list we actually want to use
         local disabled_commands = {
           IncRename = true,
         }

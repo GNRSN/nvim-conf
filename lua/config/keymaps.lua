@@ -29,7 +29,8 @@ map("n", "<C-l>", "<C-w>l")
 map("n", "<C-j>", "<C-w>j")
 map("n", "<C-h>", "<C-w>h")
 map("n", "<C-k>", "<C-w>k")
--- TODO: Can't rebind window resizing to ctrl + arrow keys since that is macos workspace navigation
+-- LATER: Can't rebind window resizing to ctrl + arrow keys since that is macos workspace navigation,
+-- see nvim hydra for alt plugin for better window management
 
 ----------------------
 -- Plugin Keybinds
