@@ -8,7 +8,6 @@ return {
     priority = 100,
     dependencies = {
       "nvim-lua/plenary.nvim",
-      -- REVIEW: Added this but i'm not sure if I think it got better/worse?
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       "nvim-tree/nvim-web-devicons",
     },
@@ -181,6 +180,8 @@ return {
       -- pcall(require("telescope").load_extension, "smart_history")
       -- pcall(require("telescope").load_extension, "frecency")
       require("telescope").load_extension("noice")
+
+      require("telescope").load_extension("yank_history")
     end,
   },
   "nvim-telescope/telescope-file-browser.nvim",
