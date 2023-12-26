@@ -18,9 +18,10 @@ return {
       { "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
       { "<leader>/", util.telescope("live_grep"), desc = "Find in Files (Grep)" },
       { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
-      -- { "<leader><space>", util.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
+      { "<leader><space>", util.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
       -- REVIEW: Trying out frecency plugin
-      { "<leader><space>", "<Cmd>Telescope frecency workspace=CWD<CR>", desc = "Find Files (cwd)" },
+      -- { "<leader><space>", "<Cmd>Telescope frecency workspace=CWD<CR>", desc = "Find Files (cwd)" },
+      --
       -- find
       { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
       { "<leader>ff", util.telescope("files"), desc = "Find Files (root dir)" },
@@ -141,23 +142,32 @@ return {
           override_generic_sorter = true,
           override_file_sorter = true,
         },
+        frecency = {
+          -- Validation prunes all entries for files which no longer exists,
+          -- in combination with safe-mode this triggers a prompt after e.g. git switch if files differ
+          -- which is anoying, better prune manually using :FrecencyValidate!
+          auto_validate = false,
+        },
       },
     },
     config = function(opts)
       require("telescope").setup(opts)
 
       -- _ = require("telescope").load_extension "dap"
-      require("telescope").load_extension("notify")
+      -- require("telescope").load_extension("notify")
       require("telescope").load_extension("file_browser")
       -- _ = require("telescope").load_extension "ui-select"
       require("telescope").load_extension("fzf")
       -- _ = require("telescope").load_extension "git_worktree"
 
-      -- pcall(require("telescope").load_extension, "smart_history")
-      -- pcall(require("telescope").load_extension, "frecency")
-      require("telescope").load_extension("noice")
-      require("telescope").load_extension("frecency")
-      require("telescope").load_extension("yank_history")
+      -- pcall(require("telescope").load_extension("smart_history"))
+      -- LATER: Frecency breaks a couple of things when enabled
+      -- - first time it is used to enter a buffer treesitter is dead in the buffer
+      -- - needs to set git root manually, see https://github.com/nvim-telescope/telescope-frecency.nvim/issues/158
+      --
+      -- pcall(require("telescope").load_extension("frecency"))
+      pcall(require("telescope").load_extension("noice"))
+      pcall(require("telescope").load_extension("yank_history"))
     end,
   },
 }
