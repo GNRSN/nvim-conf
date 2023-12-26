@@ -39,6 +39,11 @@ return {
         },
         views = {
           notify = {},
+          mini = {
+            win_options = {
+              winblend = 0,
+            },
+          },
         },
       })
 
