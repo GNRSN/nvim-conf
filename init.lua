@@ -22,6 +22,9 @@ else
     virtual_text = false,
   })
 
+  -- Delay notifications until noice.nvim is online
+  require("util").lazy_notify()
+
   require("colorscheme").setup({
     transparent_bg = true,
   })
