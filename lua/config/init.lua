@@ -1,12 +1,12 @@
 local function load(name)
   local Util = require("lazy.core.util")
-  local function _load(mod)
+  local function _load(module)
     Util.try(function()
-      require(mod)
+      require(module)
     end, {
-      msg = "Failed loading " .. mod,
+      msg = "Failed loading " .. module,
       on_error = function(msg)
-        local modpath = require("lazy.core.cache").find(mod)
+        local modpath = require("lazy.core.cache").find(module)
         if modpath then
           Util.error(msg)
         end
@@ -29,6 +29,7 @@ return {
   end,
   setup = function()
     load("autocmds")
+    load("usercmds")
     load("keymaps")
   end,
 }
