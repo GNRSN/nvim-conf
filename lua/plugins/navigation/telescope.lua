@@ -1,5 +1,26 @@
 local util = require("util")
 
+-- this will return a function that calls telescope.
+-- cwd will default to util.get_root
+-- for `files`, git_files or find_files will be chosen depending on .git
+local function tele(builtin, opts)
+  local params = { builtin = builtin, opts = opts }
+  return function()
+    builtin = params.builtin
+    opts = params.opts
+    opts = vim.tbl_deep_extend("force", { cwd = util.get_root() }, opts or {})
+    if builtin == "files" then
+      if vim.loop.fs_stat((opts.cwd or vim.loop.cwd()) .. "/.git") then
+        opts.show_untracked = true
+        builtin = "git_files"
+      else
+        builtin = "find_files"
+      end
+    end
+    require("telescope.builtin")[builtin](opts)
+  end
+end
+
 return {
   -- fuzzy finder
   {
@@ -16,15 +37,15 @@ return {
     cmd = "Telescope",
     keys = {
       { "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
-      { "<leader>/", util.telescope("live_grep"), desc = "Find in Files (Grep)" },
+      { "<leader>/", tele("live_grep"), desc = "Find in Files (Grep)" },
       { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
-      { "<leader><space>", util.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
+      { "<leader><space>", tele("files", { cwd = false }), desc = "Find Files (cwd)" },
       -- REVIEW: Trying out frecency plugin
       -- { "<leader><space>", "<Cmd>Telescope frecency workspace=CWD<CR>", desc = "Find Files (cwd)" },
       --
       -- find
       { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-      { "<leader>ff", util.telescope("files"), desc = "Find Files (root dir)" },
+      { "<leader>ff", tele("files"), desc = "Find Files (root dir)" },
       { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
       -- git
       { "<leader>fg", "<cmd>Telescope git_status<CR>", desc = "status" },
@@ -35,8 +56,8 @@ return {
       { "<leader>sc", "<cmd>Telescope command_history<cr>", desc = "Command History" },
       { "<leader>sC", "<cmd>Telescope commands<cr>", desc = "Commands" },
       { "<leader>sd", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
-      { "<leader>sg", util.telescope("live_grep"), desc = "Grep (root dir)" },
-      { "<leader>sG", util.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
+      { "<leader>sg", tele("live_grep"), desc = "Grep (root dir)" },
+      { "<leader>sG", tele("live_grep", { cwd = false }), desc = "Grep (cwd)" },
       { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
       { "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
       { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
@@ -44,16 +65,16 @@ return {
       { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
       { "<leader>so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
       { "<leader>sR", "<cmd>Telescope resume<cr>", desc = "Resume" },
-      { "<leader>sw", util.telescope("grep_string"), desc = "Word (root dir)" },
-      { "<leader>sW", util.telescope("grep_string", { cwd = false }), desc = "Word (cwd)" },
+      { "<leader>sw", tele("grep_string"), desc = "Word (root dir)" },
+      { "<leader>sW", tele("grep_string", { cwd = false }), desc = "Word (cwd)" },
       {
         "<leader>uC",
-        util.telescope("colorscheme", { enable_preview = true }),
+        tele("colorscheme", { enable_preview = true }),
         desc = "Colorscheme with preview",
       },
       {
         "<leader>fSs",
-        util.telescope("lsp_document_symbols", {
+        tele("lsp_document_symbols", {
           symbols = {
             "Class",
             "Function",
@@ -71,7 +92,7 @@ return {
       },
       {
         "<leader>fSS",
-        util.telescope("lsp_workspace_symbols", {
+        tele("lsp_workspace_symbols", {
           symbols = {
             "Class",
             "Function",
@@ -107,10 +128,10 @@ return {
               return require("trouble.providers.telescope").open_selected_with_trouble(...)
             end,
             ["<a-i>"] = function()
-              util.telescope("find_files", { no_ignore = true })()
+              tele("find_files", { no_ignore = true })()
             end,
             ["<a-h>"] = function()
-              util.telescope("find_files", { hidden = true })()
+              tele("find_files", { hidden = true })()
             end,
             ["<C-Down>"] = function(...)
               return require("telescope.actions").cycle_history_next(...)
@@ -135,6 +156,12 @@ return {
               return require("telescope.actions").close(...)
             end,
           },
+        },
+      },
+      -- LATER: This isn't working, I guess because of how we're calling telescope
+      pickers = {
+        find_files = {
+          theme = "dropdown",
         },
       },
       extensions = {
