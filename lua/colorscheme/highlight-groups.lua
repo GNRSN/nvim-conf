@@ -1,5 +1,17 @@
 -- NOTE: Originally copy/paste from from vs-code theme
---
+local M = {}
+
+M.HL_GROUPS_EFFECTED_BY_TRANSPARENCY = {
+  "Normal",
+  "NormalFloat",
+  "Pmenu",
+  "SignColumn",
+  "NeoTreeNormal",
+  "NeoTreeNormalNC",
+  "TelescopeNormal",
+  "NoiceMini",
+}
+
 ---@class Highlight
 ---@field fg string color name or "#RRGGBB"
 ---@field foreground string same fg, color name or "#RRGGBB"
@@ -28,7 +40,7 @@
 ---setup highlight groups
 ---@return table<string, Highlight>
 ---@nodiscard
-local function setup()
+function M.setup()
   local palette = require("colorscheme.palette")
   local endOfBuffer = {
     fg = palette.bg,
@@ -323,7 +335,7 @@ local function setup()
     NeoTreeGitUntracked = { fg = palette.bright_green },
     NeoTreeIndentMarker = { fg = palette.fade },
     NeoTreeDotfile = { fg = palette.fade },
-    -- NeoTreeCursorLine = { bg = colors.visual },
+    NeoTreeCursorLine = { bg = palette.visual },
 
     -- NeoTreeBufferNumber       The buffer number shown in the buffers source.
     -- NeoTreeCursorLine         |hl-CursorLine| override in Neo-tree window.
@@ -366,6 +378,10 @@ local function setup()
     -- NeoTreeTitleBar           Used for the title bar of pop-ups, when the border-style
     --                           is set to "NC". This is derived from NeoTreeFloatBorder.
     -- NeoTreeWindowsHidden      Used for icons and names that are hidden on Windows.
+
+    -- Noice
+    NoiceMini = { bg = palette.bg },
+    NoiceVirtualText = { fg = palette.bright_magenta },
 
     -- LSP
     DiagnosticError = { fg = palette.red },
@@ -497,6 +513,4 @@ local function setup()
   }
 end
 
-return {
-  setup = setup,
-}
+return M

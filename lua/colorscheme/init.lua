@@ -11,16 +11,6 @@ local DEFAULT_CONFIG = {
   transparent_bg = false,
 }
 
-local HL_GROUPS_EFFECTED_BY_TRANSPARENCY = {
-  "Normal",
-  "NormalFloat",
-  "Pmenu",
-  "SignColumn",
-  "NeoTreeNormal",
-  "NeoTreeNormalNC",
-  "TelescopeNormal",
-}
-
 local function apply_term_colors(colors)
   g.terminal_color_0 = colors.black
   g.terminal_color_1 = colors.red
@@ -51,6 +41,9 @@ local function apply(configs)
 
   -- apply transparency
   if configs.transparent_bg then
+    local HL_GROUPS_EFFECTED_BY_TRANSPARENCY =
+      require("colorscheme.highlight-groups").HL_GROUPS_EFFECTED_BY_TRANSPARENCY
+
     for _, group_name in ipairs(HL_GROUPS_EFFECTED_BY_TRANSPARENCY) do
       -- Guard against group being commented out
       if hl_groups[group_name] then
