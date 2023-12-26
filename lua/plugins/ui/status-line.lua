@@ -29,7 +29,6 @@ return {
     event = "UIEnter",
     dependencies = {
       "nvim-tree/nvim-web-devicons",
-      "kyazdani42/nvim-web-devicons",
       {
         "linrongbin16/lsp-progress.nvim",
         config = true,
