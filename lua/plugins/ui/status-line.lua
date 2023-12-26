@@ -59,7 +59,15 @@ return {
         sections = {
           lualine_a = { "mode" },
           lualine_b = { "branch", "diff" },
-          lualine_c = { "filename" },
+          lualine_c = {
+            "filename",
+            {
+              -- Displayes "recording" when recording macro, maybe other modes as well?
+              require("noice").api.statusline.mode.get,
+              cond = require("noice").api.statusline.mode.has,
+              color = { fg = require("colorscheme.palette").bright_magenta },
+            },
+          },
           lualine_x = {
             -- LATER: Disable segment for now because it errors + maybe I don't want/need it
             --
