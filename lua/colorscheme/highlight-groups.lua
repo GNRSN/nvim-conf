@@ -190,7 +190,7 @@ function M.setup()
     ["@keyword.coroutine"] = { fg = palette.purple },
     ["@keyword.operator"] = { fg = palette.purple },
     ["@operator"] = { fg = palette.bright_white },
-    ["@exception"] = { fg = palette.yellow_orange },
+    ["@exception"] = { fg = palette.error_dark },
     ["@structure"] = { fg = palette.purple },
     ["@include"] = { fg = palette.purple },
 
@@ -245,7 +245,7 @@ function M.setup()
     ["@lsp.type.property"] = { fg = palette.blue_light },
     ["@lsp.type.struct"] = { fg = palette.red },
     ["@lsp.type.type"] = { fg = palette.blue_green },
-    ["@lsp.type.typeParameter"] = { fg = palette.red },
+    ["@lsp.type.typeParameter"] = { fg = palette.number_green },
     ["@lsp.type.variable"] = {},
 
     ["@lsp.mod.deprecated"] = { strikethrough = true },
@@ -457,7 +457,7 @@ function M.setup()
     -- REVIEW: Not sure where "match" are used
     CmpItemAbbrMatch = { fg = "#569CD6" },
     CmpItemAbbrMatchFuzzy = { fg = palette.bright_green },
-    CmpItemAbbrDeprecated = { strikethrough = true, fg = "#b36c6c" },
+    CmpItemAbbrDeprecated = { strikethrough = true, fg = palette.error_dark },
     CmpItemKindMethod = { link = "@method" },
     CmpItemKindText = { link = "@text" },
     CmpItemKindFunction = { link = "@function" },

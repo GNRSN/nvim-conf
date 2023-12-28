@@ -34,4 +34,5 @@ return {
   fade = "#555555",
   number_green = "#B1E8A9",
   border = "#444444",
+  error_dark = "#b36c6c",
 }
