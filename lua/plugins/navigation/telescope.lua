@@ -49,18 +49,25 @@ return {
       { "<leader><space>", tele("files", { cwd = false }), desc = "Find Files (cwd)" },
       { "<leader>ff", tele("files"), desc = "Find Files (root dir)" },
       { "<leader>fs", tele("live_grep"), desc = "Find in Files (Grep)" },
-      { "<leader>fs", tele("grep_string"), desc = "Find selection in Files (Grep)", mode = { "v" } },
+      { "<leader>fs", tele("grep_string"), mode = { "v" }, desc = "Find selection in Files (Grep)" },
+      { "<leader>fS", tele("live_grep", { cwd = false }), desc = "Grep (cwd)" },
       { "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
       { "<leader>/", tele("live_grep"), desc = "Find in Files (Grep)" },
       { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
       { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
       { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
       { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
+      {
+        "<leader>fB",
+        "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>",
+        desc = "Telescope file browser",
+      },
+
       -- git
       { "<leader>fg", "<cmd>Telescope git_status<CR>", desc = "status" },
-      { "<leader>fgb", "<cmd>Telescope git_branches<CR>", desc = "commits" },
-      { "<leader>fgc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
-      { "<leader>fgC", "<cmd>Telescope git_bcommits<CR>", desc = "buffer commits" },
+      { "<leader>sgb", "<cmd>Telescope git_branches<CR>", desc = "commits" },
+      { "<leader>sgc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
+      { "<leader>sgC", "<cmd>Telescope git_bcommits<CR>", desc = "buffer commits" },
 
       -- search
       { "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "Auto Commands" },
@@ -68,8 +75,6 @@ return {
       { "<leader>sc", "<cmd>Telescope command_history<cr>", desc = "Command History" },
       { "<leader>sC", "<cmd>Telescope commands<cr>", desc = "Commands" },
       { "<leader>sd", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
-      { "<leader>sg", tele("live_grep"), desc = "Grep (root dir)" },
-      { "<leader>sG", tele("live_grep", { cwd = false }), desc = "Grep (cwd)" },
       { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
       { "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
       { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
@@ -85,7 +90,7 @@ return {
         desc = "Colorscheme with preview",
       },
       {
-        "<leader>fSs",
+        "<leader>fls",
         tele("lsp_document_symbols", {
           symbols = {
             "Class",
@@ -103,7 +108,7 @@ return {
         desc = "Goto Symbol",
       },
       {
-        "<leader>fSS",
+        "<leader>flS",
         tele("lsp_workspace_symbols", {
           symbols = {
             "Class",
@@ -119,11 +124,6 @@ return {
           },
         }),
         desc = "Goto Symbol (Workspace)",
-      },
-      {
-        "<leader>fB",
-        "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>",
-        desc = "Telescope file browser",
       },
     },
     config = function(opts)
