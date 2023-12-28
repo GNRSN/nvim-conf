@@ -27,7 +27,30 @@ return {
             ["cmp.entry.get_documentation"] = true,
           },
           signature = {
-            -- TODO: Overlaps with cmp, this one has better highlighting through, but also overlaps the completion list
+            -- LATER: Overlaps with cmp, this one has better highlighting through, but also overlaps the completion list
+            enabled = false,
+          },
+          progress = {
+            -- Attatch custom hl groups to default format
+            format = {
+              {
+                "{progress} ",
+                key = "progress.percentage",
+                contents = {
+                  { "{data.progress.message} " },
+                },
+                hl_group = "NoiceLspProgressBar",
+              },
+              { "({data.progress.percentage}%) " },
+              { "{spinner} ", hl_group = "NoiceLspProgressSpinner" },
+              { "{data.progress.title} ", hl_group = "NoiceLspProgressTitle" },
+              { "{data.progress.client} ", hl_group = "NoiceLspProgressClient" },
+            },
+            format_done = {
+              { "✔ ", hl_group = "NoiceLspProgressDone" },
+              { "{data.progress.title} ", hl_group = "NoiceLspProgressTitle" },
+              { "{data.progress.client} ", hl_group = "NoiceLspProgressClient" },
+            },
           },
         },
         presets = {

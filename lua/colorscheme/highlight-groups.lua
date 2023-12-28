@@ -110,8 +110,8 @@ function M.setup()
     VertSplit = { fg = palette.black },
     Folded = { fg = palette.fade },
     FoldColumn = {},
-    Search = { fg = palette.black, bg = palette.orange },
-    IncSearch = { fg = palette.orange, bg = palette.fade },
+    Search = { fg = palette.bg, bg = palette.bright_green },
+    IncSearch = { fg = palette.bg, bg = palette.bright_green },
     LineNr = { fg = palette.fade },
     MatchParen = { fg = palette.fg, underline = true },
     NonText = { fg = palette.nontext },
@@ -335,7 +335,7 @@ function M.setup()
     NeoTreeGitUntracked = { fg = palette.bright_green },
     NeoTreeIndentMarker = { fg = palette.fade },
     NeoTreeDotfile = { fg = palette.fade },
-    NeoTreeCursorLine = { bg = palette.visual },
+    NeoTreeCursorLine = { bg = palette.visual_bg },
 
     -- NeoTreeBufferNumber       The buffer number shown in the buffers source.
     -- NeoTreeCursorLine         |hl-CursorLine| override in Neo-tree window.
@@ -381,7 +381,16 @@ function M.setup()
 
     -- Noice
     NoiceMini = { bg = palette.bg },
-    NoiceVirtualText = { fg = palette.bright_magenta },
+    NoiceVirtualText = { fg = palette.bright_magenta }, -- Search result and such
+    -- Seems tricky to get green check and fix progress bar color,
+    -- @see https://github.com/folke/noice.nvim/blob/74c2902146b080035beb19944baf6f014a954720/lua/noice/config/format.lua#L33
+    NoiceLspProgressTitle = { fg = palette.white },
+    NoiceLspProgressSpinner = { fg = palette.bright_magenta },
+    NoiceLspProgressDone = { fg = palette.bright_green },
+    NoiceLspProgressClient = { fg = palette.bright_magenta },
+    NoiceLspProgressBar = { bg = palette.fade },
+    NoiceFormatProgressTodo = { bg = palette.bright_magenta },
+    NoiceFormatProgressDone = { bg = palette.bright_green },
 
     -- LSP
     DiagnosticError = { fg = palette.red },
