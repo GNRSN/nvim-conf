@@ -4,10 +4,7 @@ local util = require("util")
 -- cwd will default to util.get_root
 -- for `files`, git_files or find_files will be chosen depending on .git
 local function tele(builtin, opts)
-  local params = { builtin = builtin, opts = opts }
   return function()
-    builtin = params.builtin
-    opts = params.opts
     opts = vim.tbl_deep_extend("force", { cwd = util.get_root() }, opts or {})
     if builtin == "files" then
       if vim.loop.fs_stat((opts.cwd or vim.loop.cwd()) .. "/.git") then
@@ -20,6 +17,15 @@ local function tele(builtin, opts)
     require("telescope.builtin")[builtin](opts)
   end
 end
+
+-- LATER: This can replace grep_string and will instead paste the search word so it can be edited
+--
+-- map(
+--   "v",
+--   "<leader>fs",
+--   "\"zy<cmd>exec \"Telescope grep_string default_text=\" . escape(@z, \" \")<cr>",
+--   { desc = "Telescope grep for selection" }
+-- ) -- find string in current working directory as you type
 
 return {
   -- fuzzy finder
@@ -36,20 +42,26 @@ return {
     },
     cmd = "Telescope",
     keys = {
-      { "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
-      { "<leader>/", tele("live_grep"), desc = "Find in Files (Grep)" },
-      { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
-      { "<leader><space>", tele("files", { cwd = false }), desc = "Find Files (cwd)" },
+      -- find
       -- REVIEW: Trying out frecency plugin
       -- { "<leader><space>", "<Cmd>Telescope frecency workspace=CWD<CR>", desc = "Find Files (cwd)" },
       --
-      -- find
-      { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+      { "<leader><space>", tele("files", { cwd = false }), desc = "Find Files (cwd)" },
       { "<leader>ff", tele("files"), desc = "Find Files (root dir)" },
+      { "<leader>fs", tele("live_grep"), desc = "Find in Files (Grep)" },
+      { "<leader>fs", tele("grep_string"), desc = "Find selection in Files (Grep)", mode = { "v" } },
+      { "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
+      { "<leader>/", tele("live_grep"), desc = "Find in Files (Grep)" },
+      { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
+      { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
       { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
+      { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
       -- git
       { "<leader>fg", "<cmd>Telescope git_status<CR>", desc = "status" },
-      { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
+      { "<leader>fgb", "<cmd>Telescope git_branches<CR>", desc = "commits" },
+      { "<leader>fgc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
+      { "<leader>fgC", "<cmd>Telescope git_bcommits<CR>", desc = "buffer commits" },
+
       -- search
       { "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "Auto Commands" },
       { "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Buffer" },
@@ -109,79 +121,73 @@ return {
         desc = "Goto Symbol (Workspace)",
       },
       {
-        "<leader>fb",
+        "<leader>fB",
         "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>",
         desc = "Telescope file browser",
       },
     },
-    opts = {
-      defaults = {
-        -- TODO: Also, icon isn't propagating
-        prompt_prefix = " ",
-        selection_caret = " ",
-        mappings = {
-          i = {
-            ["<c-t>"] = function(...)
-              return require("trouble.providers.telescope").open_with_trouble(...)
-            end,
-            ["<a-t>"] = function(...)
-              return require("trouble.providers.telescope").open_selected_with_trouble(...)
-            end,
-            ["<a-i>"] = function()
-              tele("find_files", { no_ignore = true })()
-            end,
-            ["<a-h>"] = function()
-              tele("find_files", { hidden = true })()
-            end,
-            ["<C-Down>"] = function(...)
-              return require("telescope.actions").cycle_history_next(...)
-            end,
-            ["<C-Up>"] = function(...)
-              return require("telescope.actions").cycle_history_prev(...)
-            end,
-            ["<C-f>"] = function(...)
-              return require("telescope.actions").preview_scrolling_down(...)
-            end,
-            ["<C-b>"] = function(...)
-              return require("telescope.actions").preview_scrolling_up(...)
-            end,
-            -- Shouldn't need normal mode in telescope so exit on first esc
-            ["<esc>"] = function(...)
-              -- TODO: No longer working, needs fixing
-              return require("telescope.actions").close(...)
-            end,
-          },
-          n = {
-            ["q"] = function(...)
-              return require("telescope.actions").close(...)
-            end,
-          },
-        },
-      },
-      -- LATER: This isn't working, I guess because of how we're calling telescope
-      pickers = {
-        find_files = {
-          theme = "dropdown",
-        },
-      },
-      extensions = {
-        fzy_native = {
-          override_generic_sorter = true,
-          override_file_sorter = true,
-        },
-        frecency = {
-          -- Validation prunes all entries for files which no longer exists,
-          -- in combination with safe-mode this triggers a prompt after e.g. git switch if files differ
-          -- which is anoying, better prune manually using :FrecencyValidate!
-          auto_validate = false,
-        },
-      },
-    },
     config = function(opts)
-      require("telescope").setup(opts)
+      local actions = require("telescope.actions")
+      require("telescope").setup({
+        defaults = {
+          -- TODO: Also, icon isn't propagating
+          prompt_prefix = " ",
+          selection_caret = " ",
+          mappings = {
+            i = {
+              ["<c-t>"] = function(...)
+                return require("trouble.providers.telescope").open_with_trouble(...)
+              end,
+              ["<a-t>"] = function(...)
+                return require("trouble.providers.telescope").open_selected_with_trouble(...)
+              end,
+              ["<a-i>"] = function()
+                tele("find_files", { no_ignore = true })()
+              end,
+              ["<a-h>"] = function()
+                tele("find_files", { hidden = true })()
+              end,
+              ["<C-Down>"] = function(...)
+                return actions.cycle_history_next(...)
+              end,
+              ["<C-Up>"] = function(...)
+                return actions.cycle_history_prev(...)
+              end,
+              ["<C-f>"] = function(...)
+                return actions.preview_scrolling_down(...)
+              end,
+              ["<C-b>"] = function(...)
+                return actions.preview_scrolling_up(...)
+              end,
+              -- Shouldn't need normal mode in telescope so exit on first esc
+              ["<esc>"] = function(...)
+                return actions.close(...)
+              end,
+              ["<C-h>"] = "which_key",
+            },
+          },
+        },
+        -- LATER: This isn't working, I guess because of how we're calling telescope
+        pickers = {
+          find_files = {
+            theme = "dropdown",
+          },
+        },
+        extensions = {
+          fzy_native = {
+            override_generic_sorter = true,
+            override_file_sorter = true,
+          },
+          frecency = {
+            -- Validation prunes all entries for files which no longer exists,
+            -- in combination with safe-mode this triggers a prompt after e.g. git switch if files differ
+            -- which is anoying, better prune manually using :FrecencyValidate!
+            auto_validate = false,
+          },
+        },
+      })
 
       -- _ = require("telescope").load_extension "dap"
-      -- require("telescope").load_extension("notify")
       require("telescope").load_extension("file_browser")
       -- _ = require("telescope").load_extension "ui-select"
       require("telescope").load_extension("fzf")
