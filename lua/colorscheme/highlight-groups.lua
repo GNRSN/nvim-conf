@@ -388,7 +388,7 @@ function M.setup()
     NoiceLspProgressSpinner = { fg = palette.bright_magenta },
     NoiceLspProgressDone = { fg = palette.bright_green },
     NoiceLspProgressClient = { fg = palette.bright_magenta },
-    NoiceLspProgressBar = { bg = palette.fade },
+    NoiceLspProgressBar = { bg = palette.nontext },
     NoiceFormatProgressTodo = { bg = palette.bright_magenta },
     NoiceFormatProgressDone = { bg = palette.bright_green },
 
