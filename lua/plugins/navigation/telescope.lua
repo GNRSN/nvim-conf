@@ -167,12 +167,6 @@ return {
             },
           },
         },
-        -- LATER: This isn't working, I guess because of how we're calling telescope
-        pickers = {
-          find_files = {
-            theme = "dropdown",
-          },
-        },
         extensions = {
           fzy_native = {
             override_generic_sorter = true,
