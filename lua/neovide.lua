@@ -1,5 +1,5 @@
 local config = {
-  transparency = true,
+  transparency = false,
 }
 
 local palette = require("colorscheme.palette")
