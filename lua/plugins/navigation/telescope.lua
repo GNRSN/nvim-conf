@@ -126,7 +126,7 @@ return {
         desc = "Goto Symbol (Workspace)",
       },
     },
-    config = function(opts)
+    config = function()
       local actions = require("telescope.actions")
       require("telescope").setup({
         defaults = {
