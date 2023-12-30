@@ -33,14 +33,19 @@ return {
         function()
           require("neo-tree.command").execute({ toggle = true, dir = require("util").get_root() })
         end,
-        desc = "Explorer NeoTree (root dir)",
+        desc = "File explorer (root dir)",
       },
       {
         "<leader>E",
         function()
           require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
         end,
-        desc = "Explorer NeoTree (cwd)",
+        desc = "File explorer (cwd)",
+      },
+      {
+        "<leader>gf",
+        "<cmd>:Neotree float git_status git_base=HEAD<cr>",
+        desc = "Git status filetree",
       },
     },
     config = function()
@@ -49,7 +54,7 @@ return {
         popup_border_style = "rounded",
         enable_git_status = true,
         enable_diagnostics = true,
-        enable_normal_mode_for_inputs = false, -- Enable normal mode for input dialogs.
+        enable_normal_mode_for_inputs = true, -- Enable normal mode for input dialogs.
         open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes
         sort_case_insensitive = false, -- used when sorting files and directories in the tree
         sort_function = nil, -- use a custom function for sorting files and directories in the tree
@@ -92,13 +97,13 @@ return {
           git_status = {
             symbols = {
               -- Change type
-              added = "A", -- or "✚", but this is redundant info if you use git_status_colors on the name
-              modified = "M", -- or "", but this is redundant info if you use git_status_colors on the name
+              added = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
+              modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
               deleted = "D", -- this can only be used in the git_status source
               renamed = "R", -- this can only be used in the git_status source
               -- Status type
               untracked = "",
-              ignored = "",
+              ignored = "I",
               unstaged = "",
               staged = "S",
               conflict = "",
@@ -137,10 +142,10 @@ return {
             nowait = true,
           },
           mappings = {
-            ["<space>"] = {
-              "toggle_node",
-              nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
-            },
+            -- ["<space>"] = {
+            --   "toggle_node",
+            --   nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
+            -- },
             ["<2-LeftMouse>"] = "open",
             ["<cr>"] = "open",
             ["<esc>"] = "cancel", -- close preview or floating neo-tree window
@@ -151,7 +156,6 @@ return {
             ["s"] = "open_vsplit",
             -- ["S"] = "split_with_window_picker",
             -- ["s"] = "vsplit_with_window_picker",
-            ["t"] = "open_tabnew",
             -- ["<cr>"] = "open_drop",
             -- ["t"] = "open_tab_drop",
             ["w"] = "open_with_window_picker",
@@ -187,7 +191,8 @@ return {
             ["?"] = "show_help",
             ["<"] = "prev_source",
             [">"] = "next_source",
-            ["i"] = "show_file_details",
+            -- LATER: errors
+            -- ["i"] = "show_file_details",
           },
         },
         nesting_rules = {},
@@ -208,7 +213,7 @@ return {
               --".gitignored",
             },
             never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
-              --".DS_Store",
+              ".DS_Store",
               --"thumbs.db"
             },
             never_show_by_pattern = { -- uses glob style patterns
@@ -241,14 +246,14 @@ return {
               ["<c-x>"] = "clear_filter",
               ["[g"] = "prev_git_modified",
               ["]g"] = "next_git_modified",
-              ["o"] = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "o" } },
-              ["oc"] = { "order_by_created", nowait = false },
-              ["od"] = { "order_by_diagnostics", nowait = false },
-              ["og"] = { "order_by_git_status", nowait = false },
-              ["om"] = { "order_by_modified", nowait = false },
-              ["on"] = { "order_by_name", nowait = false },
-              ["os"] = { "order_by_size", nowait = false },
-              ["ot"] = { "order_by_type", nowait = false },
+              -- ["o"] = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "o" } },
+              -- ["oc"] = { "order_by_created", nowait = false },
+              -- ["od"] = { "order_by_diagnostics", nowait = false },
+              -- ["og"] = { "order_by_git_status", nowait = false },
+              -- ["om"] = { "order_by_modified", nowait = false },
+              -- ["on"] = { "order_by_name", nowait = false },
+              -- ["os"] = { "order_by_size", nowait = false },
+              -- ["ot"] = { "order_by_type", nowait = false },
             },
             fuzzy_finder_mappings = { -- define keymaps for filter popup window in fuzzy_finder_mode
               ["<down>"] = "move_cursor_down",
@@ -273,13 +278,13 @@ return {
               ["bd"] = "buffer_delete",
               ["<bs>"] = "navigate_up",
               ["."] = "set_root",
-              ["o"] = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "o" } },
-              ["oc"] = { "order_by_created", nowait = false },
-              ["od"] = { "order_by_diagnostics", nowait = false },
-              ["om"] = { "order_by_modified", nowait = false },
-              ["on"] = { "order_by_name", nowait = false },
-              ["os"] = { "order_by_size", nowait = false },
-              ["ot"] = { "order_by_type", nowait = false },
+              -- ["o"] = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "o" } },
+              -- ["oc"] = { "order_by_created", nowait = false },
+              -- ["od"] = { "order_by_diagnostics", nowait = false },
+              -- ["om"] = { "order_by_modified", nowait = false },
+              -- ["on"] = { "order_by_name", nowait = false },
+              -- ["os"] = { "order_by_size", nowait = false },
+              -- ["ot"] = { "order_by_type", nowait = false },
             },
           },
         },
@@ -287,26 +292,24 @@ return {
           window = {
             position = "float",
             mappings = {
-              ["A"] = "git_add_all",
-              ["gu"] = "git_unstage_file",
-              ["ga"] = "git_add_file",
-              ["gr"] = "git_revert_file",
-              ["gc"] = "git_commit",
-              ["gp"] = "git_push",
-              ["gg"] = "git_commit_and_push",
-              ["o"] = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "o" } },
-              ["oc"] = { "order_by_created", nowait = false },
-              ["od"] = { "order_by_diagnostics", nowait = false },
-              ["om"] = { "order_by_modified", nowait = false },
-              ["on"] = { "order_by_name", nowait = false },
-              ["os"] = { "order_by_size", nowait = false },
-              ["ot"] = { "order_by_type", nowait = false },
+              -- ["A"] = "git_add_all",
+              -- ["gu"] = "git_unstage_file",
+              -- ["ga"] = "git_add_file",
+              -- ["gr"] = "git_revert_file",
+              -- ["gc"] = "git_commit",
+              -- ["gp"] = "git_push",
+              -- ["gg"] = "git_commit_and_push",
+              -- ["o"] = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "o" } },
+              -- ["oc"] = { "order_by_created", nowait = false },
+              -- ["od"] = { "order_by_diagnostics", nowait = false },
+              -- ["om"] = { "order_by_modified", nowait = false },
+              -- ["on"] = { "order_by_name", nowait = false },
+              -- ["os"] = { "order_by_size", nowait = false },
+              -- ["ot"] = { "order_by_type", nowait = false },
             },
           },
         },
       })
-
-      -- vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
     end,
   },
 }
