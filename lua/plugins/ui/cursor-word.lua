@@ -46,14 +46,19 @@ return {
           "dirbuf",
           "dirvish",
           "fugitive",
-          "telescope",
+          "prompt",
+          "Prompt",
+          "float",
+          "Float",
         },
         -- filetypes_allowlist: filetypes to illuminate, this is overridden by filetypes_denylist
         -- You must set filetypes_denylist = {} to override the defaults to allow filetypes_allowlist to take effect
         filetypes_allowlist = {},
         -- modes_denylist: modes to not illuminate, this overrides modes_allowlist
         -- See `:help mode()` for possible values
-        modes_denylist = {},
+        modes_denylist = {
+          "i",
+        },
         -- modes_allowlist: modes to illuminate, this is overridden by modes_denylist
         -- See `:help mode()` for possible values
         modes_allowlist = {},
