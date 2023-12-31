@@ -140,11 +140,11 @@ function M.setup()
 
     EndOfBuffer = endOfBuffer,
 
-    DiagnosticUnnecessary = { fg = "#777777" },
+    DiagnosticUnnecessary = { fg = palette.text_ignored },
 
     -- Cursor word highligthing
-    LocalHighlightCursorWord = { bg = "#4c470b" },
-    LocalHighlight = { bg = "#393400" },
+    -- LocalHighlightCursorWord = { bg = "#4c470b" },
+    -- LocalHighlight = { bg = "#393400" },
 
     -- TreeSitter
     -- The list of capture-groups can  be found at:
@@ -334,7 +334,7 @@ function M.setup()
     NeoTreeGitModified = { fg = palette.yellow_sunflower },
     NeoTreeGitUntracked = { fg = palette.bright_green },
     NeoTreeIndentMarker = { fg = palette.fade },
-    NeoTreeDotfile = { fg = palette.fade },
+    NeoTreeDotfile = { fg = palette.text_ignored },
     NeoTreeCursorLine = { bg = palette.visual_bg },
 
     -- NeoTreeBufferNumber       The buffer number shown in the buffers source.
@@ -421,7 +421,7 @@ function M.setup()
     LspDiagnosticsUnderlineError = { fg = palette.red, undercurl = true },
     LspDiagnosticsUnderlineWarning = { fg = palette.yellow, undercurl = true },
     LspDiagnosticsUnderlineInformation = { fg = palette.cyan, undercurl = true },
-    LspDiagnosticsUnderlineHint = { fg = palette.cyan, undercurl = true },
+    LspDiagnosticsUnderlineHint = { fg = palette.number_green, undercurl = true },
     LspReferenceText = { fg = palette.orange },
     LspReferenceRead = { fg = palette.orange },
     LspReferenceWrite = { fg = palette.orange },
@@ -444,7 +444,10 @@ function M.setup()
     LspSagaLspFinderBorder = { fg = palette.border },
 
     -- Highlight current word
-    -- IlluminatedWordRead = { bg = colors.fade },
+    -- Tried to emmulate vscodde but its unclear
+    IlluminatedWordText = { bg = palette.fade },
+    IlluminatedWordRead = { bg = "#484848" },
+    IlluminatedWordWrite = { bg = "#1D3D59" },
 
     -- -- Cmp
     -- -- NOTE: Pmenu controls background

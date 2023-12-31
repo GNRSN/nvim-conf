@@ -103,7 +103,7 @@ return {
               renamed = "R", -- this can only be used in the git_status source
               -- Status type
               untracked = "",
-              ignored = "I",
+              ignored = "",
               unstaged = "",
               staged = "S",
               conflict = "",
@@ -199,7 +199,7 @@ return {
         filesystem = {
           filtered_items = {
             visible = true, -- when true, they will just be displayed differently than normal items
-            hide_dotfiles = true,
+            hide_dotfiles = false,
             hide_gitignored = true,
             hide_hidden = true, -- only works on Windows for hidden files/directories
             hide_by_name = {
@@ -214,6 +214,7 @@ return {
             },
             never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
               ".DS_Store",
+              ".git",
               --"thumbs.db"
             },
             never_show_by_pattern = { -- uses glob style patterns
@@ -231,7 +232,7 @@ return {
           -- "open_current",  -- netrw disabled, opening a directory opens within the
           -- window like netrw would, regardless of window.position
           -- "disabled",    -- netrw left alone, neo-tree does not handle opening dirs
-          use_libuv_file_watcher = false, -- This will use the OS level file watchers to detect changes
+          use_libuv_file_watcher = true, -- This will use the OS level file watchers to detect changes
           -- instead of relying on nvim autocmd events.
           window = {
             mappings = {
@@ -291,6 +292,7 @@ return {
         git_status = {
           window = {
             position = "float",
+            -- REVIEW: I already got lazygit for this, I'd only be interested in using this to replace telescope git status
             mappings = {
               -- ["A"] = "git_add_all",
               -- ["gu"] = "git_unstage_file",

@@ -1,7 +1,7 @@
 ---@class Palette
 return {
   bg = "#1E1E1E",
-  fg = "#F8F8F2",
+  fg = "#f0f0eb",
   selection = "#333333",
   comment = "#6A9955",
   red = "#F44747",
@@ -32,6 +32,7 @@ return {
   blue_light = "#9CDCFE",
   blue_green = "#55DDBB",
   fade = "#555555",
+  text_ignored = "#808080",
   number_green = "#B1E8A9",
   border = "#444444",
   error_dark = "#b36c6c",
