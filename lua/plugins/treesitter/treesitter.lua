@@ -15,7 +15,10 @@ return {
           enable = true,
         },
         -- enable indentation
-        indent = { enable = true },
+        indent = {
+          -- DOC: Indentation based on treesitter for the = operator. NOTE: This is an experimental feature.
+          enable = true,
+        },
         -- enable autotagging (w/ nvim-ts-autotag plugin)
         autotag = {
           enable = true,
@@ -41,6 +44,7 @@ return {
           "lua",
           "luadoc",
           "vim",
+          "vimdoc",
           "dockerfile",
           "gitignore",
           "query",
