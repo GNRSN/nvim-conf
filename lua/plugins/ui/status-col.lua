@@ -1,5 +1,6 @@
 return {
   -- Status column
+  -- TODO: Icons are not prioritized, hint may hide error
   -- LATER: Custom icon for spellcheck (cspell)
   {
     "luukvbaal/statuscol.nvim",
