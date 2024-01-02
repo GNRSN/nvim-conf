@@ -18,15 +18,6 @@ local function tele(builtin, opts)
   end
 end
 
--- LATER: This can replace grep_string and will instead paste the search word so it can be edited
---
--- map(
---   "v",
---   "<leader>fs",
---   "\"zy<cmd>exec \"Telescope grep_string default_text=\" . escape(@z, \" \")<cr>",
---   { desc = "Telescope grep for selection" }
--- ) -- find string in current working directory as you type
-
 return {
   -- fuzzy finder
   {
@@ -38,14 +29,10 @@ return {
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       "nvim-tree/nvim-web-devicons",
       "nvim-telescope/telescope-file-browser.nvim",
-      "nvim-telescope/telescope-frecency.nvim",
     },
     cmd = "Telescope",
     keys = {
       -- find
-      -- REVIEW: Trying out frecency plugin
-      -- { "<leader><space>", "<Cmd>Telescope frecency workspace=CWD<CR>", desc = "Find Files (cwd)" },
-      --
       { "<leader><space>", tele("files", { cwd = false }), desc = "Find Files (cwd)" },
       { "<leader>ff", tele("files"), desc = "Find Files (root dir)" },
       { "<leader>fs", tele("live_grep"), desc = "Find in Files (Grep)" },
@@ -136,7 +123,6 @@ return {
       local actions = require("telescope.actions")
       require("telescope").setup({
         defaults = {
-          -- TODO: Also, icon isn't propagating
           prompt_prefix = " ",
           selection_caret = " ",
           mappings = {
@@ -153,17 +139,11 @@ return {
               ["<a-h>"] = function()
                 tele("find_files", { hidden = true })()
               end,
-              ["<C-Down>"] = function(...)
+              ["<Down>"] = function(...)
                 return actions.cycle_history_next(...)
               end,
-              ["<C-Up>"] = function(...)
+              ["<Up>"] = function(...)
                 return actions.cycle_history_prev(...)
-              end,
-              ["<C-f>"] = function(...)
-                return actions.preview_scrolling_down(...)
-              end,
-              ["<C-b>"] = function(...)
-                return actions.preview_scrolling_up(...)
               end,
               -- Shouldn't need normal mode in telescope so exit on first esc
               ["<esc>"] = function(...)
@@ -178,12 +158,6 @@ return {
             override_generic_sorter = true,
             override_file_sorter = true,
           },
-          frecency = {
-            -- Validation prunes all entries for files which no longer exists,
-            -- in combination with safe-mode this triggers a prompt after e.g. git switch if files differ
-            -- which is anoying, better prune manually using :FrecencyValidate!
-            auto_validate = false,
-          },
         },
       })
 
@@ -194,11 +168,6 @@ return {
       -- _ = require("telescope").load_extension "git_worktree"
 
       -- pcall(require("telescope").load_extension("smart_history"))
-      -- LATER: Frecency breaks a couple of things when enabled
-      -- - first time it is used to enter a buffer treesitter is dead in the buffer
-      -- - needs to set git root manually, see https://github.com/nvim-telescope/telescope-frecency.nvim/issues/158
-      --
-      -- pcall(require("telescope").load_extension("frecency"))
       pcall(require("telescope").load_extension("noice"))
       pcall(require("telescope").load_extension("yank_history"))
     end,
