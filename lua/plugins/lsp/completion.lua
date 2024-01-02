@@ -119,7 +119,7 @@ return {
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-e>"] = cmp.mapping.abort(),
         ["<C-q>"] = cmp.mapping.abort(),
-        ["<c-y>"] = cmp.mapping(
+        ["<C-i>"] = cmp.mapping(
           cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Insert,
             select = true,
