@@ -2,7 +2,7 @@
 return {
   bg = "#1E1E1E",
   fg = "#f0f0eb",
-  selection = "#333333",
+  selection = "#222222",
   comment = "#6A9955",
   red = "#F44747",
   orange = "#FFB86C",
