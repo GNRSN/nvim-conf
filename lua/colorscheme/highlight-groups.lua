@@ -113,12 +113,12 @@ function M.setup()
     Search = { fg = palette.bg, bg = palette.bright_green },
     IncSearch = { fg = palette.bg, bg = palette.bright_green },
     LineNr = { fg = palette.fade },
-    MatchParen = { fg = palette.fg, underline = true },
+    MatchParen = { fg = palette.fg, bg = palette.blue_medium },
     NonText = { fg = palette.nontext },
     Pmenu = { fg = palette.white, bg = palette.menu },
-    PmenuSel = { fg = palette.white, bg = palette.selection },
+    PmenuSel = { fg = palette.white, bg = palette.visual_bg },
     PmenuSbar = { bg = palette.bg },
-    PmenuThumb = { bg = palette.selection },
+    PmenuThumb = { bg = palette.gutter_fg },
 
     Question = { fg = palette.purple },
     QuickFixLine = { fg = palette.black, bg = palette.yellow },
@@ -319,8 +319,8 @@ function M.setup()
     TelescopePromptBorder = { fg = palette.fade },
     TelescopeResultsBorder = { fg = palette.fade },
     TelescopePreviewBorder = { fg = palette.fade },
-    TelescopeSelection = { fg = palette.white, bg = palette.selection },
-    TelescopeMultiSelection = { fg = palette.purple, bg = palette.selection },
+    TelescopeSelection = { fg = palette.white, bg = palette.visual_bg },
+    TelescopeMultiSelection = { fg = palette.green, bg = palette.visual_bg },
     TelescopeNormal = { fg = palette.fg, bg = palette.bg },
     TelescopeMatching = { fg = palette.green },
     TelescopePromptPrefix = { fg = palette.purple },
@@ -382,8 +382,8 @@ function M.setup()
     -- Noice
     NoiceMini = { bg = palette.bg },
     NoiceVirtualText = { fg = palette.bright_magenta }, -- Search result and such
-    -- Seems tricky to get green check and fix progress bar color,
-    -- @see https://github.com/folke/noice.nvim/blob/74c2902146b080035beb19944baf6f014a954720/lua/noice/config/format.lua#L33
+
+    -- Noice lsp
     NoiceLspProgressTitle = { fg = palette.white },
     NoiceLspProgressSpinner = { fg = palette.bright_magenta },
     NoiceLspProgressDone = { fg = palette.bright_green },
@@ -391,6 +391,31 @@ function M.setup()
     NoiceLspProgressBar = { bg = palette.nontext },
     NoiceFormatProgressTodo = { bg = palette.bright_magenta },
     NoiceFormatProgressDone = { bg = palette.bright_green },
+
+    -- Noice Cmd line
+    NoiceCmdlineIcon = { fg = palette.bright_magenta },
+    -- These map to cmdlineIcon
+    -- NoiceCmdlineIconCalculator = { fg = palette.white, bg = palette.bg },
+    -- NoiceCmdlineIconCmdline = { fg = palette.white, bg = palette.bg },
+    -- NoiceCmdlineIconFilter = { fg = palette.white, bg = palette.bg },
+    -- NoiceCmdlineIconHelp = { fg = palette.white, bg = palette.bg },
+    -- NoiceCmdlineIconIncRename = { fg = palette.white, bg = palette.bg },
+    -- NoiceCmdlineIconInput = { fg = palette.white, bg = palette.bg },
+    -- NoiceCmdlineIconLua = { fg = palette.white, bg = palette.bg },
+    NoiceCmdlineIconSearch = { fg = palette.bright_magenta },
+    NoiceCmdlinePopup = { fg = palette.fg, bg = nil },
+    NoiceCmdlinePopupBorder = { fg = palette.fade, bg = nil },
+    -- These map to cmdlinePopupBorder
+    -- NoiceCmdlinePopupBorderCalculator = { fg = palette.white, bg = palette.bg },
+    -- NoiceCmdlinePopupBorderCmdline = { fg = palette.white, bg = palette.bg },
+    -- NoiceCmdlinePopupBorderFilter = { fg = palette.white, bg = palette.bg },
+    -- NoiceCmdlinePopupBorderHelp = { fg = palette.white, bg = palette.bg },
+    -- NoiceCmdlinePopupBorderIncRename = { fg = palette.white, bg = palette.bg },
+    -- NoiceCmdlinePopupBorderInput = { fg = palette.white, bg = palette.bg },
+    -- NoiceCmdlinePopupBorderLua = { fg = palette.white, bg = palette.bg },
+    NoiceCmdlinePopupBorderSearch = { fg = palette.fade },
+    NoiceCmdlinePopupTitle = { fg = palette.bright_magenta, bg = nil },
+    NoiceCmdlinePrompt = { fg = palette.white, bg = palette.bg },
 
     -- LSP
     DiagnosticError = { fg = palette.red },
@@ -497,7 +522,7 @@ function M.setup()
     RainbowDelimiterBlueMuted = { fg = "#4a7396" },
 
     -- Nvim-Scrollbar
-    ScrollbarHandle = { fg = nil, bg = palette.selection },
+    ScrollbarHandle = { fg = nil, bg = palette.gutter_fg },
     ScrollbarCursorHandle = { fg = palette.white, bg = palette.white },
     -- ScrollbarCursor
     -- ScrollbarSearchHandle
