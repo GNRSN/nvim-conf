@@ -319,11 +319,11 @@ function M.setup()
     TelescopePromptBorder = { fg = palette.fade },
     TelescopeResultsBorder = { fg = palette.fade },
     TelescopePreviewBorder = { fg = palette.fade },
-    TelescopeSelection = { fg = palette.white, bg = palette.visual_bg },
+    TelescopeSelection = { fg = palette.bright_white, bg = palette.visual_bg },
     TelescopeMultiSelection = { fg = palette.green, bg = palette.visual_bg },
-    TelescopeNormal = { fg = palette.fg, bg = palette.bg },
+    TelescopeNormal = { fg = palette.white, bg = palette.bg },
     TelescopeMatching = { fg = palette.green },
-    TelescopePromptPrefix = { fg = palette.purple },
+    TelescopePromptPrefix = { fg = palette.bright_magenta },
 
     -- NeoTree
     NeoTreeNormal = { fg = palette.fg, bg = palette.menu },
