@@ -68,6 +68,17 @@ return {
             },
           },
         },
+        routes = {
+          {
+            -- Hides save messages
+            filter = {
+              event = "msg_show",
+              kind = "",
+              find = "written",
+            },
+            opts = { skip = true },
+          },
+        },
       })
 
       -- I use this to debug ui messages
