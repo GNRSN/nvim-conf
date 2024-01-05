@@ -55,7 +55,7 @@ function M.setup()
     Character = { fg = palette.green },
     Number = { fg = palette.number_green },
     Boolean = { fg = palette.cyan },
-    Float = { fg = palette.blue_light },
+    Float = { fg = palette.fg },
     FloatBorder = { fg = palette.border },
     Operator = { fg = palette.purple },
     --Keyword = { fg = colors.cyan },

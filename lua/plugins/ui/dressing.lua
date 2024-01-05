@@ -9,7 +9,10 @@ return {
         input = {
           insert_only = false,
           start_in_insert = false,
-          title_pos = "center",
+          win_options = {
+            -- Default links to weird groups
+            winhighlight = "NormalFloat:Float,FloatBorder:FloatBorder,FloatTitle:FloatBorder",
+          },
           -- Default mappings
           mappings = {
             n = {
