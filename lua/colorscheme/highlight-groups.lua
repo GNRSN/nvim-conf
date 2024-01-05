@@ -238,7 +238,7 @@ function M.setup()
     ["@lsp.type.enumMember"] = { fg = palette.red },
     ["@lsp.type.function"] = { fg = palette.yellow },
     ["@lsp.type.interface"] = { fg = palette.blue_green },
-    ["@lsp.type.macro"] = { fg = palette.red },
+    ["@lsp.type.macro"] = { fg = palette.orange },
     ["@lsp.type.method"] = { fg = palette.yellow },
     ["@lsp.type.namespace"] = { fg = palette.blue_green },
     ["@lsp.type.parameter"] = { fg = palette.blue_light },
