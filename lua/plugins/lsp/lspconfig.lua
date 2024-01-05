@@ -44,8 +44,8 @@ return {
       -- opts.desc = "See available code actions"
       -- keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
       --
-      -- opts.desc = "Lsp rename"
-      -- keymap.set("n", "<leader>cr", vim.lsp.buf.rename, opts) -- smart rename
+      opts.desc = "Lsp rename"
+      keymap.set("n", "<leader>cr", vim.lsp.buf.rename, opts) -- smart rename
       --
       -- opts.desc = "Show line diagnostics"
       -- keymap.set("n", "<leader>cd", vim.diagnostic.open_float, opts) -- show diagnostics for line
