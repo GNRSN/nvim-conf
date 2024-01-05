@@ -1,3 +1,8 @@
+local HARPOON_WINDOW_OPTIONS = {
+  border = "rounded",
+  title_pos = "center",
+}
+
 return {
   "ThePrimeagen/harpoon",
   branch = "harpoon2",
@@ -16,6 +21,7 @@ return {
     local keymap = vim.keymap
     local wk = require("which-key")
 
+    -- Create keymaps
     keymap.set("n", "<leader>hm", function()
       harpoon:list():append()
 
@@ -36,7 +42,7 @@ return {
     end, { desc = "Go to previous harpoon mark" })
 
     keymap.set("n", "<leader>hl", function()
-      harpoon.ui:toggle_quick_menu(harpoon:list())
+      harpoon.ui:toggle_quick_menu(harpoon:list(), HARPOON_WINDOW_OPTIONS)
     end, { desc = "Harpoon toggle list" })
 
     for i = 1, 9 do

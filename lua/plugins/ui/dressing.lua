@@ -11,7 +11,7 @@ return {
           start_in_insert = false,
           win_options = {
             -- Default links to weird groups
-            winhighlight = "NormalFloat:Float,FloatBorder:FloatBorder,FloatTitle:FloatBorder",
+            winhighlight = "NormalFloat:Float,FloatBorder:FloatBorder,FloatTitle:FloatTitle",
           },
           -- Default mappings
           mappings = {

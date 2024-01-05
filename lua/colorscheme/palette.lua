@@ -22,7 +22,6 @@ return {
   bright_white = "#FFFFFF",
   menu = "#0f0f0f",
   visual_bg = "#743563", -- Visual mode
-  gutter_fg = "#444444",
   nontext = "#3B4048",
   white = "#ABB2BF",
   black = "#000000",

@@ -57,6 +57,7 @@ function M.setup()
     Boolean = { fg = palette.cyan },
     Float = { fg = palette.fg },
     FloatBorder = { fg = palette.border },
+    FloatTitle = { fg = palette.fade },
     Operator = { fg = palette.purple },
     --Keyword = { fg = colors.cyan },
     --Keywords = { fg = colors.cyan },
@@ -118,7 +119,7 @@ function M.setup()
     Pmenu = { fg = palette.white, bg = palette.menu },
     PmenuSel = { fg = palette.white, bg = palette.visual_bg },
     PmenuSbar = { bg = palette.bg },
-    PmenuThumb = { bg = palette.gutter_fg },
+    PmenuThumb = { bg = palette.border },
 
     Question = { fg = palette.purple },
     QuickFixLine = { fg = palette.black, bg = palette.yellow },
@@ -522,7 +523,7 @@ function M.setup()
     RainbowDelimiterBlueMuted = { fg = "#4a7396" },
 
     -- Nvim-Scrollbar
-    ScrollbarHandle = { fg = nil, bg = palette.gutter_fg },
+    ScrollbarHandle = { fg = nil, bg = palette.border },
     ScrollbarCursorHandle = { fg = palette.white, bg = palette.white },
     -- ScrollbarCursor
     -- ScrollbarSearchHandle
