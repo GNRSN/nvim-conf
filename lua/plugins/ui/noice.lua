@@ -1,3 +1,5 @@
+local CONCEAL_CMD = false
+
 return {
   -- Noice is multiple things, but foremost its an event/message router,
   -- it allows filtering/mapping messages to different UIs,
@@ -19,6 +21,13 @@ return {
     },
     config = function()
       require("noice").setup({
+        presets = {
+          bottom_search = false, -- use a classic bottom cmdline for search
+          command_palette = true, -- position the cmdline and popupmenu together
+          long_message_to_split = true, -- long messages will be sent to a split
+          inc_rename = false, -- enables an input dialog for inc-rename.nvim
+          lsp_doc_border = true, -- add a border to hover docs and signature help
+        },
         lsp = {
           -- DOC: override markdown rendering so that **cmp** and other plugins use **Treesitter**
           override = {
@@ -53,17 +62,57 @@ return {
             },
           },
         },
-        presets = {
-          bottom_search = false, -- use a classic bottom cmdline for search
-          command_palette = true, -- position the cmdline and popupmenu together
-          long_message_to_split = true, -- long messages will be sent to a split
-          inc_rename = false, -- enables an input dialog for inc-rename.nvim
-          lsp_doc_border = true, -- add a border to hover docs and signature help
+        cmdline = {
+          format = {
+            cmdline = {
+              title = "Command",
+              pattern = "^:",
+              icon = " ",
+              lang = "vim",
+              conceal = CONCEAL_CMD,
+            },
+            search_down = {
+              title = "Search 󰁆",
+              kind = "Search",
+              pattern = "^/",
+              icon = " ",
+              lang = "regex",
+              conceal = CONCEAL_CMD,
+            },
+            search_up = {
+              title = "Search 󰁞",
+              kind = "Search",
+              pattern = "^%?",
+              icon = " ",
+              lang = "regex",
+              conceal = CONCEAL_CMD,
+            },
+            filter = {
+              title = "Shell",
+              pattern = "^:%s*!",
+              icon = " ",
+              lang = "bash",
+              conceal = CONCEAL_CMD,
+            },
+            lua = {
+              pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" },
+              icon = " ",
+              lang = "lua",
+              conceal = CONCEAL_CMD,
+            },
+            help = {
+              pattern = "^:%s*he?l?p?%s+",
+              icon = " ",
+              conceal = CONCEAL_CMD,
+            },
+            input = {}, -- Used by input()
+          },
         },
         views = {
           notify = {},
           mini = {
             win_options = {
+              -- Transparency needs to be 0 so bg can be nil
               winblend = 0,
             },
           },
