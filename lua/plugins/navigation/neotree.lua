@@ -62,6 +62,13 @@ return {
           container = {
             enable_character_fade = true,
           },
+          diagnostics = {
+            -- Override diagnostic symbols to hide priorty < warning
+            symbols = {
+              hint = "",
+              info = "",
+            },
+          },
           indent = {
             indent_size = 2,
             padding = 1, -- extra padding on left hand side
@@ -151,7 +158,7 @@ return {
             ["<esc>"] = "cancel", -- close preview or floating neo-tree window
             ["P"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
             -- Read `# Preview Mode` for more information
-            ["l"] = "focus_preview",
+            -- ["l"] = "focus_preview",
             ["S"] = "open_split",
             ["s"] = "open_vsplit",
             -- ["S"] = "split_with_window_picker",
@@ -192,7 +199,27 @@ return {
             ["<"] = "prev_source",
             [">"] = "next_source",
             -- LATER: errors
+            --
             -- ["i"] = "show_file_details",
+            -- @see: https://github.com/nvim-neo-tree/neo-tree.nvim/wiki/Tips#navigation-with-hjkl
+            ["h"] = function(state)
+              local node = state.tree:get_node()
+              if node.type == "directory" and node:is_expanded() then
+                require("neo-tree.sources.filesystem").toggle_directory(state, node)
+              else
+                require("neo-tree.ui.renderer").focus_node(state, node:get_parent_id())
+              end
+            end,
+            ["l"] = function(state)
+              local node = state.tree:get_node()
+              if node.type == "directory" then
+                if not node:is_expanded() then
+                  require("neo-tree.sources.filesystem").toggle_directory(state, node)
+                elseif node:has_children() then
+                  require("neo-tree.ui.renderer").focus_node(state, node:get_child_ids()[1])
+                end
+              end
+            end,
           },
         },
         nesting_rules = {},
