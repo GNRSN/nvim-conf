@@ -19,6 +19,9 @@ return {
         },
       },
     },
+    keys = {
+      { "<leader>sn", "<cmd>Noice telescope<cr>", desc = "Search notifications" },
+    },
     config = function()
       require("noice").setup({
         presets = {
