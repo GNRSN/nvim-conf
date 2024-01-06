@@ -64,12 +64,12 @@ return {
     -- used to enable autocompletion (assign to every lsp server config)
     local capabilities = cmp_nvim_lsp.default_capabilities()
 
-    -- Change the Diagnostic symbols in the sign column (gutter)
+    -- Change the Diagnostic symbols
     local signs = {
-      Error = " ",
-      Warn = " ",
-      Info = " ",
-      Hint = "󱠃 ",
+      Error = " ",
+      Warn = " ",
+      Info = " ",
+      Hint = " ",
     }
     for type, icon in pairs(signs) do
       local hl = "DiagnosticSign" .. type
