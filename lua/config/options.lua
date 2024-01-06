@@ -26,7 +26,6 @@ opt.scrolloff = 4 -- Lines of context
 opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
 opt.shiftround = true -- Round indent
 opt.shiftwidth = 2 -- Size of an indent
-opt.shortmess:append({ I = true, c = true })
 opt.showcmd = false -- Dont show command being written out in bottom right
 opt.showmode = false -- Dont show mode since we have a statusline doing that
 opt.sidescrolloff = 8 -- Columns of context
@@ -48,9 +47,15 @@ opt.wildcharm = ("<Tab>"):byte() -- Set wildcharm, see https://github.com/neovim
 opt.winminwidth = 5 -- Minimum window width
 opt.wrap = false -- Disable line wrap
 opt.splitkeep = "screen"
-opt.shortmess:append({ C = true })
 vim.g.incsearch = true
 vim.g.hlsearch = true
+-- Hide messages
+opt.shortmess:append({
+  I = true,
+  c = true,
+  C = true,
+  s = true,
+})
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0

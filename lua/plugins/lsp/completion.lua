@@ -29,7 +29,6 @@ return {
     -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
     require("luasnip.loaders.from_vscode").lazy_load()
 
-    vim.opt.shortmess:append("c")
     cmp.setup({
       completion = {
         -- REVIEW: Do I want noselect? See :h completeopt
