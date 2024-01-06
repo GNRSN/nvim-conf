@@ -18,6 +18,10 @@ return {
     "rafamadriz/friendly-snippets", -- useful snippets
     -- Misc integrations
     "chrisgrieser/cmp_yanky", -- from clipboard history
+    {
+      "petertriho/cmp-git",
+      requires = "nvim-lua/plenary.nvim",
+    },
   },
   config = function()
     local cmp = require("cmp")
@@ -69,6 +73,7 @@ return {
         { name = "luasnip" }, -- snippets
         { name = "buffer", keyword_length = 5 },
         { name = "cmp_yanky" },
+        { name = "git" },
       }, {}),
       enabled = function()
         -- disable completion in comments
@@ -253,5 +258,8 @@ return {
         { name = "buffer" },
       },
     })
+
+    -- git completion setup
+    require("cmp_git").setup()
   end,
 }
