@@ -16,6 +16,7 @@ return {
             exec = { "<cr>", "<C-y>" },
           },
         },
+        diagnostic = {},
         rename = {
           in_select = false,
           keys = {

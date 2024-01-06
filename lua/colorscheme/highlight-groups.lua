@@ -454,6 +454,7 @@ function M.setup()
     LspCodeLens = { fg = palette.cyan },
 
     --LSP Saga
+    -- REVIEW: I think lsp saga re-did their hl groups, see https://github.com/nvimdev/lspsaga.nvim/blob/main/lua/lspsaga/highlight.lua
     LspFloatWinNormal = { fg = palette.fg },
     LspFloatWinBorder = { fg = palette.border },
     LspSagaHoverBorder = { fg = palette.border },
@@ -468,6 +469,11 @@ function M.setup()
     LspSagaShTruncateLine = { fg = palette.fade },
     LspSagaDocTruncateLine = { fg = palette.fade },
     LspSagaLspFinderBorder = { fg = palette.border },
+
+    SagaVirtLine = { fg = palette.border },
+    SagaBorder = { fg = palette.border },
+    DiagnosticBorder = { fg = palette.border },
+    DiagnosticShowBorder = { fg = palette.border },
 
     -- Highlight current word
     -- Tried to emmulate vscodde but its unclear
