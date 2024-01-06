@@ -422,7 +422,7 @@ function M.setup()
     DiagnosticError = { fg = palette.red },
     DiagnosticWarn = { fg = palette.yellow },
     DiagnosticInfo = { fg = palette.cyan },
-    DiagnosticHint = { fg = palette.cyan },
+    DiagnosticHint = { fg = palette.green },
     DiagnosticUnderlineError = { undercurl = true, sp = palette.red },
     DiagnosticUnderlineWarn = { undercurl = true, sp = palette.yellow },
     DiagnosticUnderlineInfo = { undercurl = true, sp = palette.cyan },
