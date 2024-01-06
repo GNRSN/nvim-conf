@@ -406,7 +406,7 @@ function M.setup()
     NoiceCmdlineIconSearch = { fg = palette.bright_magenta },
     NoiceCmdlinePopup = { fg = palette.fg, bg = nil },
     NoiceCmdlinePopupBorder = { fg = palette.fade, bg = nil },
-    -- These map to cmdlinePopupBorder
+    -- These map to cmdlinePopupBorder, I don't want differing colors for now
     -- NoiceCmdlinePopupBorderCalculator = { fg = palette.white, bg = palette.bg },
     -- NoiceCmdlinePopupBorderCmdline = { fg = palette.white, bg = palette.bg },
     -- NoiceCmdlinePopupBorderFilter = { fg = palette.white, bg = palette.bg },
