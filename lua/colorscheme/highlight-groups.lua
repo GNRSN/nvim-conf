@@ -1,3 +1,17 @@
+-- NOTE: Originally copy/paste from from vs-code theme
+local M = {}
+
+M.HL_GROUPS_EFFECTED_BY_TRANSPARENCY = {
+  "Normal",
+  "NormalFloat",
+  "Pmenu",
+  "SignColumn",
+  "NeoTreeNormal",
+  "NeoTreeNormalNC",
+  "TelescopeNormal",
+  "NoiceMini",
+}
+
 ---@class Highlight
 ---@field fg string color name or "#RRGGBB"
 ---@field foreground string same fg, color name or "#RRGGBB"
@@ -26,7 +40,7 @@
 ---setup highlight groups
 ---@return table<string, Highlight>
 ---@nodiscard
-local function setup()
+function M.setup()
   local palette = require("colorscheme.palette")
   local endOfBuffer = {
     fg = palette.bg,
@@ -41,8 +55,9 @@ local function setup()
     Character = { fg = palette.green },
     Number = { fg = palette.number_green },
     Boolean = { fg = palette.cyan },
-    Float = { fg = palette.blue_light },
+    Float = { fg = palette.fg },
     FloatBorder = { fg = palette.border },
+    FloatTitle = { fg = palette.fade },
     Operator = { fg = palette.purple },
     --Keyword = { fg = colors.cyan },
     --Keywords = { fg = colors.cyan },
@@ -96,15 +111,15 @@ local function setup()
     VertSplit = { fg = palette.black },
     Folded = { fg = palette.fade },
     FoldColumn = {},
-    Search = { fg = palette.black, bg = palette.orange },
-    IncSearch = { fg = palette.orange, bg = palette.fade },
+    Search = { fg = palette.bg, bg = palette.bright_green },
+    IncSearch = { fg = palette.bg, bg = palette.bright_green },
     LineNr = { fg = palette.fade },
-    MatchParen = { fg = palette.fg, underline = true },
+    MatchParen = { fg = palette.fg, bg = palette.blue_medium },
     NonText = { fg = palette.nontext },
     Pmenu = { fg = palette.white, bg = palette.menu },
-    PmenuSel = { fg = palette.white, bg = palette.selection },
+    PmenuSel = { fg = palette.white, bg = palette.visual_bg },
     PmenuSbar = { bg = palette.bg },
-    PmenuThumb = { bg = palette.selection },
+    PmenuThumb = { bg = palette.border },
 
     Question = { fg = palette.purple },
     QuickFixLine = { fg = palette.black, bg = palette.yellow },
@@ -126,11 +141,11 @@ local function setup()
 
     EndOfBuffer = endOfBuffer,
 
-    DiagnosticUnnecessary = { fg = "#777777" },
+    DiagnosticUnnecessary = { fg = palette.text_ignored },
 
     -- Cursor word highligthing
-    LocalHighlightCursorWord = { bg = "#4c470b" },
-    LocalHighlight = { bg = "#393400" },
+    -- LocalHighlightCursorWord = { bg = "#4c470b" },
+    -- LocalHighlight = { bg = "#393400" },
 
     -- TreeSitter
     -- The list of capture-groups can  be found at:
@@ -176,7 +191,7 @@ local function setup()
     ["@keyword.coroutine"] = { fg = palette.purple },
     ["@keyword.operator"] = { fg = palette.purple },
     ["@operator"] = { fg = palette.bright_white },
-    ["@exception"] = { fg = palette.yellow_orange },
+    ["@exception"] = { fg = palette.error_dark },
     ["@structure"] = { fg = palette.purple },
     ["@include"] = { fg = palette.purple },
 
@@ -224,14 +239,14 @@ local function setup()
     ["@lsp.type.enumMember"] = { fg = palette.red },
     ["@lsp.type.function"] = { fg = palette.yellow },
     ["@lsp.type.interface"] = { fg = palette.blue_green },
-    ["@lsp.type.macro"] = { fg = palette.red },
+    ["@lsp.type.macro"] = { fg = palette.orange },
     ["@lsp.type.method"] = { fg = palette.yellow },
     ["@lsp.type.namespace"] = { fg = palette.blue_green },
     ["@lsp.type.parameter"] = { fg = palette.blue_light },
     ["@lsp.type.property"] = { fg = palette.blue_light },
     ["@lsp.type.struct"] = { fg = palette.red },
     ["@lsp.type.type"] = { fg = palette.blue_green },
-    ["@lsp.type.typeParameter"] = { fg = palette.red },
+    ["@lsp.type.typeParameter"] = { fg = palette.number_green },
     ["@lsp.type.variable"] = {},
 
     ["@lsp.mod.deprecated"] = { strikethrough = true },
@@ -305,11 +320,11 @@ local function setup()
     TelescopePromptBorder = { fg = palette.fade },
     TelescopeResultsBorder = { fg = palette.fade },
     TelescopePreviewBorder = { fg = palette.fade },
-    TelescopeSelection = { fg = palette.white, bg = palette.selection },
-    TelescopeMultiSelection = { fg = palette.purple, bg = palette.selection },
-    TelescopeNormal = { fg = palette.fg, bg = palette.bg },
+    TelescopeSelection = { fg = palette.bright_white, bg = palette.visual_bg },
+    TelescopeMultiSelection = { fg = palette.green, bg = palette.visual_bg },
+    TelescopeNormal = { fg = palette.white, bg = palette.bg },
     TelescopeMatching = { fg = palette.green },
-    TelescopePromptPrefix = { fg = palette.purple },
+    TelescopePromptPrefix = { fg = palette.bright_magenta },
 
     -- NeoTree
     NeoTreeNormal = { fg = palette.fg, bg = palette.menu },
@@ -320,8 +335,8 @@ local function setup()
     NeoTreeGitModified = { fg = palette.yellow_sunflower },
     NeoTreeGitUntracked = { fg = palette.bright_green },
     NeoTreeIndentMarker = { fg = palette.fade },
-    NeoTreeDotfile = { fg = palette.fade },
-    -- NeoTreeCursorLine = { bg = colors.visual },
+    NeoTreeDotfile = { fg = palette.text_ignored },
+    NeoTreeCursorLine = { bg = palette.visual_bg },
 
     -- NeoTreeBufferNumber       The buffer number shown in the buffers source.
     -- NeoTreeCursorLine         |hl-CursorLine| override in Neo-tree window.
@@ -365,42 +380,81 @@ local function setup()
     --                           is set to "NC". This is derived from NeoTreeFloatBorder.
     -- NeoTreeWindowsHidden      Used for icons and names that are hidden on Windows.
 
+    -- Noice
+    NoiceMini = { bg = palette.bg },
+    NoiceVirtualText = { fg = palette.bright_magenta }, -- Search result and such
+
+    -- Noice lsp
+    NoiceLspProgressTitle = { fg = palette.white },
+    NoiceLspProgressSpinner = { fg = palette.bright_magenta },
+    NoiceLspProgressDone = { fg = palette.bright_green },
+    NoiceLspProgressClient = { fg = palette.bright_magenta },
+    NoiceLspProgressBar = { bg = palette.nontext },
+    NoiceFormatProgressTodo = { bg = palette.bright_magenta },
+    NoiceFormatProgressDone = { bg = palette.bright_green },
+
+    -- Noice Cmd line
+    NoiceCmdlineIcon = { fg = palette.bright_magenta },
+    -- These map to cmdlineIcon
+    -- NoiceCmdlineIconCalculator = { fg = palette.white, bg = palette.bg },
+    -- NoiceCmdlineIconCmdline = { fg = palette.white, bg = palette.bg },
+    -- NoiceCmdlineIconFilter = { fg = palette.white, bg = palette.bg },
+    -- NoiceCmdlineIconHelp = { fg = palette.white, bg = palette.bg },
+    -- NoiceCmdlineIconIncRename = { fg = palette.white, bg = palette.bg },
+    -- NoiceCmdlineIconInput = { fg = palette.white, bg = palette.bg },
+    -- NoiceCmdlineIconLua = { fg = palette.white, bg = palette.bg },
+    NoiceCmdlineIconSearch = { fg = palette.bright_magenta },
+    NoiceCmdlinePopup = { fg = palette.fg, bg = nil },
+    NoiceCmdlinePopupBorder = { fg = palette.fade, bg = nil },
+    -- These map to cmdlinePopupBorder, I don't want differing colors for now
+    -- NoiceCmdlinePopupBorderCalculator = { fg = palette.white, bg = palette.bg },
+    -- NoiceCmdlinePopupBorderCmdline = { fg = palette.white, bg = palette.bg },
+    -- NoiceCmdlinePopupBorderFilter = { fg = palette.white, bg = palette.bg },
+    -- NoiceCmdlinePopupBorderHelp = { fg = palette.white, bg = palette.bg },
+    -- NoiceCmdlinePopupBorderIncRename = { fg = palette.white, bg = palette.bg },
+    -- NoiceCmdlinePopupBorderInput = { fg = palette.white, bg = palette.bg },
+    -- NoiceCmdlinePopupBorderLua = { fg = palette.white, bg = palette.bg },
+    NoiceCmdlinePopupBorderSearch = { fg = palette.fade },
+    NoiceCmdlinePopupTitle = { fg = palette.bright_magenta, bg = nil },
+    NoiceCmdlinePrompt = { fg = palette.white, bg = palette.bg },
+
     -- LSP
     DiagnosticError = { fg = palette.red },
     DiagnosticWarn = { fg = palette.yellow },
     DiagnosticInfo = { fg = palette.cyan },
-    DiagnosticHint = { fg = palette.cyan },
+    DiagnosticHint = { fg = palette.number_green },
     DiagnosticUnderlineError = { undercurl = true, sp = palette.red },
     DiagnosticUnderlineWarn = { undercurl = true, sp = palette.yellow },
     DiagnosticUnderlineInfo = { undercurl = true, sp = palette.cyan },
-    DiagnosticUnderlineHint = { undercurl = true, sp = palette.cyan },
+    DiagnosticUnderlineHint = { undercurl = true, sp = palette.number_green },
     DiagnosticSignError = { fg = palette.red },
     DiagnosticSignWarn = { fg = palette.yellow },
     DiagnosticSignInfo = { fg = palette.cyan },
-    DiagnosticSignHint = { fg = palette.cyan },
+    DiagnosticSignHint = { fg = palette.number_green },
     DiagnosticFloatingError = { fg = palette.red },
     DiagnosticFloatingWarn = { fg = palette.yellow },
     DiagnosticFloatingInfo = { fg = palette.cyan },
-    DiagnosticFloatingHint = { fg = palette.cyan },
+    DiagnosticFloatingHint = { fg = palette.number_green },
     DiagnosticVirtualTextError = { fg = palette.red },
     DiagnosticVirtualTextWarn = { fg = palette.yellow },
     DiagnosticVirtualTextInfo = { fg = palette.cyan },
-    DiagnosticVirtualTextHint = { fg = palette.cyan },
+    DiagnosticVirtualTextHint = { fg = palette.number_green },
 
     LspDiagnosticsDefaultError = { fg = palette.red },
     LspDiagnosticsDefaultWarning = { fg = palette.yellow },
     LspDiagnosticsDefaultInformation = { fg = palette.cyan },
-    LspDiagnosticsDefaultHint = { fg = palette.cyan },
+    LspDiagnosticsDefaultHint = { fg = palette.number_green },
     LspDiagnosticsUnderlineError = { fg = palette.red, undercurl = true },
     LspDiagnosticsUnderlineWarning = { fg = palette.yellow, undercurl = true },
     LspDiagnosticsUnderlineInformation = { fg = palette.cyan, undercurl = true },
-    LspDiagnosticsUnderlineHint = { fg = palette.cyan, undercurl = true },
+    LspDiagnosticsUnderlineHint = { fg = palette.number_green, undercurl = true },
     LspReferenceText = { fg = palette.orange },
     LspReferenceRead = { fg = palette.orange },
     LspReferenceWrite = { fg = palette.orange },
     LspCodeLens = { fg = palette.cyan },
 
     --LSP Saga
+    -- REVIEW: I think lsp saga re-did their hl groups, see https://github.com/nvimdev/lspsaga.nvim/blob/main/lua/lspsaga/highlight.lua
     LspFloatWinNormal = { fg = palette.fg },
     LspFloatWinBorder = { fg = palette.border },
     LspSagaHoverBorder = { fg = palette.border },
@@ -416,25 +470,29 @@ local function setup()
     LspSagaDocTruncateLine = { fg = palette.fade },
     LspSagaLspFinderBorder = { fg = palette.border },
 
+    SagaVirtLine = { fg = palette.border },
+    SagaBorder = { fg = palette.border },
+    DiagnosticBorder = { fg = palette.border },
+    DiagnosticShowBorder = { fg = palette.border },
+
     -- Highlight current word
-    -- IlluminatedWordRead = { bg = colors.fade },
+    -- Tried to emmulate vscodde but its unclear
+    IlluminatedWordText = { bg = palette.fade },
+    IlluminatedWordRead = { bg = "#484848" },
+    IlluminatedWordWrite = { bg = "#1D3D59" },
 
-    -- Nvim compe
-    CmpItemAbbrDeprecated = { fg = palette.white, bg = palette.menu },
-    CmpItemAbbrMatch = { fg = palette.cyan, bg = palette.menu },
-
-    --barbar
-    BufferCurrentTarget = { fg = palette.red },
-    BufferVisibleTarget = { fg = palette.red },
-    BufferInactiveTarget = { fg = palette.red },
-
-    -- Compe
-    CompeDocumentation = { link = "Pmenu" },
-    CompeDocumentationBorder = { link = "Pmenu" },
-
-    -- Cmp
-    CmpItemKind = { link = "Pmenu" },
-    CmpItemAbbr = { link = "Pmenu" },
+    -- -- Cmp
+    -- -- NOTE: Pmenu controls background
+    -- -- NOTE: CmpGhostText is a custom hlgroup
+    CmpGhostText = { fg = palette.white },
+    -- Text
+    CmpItemAbbr = { fg = palette.fg },
+    -- Source
+    CmpItemKind = { fg = palette.white },
+    -- REVIEW: Not sure where "match" are used
+    CmpItemAbbrMatch = { fg = "#569CD6" },
+    CmpItemAbbrMatchFuzzy = { fg = palette.bright_green },
+    CmpItemAbbrDeprecated = { strikethrough = true, fg = palette.error_dark },
     CmpItemKindMethod = { link = "@method" },
     CmpItemKindText = { link = "@text" },
     CmpItemKindFunction = { link = "@function" },
@@ -453,8 +511,8 @@ local function setup()
     CmpItemKindKeyword = { link = "@keyword" },
     CmpItemKindSnippet = { link = "@text" },
     CmpItemKindColor = { link = "DevIconCss" },
-    CmpItemKindFile = { link = "TSURI" },
-    CmpItemKindFolder = { link = "TSURI" },
+    CmpItemKindFile = { link = "NeoTreeDirectoryName" },
+    CmpItemKindFolder = { link = "NeoTreeDirectoryIcon" },
     CmpItemKindEvent = { link = "@constant" },
     CmpItemKindEnumMember = { link = "@field" },
     CmpItemKindConstant = { link = "@constant" },
@@ -471,7 +529,7 @@ local function setup()
     RainbowDelimiterBlueMuted = { fg = "#4a7396" },
 
     -- Nvim-Scrollbar
-    ScrollbarHandle = { fg = nil, bg = palette.selection },
+    ScrollbarHandle = { fg = nil, bg = palette.border },
     ScrollbarCursorHandle = { fg = palette.white, bg = palette.white },
     -- ScrollbarCursor
     -- ScrollbarSearchHandle
@@ -494,11 +552,9 @@ local function setup()
     -- ScrollbarGitDeleteHandle
 
     -- Yanky
-    YankyPut = { bg  = "#8ee592", fg = "#333333" },
-    YankyYanked = { bg  = "#8ee592", fg = "#333333" },
+    YankyPut = { bg = "#8ee592", fg = "#333333" },
+    YankyYanked = { bg = "#8ee592", fg = "#333333" },
   }
 end
 
-return {
-  setup = setup,
-}
+return M

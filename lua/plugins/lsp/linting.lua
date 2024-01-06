@@ -1,13 +1,11 @@
 return {
-  -- None-ls is a null_ls replacement,
-  -- handles all language tooling that is not part of LSP, i.e. formatters and linters
-  -- Pros:
-  -- - Project recognition built in, supports monorepo for e.g. eslint, this required a "hack" with nvim-lint
-  -- Cons:
-  -- - All listed code actions are by "null_ls" instead of the correct tool ?
-  --
+
   -- NOTE: I was pretty happy with conform for formatting but not nvim-lint so null_ls only for linting for now,
   -- especially range formatting
+  -- Pros:
+  -- - Project recognition built in, supports monorepo for e.g. eslint, this required manual workaround for nvim-lint
+  -- Cons:
+  -- - All listed code actions are by "null_ls" instead of the correct tool ?
   --
   ---@type LazyPluginSpec
   {
@@ -16,27 +14,18 @@ return {
       -- NOTE: even with cpell.nvim, spellchecking isn't as good as with the official vscode extension.
       -- It seems to be bundled with dictionaries or does some language based magic?
       -- @see https://github.com/davidmh/cspell.nvim/issues/14
-      -- TODO: See if possible to add dictionaries
+      -- LATER: See if possible to add dictionaries
       "davidmh/cspell.nvim",
+      "mason.nvim",
       "jay-babu/mason-null-ls.nvim",
     },
     lazy = true,
     event = { "BufReadPre", "BufNewFile" },
-    keys = {
-      {
-        "<leader>cf",
-        function()
-          vim.lsp.buf.format()
-        end,
-        mode = { "n", "v" },
-        desc = "Format file or range",
-      },
-    },
     config = function()
       local cspell = require("cspell")
       local mason_null_ls = require("mason-null-ls")
-      local null_ls = require("null-ls")
-      local null_ls_utils = require("null-ls.utils")
+      local nls = require("null-ls")
+      local nls_utils = require("null-ls.utils")
 
       mason_null_ls.setup({
         ensure_installed = {
@@ -48,12 +37,12 @@ return {
         automatic_installation = true,
       })
 
-      local diagnostics = null_ls.builtins.diagnostics -- to setup linters
+      local diagnostics = nls.builtins.diagnostics
 
       -- configure null_ls
-      null_ls.setup({
+      nls.setup({
         -- add package.json as identifier for root (for typescript monorepos)
-        root_dir = null_ls_utils.root_pattern(".null-ls-root", "Makefile", ".git", "package.json"),
+        root_dir = nls_utils.root_pattern(".null-ls-root", "Makefile", ".neoconf.json", ".git", "package.json"),
         sources = {
           diagnostics.pylint,
           diagnostics.eslint_d.with({ -- js/ts linter
@@ -91,7 +80,7 @@ return {
       end, {
         desc = "Restart eslint_d without flat config, supporting the eslintrc format instead",
       })
-      -- TODO: This doesn't work after restarting eslint_d, it gets rid of the message for mismatching config but new errors aren't visible
+      -- LATER: This doesn't work after restarting eslint_d, it gets rid of the message for mismatching config but new errors aren't visible
       -- NOTE: `:e aka :edit` reloads the file, works as replacement
       vim.api.nvim_create_user_command("EslintRefresh", function()
         require("null-ls").enable({

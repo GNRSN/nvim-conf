@@ -1,6 +1,7 @@
 return {
   -- Status column
-  -- TODO: Custom icon for spellcheck (cspell)
+  -- TODO: Icons are not prioritized, hint may hide error
+  -- LATER: Custom icon for spellcheck (cspell)
   {
     "luukvbaal/statuscol.nvim",
     config = function()
@@ -15,10 +16,19 @@ return {
         segments = {
           {
             sign = {
-              name = { "Diagnostic" },
+              name = {
+                "DiagnosticSignError",
+                "DiagnosticSignWarn",
+                "DiagnosticSignInfo",
+                -- REVIEW: I've had cases where errors are covered by typos, can't find how to ensure correct prioritization
+                -- this is a workaround for now
+                --
+                -- "DiagnosticSignHint",
+              },
               condition = { true },
               maxwidth = 1,
               auto = false,
+              fillchar = " ",
             },
             click = "v:lua.ScSa",
           },

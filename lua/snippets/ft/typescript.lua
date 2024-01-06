@@ -5,6 +5,6 @@ local fmt = require("luasnip.extras.fmt").fmt
 
 return {
   cl = fmt("console.log({});", i(1)),
-  -- TODO: Snippet for jsdoc @type
-  -- TODO: Snippet for jsdoc @param
+  -- LATER: Snippet for jsdoc @type
+  -- LATER: Snippet for jsdoc @param
 }

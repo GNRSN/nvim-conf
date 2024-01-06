@@ -1,11 +1,38 @@
+-- Custom lsp segment built on lsp-progress
+local lsp_segment = {
+  function()
+    return require("lsp-progress").progress({
+      max_size = 80,
+      format = function(messages)
+        local active_clients = vim.lsp.get_active_clients()
+        if #messages > 0 then
+          return table.concat(messages, " ")
+        end
+        local client_names = {}
+        for _, client in ipairs(active_clients) do
+          if client and client.name ~= "" then
+            table.insert(client_names, 1, client.name)
+          end
+        end
+        return table.concat(client_names, " ")
+      end,
+    })
+  end,
+  -- REVIEW: Don't need icon when we're writing out the names of servers?
+  -- Setting icon "" didn't remove the space it occupies though
+  icon = { "", align = "right" },
+}
+
 return {
   {
     "nvim-lualine/lualine.nvim",
+    event = "UIEnter",
     dependencies = {
       "nvim-tree/nvim-web-devicons",
-      "kyazdani42/nvim-web-devicons",
-      -- Add as dependency to integrate
-      "linrongbin16/lsp-progress.nvim",
+      {
+        "linrongbin16/lsp-progress.nvim",
+        config = true,
+      },
     },
     config = function()
       require("lualine").setup({
@@ -32,8 +59,21 @@ return {
         sections = {
           lualine_a = { "mode" },
           lualine_b = { "branch", "diff" },
-          lualine_c = { "filename" },
-          lualine_x = { require("lsp-progress").progress, "diagnostics" },
+          lualine_c = {
+            "filename",
+            {
+              -- Displayes "recording" when recording macro, maybe other modes as well?
+              require("noice").api.statusline.mode.get,
+              cond = require("noice").api.statusline.mode.has,
+              color = { fg = require("colorscheme.palette").bright_magenta },
+            },
+          },
+          lualine_x = {
+            -- LATER: Disable segment for now because it errors + maybe I don't want/need it
+            --
+            -- lsp_segment,
+            "diagnostics",
+          },
           lualine_y = { "filetype" },
           lualine_z = {},
         },
@@ -41,7 +81,10 @@ return {
           lualine_a = {},
           lualine_b = {},
           lualine_c = { "filename" },
-          lualine_x = { require("lsp-progress").progress, "diagnostics" },
+          lualine_x = {
+            -- lsp_segment,
+            "diagnostics",
+          },
           lualine_y = { "filetype" },
           lualine_z = {},
         },

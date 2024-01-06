@@ -1,8 +1,8 @@
 ---@class Palette
 return {
   bg = "#1E1E1E",
-  fg = "#F8F8F2",
-  selection = "#333333",
+  fg = "#f0f0eb",
+  selection = "#222222",
   comment = "#6A9955",
   red = "#F44747",
   orange = "#FFB86C",
@@ -22,7 +22,6 @@ return {
   bright_white = "#FFFFFF",
   menu = "#0f0f0f",
   visual_bg = "#743563", -- Visual mode
-  gutter_fg = "#444444",
   nontext = "#3B4048",
   white = "#ABB2BF",
   black = "#000000",
@@ -32,6 +31,8 @@ return {
   blue_light = "#9CDCFE",
   blue_green = "#55DDBB",
   fade = "#555555",
+  text_ignored = "#808080",
   number_green = "#B1E8A9",
   border = "#444444",
+  error_dark = "#b36c6c",
 }

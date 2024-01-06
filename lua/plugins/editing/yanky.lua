@@ -1,6 +1,5 @@
 return {
   -- Better yanking with history, ctrl p/n to replace with previous yank after putting
-  -- TODO: does cut work?
   {
     "gbprod/yanky.nvim",
     opts = {
@@ -33,6 +32,8 @@ return {
 
       { "=p", "<Plug>(YankyPutAfterFilter)", desc = "Yanky put indent after linewise" },
       { "=P", "<Plug>(YankyPutBeforeFilter)", desc = "Yanky put indent after linewise" },
+      -- History
+      { "<leader>sp", "<cmd>Telescope yank_history<cr>", desc = "Yanky clipboard" },
     },
   },
 }

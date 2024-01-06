@@ -23,6 +23,9 @@ return {
       opts.buffer = bufnr
 
       -- set keybinds
+      opts.desc = "Show documentation for what is under cursor"
+      keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+
       opts.desc = "Show LSP references"
       keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
 
@@ -40,15 +43,15 @@ return {
 
       -- opts.desc = "See available code actions"
       -- keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
-
-      -- opts.desc = "Lsp rename"
-      -- keymap.set("n", "<leader>cr", "<cmd>:IncRename ", opts) -- smart rename
-
-      -- opts.desc = "Show buffer diagnostics"
-      -- keymap.set("n", "<leader>cD", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
+      --
+      opts.desc = "Lsp rename"
+      keymap.set("n", "<leader>cr", vim.lsp.buf.rename, opts) -- smart rename
       --
       -- opts.desc = "Show line diagnostics"
       -- keymap.set("n", "<leader>cd", vim.diagnostic.open_float, opts) -- show diagnostics for line
+
+      opts.desc = "Show buffer diagnostics"
+      keymap.set("n", "<leader>cD", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
 
       -- REVIEW: These overlap with trouble?
       opts.desc = "Go to previous diagnostic"
@@ -56,13 +59,6 @@ return {
 
       opts.desc = "Go to next diagnostic"
       keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
-
-      -- opts.desc = "Show documentation for what is under cursor"
-      -- keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
-
-      -- REVIEW: Do we need this bind at all?
-      opts.desc = "Restart LSP"
-      keymap.set("n", "<leader>cX", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
     end
 
     -- used to enable autocompletion (assign to every lsp server config)

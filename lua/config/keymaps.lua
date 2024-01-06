@@ -29,34 +29,8 @@ map("n", "<C-l>", "<C-w>l")
 map("n", "<C-j>", "<C-w>j")
 map("n", "<C-h>", "<C-w>h")
 map("n", "<C-k>", "<C-w>k")
-
-----------------------
--- Plugin Keybinds
-----------------------
-
--- telescope
-map("n", "<leader>ff", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
-map("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- find string in current working directory as you type
-map("v", "<leader>fs", '"zy<cmd>exec "Telescope grep_string default_text=" . escape(@z, " ")<cr>', { desc = "Telescope grep for selection"}) -- find string in current working directory as you type
-map("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find string under cursor in current working directory
-map("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
-map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
-
--- telescope git commands
-map(
-  "n",
-  "<leader>gC",
-  "<cmd>Telescope git_commits<cr>",
-  { desc = "list all git commits (use <cr> to checkout) [\"gc\" for git commits]" }
-)
-map(
-  "n",
-  "<leader>gfC",
-  "<cmd>Telescope git_bcommits<cr>",
-  { desc = "list git commits for current file/buffer (use <cr> to checkout) [\"gfc\" for git file commits]" }
-)
-map("n", "<leader>gB", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
-map("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
+-- LATER: Can't rebind window resizing to ctrl + arrow keys since that is macos workspace navigation,
+-- see nvim hydra for alt plugin for better window management
 
 ----------------------
 -- From Lazyvim

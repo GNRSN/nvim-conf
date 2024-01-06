@@ -12,6 +12,7 @@ return {
         PERF = { icon = " ", color = "perf" },
         NOTE = { icon = " ", color = "note", alt = { "INFO" } },
         TODO = { icon = "  ", color = "todo" },
+        LATER = { icon = "  ", color = "todo" },
       },
       merge_keywords = false,
       colors = {
@@ -26,6 +27,7 @@ return {
       { "]t", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
       { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
       { "<leader>xt", "<cmd>TodoTrouble keywords=TODO<cr>", desc = "Todo(s) (Trouble)" },
+      { "<leader>xl", "<cmd>TodoTrouble keywords=LATER<cr>", desc = "Todo later(s) (Trouble)" },
       { "<leader>xr", "<cmd>TodoTrouble keywords=REVIEW,PERF<cr>", desc = "Review & Perf (Trouble)" },
       { "<leader>ft", "<cmd>TodoTelescope keywords=TODO<cr>", desc = "Todo" },
     },
