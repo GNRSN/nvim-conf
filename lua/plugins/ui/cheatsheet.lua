@@ -17,15 +17,15 @@ return {
         },
         bundled_plugin_cheatsheets = {
           enabled = {
-            "auto-session",
             "goto-preview",
             "octo.nvim",
             "telescope.nvim",
-            "vim-easy-align",
           },
           disabled = {
             "gitsigns",
             "vim-sandwich",
+            "auto-session",
+            "vim-easy-align",
           },
         },
         include_only_installed_plugins = true,
