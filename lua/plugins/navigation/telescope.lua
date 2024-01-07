@@ -79,7 +79,7 @@ return {
       { "<leader>sM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
       { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
       { "<leader>so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
-      { "<leader>sR", "<cmd>Telescope resume<cr>", desc = "Resume" },
+      { "<leader>sr", "<cmd>Telescope resume<cr>", desc = "Resume" },
       { "<leader>sw", tele("grep_string"), desc = "Word (root dir)" },
       { "<leader>sW", tele("grep_string", { cwd = false }), desc = "Word (cwd)" },
       {
@@ -167,12 +167,10 @@ return {
       })
 
       -- _ = require("telescope").load_extension "dap"
-      require("telescope").load_extension("file_browser")
-      -- _ = require("telescope").load_extension "ui-select"
       require("telescope").load_extension("fzf")
+      require("telescope").load_extension("file_browser")
       -- _ = require("telescope").load_extension "git_worktree"
 
-      -- pcall(require("telescope").load_extension("smart_history"))
       pcall(require("telescope").load_extension("noice"))
       pcall(require("telescope").load_extension("yank_history"))
     end,
