@@ -26,9 +26,14 @@ return {
     priority = 100,
     dependencies = {
       "nvim-lua/plenary.nvim",
-      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       "nvim-tree/nvim-web-devicons",
+      -- Fuzzy finding & sorting
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+      -- File browser
+      -- LATER: Might replace with Oil
       "nvim-telescope/telescope-file-browser.nvim",
+      -- List plugins with readme, open on github in browser
+      "tsakirist/telescope-lazy.nvim",
     },
     cmd = "Telescope",
     keys = {
