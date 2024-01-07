@@ -14,7 +14,7 @@
 - Illuminate (cursor word)
 - Rainbow params
 - Todo-comments
-- Gitsigns
+- Gitsigns (git status based highlighting)
 - Ccc (colorpicker + highlighting)
 
 ##### "Intellisense"
@@ -33,6 +33,7 @@
 ##### Text traversal
 
 - Leap & Flit (better f/t hopping)
+- Neowords (customize w/e/b/ge behavior, e.g. support snake_case)
 
 ##### Text manipulation
 
