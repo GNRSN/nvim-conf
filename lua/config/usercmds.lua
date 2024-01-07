@@ -1,16 +1,22 @@
+local add_cmd = function(name, command, opts)
+  vim.api.nvim_create_user_command(name, command, opts or {})
+end
+
+-- Scandi keyboard layout compensation
+
 -- Because : requires pressing shift on nordic keyboard layout
-vim.api.nvim_create_user_command("Wa", function()
+add_cmd("Wa", function()
   vim.cmd.wa()
-end, {})
+end)
 
-vim.api.nvim_create_user_command("W", function()
+add_cmd("W", function()
   vim.cmd.W()
-end, {})
+end)
 
-vim.api.nvim_create_user_command("Qa", function()
+add_cmd("Qa", function()
   vim.cmd.qa()
-end, {})
+end)
 
-vim.api.nvim_create_user_command("Q", function()
+add_cmd("Q", function()
   vim.cmd.q()
-end, {})
+end)
