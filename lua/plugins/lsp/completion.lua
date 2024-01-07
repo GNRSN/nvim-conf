@@ -78,6 +78,7 @@ return {
       enabled = function()
         -- disable completion in comments
         local is_allowed_context = true
+        -- TODO: Allow completion in type docs, e.g. lua or jsdoc
         local context = require("cmp.config.context")
         -- keep command mode completion enabled when cursor is in a comment
         if vim.api.nvim_get_mode().mode == "c" then

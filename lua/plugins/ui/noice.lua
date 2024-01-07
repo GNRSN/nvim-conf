@@ -113,6 +113,7 @@ return {
         },
         views = {
           notify = {},
+          -- TODO: Block lsp-messages just spamming while typing,
           mini = {
             win_options = {
               -- Transparency needs to be 0 so bg can be nil
@@ -123,6 +124,7 @@ return {
         routes = {
           {
             -- Hides save messages
+            -- TODO: Send to mini instead
             filter = {
               event = "msg_show",
               kind = "",
