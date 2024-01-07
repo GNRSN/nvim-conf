@@ -2,12 +2,19 @@ return {
   --
   {
     "Backdround/Neowords.nvim",
+    lazy = false,
     config = function()
       -- Config from "Sub words only" example
       local neowords = require("neowords")
-      local p = neowords.pattern_presets
+      local pattern = neowords.pattern_presets
 
-      local subword_hops = neowords.get_word_hops(p.snake_case, p.camel_case, p.upper_case, p.number, p.hex_color)
+      local subword_hops = neowords.get_word_hops(
+        pattern.snake_case,
+        pattern.camel_case,
+        pattern.upper_case,
+        pattern.number,
+        pattern.hex_color
+      )
 
       vim.keymap.set({ "n", "x", "o" }, "w", subword_hops.forward_start)
       vim.keymap.set({ "n", "x", "o" }, "e", subword_hops.forward_end)
