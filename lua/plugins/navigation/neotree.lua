@@ -1,4 +1,6 @@
 return {
+  -- File tree
+  -- TODO: Fix add file entering in normal mode, caused by dressing config
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
