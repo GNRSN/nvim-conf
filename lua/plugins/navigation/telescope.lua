@@ -29,7 +29,8 @@ return {
       "nvim-tree/nvim-web-devicons",
       -- Fuzzy finding & sorting
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-      -- File browser
+      -- File browser,
+      -- NOTE: required by telescope lazy as well
       "nvim-telescope/telescope-file-browser.nvim",
       -- List plugins with readme, open on github in browser
       "tsakirist/telescope-lazy.nvim",
