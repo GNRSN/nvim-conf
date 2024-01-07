@@ -41,6 +41,15 @@
 - Yanky
 - Comment.nvim
 
+##### UI
+
+- Noice (message router including a bunch of UI components, e.g. notifications, messages feed, cmdline as prompt)
+- Dressing (replaces "native" input and select)
+- Lualine
+- Status-col
+- Lspsaga (better menu prompt for e.g. lsp diagnostics & actions)
+- Whichkey (display keybind descriptions)
+
 ##### Navigation
 
 - Telescope (fuzzy finding)
@@ -51,14 +60,11 @@
 
 - NeoTree
 
-##### UI
+##### Project recognition
 
-- Noice (message router including a bunch of UI components, e.g. notifications, messages feed, cmdline as prompt)
-- Dressing (replaces "native" input and select)
-- Lualine
-- Status-col
-- Lspsaga (better menu prompt for e.g. lsp diagnostics & actions)
-- Whichkey (display keybind descriptions)
+- Neoconf (project configuration file incl. parsing vscode settings.json)
+
+#### Util plugins
 
 ##### Git
 
