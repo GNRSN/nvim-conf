@@ -76,7 +76,6 @@ M.register_snippets = function()
     -- Pattern match filename inc extension + strip extension
     -- which should be filetype
     local ft = ft_path:match("[^/]+$"):match("[^.]+")
-    vim.notify(ft)
     ls.add_snippets(ft, M.make(loadfile(ft_path)()))
   end
 end
