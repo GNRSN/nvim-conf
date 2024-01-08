@@ -26,7 +26,7 @@
 - Conform (formatting)
 - Mason (installer)
 - Nvim cmp + a bunch of sources (completion)
-- Lua snip (snippet engines)
+- Luasnip (snippet engines)
 - Friendly snippets (snippet library)
 - Neodev (neovim development/configuration)
 

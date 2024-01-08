@@ -34,6 +34,8 @@ return {
       "nvim-telescope/telescope-file-browser.nvim",
       -- List plugins with readme, open on github in browser
       "tsakirist/telescope-lazy.nvim",
+      -- Search snippets
+      "benfowler/telescope-luasnip.nvim",
     },
     cmd = "Telescope",
     keys = {
@@ -170,7 +172,7 @@ return {
       require("telescope").load_extension("fzf")
       require("telescope").load_extension("file_browser")
       -- _ = require("telescope").load_extension "git_worktree"
-
+      require("telescope").load_extension("luasnip")
       pcall(require("telescope").load_extension("noice"))
       pcall(require("telescope").load_extension("yank_history"))
     end,
