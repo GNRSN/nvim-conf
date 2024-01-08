@@ -28,13 +28,10 @@ return {
 
     cmp.setup({
       completion = {
-        -- REVIEW: Do I want noselect? See :h completeopt
-        --
         -- Define completion behavior
         -- menu,menuone: show menu, even when there is only 1 option
         -- preview: show additional information in preview window
-        -- noselect: force user to select
-        completeopt = "menu,menuone,preview,noselect",
+        completeopt = "menu,menuone,preview",
       },
       experimental = {
         ghost_text = {
