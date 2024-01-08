@@ -1,7 +1,5 @@
 local CONCEAL_CMD = false
 
--- TODO: Seems to block vim.print
-
 return {
   -- Noice is multiple things, but foremost its an event/message router,
   -- it allows filtering/mapping messages to different UIs,
