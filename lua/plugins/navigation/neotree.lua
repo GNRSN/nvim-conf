@@ -1,6 +1,6 @@
 return {
   -- File tree
-  -- TODO: Fix add file entering in normal mode, caused by dressing config
+  -- LATER: Fix add file entering in normal mode, note sure what is causing (it wasn't dressing), maybe a change in v3?
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
