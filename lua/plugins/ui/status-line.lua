@@ -6,8 +6,10 @@ local get_noice_mode = function()
   end
 
   return {
-    -- Displayes "recording" when recording macro, maybe other modes as well?
+    -- Displays "recording" when recording macro, maybe other modes as well?
+    ---@diagnostic disable-next-line: deprecated, undefined-field
     require("noice").api.statusline.mode.get,
+    ---@diagnostic disable-next-line: deprecated, undefined-field
     cond = require("noice").api.statusline.mode.has,
     color = { fg = require("colorscheme.palette").bright_magenta },
   }
