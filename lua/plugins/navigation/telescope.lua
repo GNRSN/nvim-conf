@@ -173,8 +173,8 @@ return {
       require("telescope").load_extension("file_browser")
       -- _ = require("telescope").load_extension "git_worktree"
       require("telescope").load_extension("luasnip")
-      pcall(require("telescope").load_extension("noice"))
-      pcall(require("telescope").load_extension("yank_history"))
+      pcall(require("telescope").load_extension, "noice")
+      pcall(require("telescope").load_extension, "yank_history")
     end,
   },
 }
