@@ -62,16 +62,6 @@ M.make = function(tbl)
 end
 
 M.register_snippets = function()
-  ls.add_snippets("typescriptreact", {
-    ls.s("ternary", {
-      -- equivalent to "${1:cond} ? ${2:then} : ${3:else}"
-      ls.i(1, "cond"),
-      ls.t(" ? "),
-      ls.i(2, "then"),
-      ls.t(" : "),
-      ls.i(3, "else"),
-    }),
-  })
   for _, ft_path in ipairs(vim.api.nvim_get_runtime_file("lua/custom_snippets/ft/*.lua", true)) do
     -- Pattern match filename inc extension + strip extension
     -- which should be filetype
