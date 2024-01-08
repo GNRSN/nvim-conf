@@ -22,6 +22,9 @@ return {
     },
   },
   config = function()
+    -- Disable native completion
+    vim.opt.complete = ""
+
     local cmp = require("cmp")
     local luasnip = require("luasnip")
     local lspkind = require("lspkind")
