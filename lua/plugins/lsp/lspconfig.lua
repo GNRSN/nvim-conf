@@ -25,6 +25,8 @@ return {
       -- set keybinds
       opts.desc = "Show documentation for what is under cursor"
       keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+      -- TODO: Dont trigger manual from shift k because it's easy to fumble
+      keymap.del("x", "K")
 
       opts.desc = "Show LSP references"
       keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
@@ -66,7 +68,7 @@ return {
 
     -- Change the Diagnostic symbols
     local signs = {
-      Error = " ",
+      Error = " ",
       Warn = " ",
       Info = " ",
       Hint = " ",
