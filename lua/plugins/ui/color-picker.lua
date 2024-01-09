@@ -12,16 +12,15 @@ return {
           auto_enable = true,
           lsp = true,
         },
-        mapping = {
-          -- TODO: This doesn't apply
-          ["<esc>"] = function()
-            ccc.mapping.quit()
-          end,
+        mappings = {
+          ["<Esc>"] = ccc.mapping.quit,
         },
         inputs = {
           ccc.input.hsl,
           ccc.input.rgb,
         },
+        point_char = "",
+        bar_len = 42,
       })
     end,
     event = { "BufReadPre", "BufNewFile" },
