@@ -36,6 +36,8 @@ return {
       "tsakirist/telescope-lazy.nvim",
       -- Search snippets
       "benfowler/telescope-luasnip.nvim",
+      -- Find icons
+      "nvim-telescope/telescope-symbols.nvim",
     },
     cmd = "Telescope",
     keys = {
@@ -75,11 +77,25 @@ return {
       { "<leader>sc", "<cmd>Telescope command_history<cr>", desc = "Command History" },
       { "<leader>sC", "<cmd>Telescope commands<cr>", desc = "Commands" },
       { "<leader>sd", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
+      {
+        "<leader>sE",
+        function()
+          require("telescope.builtin").symbols({ sources = { "emoji" } })
+        end,
+        desc = "Emojis",
+      },
       { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
       { "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
       { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
       { "<leader>sM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
       { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
+      {
+        "<leader>sN",
+        function()
+          require("telescope.builtin").symbols({ sources = { "nerd" } })
+        end,
+        desc = "Nerdfont icons",
+      },
       { "<leader>so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
       { "<leader>sr", "<cmd>Telescope resume<cr>", desc = "Resume" },
       { "<leader>sw", tele("grep_string"), desc = "Word (root dir)" },
