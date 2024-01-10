@@ -177,7 +177,7 @@ return {
           select = false,
         }),
       }),
-      -- TODO: Investigate if this is acutally making things better or worse
+      -- TODO: Investigate if this is actually making things better or worse
       -- NOTE: Copied from TJ
       ---@diagnostic disable-next-line: missing-fields
       sorting = {
