@@ -17,6 +17,9 @@ return {
           package_pending = "➜",
           package_uninstalled = "✗",
         },
+        keymaps = {
+          toggle_help = "h",
+        },
       },
     })
 
@@ -35,6 +38,7 @@ return {
         "pyright",
         "yamlls",
         "jsonls",
+        "mdx_analyzer",
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed
@@ -44,8 +48,7 @@ return {
       ensure_installed = {
         "cspell", -- spell check
         "eslint_d", -- js linter
-        "prettier", -- js + more formatter
-        "prettierd",
+        "prettierd", -- js + more formatter
         "stylua", -- lua formatter
         "isort", -- python formatter
         "black", -- python formatter

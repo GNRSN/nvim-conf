@@ -12,6 +12,7 @@ return {
           typescript = { "prettierd" },
           javascriptreact = { "prettierd" },
           typescriptreact = { "prettierd" },
+          ["markdown.mdx"] = { "prettierd" },
           svelte = { "prettierd" },
           css = { "prettierd" },
           html = { "prettierd" },

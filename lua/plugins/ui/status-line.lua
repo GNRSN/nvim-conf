@@ -1,38 +1,27 @@
--- Custom lsp segment built on lsp-progress
-local lsp_segment = {
-  function()
-    return require("lsp-progress").progress({
-      max_size = 80,
-      format = function(messages)
-        local active_clients = vim.lsp.get_active_clients()
-        if #messages > 0 then
-          return table.concat(messages, " ")
-        end
-        local client_names = {}
-        for _, client in ipairs(active_clients) do
-          if client and client.name ~= "" then
-            table.insert(client_names, 1, client.name)
-          end
-        end
-        return table.concat(client_names, " ")
-      end,
-    })
-  end,
-  -- REVIEW: Don't need icon when we're writing out the names of servers?
-  -- Setting icon "" didn't remove the space it occupies though
-  icon = { "", align = "right" },
-}
+local get_noice_mode = function()
+  local noice = pcall(require, "noice")
+
+  if not noice then
+    return nil
+  end
+
+  return {
+    -- Displays "recording" when recording macro, maybe other modes as well?
+    ---@diagnostic disable-next-line: deprecated, undefined-field
+    require("noice").api.statusline.mode.get,
+    ---@diagnostic disable-next-line: deprecated, undefined-field
+    cond = require("noice").api.statusline.mode.has,
+    color = { fg = require("colorscheme.palette").bright_magenta },
+  }
+end
 
 return {
+  -- Customizable status line
   {
     "nvim-lualine/lualine.nvim",
     event = "UIEnter",
     dependencies = {
       "nvim-tree/nvim-web-devicons",
-      {
-        "linrongbin16/lsp-progress.nvim",
-        config = true,
-      },
     },
     config = function()
       require("lualine").setup({
@@ -61,17 +50,9 @@ return {
           lualine_b = { "branch", "diff" },
           lualine_c = {
             "filename",
-            {
-              -- Displayes "recording" when recording macro, maybe other modes as well?
-              require("noice").api.statusline.mode.get,
-              cond = require("noice").api.statusline.mode.has,
-              color = { fg = require("colorscheme.palette").bright_magenta },
-            },
+            get_noice_mode(),
           },
           lualine_x = {
-            -- LATER: Disable segment for now because it errors + maybe I don't want/need it
-            --
-            -- lsp_segment,
             "diagnostics",
           },
           lualine_y = { "filetype" },
@@ -92,14 +73,6 @@ return {
         winbar = {},
         inactive_winbar = {},
         extensions = {},
-      })
-
-      -- listen lsp-progress event and refresh lualine
-      vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
-      vim.api.nvim_create_autocmd("User", {
-        group = "lualine_augroup",
-        pattern = "LspProgressStatusUpdated",
-        callback = require("lualine").refresh,
       })
     end,
   },

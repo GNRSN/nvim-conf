@@ -17,8 +17,9 @@ return {
       { "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "Yanky put (before)" },
       { "gp", "<Plug>(YankyGPutAfter)", mode = { "n", "x" }, desc = "Yanky G-put (after)" },
       { "gP", "<Plug>(YankyGPutBefore)", mode = { "n", "x" }, desc = "Yanky G-put (before)" },
-      { "<c-p>", "<Plug>(YankyPreviousEntry)", desc = "Yanky previous entry" },
-      { "<c-n>", "<Plug>(YankyNextEntry)", desc = "Yanky next entry" },
+      -- NOTE: Flipped n and p because this is more intuitive for me
+      { "<c-n>", "<Plug>(YankyPreviousEntry)", desc = "Yanky previous entry" },
+      { "<c-p>", "<Plug>(YankyNextEntry)", desc = "Yanky next entry" },
       -- Tpope/vim-unimpaired 'esque usage
       { "]p", "<Plug>(YankyPutIndentAfterLinewise)", desc = "Yanky put indent after linewise" },
       { "[p", "<Plug>(YankyPutIndentBeforeLinewise)", desc = "Yanky put indent before linewise" },

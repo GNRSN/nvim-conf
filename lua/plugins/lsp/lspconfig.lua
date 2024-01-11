@@ -10,21 +10,21 @@ return {
     "b0o/schemastore.nvim",
   },
   config = function()
-    -- import lspconfig plugin
     local lspconfig = require("lspconfig")
-
-    -- import cmp-nvim-lsp plugin
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
     local keymap = vim.keymap -- for conciseness
-
     local opts = { noremap = true, silent = true }
+
     local on_attach = function(_, bufnr)
       opts.buffer = bufnr
 
       -- set keybinds
       opts.desc = "Show documentation for what is under cursor"
       keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+      -- TODO: Dont trigger manual from shift k because it's easy to fumble
+      --
+      -- keymap.del({ "n", "v" }, "K")
 
       opts.desc = "Show LSP references"
       keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
@@ -64,12 +64,12 @@ return {
     -- used to enable autocompletion (assign to every lsp server config)
     local capabilities = cmp_nvim_lsp.default_capabilities()
 
-    -- Change the Diagnostic symbols in the sign column (gutter)
+    -- Change the Diagnostic symbols
     local signs = {
-      Error = " ",
-      Warn = " ",
-      Info = " ",
-      Hint = "󱠃 ",
+      Error = " ",
+      Warn = " ",
+      Info = " ",
+      Hint = " ",
     }
     for type, icon in pairs(signs) do
       local hl = "DiagnosticSign" .. type
@@ -94,6 +94,29 @@ return {
     lspconfig["cssls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
+    })
+
+    local util = require("lspconfig.util")
+
+    local function get_typescript_server_path(root_dir)
+      local project_root = util.find_node_modules_ancestor(root_dir)
+      return project_root and (util.path.join(project_root, "node_modules", "typescript", "lib")) or ""
+    end
+
+    lspconfig["mdx_analyzer"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      init_options = {
+        typescript = {},
+      },
+      on_new_config = function(new_config, new_root_dir)
+        if vim.tbl_get(new_config.init_options, "typescript") and not new_config.init_options.typescript.tsdk then
+          -- LATER: Support custom typescript lib
+          --
+          -- local tsdk = require("util.typescript").get_tsdk_from_config() or get_typescript_server_path(new_root_dir)
+          new_config.init_options.typescript.tsdk = get_typescript_server_path(new_root_dir)
+        end
+      end,
     })
 
     -- configure tailwindcss server

@@ -1,6 +1,6 @@
 return {
   "hrsh7th/nvim-cmp",
-  event = "InsertEnter",
+  event = { "InsertEnter", "CmdlineEnter" },
   dependencies = {
     -- Basics
     "hrsh7th/cmp-buffer",
@@ -15,29 +15,26 @@ return {
     -- Snippets
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
-    "rafamadriz/friendly-snippets", -- useful snippets
     -- Misc integrations
-    "chrisgrieser/cmp_yanky", -- from clipboard history
+    {
+      "petertriho/cmp-git",
+      requires = "nvim-lua/plenary.nvim",
+    },
   },
   config = function()
+    -- Disable native completion
+    vim.opt.complete = ""
+
     local cmp = require("cmp")
-    -- LATER: Register custom snippets, see TJs conf
     local luasnip = require("luasnip")
-
     local lspkind = require("lspkind")
-
-    -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
-    require("luasnip.loaders.from_vscode").lazy_load()
 
     cmp.setup({
       completion = {
-        -- REVIEW: Do I want noselect? See :h completeopt
-        --
         -- Define completion behavior
         -- menu,menuone: show menu, even when there is only 1 option
         -- preview: show additional information in preview window
-        -- noselect: force user to select
-        completeopt = "menu,menuone,preview,noselect",
+        completeopt = "menu,menuone,preview",
       },
       experimental = {
         ghost_text = {
@@ -67,12 +64,19 @@ return {
         { name = "nvim_lua" },
         { name = "nvim_lsp" },
         { name = "luasnip" }, -- snippets
-        { name = "buffer", keyword_length = 5 },
-        { name = "cmp_yanky" },
+        {
+          name = "buffer",
+          keyword_length = 4,
+        },
+        {
+          -- Adding this to use with Octo.nvim
+          name = "git",
+        },
       }, {}),
       enabled = function()
         -- disable completion in comments
         local is_allowed_context = true
+
         local context = require("cmp.config.context")
         -- keep command mode completion enabled when cursor is in a comment
         if vim.api.nvim_get_mode().mode == "c" then
@@ -118,6 +122,7 @@ return {
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-e>"] = cmp.mapping.abort(),
         ["<C-q>"] = cmp.mapping.abort(),
+
         ["<C-i>"] = cmp.mapping(
           cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Insert,
@@ -125,6 +130,21 @@ return {
           }),
           { "i", "c" }
         ),
+        -- LATER: This mapping from docs explains how to combine with snipped expansion (Designed for <tab> though)
+        --
+        -- ["<C-i>"] = cmp.mapping(function(fallback)
+        --   if cmp.visible() then
+        --     cmp.select_next_item()
+        --   -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
+        --   -- that way you will only jump inside the snippet region
+        --   elseif luasnip.expand_or_locally_jumpable() then
+        --     luasnip.expand_or_jump()
+        --   elseif has_words_before() then
+        --     cmp.complete()
+        --   else
+        --     fallback()
+        --   end
+        -- end, { "i", "s" }),
         ["<M-i>"] = cmp.mapping(
           cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
@@ -157,6 +177,7 @@ return {
           select = false,
         }),
       }),
+      -- TODO: Investigate if this is actually making things better or worse
       -- NOTE: Copied from TJ
       ---@diagnostic disable-next-line: missing-fields
       sorting = {
@@ -199,23 +220,26 @@ return {
             luasnip = "[snip]",
             cmp_yanky = "[yanky]",
           }
+          local function getMappedMenu(entry)
+            return MENU_MAPPER[entry.source.name] or entry.source.name or "??"
+          end
+
           -- Tailwind colors
           if vim_item.kind == "Color" then
             vim_item = require("cmp-tailwind-colors").format(entry, vim_item)
 
             if vim_item.kind ~= "Color" then
-              -- Emulate other tw class-names
-              vim_item.menu = MENU_MAPPER[entry.source.name] or entry.source.name or "??"
+              vim_item.menu = getMappedMenu(entry)
               return vim_item
             end
           end
-          -- Pathname with icon
+          -- Pathname with file icon
           if vim.tbl_contains({ "path" }, entry.source.name) then
             local icon, hl_group = require("nvim-web-devicons").get_icon(entry:get_completion_item().label)
             if icon then
               vim_item.kind = icon
               vim_item.kind_hl_group = hl_group
-              vim_item.menu = MENU_MAPPER[entry.source.name] or entry.source.name or "??"
+              vim_item.menu = getMappedMenu(entry)
               return vim_item
             end
           end
@@ -235,6 +259,10 @@ return {
       mapping = cmp.mapping.preset.cmdline(),
       sources = cmp.config.sources({
         { name = "path" },
+        {
+          -- Adding this to use with Octo.nvim
+          name = "git",
+        },
       }, {
         {
           name = "cmdline",
@@ -253,5 +281,8 @@ return {
         { name = "buffer" },
       },
     })
+
+    -- git completion setup
+    require("cmp_git").setup()
   end,
 }

@@ -1,7 +1,5 @@
 return {
   -- Status column
-  -- TODO: Icons are not prioritized, hint may hide error
-  -- LATER: Custom icon for spellcheck (cspell)
   {
     "luukvbaal/statuscol.nvim",
     config = function()
@@ -20,9 +18,9 @@ return {
                 "DiagnosticSignError",
                 "DiagnosticSignWarn",
                 "DiagnosticSignInfo",
-                -- REVIEW: I've had cases where errors are covered by typos, can't find how to ensure correct prioritization
-                -- this is a workaround for now
-                --
+                -- REVIEW: I've found that diagnostic signs are not prioritized in diagnostic level, leading to hints occasionally covering errors
+                -- hiding hints is a workaround for now
+
                 -- "DiagnosticSignHint",
               },
               condition = { true },

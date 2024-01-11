@@ -26,13 +26,11 @@ else
   require("util").lazy_notify()
 
   pcall(function()
-
-  require("colorscheme").setup({
-    transparent_bg = true,
-  })
-  require("colorscheme").load()
-  end
-	  )
+    require("colorscheme").setup({
+      transparent_bg = true,
+    })
+    require("colorscheme").load()
+  end)
 
   -- use lazy-loader
   require("lazy").setup({
@@ -50,6 +48,9 @@ else
     },
     {
       import = "plugins.navigation",
+    },
+    {
+      import = "plugins.traversal",
     },
     {
       import = "plugins.editing",

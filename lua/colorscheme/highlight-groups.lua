@@ -57,7 +57,7 @@ function M.setup()
     Boolean = { fg = palette.cyan },
     Float = { fg = palette.fg },
     FloatBorder = { fg = palette.border },
-    FloatTitle = { fg = palette.fade },
+    FloatTitle = { fg = palette.text_ignored },
     Operator = { fg = palette.purple },
     --Keyword = { fg = colors.cyan },
     --Keywords = { fg = colors.cyan },
