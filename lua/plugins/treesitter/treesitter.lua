@@ -47,7 +47,7 @@ return {
           "vimdoc",
           "dockerfile",
           "gitignore",
-          "query",
+          "query", -- This is the Treesitter query lang (?)
           "regex",
         },
         incremental_selection = {
@@ -58,6 +58,16 @@ return {
             scope_incremental = false,
             node_decremental = "<bs>",
           },
+        },
+      })
+
+      -- No mdx treesitter grammar available
+      ---@see https://phelipetls.github.io/posts/mdx-syntax-highlight-treesitter-nvim/
+      ---@see https://www.in2deep.xyz/posts/astro-development-using-nvim/
+
+      vim.filetype.add({
+        extension = {
+          mdx = "markdown.mdx",
         },
       })
     end,
