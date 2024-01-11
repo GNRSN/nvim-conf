@@ -38,6 +38,9 @@ else
       import = "plugins",
     },
     {
+      import = "plugins.debugger",
+    },
+    {
       import = "plugins.lsp",
     },
     {
