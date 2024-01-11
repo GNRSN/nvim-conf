@@ -110,4 +110,6 @@ map("n", "<leader>gG", function() Util.float_term({ "lazygit" }) end, { desc = "
 map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 
 -- Scandinavian keyboard compensation
-map({ "n", "x", "o" }, "€", "$", { desc = "$ remap"})
+map({ "n", "x", "o" }, "€", "$", { desc = "End of line"})
+map({ "n", "x", "o" }, "ö", "[", { desc = "["})
+map({ "n", "x", "o" }, "ä", "]", { desc = "]"})
