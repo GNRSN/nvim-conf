@@ -5,3 +5,6 @@
     "export"
     "default"
   ] @keyword.export)
+
+(this) @keyword.this
+

@@ -186,6 +186,7 @@ function M.setup()
     ["@keyword"] = { fg = palette.blue },
     ["@keyword.function"] = { fg = palette.blue },
     ["@keyword.return"] = { fg = palette.purple },
+    ["@keyword.this"] = { fg = palette.blue_medium },
     ["@keyword.export"] = { fg = palette.purple },
     ["@export"] = { fg = palette.purple },
     ["@keyword.coroutine"] = { fg = palette.purple },
