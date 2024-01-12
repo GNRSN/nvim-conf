@@ -1,4 +1,3 @@
-
 local function augroup(name)
   return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
 end
@@ -21,7 +20,7 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
 vim.api.nvim_create_autocmd("BufReadPost", {
   group = augroup("last_loc"),
   callback = function()
-    local mark = vim.api.nvim_buf_get_mark(0, '"')
+    local mark = vim.api.nvim_buf_get_mark(0, "\"")
     local lcount = vim.api.nvim_buf_line_count(0)
     if mark[1] > 0 and mark[1] <= lcount then
       pcall(vim.api.nvim_win_set_cursor, 0, mark)
@@ -47,4 +46,25 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.bo[event.buf].buflisted = false
     vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
   end,
+})
+
+-- Format on save
+-- LATER: Allow setting to false per repo via e.g. nvimconf
+vim.g.format_on_save = true
+
+-- Add commands to enable/disable format on save
+vim.api.nvim_create_user_command("FormatOnSaveEnable", function()
+  vim.g.format_on_save = true
+end, {
+  desc = "Enable format-on-save",
+})
+vim.api.nvim_create_user_command("FormatOnSaveDisable", function()
+  vim.g.format_on_save = false
+end, {
+  desc = "Disable format-on-save",
+})
+vim.api.nvim_create_user_command("FormatOnSaveToggle", function()
+  vim.g.format_on_save = not vim.g.format_on_save
+end, {
+  desc = "Toggle format-on-save",
 })
