@@ -24,11 +24,20 @@ return {
           --   ignore_file_types = { "python", "vim", "lua" },
           -- }),
         },
+        status = {
+          enabled = true,
+          signs = true,
+          virtual_text = true,
+        },
+        output_panel = {
+          enabled = true,
+          open = "botright vsplit | vertical resize 50",
+        },
       })
     end,
     keys = {
       {
-        "<leader>tn",
+        "<leader>tr",
         function()
           require("neotest").run.run()
         end,
