@@ -1,4 +1,6 @@
 return {
+  -- Nvim integration with test runner
+  -- TODO: Support mocha through https://github.com/nvim-neotest/neotest-vim-test
   {
     "nvim-neotest/neotest",
     dependencies = {
@@ -24,5 +26,78 @@ return {
         },
       })
     end,
+    keys = {
+      {
+        "<leader>tn",
+        function()
+          require("neotest").run.run()
+        end,
+        desc = "Run nearest test",
+      },
+      {
+        "<leader>tw",
+        function()
+          require("neotest").watch.toggle(vim.fn.expand("%"))
+        end,
+        desc = "Watch nearest position",
+      },
+      {
+        "<leader>tW",
+        function()
+          require("neotest").watch.toggle(vim.fn.expand("%"))
+        end,
+        desc = "Watch file",
+      },
+      {
+        "<leader>tf",
+        function()
+          require("neotest").run.run(vim.fn.expand("%"))
+        end,
+        desc = "Run current file",
+      },
+      {
+        "<leader>td",
+        function()
+          ---@diagnostic disable-next-line: missing-fields
+          require("neotest").run.run({ strategy = "dap" })
+        end,
+        desc = "Run nearest test (DAP)",
+      },
+      {
+        "<leader>tx",
+        function()
+          require("neotest").run.stop()
+        end,
+        desc = "Stop current test",
+      },
+      {
+        "<leader>ta",
+        function()
+          require("neotest").run.attach()
+        end,
+        desc = "Attach to nearest test",
+      },
+      {
+        "<leader>to",
+        function()
+          require("neotest").output_panel.toggle()
+        end,
+        desc = "Output panel (toggle)",
+      },
+      {
+        "<leader>ts",
+        function()
+          require("neotest").summary.toggle()
+        end,
+        desc = "Summary panel (toggle)",
+      },
+      {
+        "<leader>tc",
+        function()
+          require("neotest").output_panel.clear()
+        end,
+        desc = "Clear output",
+      },
+    },
   },
 }
