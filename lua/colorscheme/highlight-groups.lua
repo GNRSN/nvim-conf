@@ -555,6 +555,26 @@ function M.setup()
     -- Yanky
     YankyPut = { bg = "#8ee592", fg = "#333333" },
     YankyYanked = { bg = "#8ee592", fg = "#333333" },
+
+    -- Neotest
+    NeotestAdapterName = { fg = palette.bright_blue },
+    NeotestBorder = { fg = palette.border },
+    NeotestDir = { fg = palette.yellow },
+    NeotestExpandMarker = { fg = palette.fade },
+    NeotestFailed = { fg = palette.bright_red },
+    NeotestFile = { fg = palette.white },
+    NeotestFocused = { bg = palette.visual_bg },
+    NeotestIndent = { fg = palette.fade },
+    NeotestMarked = { fg = palette.yellow_sunflower },
+    NeotestNamespace = { fg = palette.blue_green },
+    NeotestPassed = { fg = palette.green },
+    NeotestRunning = { fg = palette.number_green },
+    NeotestWinSelect = { fg = palette.pink },
+    NeotestSkipped = { fg = palette.nontext },
+    NeotestTarget = { fg = palette.orange },
+    NeotestTest = { fg = palette.fg },
+    NeotestUnknown = { fg = palette.text_ignored },
+    NeotestWatching = { fg = palette.purple },
   }
 end
 
