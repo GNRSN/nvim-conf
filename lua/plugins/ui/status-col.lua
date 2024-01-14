@@ -10,6 +10,9 @@ return {
         relculright = true,
         ft_ignore = {
           "neo-tree",
+          "neotest",
+          "neotest-summary",
+          "neotest-output",
         },
         segments = {
           {
