@@ -12,7 +12,7 @@ return {
           "neo-tree",
           "neotest",
           "neotest-summary",
-          "neotest-output",
+          "neotest-output-panel",
         },
         segments = {
           {
