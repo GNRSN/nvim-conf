@@ -38,16 +38,16 @@ vim.g.neovide_scale_factor = 0.9
 local change_scale_factor = function(delta)
   vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
 end
-vim.keymap.set("n", "<C-+>", function()
+vim.keymap.set("n", "<D-+>", function()
   change_scale_factor(1.05)
 end)
-vim.keymap.set("n", "<C-->", function()
+vim.keymap.set("n", "<D-->", function()
   change_scale_factor(1 / 1.05)
 end)
 
 -- setup copy paste to clipboard with cmd+c
 vim.g.neovide_input_use_logo = 1 -- enable use of the logo (cmd) key
-vim.keymap.set("n", "<D-s>", ":w<CR>") -- Save
+-- vim.keymap.set("n", "<D-s>", ":w<CR>") -- Save
 vim.keymap.set("v", "<D-c>", "\"+y") -- Copy
 vim.keymap.set("n", "<D-v>", "\"+P") -- Paste normal mode
 vim.keymap.set("v", "<D-v>", "\"+P") -- Paste visual mode
