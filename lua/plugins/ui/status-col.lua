@@ -13,6 +13,7 @@ return {
           "neotest",
           "neotest-summary",
           "neotest-output-panel",
+          "Trouble",
         },
         segments = {
           {
