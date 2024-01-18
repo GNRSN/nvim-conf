@@ -36,7 +36,9 @@ end
 -- set scaling and add keymaps for updating
 vim.g.neovide_scale_factor = 0.9
 local change_scale_factor = function(delta)
-  vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
+  local resulting_scale = vim.g.neovide_scale_factor * delta
+  vim.g.neovide_scale_factor = resulting_scale
+  vim.notify("UI Scaling: " .. resulting_scale * 100 .. "%")
 end
 vim.keymap.set("n", "<D-+>", function()
   change_scale_factor(1.05)
