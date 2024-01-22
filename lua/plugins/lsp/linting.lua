@@ -38,6 +38,7 @@ return {
       })
 
       local diagnostics = nls.builtins.diagnostics
+      local code_actions = nls.builtins.code_actions
 
       -- configure null_ls
       nls.setup({
@@ -55,7 +56,20 @@ return {
                 "eslint.config.cjs",
                 "eslint.config.mjs",
                 -- REVIEW: It's possible to define eslint config in package json so needs to check that,
-                -- effectivly making this check semi useless
+                "package.json",
+              })
+            end,
+          }),
+          code_actions.eslint_d.with({
+            -- only enable if project has eslint config
+            condition = function(utils)
+              return utils.root_has_file({
+                ".eslintrc.js",
+                ".eslintrc.cjs",
+                "eslint.config.js",
+                "eslint.config.cjs",
+                "eslint.config.mjs",
+                -- REVIEW: It's possible to define eslint config in package json so needs to check that,
                 "package.json",
               })
             end,
