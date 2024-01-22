@@ -123,13 +123,25 @@ return {
         ["<C-e>"] = cmp.mapping.abort(),
         ["<C-q>"] = cmp.mapping.abort(),
 
-        ["<C-i>"] = cmp.mapping(
-          cmp.mapping.confirm({
+        ["<C-i>"] = cmp.mapping({
+          i = function(fallback)
+            if cmp.visible() then
+              -- Insert undo breakpoint so completion can be undone
+              local CTRLg_u = vim.api.nvim_replace_termcodes("<C-g>u", true, true, true)
+              vim.api.nvim_feedkeys(CTRLg_u, "n", true)
+              return cmp.confirm({
+                behavior = cmp.ConfirmBehavior.Insert,
+                select = true,
+              })
+            end
+
+            fallback()
+          end,
+          c = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Insert,
             select = true,
           }),
-          { "i", "c" }
-        ),
+        }),
         -- LATER: This mapping from docs explains how to combine with snipped expansion (Designed for <tab> though)
         --
         -- ["<C-i>"] = cmp.mapping(function(fallback)
@@ -181,30 +193,30 @@ return {
       -- NOTE: Copied from TJ
       ---@diagnostic disable-next-line: missing-fields
       sorting = {
-        comparators = {
-          cmp.config.compare.offset,
-          cmp.config.compare.exact,
-          cmp.config.compare.score,
-
-          -- copied from cmp-under, but I don't think I need the plugin for this.
-          -- I might add some more of my own.
-          function(entry1, entry2)
-            local _, entry1_under = entry1.completion_item.label:find("^_+")
-            local _, entry2_under = entry2.completion_item.label:find("^_+")
-            entry1_under = entry1_under or 0
-            entry2_under = entry2_under or 0
-            if entry1_under > entry2_under then
-              return false
-            elseif entry1_under < entry2_under then
-              return true
-            end
-          end,
-
-          cmp.config.compare.kind,
-          cmp.config.compare.sort_text,
-          cmp.config.compare.length,
-          cmp.config.compare.order,
-        },
+        -- comparators = {
+        --   cmp.config.compare.offset,
+        --   cmp.config.compare.exact,
+        --   cmp.config.compare.score,
+        --
+        --   -- copied from cmp-under, but I don't think I need the plugin for this.
+        --   -- I might add some more of my own.
+        --   function(entry1, entry2)
+        --     local _, entry1_under = entry1.completion_item.label:find("^_+")
+        --     local _, entry2_under = entry2.completion_item.label:find("^_+")
+        --     entry1_under = entry1_under or 0
+        --     entry2_under = entry2_under or 0
+        --     if entry1_under > entry2_under then
+        --       return false
+        --     elseif entry1_under < entry2_under then
+        --       return true
+        --     end
+        --   end,
+        --
+        --   cmp.config.compare.kind,
+        --   cmp.config.compare.sort_text,
+        --   cmp.config.compare.length,
+        --   cmp.config.compare.order,
+        -- },
       },
       -- REVIEW: Should all alternatives still be returned though lspkind? It seems to me as if it doesn't overwrite values?
       formatting = {
