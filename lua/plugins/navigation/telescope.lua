@@ -42,7 +42,7 @@ return {
       -- find
       { "<leader><space>", tele("files", { cwd = false }), desc = "Find Files (cwd)" },
       { "<leader>ff", tele("files"), desc = "Find Files (root dir)" },
-      { "<leader>fs", tele("live_grep"), desc = "Find in Files (Grep)" },
+      { "<leader>fs", tele("live_grep", { cwd = false }), desc = "Find in Files (Grep)" },
       -- { "<leader>fs", tele("grep_string"), mode = { "v" }, desc = "Find selection in Files (Grep)" },
       {
         "<leader>fs",
@@ -50,7 +50,7 @@ return {
         mode = { "v" },
         desc = "Grep selection",
       },
-      { "<leader>fS", tele("live_grep", { cwd = false }), desc = "Grep (cwd)" },
+      { "<leader>fS", tele("live_grep"), desc = "Grep (cwd)" },
       { "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
       { "<leader>/", tele("live_grep"), desc = "Find in Files (Grep)" },
       { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
