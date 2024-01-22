@@ -156,11 +156,20 @@ return {
     })
 
     -- configure emmet language server
-    lspconfig["emmet_ls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-      filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
-    })
+    -- lspconfig["emmet_ls"].setup({
+    --   capabilities = capabilities,
+    --   on_attach = on_attach,
+    --   filetypes = {
+    --     "html",
+    --     "typescriptreact",
+    --     "javascriptreact",
+    --     "css",
+    --     "sass",
+    --     "scss",
+    --     "less",
+    --     "svelte",
+    --   },
+    -- })
 
     -- configure python server
     lspconfig["pyright"].setup({
@@ -172,22 +181,24 @@ return {
     lspconfig["lua_ls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
-      settings = { -- custom settings for lua
-        -- REVIEW: Is this still needed with neodev?
-        Lua = {
-          -- make the language server recognize "vim" global
-          diagnostics = {
-            globals = { "vim" },
-          },
-          workspace = {
-            -- make language server aware of runtime files
-            library = {
-              [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-              [vim.fn.stdpath("config") .. "/lua"] = true,
-            },
-          },
-        },
-      },
+      -- TODO: Experiment without these, remove if no difference,
+      --
+      -- settings = { -- custom settings for lua
+      --   -- REVIEW: Is this still needed with neodev?
+      --   Lua = {
+      --     -- make the language server recognize "vim" global
+      --     diagnostics = {
+      --       globals = { "vim" },
+      --     },
+      --     workspace = {
+      --       -- make language server aware of runtime files
+      --       library = {
+      --         [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+      --         [vim.fn.stdpath("config") .. "/lua"] = true,
+      --       },
+      --     },
+      --   },
+      -- },
     })
 
     -- configure json server
