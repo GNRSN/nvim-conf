@@ -56,6 +56,7 @@ opt.shortmess:append({
   C = true,
   s = true,
 })
+opt.fixeol = true
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
