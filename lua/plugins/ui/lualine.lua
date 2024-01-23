@@ -17,11 +17,7 @@ end
 
 local format_on_save_indicator = {
   function()
-    if require("util.format-on-save").get_state() then
-      return "󰉿󰄬"
-    else
-      return "󰉿"
-    end
+    return "󰾽"
   end,
   cond = function()
     local no_write = {
