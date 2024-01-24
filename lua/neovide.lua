@@ -10,6 +10,8 @@ end
 
 -- set font
 vim.o.guifont = "Hack_Nerd_Font:h13"
+vim.o.pumblend = 30
+vim.o.winblend = 15
 
 -- set animations
 vim.g.neovide_cursor_animate_in_insert_mode = false
