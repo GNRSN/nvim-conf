@@ -10,8 +10,8 @@ end
 
 -- set font
 vim.o.guifont = "Hack_Nerd_Font:h13"
-vim.o.pumblend = 30
-vim.o.winblend = 15
+vim.o.pumblend = 50
+vim.o.winblend = 30
 
 -- set animations
 vim.g.neovide_cursor_animate_in_insert_mode = false
@@ -22,13 +22,15 @@ vim.g.neovide_cursor_vfx_mode = "pixiedust"
 local get_alpha = function()
   return string.format("%x", math.floor((255 * vim.g.transparency) or 0.8))
 end
+
+vim.g.neovide_floating_blur_amount_x = 6.0
+vim.g.neovide_floating_blur_amount_y = 9.0
+
 -- DOCS: g:neovide_transparency should be 0 if you want to unify transparency of content and title bar.
 if config.transparency then
   vim.g.neovide_transparency = 0.0
   vim.g.transparency = 0.8
   vim.g.neovide_background_color = "#000000" .. get_alpha() -- colors.bg .. get_alpha()
-  vim.g.neovide_floating_blur_amount_x = 4.0
-  vim.g.neovide_floating_blur_amount_y = 4.0
 else
   vim.g.neovide_background_color = palette.bg
   -- set bg for "normal"
@@ -38,15 +40,15 @@ end
 -- set scaling and add keymaps for updating
 vim.g.neovide_scale_factor = 0.9
 local change_scale_factor = function(delta)
-  local resulting_scale = vim.g.neovide_scale_factor * delta
+  local resulting_scale = vim.g.neovide_scale_factor + delta
   vim.g.neovide_scale_factor = resulting_scale
   vim.notify("UI Scaling: " .. resulting_scale * 100 .. "%")
 end
 vim.keymap.set("n", "<D-+>", function()
-  change_scale_factor(1.05)
+  change_scale_factor(0.05)
 end)
 vim.keymap.set("n", "<D-->", function()
-  change_scale_factor(1 / 1.05)
+  change_scale_factor(-0.05)
 end)
 
 -- setup copy paste to clipboard with cmd+c

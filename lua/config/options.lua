@@ -3,6 +3,8 @@ vim.g.maplocalleader = " "
 
 local opt = vim.opt -- for conciseness
 
+-- NOTE: Do not set blend options in this file, e.g. neovide config updates them automatically
+
 opt.clipboard = "unnamedplus" -- Sync with system clipboard
 opt.completeopt = "menu,menuone,preview"
 opt.conceallevel = 3 -- Hide * markup for bold and italic
@@ -18,7 +20,6 @@ opt.laststatus = 0
 opt.list = true -- Show some invisible characters (tabs...
 opt.mouse = "a" -- Enable mouse mode
 opt.number = true -- Print line number
-opt.pumblend = 0 -- Popup blend
 opt.pumheight = 11 -- Maximum number of entries in a popup
 opt.relativenumber = true -- Relative line numbers
 opt.ruler = false -- Hides the row+col coordinates to the bottom right

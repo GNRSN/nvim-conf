@@ -35,6 +35,10 @@ else
     require("colorscheme").load()
   end)
 
+  if vim.g.neovide then
+    require("neovide")
+  end
+
   -- use lazy-loader
   require("lazy").setup({
     {
@@ -69,8 +73,4 @@ else
     },
   })
   require("config").setup()
-
-  if vim.g.neovide then
-    require("neovide")
-  end
 end
