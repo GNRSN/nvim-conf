@@ -29,5 +29,22 @@ local k = require("luasnip.nodes.key_indexer").new_key
 return {
   ["/type"] = fmt([[/** @type {{{}}} */]], { i(1) }),
   ["/satisfies"] = fmt([[/** @satisfies {{{}}} */]], { i(1) }),
-  ["/typedef"] = fmt([[/** @type {{{}}} {} */]], { i(1), i(2, "typename") }),
+  ["/typedef"] = fmt([[/** @typedef {{{}}} {} */]], { i(1), i(2, "typename") }),
+  ["/param"] = fmt(
+    [[
+/**
+ * @param {{{}}} {}
+ */
+   ]],
+    { i(1), i(2) }
+  ),
+  ["/props"] = fmt(
+    [[
+/**
+ * @param {{object}} props
+ * @param {{{}}} props.
+ */
+   ]],
+    { i(1) }
+  ),
 }

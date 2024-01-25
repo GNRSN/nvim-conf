@@ -35,26 +35,6 @@ return {
           end
         end,
       })
-
-      -- LATER: Allow setting to false per repo via e.g. nvimconf
-      vim.g.format_on_save = true
-
-      -- Add commands to enable/disable format on save
-      vim.api.nvim_create_user_command("FormatOnSaveEnable", function()
-        vim.g.format_on_save = true
-      end, {
-        desc = "Enable format-on-save",
-      })
-      vim.api.nvim_create_user_command("FormatOnSaveDisable", function()
-        vim.g.format_on_save = false
-      end, {
-        desc = "Disable format-on-save",
-      })
-      vim.api.nvim_create_user_command("FormatOnSaveToggle", function()
-        vim.g.format_on_save = not vim.g.format_on_save
-      end, {
-        desc = "Toggle format-on-save",
-      })
     end,
     keys = {
       {

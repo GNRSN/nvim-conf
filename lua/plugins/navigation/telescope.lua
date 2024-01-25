@@ -34,8 +34,6 @@ return {
       "nvim-telescope/telescope-file-browser.nvim",
       -- List plugins with readme, open on github in browser
       "tsakirist/telescope-lazy.nvim",
-      -- Search snippets
-      "benfowler/telescope-luasnip.nvim",
       -- Find icons
       "nvim-telescope/telescope-symbols.nvim",
     },
@@ -44,7 +42,7 @@ return {
       -- find
       { "<leader><space>", tele("files", { cwd = false }), desc = "Find Files (cwd)" },
       { "<leader>ff", tele("files"), desc = "Find Files (root dir)" },
-      { "<leader>fs", tele("live_grep"), desc = "Find in Files (Grep)" },
+      { "<leader>fs", tele("live_grep", { cwd = false }), desc = "Find in Files (Grep)" },
       -- { "<leader>fs", tele("grep_string"), mode = { "v" }, desc = "Find selection in Files (Grep)" },
       {
         "<leader>fs",
@@ -52,12 +50,12 @@ return {
         mode = { "v" },
         desc = "Grep selection",
       },
-      { "<leader>fS", tele("live_grep", { cwd = false }), desc = "Grep (cwd)" },
+      { "<leader>fS", tele("live_grep"), desc = "Grep (cwd)" },
       { "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
       { "<leader>/", tele("live_grep"), desc = "Find in Files (Grep)" },
       { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
       { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-      { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
+      { "<leader>fR", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
       { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
       {
         "<leader>fB",
@@ -98,6 +96,7 @@ return {
       },
       { "<leader>so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
       { "<leader>sr", "<cmd>Telescope resume<cr>", desc = "Resume" },
+      { "<leader>fr", "<cmd>Telescope resume<cr>", desc = "Resume" },
       { "<leader>sw", tele("grep_string"), desc = "Word (root dir)" },
       { "<leader>sW", tele("grep_string", { cwd = false }), desc = "Word (cwd)" },
       {

@@ -56,5 +56,19 @@ return {
         [key] = "which_key_ignore",
       })
     end
+
+    -- LATER: add keybind for attatching a certain harpoon
+
+    -- for i = 1, 9 do
+    --   local key = string.format("<leader>h%s", i)
+    --   keymap.set("n", key, function()
+    --     harpoon:list():removeAt(i)
+    --   end, { desc = string.format("Attatch harpoon (%s)", i) })
+    --
+    --   -- Hide from which-key
+    --   wk.register({
+    --     [key] = "which_key_ignore",
+    --   })
+    -- end
   end,
 }

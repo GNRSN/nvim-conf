@@ -74,7 +74,7 @@ function M.setup()
     --Title = { fg = colors.cyan },
     Macro = { fg = palette.purple },
     --PreCondit = { fg = colors.cyan },
-    --Type = { fg = colors.cyan },
+    Type = { fg = palette.blue_green },
     StorageClass = { fg = palette.pink },
     Structure = { fg = palette.yellow },
     TypeDef = { fg = palette.yellow },
@@ -186,10 +186,13 @@ function M.setup()
     ["@keyword"] = { fg = palette.blue },
     ["@keyword.function"] = { fg = palette.blue },
     ["@keyword.return"] = { fg = palette.purple },
+    ["@keyword.this"] = { fg = palette.blue },
     ["@keyword.export"] = { fg = palette.purple },
     ["@export"] = { fg = palette.purple },
     ["@keyword.coroutine"] = { fg = palette.purple },
     ["@keyword.operator"] = { fg = palette.purple },
+    ["@keyword.conditional"] = { fg = palette.purple },
+    ["@keyword.import"] = { fg = palette.purple },
     ["@operator"] = { fg = palette.bright_white },
     ["@exception"] = { fg = palette.error_dark },
     ["@structure"] = { fg = palette.purple },
@@ -554,6 +557,35 @@ function M.setup()
     -- Yanky
     YankyPut = { bg = "#8ee592", fg = "#333333" },
     YankyYanked = { bg = "#8ee592", fg = "#333333" },
+
+    -- Neotest
+    NeotestAdapterName = { fg = palette.bright_blue },
+    NeotestBorder = { fg = palette.border },
+    NeotestDir = { fg = palette.yellow },
+    NeotestExpandMarker = { fg = palette.fade },
+    NeotestFailed = { fg = palette.bright_red },
+    NeotestFile = { fg = palette.white },
+    NeotestFocused = { bg = palette.visual_bg },
+    NeotestIndent = { fg = palette.fade },
+    NeotestMarked = { fg = palette.yellow_sunflower },
+    NeotestNamespace = { fg = palette.blue_green },
+    NeotestPassed = { fg = palette.green },
+    NeotestRunning = { fg = palette.number_green },
+    NeotestWinSelect = { fg = palette.pink },
+    NeotestSkipped = { fg = palette.nontext },
+    NeotestTarget = { fg = palette.orange },
+    NeotestTest = { fg = palette.fg },
+    NeotestUnknown = { fg = palette.text_ignored },
+    NeotestWatching = { fg = palette.purple },
+
+    -- Whichkey
+    WhichKey = { fg = palette.fg },
+    WhichKeyGroup = { fg = palette.pink },
+    WhichKeySeparator = { fg = palette.fade }, -- 	DiffAdd	the separator between the key and its label
+    WhichKeyDesc = { fg = palette.white }, -- 	Identifier	the label of the key
+    -- WhichKeyFloat = {}, -- 	NormalFloat	Normal in the popup window
+    -- WhichKeyBorder = {}, -- 	FloatBorder	Normal in the popup window
+    WhichKeyValue = { fg = palette.blue_green },
   }
 end
 

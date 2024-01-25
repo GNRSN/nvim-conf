@@ -49,6 +49,9 @@ return {
           "gitignore",
           "query", -- This is the Treesitter query lang (?)
           "regex",
+          "toml",
+          "zig",
+          "rust",
         },
         incremental_selection = {
           enable = true,

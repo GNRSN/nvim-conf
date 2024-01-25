@@ -15,6 +15,35 @@ local get_noice_mode = function()
   }
 end
 
+local format_on_save_indicator = {
+  function()
+    return "󰾽"
+  end,
+  cond = function()
+    local no_write = {
+      nowrite = true,
+      nofile = true,
+      terminal = true,
+      prompt = true,
+    }
+
+    return vim.bo.filetype and not no_write[vim.bo.buftype]
+  end,
+  color = function()
+    if require("util.format-on-save").get_state() then
+      return {
+        fg = require("colorscheme.palette").green,
+      }
+    else
+      return {
+        fg = require("colorscheme.palette").fade,
+      }
+    end
+  end,
+
+  separator = nil,
+}
+
 return {
   -- Customizable status line
   {
@@ -50,6 +79,7 @@ return {
           lualine_b = { "branch", "diff" },
           lualine_c = {
             "filename",
+            format_on_save_indicator,
             get_noice_mode(),
           },
           lualine_x = {
@@ -63,7 +93,6 @@ return {
           lualine_b = {},
           lualine_c = { "filename" },
           lualine_x = {
-            -- lsp_segment,
             "diagnostics",
           },
           lualine_y = { "filetype" },

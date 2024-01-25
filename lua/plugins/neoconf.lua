@@ -6,6 +6,10 @@ return {
     -- as it's essentially injecting env variables for config
     lazy = false,
     priority = 9001,
-    config = true,
+    config = function()
+      require("neoconf").setup({})
+      local format_on_save = require("util.format-on-save")
+      format_on_save.init()
+    end,
   },
 }
