@@ -74,7 +74,7 @@ function M.setup()
     --Title = { fg = colors.cyan },
     Macro = { fg = palette.purple },
     --PreCondit = { fg = colors.cyan },
-    --Type = { fg = colors.cyan },
+    Type = { fg = palette.blue_green },
     StorageClass = { fg = palette.pink },
     Structure = { fg = palette.yellow },
     TypeDef = { fg = palette.yellow },
@@ -577,6 +577,15 @@ function M.setup()
     NeotestTest = { fg = palette.fg },
     NeotestUnknown = { fg = palette.text_ignored },
     NeotestWatching = { fg = palette.purple },
+
+    -- Whichkey
+    WhichKey = { fg = palette.fg },
+    WhichKeyGroup = { fg = palette.pink },
+    WhichKeySeparator = { fg = palette.fade }, -- 	DiffAdd	the separator between the key and its label
+    WhichKeyDesc = { fg = palette.white }, -- 	Identifier	the label of the key
+    -- WhichKeyFloat = {}, -- 	NormalFloat	Normal in the popup window
+    -- WhichKeyBorder = {}, -- 	FloatBorder	Normal in the popup window
+    WhichKeyValue = { fg = palette.blue_green },
   }
 end
 
