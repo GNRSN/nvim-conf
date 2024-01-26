@@ -253,8 +253,9 @@ function M.setup()
     ["@lsp.type.variable"] = {},
 
     ["@lsp.mod.deprecated"] = { strikethrough = true },
-    -- JS
-    -- ["@"]
+
+    -- scss
+    ["@character.special.scss"] = { fg = palette.yellow_sunflower },
 
     -- HTML
     htmlArg = { fg = palette.green },
