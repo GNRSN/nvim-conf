@@ -216,6 +216,8 @@ function M.setup()
     ["@tag"] = { fg = palette.blue },
     ["@tag.attribute"] = { fg = palette.blue_light },
     ["@tag.delimiter"] = { fg = "#777777" },
+    ["@tag.jsx"] = { fg = palette.blue_green },
+    ["@tag.tsx"] = { fg = palette.blue_green },
 
     ["@type"] = { fg = palette.blue_green },
     ["@type.builtin"] = { fg = palette.blue_green, italic = true },
