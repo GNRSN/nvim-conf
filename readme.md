@@ -1,12 +1,8 @@
 # @GNRSN Neovim config
 
-### Goals
-
-- Replace all features I like with VScode
-- Acceptable performance
-- Extendable & maintainable
-
 ### Features
+
+Non exhaustive list of plugins
 
 ##### Highlighting
 
@@ -20,7 +16,7 @@
 ##### "Intellisense"
 
 - Lsp-config (langue server)
-  - Typescript tools
+  - Typescript tools (better TS server managment)
 - Null-ls (linting)
   - Cspell
 - Conform (formatting)
@@ -28,7 +24,11 @@
 - Nvim cmp + a bunch of sources (completion)
 - Luasnip (snippet engines)
 - Friendly snippets (snippet library)
+  - I'm not very happy with the JS snippets at the moment though, most of them are pretty useless
 - Neodev (neovim development/configuration)
+- Autotag
+- Autopair
+- Indent blankline
 
 ##### Text traversal
 
@@ -67,6 +67,11 @@
 
 #### Util plugins
 
+##### Debug
+
+- Nvim DAP
+- Neotest
+
 ##### Git
 
 - Lazygit (git)
@@ -78,7 +83,4 @@
 
 ### Upcomming Projects
 
-- [ ] DAP debugger
-- [ ] Neoconf controlled format on save
 - [ ] Vscode style combined diagnostics and hover
-- [ ] Insert undo breakpoint before performing completion
