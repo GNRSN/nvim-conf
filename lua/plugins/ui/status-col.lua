@@ -14,6 +14,7 @@ return {
           "neotest-summary",
           "neotest-output-panel",
           "Trouble",
+          "noice",
         },
         segments = {
           {
