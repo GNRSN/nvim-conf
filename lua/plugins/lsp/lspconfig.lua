@@ -76,7 +76,6 @@ return {
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
 
-    -- configure html server
     lspconfig["html"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
@@ -119,13 +118,11 @@ return {
       end,
     })
 
-    -- configure tailwindcss server
     lspconfig["tailwindcss"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
-    -- configure svelte server
     lspconfig["svelte"].setup({
       capabilities = capabilities,
       on_attach = function(client, bufnr)
@@ -155,7 +152,8 @@ return {
       filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
     })
 
-    -- configure emmet language server
+    -- LATER: Spams completion, must be context aware to re-enable
+    --
     -- lspconfig["emmet_ls"].setup({
     --   capabilities = capabilities,
     --   on_attach = on_attach,
@@ -171,34 +169,31 @@ return {
     --   },
     -- })
 
-    -- configure python server
     lspconfig["pyright"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
-    -- configure lua server (with special settings)
+    -- configure lua server (with special settings), similar to neodev but it's
+    -- always nice to have lsp when using :lua
     lspconfig["lua_ls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
-      -- TODO: Experiment without these, remove if no difference,
-      --
-      -- settings = { -- custom settings for lua
-      --   -- REVIEW: Is this still needed with neodev?
-      --   Lua = {
-      --     -- make the language server recognize "vim" global
-      --     diagnostics = {
-      --       globals = { "vim" },
-      --     },
-      --     workspace = {
-      --       -- make language server aware of runtime files
-      --       library = {
-      --         [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-      --         [vim.fn.stdpath("config") .. "/lua"] = true,
-      --       },
-      --     },
-      --   },
-      -- },
+      settings = { -- custom settings for lua
+        Lua = {
+          -- make the language server recognize "vim" global
+          diagnostics = {
+            globals = { "vim" },
+          },
+          workspace = {
+            -- make language server aware of runtime files
+            library = {
+              [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+              [vim.fn.stdpath("config") .. "/lua"] = true,
+            },
+          },
+        },
+      },
     })
 
     -- configure json server
