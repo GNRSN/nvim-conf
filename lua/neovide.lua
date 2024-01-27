@@ -1,5 +1,5 @@
 local config = {
-  transparency = false,
+  transparency = true,
 }
 
 local palette = require("colorscheme.palette")
@@ -17,25 +17,17 @@ vim.o.winblend = 30
 vim.g.neovide_cursor_animate_in_insert_mode = false
 vim.g.neovide_cursor_vfx_mode = "pixiedust"
 
--- set styling
--- Helper function for transparency formatting
--- LATER: macos background color is deprecated on latest main
-local get_alpha = function()
-  return string.format("%x", math.floor(255 * (vim.g.transparency or 0.8)))
-end
-
 vim.g.neovide_floating_blur_amount_x = 6.0
-vim.g.neovide_floating_blur_amount_y = 9.0
+vim.g.neovide_floating_blur_amount_y = 7.0
+vim.g.neovide_scroll_animation_length = 0.25
 
--- DOCS: g:neovide_transparency should be 0 if you want to unify transparency of content and title bar.
 if config.transparency then
   vim.g.neovide_window_blurred = true
-  vim.g.neovide_transparency = 0.0
-  vim.g.transparency = 0.69
-  -- vim.g.neovide_background_color = "#000000" .. get_alpha() -- colors.bg .. get_alpha()
+  vim.g.neovide_transparency = 0.65
+  vim.g.transparency = 0.65
+  vim.g.neovide_padding_top = 50
 else
   vim.g.neovide_background_color = palette.bg
-  -- set bg for "normal"
   vim.api.nvim_set_hl(0, "Normal", { bg = palette.bg })
 end
 
