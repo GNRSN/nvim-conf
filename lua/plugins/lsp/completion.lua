@@ -60,6 +60,7 @@ return {
       -- NOTE: order of sources effect order in UI
       sources = cmp.config.sources({
         { name = "nvim_lsp_signature_help" },
+        { name = "codeium" },
         { name = "path" },
         { name = "nvim_lua" },
         { name = "nvim_lsp" },
@@ -231,6 +232,7 @@ return {
             path = "[path]",
             luasnip = "[snip]",
             cmp_yanky = "[yanky]",
+            codeium = "[AI]",
           }
           local function getMappedMenu(entry)
             return MENU_MAPPER[entry.source.name] or entry.source.name or "??"
