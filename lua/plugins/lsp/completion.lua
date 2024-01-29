@@ -226,13 +226,12 @@ return {
         expandable_indicator = true,
         format = function(entry, vim_item)
           local MENU_MAPPER = {
-            buffer = "[buf]",
-            nvim_lsp = "[LSP]",
-            nvim_lua = "[api]",
-            path = "[path]",
-            luasnip = "[snip]",
-            cmp_yanky = "[yanky]",
-            codeium = "[AI]",
+            buffer = "Buf",
+            nvim_lsp = "LSP",
+            nvim_lua = "Nvim-lua",
+            path = "Path",
+            luasnip = "Snip",
+            codeium = "🤖",
           }
           local function getMappedMenu(entry)
             return MENU_MAPPER[entry.source.name] or entry.source.name or "??"
