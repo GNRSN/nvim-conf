@@ -59,7 +59,7 @@ function M.setup()
     FloatBorder = { fg = palette.border },
     FloatTitle = { fg = palette.text_ignored },
     Operator = { fg = palette.purple },
-    --Keyword = { fg = colors.cyan },
+    Keyword = { fg = palette.red },
     --Keywords = { fg = colors.cyan },
     --Identifier = { fg = colors.cyan },
     Function = { fg = palette.yellow },
@@ -216,7 +216,7 @@ function M.setup()
     ["@tag"] = { fg = palette.blue },
     ["@tag.attribute"] = { fg = palette.blue_light },
     ["@tag.delimiter"] = { fg = "#777777" },
-    ["@tag.jsx"] = { fg = palette.blue_green },
+    ["@tag.javascript"] = { fg = palette.blue_green },
     ["@tag.tsx"] = { fg = palette.blue_green },
 
     ["@type"] = { fg = palette.blue_green },
@@ -459,25 +459,32 @@ function M.setup()
     LspReferenceWrite = { fg = palette.orange },
     LspCodeLens = { fg = palette.cyan },
 
-    --LSP Saga
-    -- REVIEW: I think lsp saga re-did their hl groups, see https://github.com/nvimdev/lspsaga.nvim/blob/main/lua/lspsaga/highlight.lua
-    LspFloatWinNormal = { fg = palette.fg },
-    LspFloatWinBorder = { fg = palette.border },
-    LspSagaHoverBorder = { fg = palette.border },
-    LspSagaSignatureHelpBorder = { fg = palette.border },
-    LspSagaCodeActionBorder = { fg = palette.border },
-    LspSagaDefPreviewBorder = { fg = palette.border },
-    LspLinesDiagBorder = { fg = palette.border },
-    LspSagaRenameBorder = { fg = palette.border },
-    LspSagaBorderTitle = { fg = palette.menu },
-    LSPSagaDiagnosticTruncateLine = { fg = palette.fade },
-    LspSagaDiagnosticBorder = { fg = palette.border },
-    LspSagaShTruncateLine = { fg = palette.fade },
-    LspSagaDocTruncateLine = { fg = palette.fade },
-    LspSagaLspFinderBorder = { fg = palette.border },
-
-    SagaVirtLine = { fg = palette.border },
+    -- LSP Saga
+    -- see https://github.com/nvimdev/lspsaga.nvim/blob/main/lua/lspsaga/highlight.lua
+    SagaTitle = { link = "Title" },
     SagaBorder = { fg = palette.border },
+    SagaNormal = { link = "NormalFloat" },
+    SagaToggle = { link = "Comment" },
+    SagaBeacon = { bg = "#c43963" },
+    SagaVirtLine = { fg = palette.border },
+    SagaSpinnerTitle = { link = "Statement" },
+    SagaSpinner = { link = "Statement" },
+    SagaText = { link = "Comment" },
+    SagaSelect = { link = "String" },
+    SagaSearch = { link = "Search" },
+    SagaFinderFname = { link = "Function" },
+    SagaDetail = { link = "Comment" },
+    SagaInCurrent = { link = "KeyWord" },
+    SagaCount = { bg = "gray", fg = "white", bold = true },
+    SagaSep = { link = "Comment" },
+
+    ActionFix = { link = "Keyword" },
+    ActionPreviewNormal = { link = "SagaNormal" },
+    ActionPreviewBorder = { link = "SagaBorder" },
+    ActionPreviewTitle = { link = "Title" },
+    CodeActionText = { fg = palette.fg },
+    CodeActionNumber = { fg = palette.white },
+
     DiagnosticBorder = { fg = palette.border },
     DiagnosticShowBorder = { fg = palette.border },
 
