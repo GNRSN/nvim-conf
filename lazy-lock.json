@@ -22,6 +22,7 @@
   "gen.nvim": { "branch": "main", "commit": "4e24c86daa4fcfe9fc0a03cf3eb3d4f4fe0d4194" },
   "gitsigns.nvim": { "branch": "main", "commit": "2c2463dbd82eddd7dbab881c3a62cfbfbe3c67ae" },
   "harpoon": { "branch": "harpoon2", "commit": "a38be6e0dd4c6db66997deab71fc4453ace97f9c" },
+  "hydra.nvim": { "branch": "master", "commit": "3ced42c0b6a6c85583ff0f221635a7f4c1ab0dd0" },
   "indent-blankline.nvim": { "branch": "master", "commit": "12e92044d313c54c438bd786d11684c88f6f78cd" },
   "lazy.nvim": { "branch": "main", "commit": "28126922c9b54e35a192ac415788f202c3944c9f" },
   "leap.nvim": { "branch": "main", "commit": "e285f3c9a3fb11367f859faf553d28f332da0a2c" },
@@ -79,5 +80,6 @@
   "vim-visual-multi": { "branch": "master", "commit": "e67f7fa011c98fc5426352d3bb06362a0f70af3c" },
   "vscode-js-debug": { "branch": "main", "commit": "61adc31bbc0fabdc620ba5202d71d92189c55b81" },
   "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" },
+  "winshift.nvim": { "branch": "main", "commit": "37468ed6f385dfb50402368669766504c0e15583" },
   "yanky.nvim": { "branch": "main", "commit": "7c5cbf0122ff2dfbb6a92f14885894f65949cc8b" }
 }

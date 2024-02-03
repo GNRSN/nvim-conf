@@ -69,6 +69,9 @@ else
       import = "plugins.ai",
     },
     {
+      import = "plugins.nice-to-have",
+    },
+    {
       -- options for lazy can go here, check out what's available later
     },
   })
