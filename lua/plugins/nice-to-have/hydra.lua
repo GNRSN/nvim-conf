@@ -1,13 +1,15 @@
 local window_menu = [[
 
- ^^^^^^     Move     ^^^^^^   ^^    Size   ^^   ^^     Split
- ^^^^^^--------------^^^^^^   ^^-----------^^   ^^---------------
- ^ ^ _k_ ^ ^   ^ ^ _K_ ^ ^     ^    _+_   ^     _s_: horizontally
- _h_ ^ ^ _l_   _H_ ^ ^ _L_        _<_ _>_       _v_: vertically
- ^ ^ _j_ ^ ^   ^ ^ _J_ ^ ^     ^    _-_   ^     _c_: close
- focus^^^^^^   window^^^^^^   ^ _=_ equalize^   _o_: only
+  ^^^^^^     Move     ^^^^^^   ^^    Size   ^^   ^^     Split       
+  ^^^^^^--------------^^^^^^   ^^-----------^^   ^^---------------  
+  ^ ^ _k_ ^ ^   ^ ^ _K_ ^ ^     ^    _+_   ^     _s_: Horizontally  
+  _h_ ^ ^ _l_   _H_ ^ ^ _L_        _<_ _>_       _v_: Vertically
+  ^ ^ _j_ ^ ^   ^ ^ _J_ ^ ^     ^    _-_   ^     _c_: Close
+  focus^^^^^^   window^^^^^^   ^ _=_ equalize^   _o_: Only
+                                 ^^^^^^^^^^^^^^^^_m_: Maximize
 
-      ^^^^shift _<C-e>_^^^^  ^^^^swap _<C-w>_^^^^
+           ^^^^shift _<C-e>_^^^^  ^^^^swap _<C-w>_^^^^
+
 ]]
 
 local function cmd(command)
@@ -20,8 +22,23 @@ return {
     "anuvyklack/hydra.nvim",
     dependencies = {
       {
+        -- Better options for moving splits
         "sindrets/winshift.nvim",
         config = true,
+      },
+      {
+        -- "Zoom" splits, including animations
+        "anuvyklack/windows.nvim",
+        dependencies = {
+          "anuvyklack/middleclass",
+          "anuvyklack/animation.nvim",
+        },
+        config = function()
+          vim.o.winwidth = 10
+          vim.o.winminwidth = 10
+          vim.o.equalalways = false
+          require("windows").setup()
+        end,
       },
     },
     config = function()
@@ -50,7 +67,7 @@ return {
           { "o", cmd("only") }, -- close all windows but current
 
           -- window resizing
-          { "=", cmd("wincmd =") },
+          { "=", cmd("WindowsEqualize") },
           { "+", cmd("wincmd +") },
           { "-", cmd("wincmd -") },
           { "<", cmd("wincmd <") },
@@ -62,6 +79,9 @@ return {
           { "k", cmd("wincmd k") },
           { "l", cmd("wincmd l") },
           -- { "f", focus_window },
+
+          -- Zoom windows
+          { "m", cmd("WindowsMaximize") },
 
           -- move window around
           { "H", cmd("WinShift left") },
