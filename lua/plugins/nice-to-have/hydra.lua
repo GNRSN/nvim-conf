@@ -45,6 +45,7 @@ return {
       local Hydra = require("hydra")
 
       -- Resize window
+      -- See https://github.com/anuvyklack/hydra.nvim/wiki/Windows-and-buffers-management for detailed example
       Hydra({
         name = "Resize window",
         hint = window_menu,
