@@ -15,8 +15,9 @@ return {
       { "y", "<Plug>(YankyYank)", mode = { "n", "x" }, desc = "Yanky yank" },
       { "p", "<Plug>(YankyPutAfter)", mode = { "n", "x" }, desc = "Yanky put (after)" },
       { "P", "<Plug>(YankyPutBefore)", mode = { "n", "x" }, desc = "Yanky put (before)" },
-      { "gp", "<Plug>(YankyGPutAfter)", mode = { "n", "x" }, desc = "Yanky G-put (after)" },
-      { "gP", "<Plug>(YankyGPutBefore)", mode = { "n", "x" }, desc = "Yanky G-put (before)" },
+      -- Interfers with goto preview
+      -- { "gp", "<Plug>(YankyGPutAfter)", mode = { "n", "x" }, desc = "Yanky G-put (after)" },
+      -- { "gP", "<Plug>(YankyGPutBefore)", mode = { "n", "x" }, desc = "Yanky G-put (before)" },
       -- NOTE: Flipped n and p because this is more intuitive for me
       { "<c-n>", "<Plug>(YankyPreviousEntry)", desc = "Yanky previous entry" },
       { "<c-p>", "<Plug>(YankyNextEntry)", desc = "Yanky next entry" },

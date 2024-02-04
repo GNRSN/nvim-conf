@@ -16,9 +16,10 @@ return {
     })
     local keymaps = {
       mode = { "n", "v" },
-      -- ["g"] = { name = "Goto" },
-      -- ["]"] = { name = "Next" },
-      -- ["["] = { name = "Prev" },
+      ["g"] = { name = "Goto" },
+      ["]"] = { name = "Next" },
+      ["["] = { name = "Prev" },
+      ["gp"] = { name = "Preview" },
       ["<leader>"] = { name = "Leader" },
       ["<leader>a"] = { name = "Ai" },
       ["<leader>c"] = { name = "Code" },
