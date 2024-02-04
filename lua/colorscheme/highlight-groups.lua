@@ -591,11 +591,15 @@ function M.setup()
     -- Whichkey
     WhichKey = { fg = palette.fg },
     WhichKeyGroup = { fg = palette.pink },
-    WhichKeySeparator = { fg = palette.fade }, -- 	DiffAdd	the separator between the key and its label
-    WhichKeyDesc = { fg = palette.white }, -- 	Identifier	the label of the key
-    -- WhichKeyFloat = {}, -- 	NormalFloat	Normal in the popup window
-    -- WhichKeyBorder = {}, -- 	FloatBorder	Normal in the popup window
+    WhichKeySeparator = { fg = palette.fade }, -- DiffAdd the separator between the key and its label
+    WhichKeyDesc = { fg = palette.white }, -- Identifier the label of the key
+    -- WhichKeyFloat = {}, -- NormalFloat Normal in the popup window
+    -- WhichKeyBorder = {}, -- FloatBorder Normal in the popup window
     WhichKeyValue = { fg = palette.blue_green },
+
+    -- Treesitter context
+    TreesitterContextSeparator = { fg = palette.white },
+    TreesitterContextBottom = require("neovide").ctx_is_neovide() and { underline = true, sp = palette.white } or {},
   }
 end
 
