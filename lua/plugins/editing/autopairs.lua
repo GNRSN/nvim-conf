@@ -7,6 +7,8 @@ return {
   opts = {
     disable_filetype = { "TelescopePrompt", "vim" },
   },
+  -- Interfers with visual multi D:
+  enabled = false,
   config = function()
     -- import nvim-autopairs
     local autopairs = require("nvim-autopairs")
