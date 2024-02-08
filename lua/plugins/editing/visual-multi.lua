@@ -29,11 +29,4 @@ return {
       { "<C-s>", "<Plug>(VM-Find-Subword-Under)", mode = "v" },
     },
   },
-
-  -- test
-  -- test
-  -- test
-  -- foo
-  -- test
-  -- foo
 }
