@@ -600,6 +600,12 @@ function M.setup()
     -- Treesitter context
     TreesitterContextSeparator = { fg = palette.white },
     TreesitterContextBottom = require("neovide").ctx_is_neovide() and { underline = true, sp = palette.white } or {},
+
+    -- Visual multi
+    VMMono = { bg = palette.visual_bg },
+    VMExtend = { bg = palette.visual_bg },
+    VMCursor = { bg = palette.pink },
+    VMInsert = { bg = palette.visual_bg },
   }
 end
 
