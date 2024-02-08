@@ -4,6 +4,7 @@
 vim.g.VM_default_mappings = 0
 
 vim.g.VM_maps = {
+  -- LATER: I'd prefer sticking with <C-n> from visual mode but idk how to make it play nice with other <C-n> mappings
   ["Find Under"] = "<C-s>",
   ["Find Subword Under"] = "<C-s>",
   ["Undo"] = "u",
