@@ -606,6 +606,30 @@ function M.setup()
     VMExtend = { bg = palette.visual_bg },
     VMCursor = { bg = palette.pink },
     VMInsert = { bg = palette.visual_bg },
+
+    -- Glance
+
+    -- GlancePreviewNormal
+    -- GlancePreviewMatch
+    GlancePreviewCursorLine = { bg = palette.fade },
+    -- GlancePreviewSignColumn
+    GlancePreviewEndOfBuffer = { fg = palette.bg },
+    -- GlancePreviewLineNr
+    -- GlancePreviewBorderBottom
+    GlanceWinBarTitle = { bg = palette.menu, fg = palette.white },
+    GlanceWinBarFilename = { fg = palette.blue_green },
+    GlanceWinBarFilepath = { fg = palette.fade },
+    GlanceListNormal = { bg = palette.bg, fg = palette.white },
+    GlanceListFilename = { fg = palette.blue_green },
+    GlanceListFilepath = { fg = palette.fade },
+    GlanceListCount = { fg = palette.number_green },
+    -- GlanceListMatch
+    GlanceListCursorLine = { bg = palette.visual_bg, fg = palette.fg },
+    -- GlanceListEndOfBuffer
+    -- GlanceListBorderBottom
+    -- GlanceFoldIcon
+    -- GlanceIndent
+    -- GlanceBorderTop
   }
 end
 
