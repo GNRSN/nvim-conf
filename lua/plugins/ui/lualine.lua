@@ -15,9 +15,29 @@ local get_noice_mode = function()
   }
 end
 
+local function get_visual_multi(mode)
+  local result = vim.fn["VMInfos"]()
+  -- local current = result.current
+  -- local total = result.total
+  local ratio = result.ratio
+  local patterns = result.patterns
+  -- local status = result.status
+  return "%#St_InsertMode# "
+    .. " MULTI("
+    .. mode
+    .. ")"
+    .. "%#St_lspWarning# 󱩾\""
+    .. patterns[1]
+    .. "\" "
+    .. "%#StText#"
+    .. "["
+    .. ratio
+    .. "]"
+end
+
 local format_on_save_indicator = {
   function()
-    return "󰾽"
+    return ""
   end,
   cond = function()
     local no_write = {
@@ -75,7 +95,18 @@ return {
           },
         },
         sections = {
-          lualine_a = { "mode" },
+          lualine_a = {
+            {
+              "mode",
+              fmt = function(mode)
+                if vim.b["visual_multi"] then
+                  return get_visual_multi(mode)
+                end
+
+                return mode
+              end,
+            },
+          },
           lualine_b = { "branch", "diff" },
           lualine_c = {
             "filename",

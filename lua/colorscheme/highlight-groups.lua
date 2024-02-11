@@ -591,11 +591,45 @@ function M.setup()
     -- Whichkey
     WhichKey = { fg = palette.fg },
     WhichKeyGroup = { fg = palette.pink },
-    WhichKeySeparator = { fg = palette.fade }, -- 	DiffAdd	the separator between the key and its label
-    WhichKeyDesc = { fg = palette.white }, -- 	Identifier	the label of the key
-    -- WhichKeyFloat = {}, -- 	NormalFloat	Normal in the popup window
-    -- WhichKeyBorder = {}, -- 	FloatBorder	Normal in the popup window
+    WhichKeySeparator = { fg = palette.fade }, -- DiffAdd the separator between the key and its label
+    WhichKeyDesc = { fg = palette.white }, -- Identifier the label of the key
+    -- WhichKeyFloat = {}, -- NormalFloat Normal in the popup window
+    -- WhichKeyBorder = {}, -- FloatBorder Normal in the popup window
     WhichKeyValue = { fg = palette.blue_green },
+
+    -- Treesitter context
+    TreesitterContextSeparator = { fg = palette.white },
+    TreesitterContextBottom = require("neovide").ctx_is_neovide() and { underline = true, sp = palette.white } or {},
+
+    -- Visual multi
+    VMMono = { bg = palette.visual_bg },
+    VMExtend = { bg = palette.visual_bg },
+    VMCursor = { bg = palette.pink },
+    VMInsert = { bg = palette.visual_bg },
+
+    -- Glance
+
+    -- GlancePreviewNormal
+    -- GlancePreviewMatch
+    GlancePreviewCursorLine = { bg = palette.fade },
+    -- GlancePreviewSignColumn
+    GlancePreviewEndOfBuffer = { fg = palette.bg },
+    -- GlancePreviewLineNr
+    -- GlancePreviewBorderBottom
+    GlanceWinBarTitle = { bg = palette.menu, fg = palette.white },
+    GlanceWinBarFilename = { fg = palette.blue_green },
+    GlanceWinBarFilepath = { fg = palette.fade },
+    GlanceListNormal = { bg = palette.bg, fg = palette.white },
+    GlanceListFilename = { fg = palette.blue_green },
+    GlanceListFilepath = { fg = palette.fade },
+    GlanceListCount = { fg = palette.number_green },
+    -- GlanceListMatch
+    GlanceListCursorLine = { bg = palette.visual_bg, fg = palette.fg },
+    -- GlanceListEndOfBuffer
+    -- GlanceListBorderBottom
+    -- GlanceFoldIcon
+    -- GlanceIndent
+    -- GlanceBorderTop
   }
 end
 

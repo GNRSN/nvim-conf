@@ -35,8 +35,8 @@ else
     require("colorscheme").load()
   end)
 
-  if vim.g.neovide then
-    require("neovide")
+  if require("neovide").ctx_is_neovide() then
+    require("neovide").setup()
   end
 
   -- use lazy-loader

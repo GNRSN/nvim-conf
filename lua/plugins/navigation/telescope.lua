@@ -100,11 +100,6 @@ return {
       { "<leader>sw", tele("grep_string"), desc = "Word (root dir)" },
       { "<leader>sW", tele("grep_string", { cwd = false }), desc = "Word (cwd)" },
       {
-        "<leader>uC",
-        tele("colorscheme", { enable_preview = true }),
-        desc = "Colorscheme with preview",
-      },
-      {
         "<leader>fls",
         tele("lsp_document_symbols", {
           symbols = {

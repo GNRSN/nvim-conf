@@ -20,3 +20,11 @@ end)
 add_cmd("Q", function()
   vim.cmd.q()
 end)
+
+-- Reload
+
+-- Suggested in https://www.reddit.com/r/neovim/comments/16e0l4o/how_to_hot_reload_highlightsscm_in_nvimtreesitter/
+add_cmd("TSReload", function()
+  local bufnr = vim.api.nvim_get_current_buf()
+  require("vim.treesitter.highlighter").active[bufnr]:destroy()
+end)
