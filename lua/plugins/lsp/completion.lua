@@ -257,7 +257,6 @@ return {
               return vim_item
             end
           end
-
           -- Custom kind for custom icon
           if entry.source.name == "npm" then
             vim_item.kind = "npm"
