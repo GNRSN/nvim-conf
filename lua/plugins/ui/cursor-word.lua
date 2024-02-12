@@ -1,30 +1,4 @@
 return {
-  -- Regext based highlighting of only what is in view,
-  -- claims to be faster than treesitter in large files
-  -- REVIEW: Is it really as good as treesiter based though? e.g. highlighting doesn't work for words with hyphen
-  -- maybe treesitter version could be more intelligent? I guess it's pretty good that it follows the same logic as w/e/b motions
-  -- I think [https://github.com/RRethy/vim-illuminate] is the alternative, which uses ts textobjects, but is maybe less performant
-  -- Actually, there's a bunch of them
-  -- - https://github.com/yamatsum/nvim-cursorline
-  -- - https://github.com/xiyaowong/nvim-cursorword
-  -- - https://github.com/sontungexpt/stcursorword
-  -- -
-  -- REVIEW: After comparing to vscode, this isn't at all comparable
-  -- I cant find settings for whatever vscode is doing but I notice the folowing:
-  -- - Different bg color for indicating differnt behavior
-  -- - Some LSP integration, e.g. having the cursor on the word "function" i.e. ´fun*ction myFunc ()´
-  --   highlights the word myFunc since lsp actions, e.g. rename, will trigger on that word
-  -- - Cursor on a div tag in jsx highlights the matching tag, not all div tags
-  -- LATER: Disabled for now until a find a better option
-  -- {
-  --   "tzachar/local-highlight.nvim",
-  --   config = function()
-  --     require("local-highlight").setup({
-  --       hlgroup = "LocalHighlight",
-  --       cw_hlgroup = "LocalHighlightCursorWord",
-  --     })
-  --   end,
-  -- },
   {
     "RRethy/vim-illuminate",
     config = function()
