@@ -99,6 +99,8 @@ return {
           { "<Esc>", nil, { exit = true, desc = false } },
         },
       })
+
+      -- LATER: Add hydra for stepping next/prev with [/]
     end,
   },
 }
