@@ -20,6 +20,15 @@ return {
       "petertriho/cmp-git",
       requires = "nvim-lua/plenary.nvim",
     },
+
+    {
+      "David-Kunz/cmp-npm",
+      dependencies = { "nvim-lua/plenary.nvim" },
+      ft = "json",
+      config = function()
+        require("cmp-npm").setup({})
+      end,
+    },
   },
   config = function()
     -- Disable native completion
@@ -59,6 +68,7 @@ return {
       -- sources for autocompletion
       -- NOTE: order of sources effect order in UI
       sources = cmp.config.sources({
+        { name = "npm", keyword_length = 4 },
         { name = "nvim_lsp_signature_help" },
         { name = "codeium" },
         { name = "path" },
@@ -232,6 +242,7 @@ return {
             path = "Path",
             luasnip = "Snip",
             codeium = "🤖",
+            npm = "npm",
           }
           local function getMappedMenu(entry)
             return MENU_MAPPER[entry.source.name] or entry.source.name or "??"
@@ -246,6 +257,10 @@ return {
               return vim_item
             end
           end
+          -- Custom kind for custom icon
+          if entry.source.name == "npm" then
+            vim_item.kind = "npm"
+          end
           -- Pathname with file icon
           if vim.tbl_contains({ "path" }, entry.source.name) then
             local icon, hl_group = require("nvim-web-devicons").get_icon(entry:get_completion_item().label)
@@ -258,10 +273,13 @@ return {
           end
           -- Lspkind (e.g. variable + icon) for remaining
           return lspkind.cmp_format({
-            with_text = false,
+            mode = "symbol",
             maxwidth = 50,
             ellipsis_char = "...",
             menu = MENU_MAPPER,
+            symbol_map = {
+              npm = "",
+            },
           })(entry, vim_item)
         end,
       },

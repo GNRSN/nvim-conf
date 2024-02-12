@@ -143,10 +143,6 @@ function M.setup()
 
     DiagnosticUnnecessary = { fg = palette.text_ignored },
 
-    -- Cursor word highligthing
-    -- LocalHighlightCursorWord = { bg = "#4c470b" },
-    -- LocalHighlight = { bg = "#393400" },
-
     -- TreeSitter
     -- The list of capture-groups can  be found at:
     -- https://github.com/nvim-treesitter/nvim-treesitter/blob/master/CONTRIBUTING.md#parser-configurations
@@ -491,8 +487,8 @@ function M.setup()
     -- Highlight current word
     -- Tried to emmulate vscodde but its unclear
     IlluminatedWordText = { bg = palette.fade },
-    IlluminatedWordRead = { bg = "#484848" },
-    IlluminatedWordWrite = { bg = "#1D3D59" },
+    IlluminatedWordRead = { bg = palette.cursor_word_yellow },
+    IlluminatedWordWrite = { bg = palette.cursor_word_blue },
 
     -- -- Cmp
     -- -- NOTE: Pmenu controls background
@@ -588,7 +584,7 @@ function M.setup()
     NeotestUnknown = { fg = palette.text_ignored },
     NeotestWatching = { fg = palette.purple },
 
-    -- Whichkey
+    -- WhichKey
     WhichKey = { fg = palette.fg },
     WhichKeyGroup = { fg = palette.pink },
     WhichKeySeparator = { fg = palette.fade }, -- DiffAdd the separator between the key and its label
@@ -610,8 +606,8 @@ function M.setup()
     -- Glance
 
     -- GlancePreviewNormal
-    -- GlancePreviewMatch
-    GlancePreviewCursorLine = { bg = palette.fade },
+    GlancePreviewMatch = { bg = palette.yellow_orange, fg = palette.fade },
+    GlancePreviewCursorLine = { bg = palette.cursor_word_yellow },
     -- GlancePreviewSignColumn
     GlancePreviewEndOfBuffer = { fg = palette.bg },
     -- GlancePreviewLineNr
@@ -623,7 +619,7 @@ function M.setup()
     GlanceListFilename = { fg = palette.blue_green },
     GlanceListFilepath = { fg = palette.fade },
     GlanceListCount = { fg = palette.number_green },
-    -- GlanceListMatch
+    GlanceListMatch = { bg = palette.yellow_orange, fg = palette.fade },
     GlanceListCursorLine = { bg = palette.visual_bg, fg = palette.fg },
     -- GlanceListEndOfBuffer
     -- GlanceListBorderBottom

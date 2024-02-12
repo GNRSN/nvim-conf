@@ -28,11 +28,13 @@ function M.setup()
   vim.g.neovide_floating_blur_amount_y = 7.0
   vim.g.neovide_scroll_animation_length = 0.25
 
+  -- set padding to account for frameless option
+  vim.g.neovide_padding_top = 50
+
   if config.transparency then
     vim.g.neovide_window_blurred = true
     vim.g.neovide_transparency = 0.65
     vim.g.transparency = 0.65
-    vim.g.neovide_padding_top = 50
   else
     vim.g.neovide_background_color = palette.bg
     vim.api.nvim_set_hl(0, "Normal", { bg = palette.bg })

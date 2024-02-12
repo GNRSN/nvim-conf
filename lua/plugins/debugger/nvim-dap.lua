@@ -6,6 +6,8 @@ local js_based_languages = {
   "vue",
 }
 
+-- LATER: Add https://github.com/rcarriga/cmp-dap
+
 return {
   {
     "mfussenegger/nvim-dap",

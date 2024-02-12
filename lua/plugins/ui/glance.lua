@@ -20,6 +20,18 @@ return {
             ["<C-p>"] = actions.previous_location,
           },
         },
+        ---@diagnostic disable-next-line: missing-fields
+        hooks = {
+          -- Skip opening if there is only 1 options
+          -- NOTE: There is also a version to only skip if the option is in the same file but this is what I'm used to
+          before_open = function(results, open, jump, method)
+            if #results == 1 then
+              jump(results[1]) -- argument is optional
+            else
+              open(results) -- argument is optional
+            end
+          end,
+        },
       })
     end,
   },
