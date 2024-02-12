@@ -8,9 +8,15 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "neovim/nvim-lspconfig",
+
+      -- Support typescript // ^? query comment
+      "marilari88/twoslash-queries.nvim",
     },
     config = function()
       require("typescript-tools").setup({
+        on_attach = function(client, bufnr)
+          require("twoslash-queries").attach(client, bufnr)
+        end,
         settings = {
           tsserver_path = require("util.typescript").get_tsdk_from_config(),
         },
