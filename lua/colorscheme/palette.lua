@@ -35,4 +35,6 @@ return {
   number_green = "#B1E8A9",
   border = "#444444",
   error_dark = "#b36c6c",
+  cursor_word_yellow = "#484848",
+  cursor_word_blue = "#1D3D59",
 }
