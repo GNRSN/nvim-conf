@@ -12,6 +12,11 @@ return {
           enable = true,
         },
         ---@diagnostic disable-next-line: missing-fields
+        folds = {
+          -- Default to unfolded on open
+          folded = false,
+        },
+        ---@diagnostic disable-next-line: missing-fields
         mappings = {
           list = {
             -- ["j"] = false,
