@@ -12,7 +12,7 @@ function M.setup()
   local palette = require("colorscheme.palette")
 
   if not vim.g.neovide then
-    error("Neovide customization initilized but neovide env is not present")
+    error("Neovide customization initialized but neovide env is not present")
   end
 
   -- set font

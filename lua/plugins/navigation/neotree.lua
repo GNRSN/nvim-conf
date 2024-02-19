@@ -33,14 +33,14 @@ return {
       {
         "<leader>e",
         function()
-          require("neo-tree.command").execute({ toggle = true, dir = require("util").get_root() })
+          require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
         end,
         desc = "File explorer (root dir)",
       },
       {
         "<leader>E",
         function()
-          require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
+          require("neo-tree.command").execute({ toggle = true, dir = require("util").get_root() })
         end,
         desc = "File explorer (cwd)",
       },
