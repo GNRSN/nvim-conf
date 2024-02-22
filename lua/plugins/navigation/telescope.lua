@@ -40,22 +40,22 @@ return {
     cmd = "Telescope",
     keys = {
       -- find
-      { "<leader><space>", tele("files", { cwd = false }), desc = "Find Files (cwd)" },
+      -- { "<leader><space>", tele("files", { cwd = false }), desc = "Find Files (cwd)" },
       { "<leader>ff", tele("files"), desc = "Find Files (root dir)" },
-      { "<leader>fs", tele("live_grep", { cwd = false }), desc = "Find in Files (Grep)" },
+      -- { "<leader>fs", tele("live_grep", { cwd = false }), desc = "Find in Files (Grep)" },
       -- { "<leader>fs", tele("grep_string"), mode = { "v" }, desc = "Find selection in Files (Grep)" },
-      {
-        "<leader>fs",
-        "\"zy<cmd>exec \"Telescope grep_string default_text=\" . escape(@z, \" \")<cr>",
-        mode = { "v" },
-        desc = "Grep selection",
-      },
+      -- {
+      --   "<leader>fs",
+      --   "\"zy<cmd>exec \"Telescope grep_string default_text=\" . escape(@z, \" \")<cr>",
+      --   mode = { "v" },
+      --   desc = "Grep selection",
+      -- },
       { "<leader>fS", tele("live_grep"), desc = "Grep (cwd)" },
       { "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
       { "<leader>/", tele("live_grep"), desc = "Find in Files (Grep)" },
       { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
       { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-      { "<leader>fR", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
+      -- { "<leader>fR", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
       { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
       {
         "<leader>fB",
@@ -64,7 +64,7 @@ return {
       },
 
       -- git
-      { "<leader>fg", "<cmd>Telescope git_status<CR>", desc = "status" },
+      -- { "<leader>fg", "<cmd>Telescope git_status<CR>", desc = "status" },
       { "<leader>sgb", "<cmd>Telescope git_branches<CR>", desc = "commits" },
       { "<leader>sgc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
       { "<leader>sgC", "<cmd>Telescope git_bcommits<CR>", desc = "buffer commits" },
@@ -96,7 +96,7 @@ return {
       },
       { "<leader>so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
       { "<leader>sr", "<cmd>Telescope resume<cr>", desc = "Resume" },
-      { "<leader>fr", "<cmd>Telescope resume<cr>", desc = "Resume" },
+      -- { "<leader>fr", "<cmd>Telescope resume<cr>", desc = "Resume" },
       { "<leader>sw", tele("grep_string"), desc = "Word (root dir)" },
       { "<leader>sW", tele("grep_string", { cwd = false }), desc = "Word (cwd)" },
       {

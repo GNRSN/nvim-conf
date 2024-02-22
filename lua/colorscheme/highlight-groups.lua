@@ -328,6 +328,14 @@ function M.setup()
     TelescopeMatching = { fg = palette.green },
     TelescopePromptPrefix = { fg = palette.bright_magenta },
 
+    -- Fzf-lua
+    FzfLuaBorder = { fg = palette.fade },
+    FzfLuaTitle = { fg = palette.white },
+    FzfLuaCursor = { fg = palette.white },
+    FzfLuaCursorLine = { bg = palette.visual_bg },
+    FzfLuaCursorLineNumber = { fg = palette.fade },
+    FzfLuaSearch = { bg = palette.green },
+
     -- NeoTree
     NeoTreeNormal = { fg = palette.fg, bg = palette.menu },
     NeoTreeNormalNC = { fg = palette.fg, bg = palette.menu },
