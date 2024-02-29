@@ -188,6 +188,7 @@ function M.setup()
     ["@keyword.coroutine"] = { fg = palette.purple },
     ["@keyword.operator"] = { fg = palette.purple },
     ["@keyword.conditional"] = { fg = palette.purple },
+    ["@keyword.conditional.ternary"] = { fg = palette.fg },
     ["@keyword.import"] = { fg = palette.purple },
     ["@operator"] = { fg = palette.bright_white },
     ["@exception"] = { fg = palette.error_dark },
