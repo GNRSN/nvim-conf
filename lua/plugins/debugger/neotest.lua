@@ -33,6 +33,31 @@ return {
           enabled = true,
           open = "botright vsplit | vertical resize 50",
         },
+        icons = {
+          watching = "👀",
+          running = "🏃",
+          passed = "✅",
+          failed = "❌",
+          skipped = "",
+          unknown = "",
+          collapsed = "󰍟",
+          expanded = "󰍝",
+          child_indent = "│ ",
+          child_prefix = "",
+          final_child_indent = "│ ",
+          final_child_prefix = "",
+          non_collapsible = "",
+          -- Borrowed from:
+          -- https://github.com/j-hui/fidget.nvim/blob/60404ba67044c6ab01894dd5bf77bd64ea5e09aa/lua/fidget/spinner/patterns.lua#L36
+          running_animated = {
+            "◜",
+            "◠",
+            "◝",
+            "◞",
+            "◡",
+            "◟",
+          },
+        },
       })
     end,
     keys = {
