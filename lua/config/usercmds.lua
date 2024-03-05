@@ -28,3 +28,9 @@ add_cmd("TSReload", function()
   local bufnr = vim.api.nvim_get_current_buf()
   require("vim.treesitter.highlighter").active[bufnr]:destroy()
 end)
+
+-- Refresh/reload
+add_cmd("R", function()
+  vim.diagnostic.reset()
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(":LspRestart<CR>", true, true, true), "m", false)
+end)
