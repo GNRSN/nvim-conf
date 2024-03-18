@@ -31,8 +31,18 @@ end)
 
 -- Refresh/reload
 add_cmd("R", function()
+  -- Delete all buffers but current
+  local bufs = vim.api.nvim_list_bufs()
+  local current_buf = vim.api.nvim_get_current_buf()
+  for _, i in ipairs(bufs) do
+    if i ~= current_buf then
+      vim.api.nvim_buf_delete(i, {})
+    end
+  end
+
   vim.diagnostic.reset()
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(":LspRestart<CR>", true, true, true), "m", false)
+  vim.cmd.e()
 end)
 
 -- REVIEW: I don't understand why but adding this during conform setup didn't work?
