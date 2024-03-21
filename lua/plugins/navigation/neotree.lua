@@ -56,10 +56,20 @@ return {
         popup_border_style = "rounded",
         enable_git_status = true,
         enable_diagnostics = true,
-        enable_normal_mode_for_inputs = true, -- Enable normal mode for input dialogs.
         open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes
         sort_case_insensitive = false, -- used when sorting files and directories in the tree
         sort_function = nil, -- use a custom function for sorting files and directories in the tree
+        event_handlers = {
+          { -- Enable normal mode for input dialogs.
+            event = "neo_tree_popup_input_ready",
+            ---@param input NuiInput
+            handler = function(input)
+              vim.print(input)
+              -- LATER: Only for edit, not when creating new file?
+              vim.cmd("stopinsert")
+            end,
+          },
+        },
         default_component_configs = {
           container = {
             enable_character_fade = true,
