@@ -1,6 +1,5 @@
 return {
   -- Nvim integration with test runner
-  -- TODO: Support mocha through https://github.com/nvim-neotest/neotest-vim-test
   {
     "nvim-neotest/neotest",
     dependencies = {
@@ -10,13 +9,38 @@ return {
       "nvim-neotest/nvim-nio",
       -- Adapters
       "marilari88/neotest-vitest",
+      "adrigzr/neotest-mocha",
     },
     config = function()
       ---@diagnostic disable-next-line: missing-fields
       require("neotest").setup({
-
         adapters = {
           require("neotest-vitest"),
+          -- Default config
+          require("neotest-mocha")({
+            command = "npm test --",
+            command_args = function(context)
+              -- The context contains:
+              --   results_path: The file that json results are written to
+              --   test_name_pattern: The generated pattern for the test
+              --   path: The path to the test file
+              --
+              -- It should return a string array of arguments
+              --
+              -- Not specifying 'command_args' will use the defaults below
+              return {
+                "--full-trace",
+                "--reporter=json",
+                "--reporter-options=output=" .. context.results_path,
+                "--grep=" .. context.test_name_pattern,
+                context.path,
+              }
+            end,
+            env = { CI = true },
+            cwd = function(path)
+              return vim.fn.getcwd()
+            end,
+          }),
           -- require("neotest-python")({
           --   dap = { justMyCode = false },
           -- }),
