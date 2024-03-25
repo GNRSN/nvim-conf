@@ -64,9 +64,12 @@ return {
             event = "neo_tree_popup_input_ready",
             ---@param input NuiInput
             handler = function(input)
-              vim.print(input)
-              -- LATER: Only for edit, not when creating new file?
-              vim.cmd("stopinsert")
+              local line = vim.api.nvim_buf_get_lines(input.bufnr, 0, -1, false)[1]
+              -- If input field has content, i.e. edit, leave insert mode
+              if string.len(line) > 0 then
+                -- TODO: Seems to only fire on first open? Likely caused by dressing.nvim
+                vim.cmd("stopinsert")
+              end
             end,
           },
         },
