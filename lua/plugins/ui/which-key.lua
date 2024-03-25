@@ -21,7 +21,6 @@ return {
       ["["] = { name = "Prev" },
       ["gp"] = { name = "Preview" },
       ["<leader>"] = { name = "Leader" },
-      ["<leader>a"] = { name = "Ai" },
       ["<leader>c"] = { name = "Code" },
       ["<leader>d"] = { name = "Debugger" },
       ["<leader>f"] = { name = "File/find" },
