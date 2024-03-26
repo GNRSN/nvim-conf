@@ -49,3 +49,10 @@ end)
 add_cmd("PrettierdReload", function()
   os.execute("prettierd stop")
 end)
+
+add_cmd("CopyBufferPath", function()
+  local buffer_path = vim.api.nvim_buf_get_name(0)
+
+  vim.print("Copied path: " .. buffer_path)
+  vim.fn.setreg("+", buffer_path)
+end)
