@@ -18,6 +18,7 @@ return {
       "davidmh/cspell.nvim",
       "mason.nvim",
       "jay-babu/mason-null-ls.nvim",
+      "nvimtools/none-ls-extras.nvim",
     },
     lazy = true,
     event = { "BufReadPre", "BufNewFile" },
@@ -37,16 +38,13 @@ return {
         automatic_installation = true,
       })
 
-      local diagnostics = nls.builtins.diagnostics
-      local code_actions = nls.builtins.code_actions
-
       -- configure null_ls
       nls.setup({
         -- add package.json as identifier for root (for typescript monorepos)
         root_dir = nls_utils.root_pattern(".null-ls-root", "Makefile", ".neoconf.json", ".git", "package.json"),
         sources = {
-          diagnostics.pylint,
-          diagnostics.eslint_d.with({ -- js/ts linter
+          -- LATER: Should be able to run eslint through lspconfig now
+          require("none-ls.diagnostics.eslint_d").with({ -- js/ts linter
             -- only enable if project has eslint config
             condition = function(utils)
               return utils.root_has_file({
@@ -60,7 +58,7 @@ return {
               })
             end,
           }),
-          code_actions.eslint_d.with({
+          require("none-ls.code_actions.eslint_d").with({
             -- only enable if project has eslint config
             condition = function(utils)
               return utils.root_has_file({
