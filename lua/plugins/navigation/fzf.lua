@@ -25,6 +25,16 @@ return {
             scrollbar = "border",
           },
         },
+        keymap = {
+          builtin = { -- uses vim style keys
+            ["<C-u>"] = "preview-page-up",
+            ["<C-d>"] = "preview-page-down",
+          },
+          fzf = {
+            ["ctrl-u"] = "preview-page-up",
+            ["ctrl-d"] = "preview-page-down",
+          },
+        },
         fzf_opts = {
           ["--layout"] = "default",
           ["--info"] = "inline-right",
