@@ -28,12 +28,14 @@ return {
         fzf_opts = {
           ["--layout"] = "default",
           ["--info"] = "inline-right",
+          ["--no-separator"] = "",
           ["--scrollbar"] = "█",
           ["--pointer"] = " ",
+          ["--marker"] = " ", -- multi select
           ["--no-bold"] = "",
           ["--color"] = concatTableKeyValuePairs({
             fg = palette.white, -- Text
-            ["fg+"] = palette.fg,
+            ["fg+"] = palette.fg, -- Text (current line)
             hl = palette.green, -- Highlighted substrings
             ["hl+"] = palette.green, -- Highlighted substrings on current line
             ["bg+"] = palette.visual_bg, -- Current line word background
@@ -44,7 +46,12 @@ return {
             query = palette.yellow, -- Input query
           }),
         },
-        finder = {
+        files = {
+          fzf_opts = {
+            ["--info"] = "inline-right",
+          },
+        },
+        grep = {
           fzf_opts = {
             ["--info"] = "inline-right",
           },
@@ -55,14 +62,14 @@ return {
       {
         "<leader><space>",
         function()
-          require("fzf-lua").files()
+          require("fzf-lua").files({ multiprocess = true })
         end,
         desc = "Search files (fzf)",
       },
       {
         "<leader>fs",
         function()
-          require("fzf-lua").live_grep_native()
+          require("fzf-lua").live_grep({ multiprocess = true })
         end,
         desc = "Grep (fzf)",
       },
