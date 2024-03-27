@@ -16,6 +16,41 @@ return {
     priority = 100,
     -- optional for icon support
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("fzf-lua").setup({
+        winopts = {
+          width = 0.9,
+          preview = {
+            horizontal = "right:50%",
+            scrollbar = "border",
+          },
+        },
+        fzf_opts = {
+          ["--layout"] = "default",
+          ["--info"] = "inline-right",
+          ["--scrollbar"] = "█",
+          ["--pointer"] = " ",
+          ["--no-bold"] = "",
+          ["--color"] = concatTableKeyValuePairs({
+            fg = palette.white, -- Text
+            ["fg+"] = palette.fg,
+            hl = palette.green, -- Highlighted substrings
+            ["hl+"] = palette.green, -- Highlighted substrings on current line
+            ["bg+"] = palette.visual_bg, -- Current line word background
+            gutter = "-1", -- Gutter, just hide it
+            pointer = palette.pink, -- The > icon
+            spinner = palette.pink, -- The spinner
+            info = palette.number_green, -- Match counter
+            query = palette.yellow, -- Input query
+          }),
+        },
+        finder = {
+          fzf_opts = {
+            ["--info"] = "inline-right",
+          },
+        },
+      })
+    end,
     keys = {
       {
         "<leader><space>",
@@ -61,40 +96,5 @@ return {
         desc = "Recent files (fzf)",
       },
     },
-    config = function()
-      require("fzf-lua").setup({
-        winopts = {
-          width = 0.9,
-          preview = {
-            horizontal = "right:50%",
-            scrollbar = "border",
-          },
-        },
-        fzf_opts = {
-          ["--layout"] = "default",
-          ["--info"] = "inline-right",
-          ["--scrollbar"] = "█",
-          ["--pointer"] = " ",
-          ["--no-bold"] = "",
-          ["--color"] = concatTableKeyValuePairs({
-            fg = palette.white, -- Text
-            ["fg+"] = palette.fg,
-            hl = palette.green, -- Highlighted substrings
-            ["hl+"] = palette.green, -- Highlighted substrings on current line
-            ["bg+"] = palette.visual_bg, -- Current line word background
-            gutter = "-1", -- Gutter, just hide it
-            pointer = palette.pink, -- The > icon
-            spinner = palette.pink, -- The spinner
-            info = palette.number_green, -- Match counter
-            query = palette.yellow, -- Input query
-          }),
-        },
-        finder = {
-          fzf_opts = {
-            ["--info"] = "inline-right",
-          },
-        },
-      })
-    end,
   },
 }
