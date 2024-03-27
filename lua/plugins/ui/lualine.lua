@@ -82,6 +82,7 @@ return {
           disabled_filetypes = {
             statusline = {
               "neo-tree",
+              "spectre_panel",
             },
             winbar = {},
           },
