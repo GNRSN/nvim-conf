@@ -23,7 +23,7 @@ return {
 
     -- Create keymaps
     keymap.set("n", "<leader>hm", function()
-      harpoon:list():append()
+      harpoon:list():add()
 
       local n_harpoons = 0
       for _ in pairs(harpoon:list().items) do

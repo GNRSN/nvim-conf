@@ -56,10 +56,23 @@ return {
         popup_border_style = "rounded",
         enable_git_status = true,
         enable_diagnostics = true,
-        enable_normal_mode_for_inputs = true, -- Enable normal mode for input dialogs.
         open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes
         sort_case_insensitive = false, -- used when sorting files and directories in the tree
         sort_function = nil, -- use a custom function for sorting files and directories in the tree
+        event_handlers = {
+          { -- Enable normal mode for input dialogs.
+            event = "neo_tree_popup_input_ready",
+            ---@param input NuiInput
+            handler = function(input)
+              local line = vim.api.nvim_buf_get_lines(input.bufnr, 0, -1, false)[1]
+              -- If input field has content, i.e. edit, leave insert mode
+              if string.len(line) > 0 then
+                -- TODO: Seems to only fire on first open? Likely caused by dressing.nvim
+                vim.cmd("stopinsert")
+              end
+            end,
+          },
+        },
         default_component_configs = {
           container = {
             enable_character_fade = true,

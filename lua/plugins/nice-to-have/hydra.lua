@@ -26,20 +26,20 @@ return {
         "sindrets/winshift.nvim",
         config = true,
       },
-      {
-        -- "Zoom" splits, including animations
-        "anuvyklack/windows.nvim",
-        dependencies = {
-          "anuvyklack/middleclass",
-          "anuvyklack/animation.nvim",
-        },
-        config = function()
-          vim.o.winwidth = 10
-          vim.o.winminwidth = 10
-          vim.o.equalalways = false
-          require("windows").setup()
-        end,
-      },
+      -- {
+      --   -- "Zoom" splits, including animations
+      --   "anuvyklack/windows.nvim",
+      --   dependencies = {
+      --     "anuvyklack/middleclass",
+      --     "anuvyklack/animation.nvim",
+      --   },
+      --   config = function()
+      --     vim.o.winwidth = 10
+      --     vim.o.winminwidth = 10
+      --     vim.o.equalalways = false
+      --     require("windows").setup()
+      --   end,
+      -- },
     },
     config = function()
       local Hydra = require("hydra")

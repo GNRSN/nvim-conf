@@ -71,8 +71,9 @@ else
     {
       import = "plugins.nice-to-have",
     },
-    {
-      -- options for lazy can go here, check out what's available later
+  }, {
+    ui = {
+      backdrop = 100,
     },
   })
   require("config").setup()

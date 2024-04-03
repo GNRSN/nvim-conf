@@ -16,6 +16,8 @@ return {
           "Trouble",
           "noice",
           "undotree",
+          "spectre_panel",
+          "octo",
         },
         segments = {
           {
