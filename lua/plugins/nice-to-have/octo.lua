@@ -8,7 +8,12 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     config = function()
-      require("octo").setup()
+      require("octo").setup({
+        picker = "fzf-lua",
+        picker_config = {
+          use_emojis = true,
+        },
+      })
     end,
   },
 }
