@@ -9,7 +9,7 @@ return {
     },
     keys = {
       {
-        "<leader>r",
+        "<leader>R",
         function()
           require("spectre").toggle()
         end,
