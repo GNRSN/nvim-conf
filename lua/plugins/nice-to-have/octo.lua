@@ -18,6 +18,8 @@ return {
           projects_v2 = true,
         },
       })
+
+      vim.treesitter.language.register("markdown", "octo")
     end,
   },
 }
