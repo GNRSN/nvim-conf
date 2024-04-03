@@ -2,6 +2,7 @@ return {
   -- UI for github cli, supported by cheatsheets
   {
     "pwntester/octo.nvim",
+    event = "VeryLazy",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim",
