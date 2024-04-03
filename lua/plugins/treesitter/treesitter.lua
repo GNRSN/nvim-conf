@@ -47,7 +47,7 @@ return {
           "vimdoc",
           "dockerfile",
           "gitignore",
-          "query", -- This is the Treesitter query lang (?)
+          "query", -- This is the Treesitter query lang
           "regex",
           "toml",
           "zig",
