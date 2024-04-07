@@ -96,6 +96,7 @@ return {
             statusline = {
               "neo-tree",
               "spectre_panel",
+              "DiffviewFiles",
             },
             winbar = {},
           },
