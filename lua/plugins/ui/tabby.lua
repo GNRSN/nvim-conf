@@ -15,7 +15,7 @@ return {
       local palette = require("colorscheme.palette")
 
       vim.api.nvim_set_keymap("n", "<leader>Ta", ":$tabnew<CR>", { noremap = true })
-      vim.api.nvim_set_keymap("n", "<leader>Tc", ":tabclose<CR>", { noremap = true })
+      vim.api.nvim_set_keymap("n", "<leader>Tx", ":tabclose<CR>", { noremap = true })
       vim.api.nvim_set_keymap("n", "<leader>To", ":tabonly<CR>", { noremap = true })
       vim.api.nvim_set_keymap("n", "<leader>Tn", ":tabn<CR>", { noremap = true })
       vim.api.nvim_set_keymap("n", "<leader>Tp", ":tabp<CR>", { noremap = true })
