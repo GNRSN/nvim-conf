@@ -5,6 +5,7 @@
   "Neowords.nvim": { "branch": "main", "commit": "09cd0d6cf0b1a9d2ef08934e6ae2c4a70727703d" },
   "aerial.nvim": { "branch": "master", "commit": "24ebacab5821107c50f628e8e7774f105c08fe9b" },
   "animation.nvim": { "branch": "main", "commit": "fb77091ab72ec9971aee0562e7081182527aaa6a" },
+  "barbar.nvim": { "branch": "master", "commit": "0074ae0e4f0928973dec6d9595a7c49b984d3691" },
   "ccc.nvim": { "branch": "main", "commit": "46b8a38a3bc287f27789800d3d26480d093d65b5" },
   "cheatsheet.nvim": { "branch": "master", "commit": "53325f0c7bef73f875d798f2a951362f4f3f50bc" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
