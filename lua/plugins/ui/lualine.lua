@@ -64,6 +64,19 @@ local format_on_save_indicator = {
   separator = nil,
 }
 
+local diagnostics_segment = {
+  "diagnostics",
+  sections = { "error", "warn" },
+  symbols = {
+    error = " ",
+    warn = " ",
+  },
+  diagnostics_color = {
+    -- color_error = { fg = colors.red },
+    -- color_warn = { fg = colors.yellow },
+  },
+}
+
 return {
   -- Customizable status line
   {
@@ -108,27 +121,23 @@ return {
               end,
             },
           },
-          lualine_b = { "branch", "diff" },
-          lualine_c = {
+          lualine_b = {
             "filename",
             format_on_save_indicator,
             get_noice_mode(),
           },
-          lualine_x = {
-            "diagnostics",
-          },
-          lualine_y = { "filetype" },
-          lualine_z = {},
+          lualine_c = {},
+          lualine_x = {},
+          lualine_y = { diagnostics_segment },
+          lualine_z = { "filetype" },
         },
         inactive_sections = {
           lualine_a = {},
-          lualine_b = {},
-          lualine_c = { "filename" },
-          lualine_x = {
-            "diagnostics",
-          },
-          lualine_y = { "filetype" },
-          lualine_z = {},
+          lualine_b = { "filename" },
+          lualine_c = {},
+          lualine_x = {},
+          lualine_y = { diagnostics_segment },
+          lualine_z = { "filetype" },
         },
         tabline = {},
         winbar = {},
