@@ -1,7 +1,7 @@
 local palette = require("colorscheme.palette")
 
 return {
-  -- todo comments as "bookmarks" + jump between them
+  -- todo comments as "bookmarks" + jump between them through trouble
   {
     "folke/todo-comments.nvim",
     cmd = { "TodoTrouble", "TodoTelescope" },
