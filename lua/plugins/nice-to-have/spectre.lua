@@ -1,6 +1,6 @@
 return {
   -- Search and replace panel
-  -- NOTE: Default requires ripgrep and sed installed
+  -- NOTE: Default requires ripgrep and sed or oxi installed
   {
     "nvim-pack/nvim-spectre",
     dependencies = {
@@ -16,7 +16,7 @@ return {
         desc = "Spectre",
       },
       {
-        "<leader>r",
+        "<leader>R",
         function()
           require("spectre").open_visual()
         end,
