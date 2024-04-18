@@ -49,7 +49,7 @@ function M.setup()
   return {
     Normal = { fg = palette.fg, bg = palette.bg },
     NormalFloat = { fg = palette.fg, bg = palette.bg },
-    Comment = { fg = palette.comment },
+    Comment = { fg = palette.text_ignored },
     Constant = { fg = palette.yellow },
     String = { fg = palette.yellow },
     Character = { fg = palette.green },
@@ -102,9 +102,10 @@ function M.setup()
     StatusLineTermNC = { fg = palette.fade },
 
     Directory = { fg = palette.cyan },
-    DiffAdd = { fg = palette.bg, bg = palette.green },
+    -- Note, used by diff-view
+    DiffAdd = { bg = "#2f4a21" },
     DiffChange = { fg = palette.orange },
-    DiffDelete = { fg = palette.red },
+    DiffDelete = { bg = "#4a1c1c" },
     DiffText = { fg = palette.fade },
 
     ErrorMsg = { fg = palette.bright_red },
@@ -231,6 +232,8 @@ function M.setup()
     ["@regexp"] = { fg = palette.bright_red },
     ["@typeParameter"] = { fg = palette.blue_green },
     ["@decorator"] = { fg = palette.green },
+
+    -- ["@comment.documentation"] = { fg = palette.comment },
 
     -- LSP Semantic tokens
     -- @see https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_semanticTokens
