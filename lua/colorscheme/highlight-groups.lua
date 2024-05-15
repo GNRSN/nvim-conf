@@ -191,6 +191,7 @@ function M.setup()
     ["@keyword.conditional"] = { fg = palette.purple },
     ["@keyword.conditional.ternary"] = { fg = palette.fg },
     ["@keyword.import"] = { fg = palette.purple },
+    ["@keyword.exception"] = { fg = palette.purple },
     ["@operator"] = { fg = palette.bright_white },
     ["@exception"] = { fg = palette.error_dark },
     ["@structure"] = { fg = palette.purple },
