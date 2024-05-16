@@ -109,6 +109,18 @@ return {
       return project_root and (util.path.join(project_root, "node_modules", "typescript", "lib")) or ""
     end
 
+    lspconfig["eslint"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      root_dir = lspconfig.util.find_git_ancestor,
+      settings = {
+        workingDirectory = { mode = "auto" },
+        experimental = {
+          useFlatConfig = true,
+        },
+      },
+    })
+
     lspconfig["mdx_analyzer"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
