@@ -49,6 +49,7 @@ function M.setup()
   return {
     Normal = { fg = palette.fg, bg = palette.bg },
     NormalFloat = { fg = palette.fg, bg = palette.bg },
+    WinSeparator = { fg = palette.selection },
     Comment = { fg = palette.text_ignored },
     Constant = { fg = palette.yellow },
     String = { fg = palette.yellow },
