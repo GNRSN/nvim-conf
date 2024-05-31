@@ -4,7 +4,6 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-context",
     -- TODO: Disable until https://github.com/neovide/neovide/issues/2353 is merged
-    enabled = not require("neovide").ctx_is_neovide(),
     event = { "BufReadPre", "BufNewFile" },
     keys = {
       { "<leader>uc", "<Cmd>TSContextToggle<CR>", desc = "Toggle context ui" },
