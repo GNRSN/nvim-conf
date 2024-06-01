@@ -86,6 +86,7 @@
   "telescope.nvim": { "branch": "master", "commit": "dfa230be84a044e7f546a6c2b0a403c739732b86" },
   "todo-comments.nvim": { "branch": "main", "commit": "e1549807066947818113a7d7ed48f637e49620d3" },
   "trouble.nvim": { "branch": "main", "commit": "83cfe1b3fd5ebb807119500534d2c8334375a305" },
+  "ts-error-translator.nvim": { "branch": "main", "commit": "11ae55b28bde02663b5f983f59b0e3fd9c4e845b" },
   "twoslash-queries.nvim": { "branch": "main", "commit": "e000134c7ca3ea44f1095df3ceea89e485b7bdd5" },
   "typescript-tools.nvim": { "branch": "master", "commit": "c43d9580c3ff5999a1eabca849f807ab33787ea7" },
   "ultimate-autopair.nvim": { "branch": "v0.6", "commit": "813e1b3391c3f50100345bf3956c618f7e522e74" },
