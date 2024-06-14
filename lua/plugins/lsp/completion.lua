@@ -68,6 +68,11 @@ return {
       -- sources for autocompletion
       -- NOTE: order of sources effect order in UI
       sources = cmp.config.sources({
+        {
+          -- optional completion source for require statements and module annotations
+          name = "lazydev",
+          group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+        },
         { name = "npm", keyword_length = 4 },
         { name = "nvim_lsp_signature_help" },
         { name = "codeium" },
