@@ -57,6 +57,15 @@ return {
         end
         require("conform").format({ async = true, lsp_fallback = true, range = range })
       end, { range = true })
+
+      -- Register :PrettierdRestart to reload prettierd
+      vim.api.nvim_create_user_command("PrettierdReload", function()
+        vim.fn.jobstart("kill $(pidof prettierd)", {
+          on_exit = function()
+            vim.notify("Prettier deamon killed", vim.log.levels.INFO, { title = "PrettierdReload" })
+          end,
+        })
+      end, {})
     end,
     keys = {
       {
