@@ -5,7 +5,7 @@ return {
     main = "ibl",
     config = function()
       -- LATER: I wasn't happy with the default behavior where all lines are rainbow all the time,
-      -- as opposed to only higlighting the active scope with its corresponding rainbow color
+      -- as opposed to only highlighting the active scope with its corresponding rainbow color
 
       -- local highlight = {
       --   -- This order mimics vs-code

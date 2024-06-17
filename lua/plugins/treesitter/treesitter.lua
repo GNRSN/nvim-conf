@@ -3,7 +3,9 @@ return {
     "nvim-treesitter/nvim-treesitter",
     event = { "BufReadPre", "BufNewFile" },
     build = ":TSUpdate",
-    dependencies = {},
+    dependencies = {
+      "windwp/nvim-ts-autotag",
+    },
     config = function()
       -- import nvim-treesitter plugin
       local treesitter = require("nvim-treesitter.configs")
@@ -16,7 +18,6 @@ return {
         },
         -- enable indentation
         indent = {
-          -- DOC: Indentation based on treesitter for the = operator. NOTE: This is an experimental feature.
           enable = true,
         },
         -- enable autotagging (w/ nvim-ts-autotag plugin)
@@ -47,7 +48,7 @@ return {
           "vimdoc",
           "dockerfile",
           "gitignore",
-          "query", -- This is the Treesitter query lang (?)
+          "query", -- This is the Treesitter query lang
           "regex",
           "toml",
           "zig",

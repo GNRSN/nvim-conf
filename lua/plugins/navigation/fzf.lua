@@ -9,6 +9,10 @@ function concatTableKeyValuePairs(table)
   return result
 end
 
+-- TODO:
+-- Wrap around when on first result and stepping down
+-- Reset "cursor" when uppdating search
+
 return {
   -- fzf-lua is said to be faster than telescope with fzf native
   {

@@ -2,10 +2,21 @@ return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
-    -- Neodev needs to be setup before lspconfig, it will config lua for nvim development when required
+    -- Neodev needs to be setup before lspconfig, it will configure lua for nvim development when required
     "folke/neodev.nvim",
     "hrsh7th/cmp-nvim-lsp",
-    { "antosha417/nvim-lsp-file-operations", config = true },
+    {
+      -- Listens to neo-tree rename event and auto-magically performs lsp file rename
+      "antosha417/nvim-lsp-file-operations",
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        -- DOC: Please note that the order that the plugins load in is important,
+        -- neo-tree must load before nvim-lsp-file-operations for it to work,
+        -- so nvim-lsp-file-operations depends on neo-tree and not the other way around.
+        "nvim-neo-tree/neo-tree.nvim",
+      },
+      config = true,
+    },
     -- Adds $schema support to .json
     "b0o/schemastore.nvim",
   },
@@ -97,6 +108,18 @@ return {
       local project_root = util.find_node_modules_ancestor(root_dir)
       return project_root and (util.path.join(project_root, "node_modules", "typescript", "lib")) or ""
     end
+
+    lspconfig["eslint"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      root_dir = lspconfig.util.find_git_ancestor,
+      settings = {
+        workingDirectory = { mode = "auto" },
+        experimental = {
+          useFlatConfig = true,
+        },
+      },
+    })
 
     lspconfig["mdx_analyzer"].setup({
       capabilities = capabilities,

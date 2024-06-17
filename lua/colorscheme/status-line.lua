@@ -17,6 +17,7 @@ local normal = {
   c = { fg = palette.fg, bg = bg },
   x = { fg = palette.white, bg = bg },
   y = { fg = palette.white, bg = bg },
+  z = { fg = palette.white, bg = bg },
 }
 
 local command = {
@@ -25,6 +26,7 @@ local command = {
   c = { fg = palette.fg, bg = bg },
   x = { fg = palette.white, bg = bg },
   y = { fg = palette.white, bg = bg },
+  z = { fg = palette.white, bg = bg },
 }
 
 local visual = {
@@ -33,14 +35,16 @@ local visual = {
   c = { fg = palette.fg, bg = bg },
   x = { fg = palette.white, bg = bg },
   y = { fg = palette.white, bg = bg },
+  z = { fg = palette.white, bg = bg },
 }
 
 local inactive = {
   a = { fg = palette.white, bg = palette.visual_bg, gui = "bold" },
-  b = { fg = palette.black, bg = palette.white },
+  b = { fg = palette.fade, bg = bg },
   c = { fg = palette.fg, bg = bg },
   x = { fg = palette.white, bg = bg },
   y = { fg = palette.white, bg = bg },
+  z = { fg = palette.white, bg = bg },
 }
 
 local replace = {
@@ -49,6 +53,7 @@ local replace = {
   c = { fg = palette.fg, bg = bg },
   x = { fg = palette.white, bg = bg },
   y = { fg = palette.white, bg = bg },
+  z = { fg = palette.white, bg = bg },
 }
 
 local insert = {
@@ -57,6 +62,7 @@ local insert = {
   c = { fg = palette.fg, bg = bg },
   x = { fg = palette.white, bg = bg },
   y = { fg = palette.white, bg = bg },
+  z = { fg = palette.white, bg = bg },
 }
 
 return {

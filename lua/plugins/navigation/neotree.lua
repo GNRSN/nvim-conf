@@ -82,6 +82,8 @@ return {
             symbols = {
               hint = "",
               info = "",
+              warn = " ",
+              error = " ",
             },
           },
           indent = {
