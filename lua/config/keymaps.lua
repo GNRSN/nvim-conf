@@ -102,9 +102,19 @@ map("n", "<leader>ud", function() Util.toggle_diagnostics() end, { desc = "Toggl
 local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
 map("n", "<leader>uC", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = "Toggle Conceal" })
 
+local function refresh_git ()
+  -- Refresh git signs buffers
+  require("gitsigns").refresh()
+  -- Refresh neo-tree
+  -- NOTE: This will only refresh the filesystem view,
+  -- @see https://github.com/nvim-neo-tree/neo-tree.nvim/issues/1381
+  local state = require("neo-tree.sources.manager").get_state("filesystem")
+  require("neo-tree.sources.filesystem.commands").refresh(state)
+end
+
 -- lazygit
-map("n", "<leader>gg", function() Util.float_term({ "lazygit" }, { cwd = Util.get_root() }) end, { desc = "Lazygit (root dir)" })
-map("n", "<leader>gG", function() Util.float_term({ "lazygit" }) end, { desc = "Lazygit (cwd)" })
+map("n", "<leader>gg", function() Util.float_term({ "lazygit" }, { cwd = Util.get_root() }, { onClose = refresh_git }) end, { desc = "Lazygit (root dir)" })
+map("n", "<leader>gG", function() Util.float_term({ "lazygit" }, nil, { onClose = refresh_git }) end, { desc = "Lazygit (cwd)" })
 
 -- highlights under cursor
 map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
