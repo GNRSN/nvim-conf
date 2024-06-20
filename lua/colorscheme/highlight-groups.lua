@@ -79,7 +79,7 @@ function M.setup()
     StorageClass = { fg = palette.pink },
     Structure = { fg = palette.yellow },
     TypeDef = { fg = palette.yellow },
-    Special = { fg = palette.green, italic = true },
+    Special = { fg = palette.blue_green, italic = true },
     SpecialComment = { fg = palette.comment, italic = true },
     Error = { fg = palette.bright_red },
     Todo = { fg = palette.purple, bold = true, italic = true },
