@@ -2,16 +2,33 @@ return {
   {
     "folke/trouble.nvim",
     cmd = { "TroubleToggle", "Trouble" },
-    opts = { use_diagnostic_signs = true },
+    opts = {
+      use_diagnostic_signs = true,
+      modes = {
+        buffer_diagnostics = {
+          mode = "diagnostics",
+          filter = {
+            buf = 0,
+            severity = { vim.diagnostic.severity.WARN, vim.diagnostic.severity.ERROR },
+          },
+        },
+        workspace_diagnostics = {
+          mode = "diagnostics",
+          filter = {
+            severity = { vim.diagnostic.severity.WARN, vim.diagnostic.severity.ERROR },
+          },
+        },
+      },
+    },
     keys = {
       {
         "<leader>xx",
-        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        "<cmd>Trouble buffer_diagnostics toggle focus=true<cr>",
         desc = "Buffer Diagnostics (Trouble)",
       },
       {
         "<leader>xX",
-        "<cmd>Trouble diagnostics toggle<cr>",
+        "<cmd>Trouble workspace_diagnostics toggle focus=true<cr>",
         desc = "Workspace Diagnostics (Trouble)",
       },
       {
@@ -34,6 +51,21 @@ return {
         "<cmd>Trouble qflist toggle<cr>",
         desc = "Quickfix List (Trouble)",
       },
+      {
+        "<leader>xn",
+        function()
+          require("trouble").next({ skip_groups = true, jump = true })
+        end,
+        desc = "Next trouble/quickfix item",
+      },
+      {
+        "<leader>xp",
+        function()
+          require("trouble").previous({ skip_groups = true, jump = true })
+        end,
+        desc = "Previous trouble/quickfix item",
+      },
+
       -- {
       --   "[q",
       --   function()
