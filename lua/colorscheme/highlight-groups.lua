@@ -610,8 +610,13 @@ function M.setup()
     WhichKeyValue = { fg = palette.blue_green },
 
     -- Treesitter context
+    TreesitterContext = { bg = nil },
+    TreesitterContextLineNumber = { fg = palette.fade },
     TreesitterContextSeparator = { fg = palette.white },
     TreesitterContextBottom = require("neovide").ctx_is_neovide() and { underline = true, sp = palette.white } or {},
+    TreesitterContextLineNumberBottom = require("neovide").ctx_is_neovide()
+        and { underline = true, sp = palette.white }
+      or {},
 
     -- Visual multi
     VMMono = { bg = palette.visual_bg },
