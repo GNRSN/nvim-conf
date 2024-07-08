@@ -2,8 +2,6 @@ return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
-    -- Neodev needs to be setup before lspconfig, it will configure lua for nvim development when required
-    "folke/neodev.nvim",
     "hrsh7th/cmp-nvim-lsp",
     {
       -- Listens to neo-tree rename event and auto-magically performs lsp file rename
