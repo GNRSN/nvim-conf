@@ -18,6 +18,7 @@ return {
           "undotree",
           "spectre_panel",
           "octo",
+          "DiffviewFiles",
         },
         segments = {
           {

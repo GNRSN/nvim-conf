@@ -84,11 +84,20 @@ end
 -- Opens a floating terminal (interactive by default)
 ---@param cmd? string[]|string
 ---@param opts? LazyCmdOptions|{interactive?:boolean}
-function M.float_term(cmd, opts)
+---@param opts2? { onClose?:function }
+function M.float_term(cmd, opts, opts2)
   opts = vim.tbl_deep_extend("force", {
     size = { width = 0.9, height = 0.9 },
   }, opts or {})
-  require("lazy.util").float_term(cmd, opts)
+  local float = require("lazy.util").float_term(cmd, opts)
+
+  if opts2 and opts2.onClose then
+    vim.api.nvim_create_autocmd("TermClose", {
+      once = true,
+      buffer = float.buf,
+      callback = opts2.onClose,
+    })
+  end
 end
 
 ---@param silent boolean?

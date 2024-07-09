@@ -27,12 +27,17 @@ return {
         },
         keymap = {
           builtin = { -- uses vim style keys
-            ["<C-u>"] = "preview-page-up",
-            ["<C-d>"] = "preview-page-down",
+            ["<C-u>"] = "preview-up",
+            ["<C-d>"] = "preview-down",
           },
           fzf = {
-            ["ctrl-u"] = "preview-page-up",
-            ["ctrl-d"] = "preview-page-down",
+            -- Required here again to override self closing on ctrl-d when listing git files
+            ["ctrl-u"] = "preview-up",
+            ["ctrl-d"] = "preview-down",
+            --
+            -- Reset selection when updating query,
+            -- this opt is passed as the --bind command so this events (seemingly) can't be bound as separate opt
+            ["change"] = "top",
           },
         },
         fzf_opts = {

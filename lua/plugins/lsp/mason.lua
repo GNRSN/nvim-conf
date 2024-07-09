@@ -39,6 +39,8 @@ return {
         "yamlls",
         "jsonls",
         "mdx_analyzer",
+        -- Broken (for nvim 9?) see https://www.reddit.com/r/neovim/comments/1cp8cvw/eslint_is_not_displaying_errors_in_diagnostics/
+        "eslint@4.8.0",
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed
@@ -47,7 +49,6 @@ return {
     mason_tool_installer.setup({
       ensure_installed = {
         "cspell", -- spell check
-        "eslint_d", -- js linter
         "prettierd", -- js + more formatter
         "stylua", -- lua formatter
         "isort", -- python formatter

@@ -25,7 +25,6 @@ Non exhaustive list of plugins
 - Luasnip (snippet engines)
 - Friendly snippets (snippet library)
   - I'm not very happy with the JS snippets at the moment though, most of them are pretty useless
-- Neodev (neovim development/configuration)
 - Autotag
 - Autopair
 - Indent blankline

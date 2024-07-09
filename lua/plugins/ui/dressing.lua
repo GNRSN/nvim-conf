@@ -2,6 +2,7 @@ return {
   -- UI elements for ui.input & ui.select
   {
     "stevearc/dressing.nvim",
+    event = "VeryLazy",
     config = function()
       require("dressing").setup({
         -- NOTE: Has a lot of configuration options

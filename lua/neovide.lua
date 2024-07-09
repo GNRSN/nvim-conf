@@ -29,7 +29,7 @@ function M.setup()
   vim.g.neovide_scroll_animation_length = 0.25
 
   -- set padding to account for frameless option
-  vim.g.neovide_padding_top = 50
+  -- vim.g.neovide_padding_top = 50
 
   if config.transparency then
     vim.g.neovide_window_blurred = true

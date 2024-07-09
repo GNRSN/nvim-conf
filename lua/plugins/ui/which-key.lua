@@ -28,6 +28,7 @@ return {
       ["<leader>h"] = { name = "Harpoon" },
       ["<leader>s"] = { name = "Search" },
       ["<leader>t"] = { name = "Testing" },
+      ["<leader>T"] = { name = "Tabs" },
       ["<leader>u"] = { name = "Ui" },
       ["<leader>w"] = { name = "Windows" },
       ["<leader>x"] = { name = "Diagnostics/quickfix/todos" },

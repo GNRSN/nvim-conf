@@ -25,14 +25,6 @@ map("n", "x", "\"_x")
 map("n", "<leader>+", "<C-a>", { desc = "increment" })
 map("n", "<leader>-", "<C-x>", { desc = "decrement" })
 
--- window navigation
-map("n", "<C-l>", "<C-w>l")
-map("n", "<C-j>", "<C-w>j")
-map("n", "<C-h>", "<C-w>h")
-map("n", "<C-k>", "<C-w>k")
--- LATER: Can't rebind window resizing to ctrl + arrow keys since that is macos workspace navigation,
--- see nvim hydra for alt plugin for better window management
-
 ----------------------
 -- From Lazyvim
 ----------------------
@@ -41,19 +33,13 @@ map("n", "<C-k>", "<C-w>k")
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
--- Move to window using the <ctrl> hjkl keys
-map("n", "<C-h>", "<C-w>h", { desc = "Go to left window" })
-map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window" })
-map("n", "<C-k>", "<C-w>k", { desc = "Go to upper window" })
-map("n", "<C-l>", "<C-w>l", { desc = "Go to right window" })
-
 -- Move Lines
-map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
-map("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
-map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
-map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
-map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
-map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
+-- map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
+-- map("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
+-- map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
+-- map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
+-- map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
+-- map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
 -- Clear search with <esc>
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
@@ -102,9 +88,19 @@ map("n", "<leader>ud", function() Util.toggle_diagnostics() end, { desc = "Toggl
 local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
 map("n", "<leader>uC", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = "Toggle Conceal" })
 
+local function refresh_git ()
+  -- Refresh git signs buffers
+  require("gitsigns").refresh()
+  -- Refresh neo-tree
+  -- NOTE: This will only refresh the filesystem view,
+  -- @see https://github.com/nvim-neo-tree/neo-tree.nvim/issues/1381
+  local state = require("neo-tree.sources.manager").get_state("filesystem")
+  require("neo-tree.sources.filesystem.commands").refresh(state)
+end
+
 -- lazygit
-map("n", "<leader>gg", function() Util.float_term({ "lazygit" }, { cwd = Util.get_root() }) end, { desc = "Lazygit (root dir)" })
-map("n", "<leader>gG", function() Util.float_term({ "lazygit" }) end, { desc = "Lazygit (cwd)" })
+map("n", "<leader>gg", function() Util.float_term({ "lazygit" }, { cwd = Util.get_root() }, { onClose = refresh_git }) end, { desc = "Lazygit (root dir)" })
+map("n", "<leader>gG", function() Util.float_term({ "lazygit" }, nil, { onClose = refresh_git }) end, { desc = "Lazygit (cwd)" })
 
 -- highlights under cursor
 map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })

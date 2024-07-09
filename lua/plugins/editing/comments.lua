@@ -1,6 +1,11 @@
 return {
   {
     "numToStr/Comment.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "JoosepAlviste/nvim-ts-context-commentstring",
+      "nvim-treesitter/nvim-treesitter",
+    },
     opts = {
       ---Add a space b/w comment and the line
       padding = true,

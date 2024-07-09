@@ -1,7 +1,7 @@
 local palette = require("colorscheme.palette")
 
 return {
-  -- todo comments as "bookmarks" + jump between them
+  -- todo comments as "bookmarks" + jump between them through trouble
   {
     "folke/todo-comments.nvim",
     cmd = { "TodoTrouble", "TodoTelescope" },
@@ -13,6 +13,7 @@ return {
         NOTE = { icon = " ", color = "note", alt = { "INFO" } },
         TODO = { icon = "  ", color = "todo" },
         LATER = { icon = "  ", color = "todo" },
+        DOC = { icon = " ", color = "doc" },
       },
       merge_keywords = false,
       colors = {
@@ -20,6 +21,7 @@ return {
         perf = { palette.purple },
         note = { palette.comment },
         todo = { palette.yellow_sunflower },
+        doc = { palette.blue },
       },
     },
     -- stylua: ignore
