@@ -6,6 +6,9 @@ return {
     lazy = false,
     config = function()
       require("smart-splits").setup({
+        -- I wasn't really a fan of wrapping
+        at_edge = "stop",
+
         ignored_filetypes = {
           "neo-tree",
           "neotest",
