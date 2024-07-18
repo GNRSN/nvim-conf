@@ -92,9 +92,11 @@ local function refresh_git ()
   -- Refresh git signs buffers
   require("gitsigns").refresh()
   -- Refresh neo-tree
+  local state = require("neo-tree.sources.manager").get_state("filesystem")
+  -- vim.notify("neotree state" .. require("util.stringify-table").stringify_table( state ))
   -- NOTE: This will only refresh the filesystem view,
   -- @see https://github.com/nvim-neo-tree/neo-tree.nvim/issues/1381
-  local state = require("neo-tree.sources.manager").get_state("filesystem")
+  -- TODO: This opens the filesystem if closed, avoid that
   require("neo-tree.sources.filesystem.commands").refresh(state)
 end
 
