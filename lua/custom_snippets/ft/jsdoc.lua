@@ -55,4 +55,10 @@ return {
    ]],
     { i(1) }
   ),
+  ["/tsexpecterror"] = fmt(
+    [[
+// @ts-expect-error{}
+   ]],
+    { i(1) }
+  ),
 }
