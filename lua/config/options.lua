@@ -46,7 +46,12 @@ opt.wildmode = "longest:full,full" -- Command-line completion mode
 ---@diagnostic disable-next-line: assign-type-mismatch
 opt.wildcharm = ("<Tab>"):byte() -- Set wildcharm, see https://github.com/neovim/neovim/issues/18000 for why :byte
 opt.winminwidth = 10 -- Minimum window width
-opt.wrap = false -- Disable line wrap
+
+-- Wrapping
+opt.wrap = true
+opt.linebreak = true
+opt.breakindent = true
+
 opt.splitkeep = "screen"
 vim.g.incsearch = true
 vim.g.hlsearch = true
